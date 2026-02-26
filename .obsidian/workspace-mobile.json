@@ -11,14 +11,10 @@
             "id": "3af0d8846d012cdc",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02_Algorithm/Optimization/DP/DP_Basics.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "DP_Basics"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -100,7 +96,7 @@
         }
       }
     ],
-    "currentTab": 1
+    "currentTab": 0
   },
   "right": {
     "id": "388f4f6cb52e87a1",
@@ -167,8 +163,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "3af0d8846d012cdc",
+  "active": "05700e091eb1cab8",
   "lastOpenFiles": [
+    "02_Algorithm/Optimization/DP/DP_Basics.md",
     "01_Foundations/Strings/Trie.md",
     "02_Algorithm/Optimization/Backtracking/Combinations_DFS.md",
     "01_Foundations/Techniques/Visited.md",
@@ -199,7 +196,6 @@
     "00_Inbox/inflearn/09_Greedy.md",
     "00_Inbox/inflearn/00_Basic.md",
     "00_Inbox/inflearn/04_HashMap_TreeSet.md",
-    "00_Inbox/inflearn/02_Array.md",
     "00_Inbox/old",
     "00_Inbox/inflearn",
     "00_Inbox",

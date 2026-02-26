@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "00_Inbox/todo.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "todo"
             }
           }
         ]
@@ -173,6 +173,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "random-note:Open random note": false,
       "graph:Open graph view": false,
@@ -180,24 +181,23 @@
       "command-palette:Open command palette": false,
       "daily-notes:Open today's daily note": false,
       "canvas:Create new canvas": false,
-      "bases:Create new base": false,
-      "obsidian-git:Open Git source control": false
+      "bases:Create new base": false
     }
   },
-  "active": "94c44869cd672595",
+  "active": "a17e8b0cfc7c56e9",
   "lastOpenFiles": [
+    "00_Inbox/Untitled.base",
+    "02_Algorithm/Graph/Basics/Bipartite_Graph.md",
+    "02_Algorithm/Graph/Basics/Undirected_Graph.md",
+    "README.md",
     "02_Algorithm/Graph/SCC.md",
     "02_Algorithm/Graph/MST.md",
     "02_Algorithm/Graph/Topological_Search.md",
     "02_Algorithm/Graph/Shortest_Path/Bellman_Ford.md",
-    "02_Algorithm/Graph/Basics/Undirected_Graph.md",
-    "02_Algorithm/Graph/Basics/Bipartite_Graph.md",
     "02_Algorithm/Graph/Basics/Directed_Graph.md",
     "02_Algorithm/Graph/Basics/Graph_Basics.md",
     "02_Algorithm/Graph/Basics/Weighted_Graph.md",
-    "README.md",
     "_templates/Main Template.md",
-    "00_Inbox/Untitled.base",
     "00_Inbox/todo.md",
     "Untitled.canvas",
     "01_Foundations/Techniques/Visited.md",
@@ -213,7 +213,6 @@
     "01_Foundations/Data_Structures/Union_Find.md",
     "02_Algorithm/Optimization/DP/Knapsack.md",
     "02_Algorithm/Optimization/Backtracking/Permutations_DFS.md",
-    "02_Algorithm/Optimization/Backtracking/Memoization.md",
     "Untitled 2.canvas",
     "Untitled 1.canvas",
     "00_Inbox/inflearn",
