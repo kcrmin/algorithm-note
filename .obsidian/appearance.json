@@ -1,0 +1,7 @@
+{
+  "cssTheme": "Atom",
+  "showViewHeader": true,
+  "enabledCssSnippets": [
+    "obsidian-graph-tags-neutral"
+  ]
+}

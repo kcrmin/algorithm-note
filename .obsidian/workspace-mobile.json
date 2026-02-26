@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "6cf961ba9980347c",
+    "type": "split",
+    "children": [
+      {
+        "id": "823a6454c82f9d3a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3af0d8846d012cdc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02_Algorithm/Optimization/DP/DP_Basics.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DP_Basics"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "716118eda44d1c43",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "05700e091eb1cab8",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "3e2bdbdec3d13c7f",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "tag:#graph",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "f51c7ed69cbd975e",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "fb6c2fd4267f6f17",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "61ba7bcbfe7edd3c",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 1
+  },
+  "right": {
+    "id": "388f4f6cb52e87a1",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "ab6681888fc3455f",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "02_Algorithm/Optimization/DP/DP_Basics.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "e79bd785f02f9879",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "f91216e4b6401bd5",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "random-note:Open random note": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "3af0d8846d012cdc",
+  "lastOpenFiles": [
+    "01_Foundations/Strings/Trie.md",
+    "02_Algorithm/Optimization/Backtracking/Combinations_DFS.md",
+    "01_Foundations/Techniques/Visited.md",
+    "02_Algorithm/Graph/Shortest_Path/Floyd_Warshall.md",
+    "_templates/Main Template.md",
+    "_templates",
+    "00_Inbox/old/MapSet/Java HashSet.md",
+    "00_Inbox/old/MapSet/Java HashMap.md",
+    "00_Inbox/old/MapSet/TreeSet.md",
+    "00_Inbox/old/Array/Java Prefix Sum.md",
+    "00_Inbox/old/Array/Java Two Pointers.md",
+    "00_Inbox/old/Array/Java Array Basic.md",
+    "00_Inbox/old/Array/Sliding Window.md",
+    "00_Inbox/old/Basic/Java Scanner.md",
+    "00_Inbox/old/Basic/Java Type Conversion.md",
+    "00_Inbox/old/Basic/Java BufferedReader.md",
+    "00_Inbox/old/String/Java StringBuilder.md",
+    "00_Inbox/old/String/Java Regex.md",
+    "00_Inbox/old/String/Java String.md",
+    "00_Inbox/old/String/Java String Format.md",
+    "00_Inbox/old/MapSet",
+    "00_Inbox/old/Array",
+    "00_Inbox/old/Basic",
+    "00_Inbox/old/String",
+    "00_Inbox/inflearn/01_String.md",
+    "00_Inbox/inflearn/03_Two_Pointer.md",
+    "00_Inbox/inflearn/07_Recursive_Tree_Graph.md",
+    "00_Inbox/inflearn/09_Greedy.md",
+    "00_Inbox/inflearn/00_Basic.md",
+    "00_Inbox/inflearn/04_HashMap_TreeSet.md",
+    "00_Inbox/inflearn/02_Array.md",
+    "00_Inbox/old",
+    "00_Inbox/inflearn",
+    "00_Inbox",
+    "_assets/pdf",
+    "_assets/images"
+  ]
+}

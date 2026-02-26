@@ -1,0 +1,12 @@
+{
+  "defaultViewMode": "preview",
+  "showLineNumber": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00_Inbox",
+  "attachmentFolderPath": "_assets/images",
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": false,
+  "trashOption": "local",
+  "promptDelete": false,
+  "showInlineTitle": false
+}
