@@ -4,6 +4,7 @@
 - BFS 들어갈때 방문처리, 나와서 방문처리
 - Eclipse Debug (Variables, Expressions, Debug Shell)
 - 알고리즘 필기법
+- 
 ## Permutation
 - Next Permutation 이해
 - 11자리 수 next permutation 돌려보기
