@@ -4,7 +4,8 @@
 - BFS 들어갈때 방문처리, 나와서 방문처리
 - Eclipse Debug (Variables, Expressions, Debug Shell)
 - 알고리즘 필기법
-- mst
+- mst 수정하기  (Comaparable 대신 Comparator)
+- 앍(리즘 가능하면 클래스로 믂기) 입력은 따로 (일반적으로 main method)
 ## Permutation
 - Next Permutation 이해
 - 11자리 수 next permutation 돌려보기
