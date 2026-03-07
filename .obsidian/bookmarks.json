@@ -1,0 +1,193 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1772868249193,
+      "items": [
+        {
+          "type": "graph",
+          "ctime": 1772868261802,
+          "title": "기본 (type + #b-type 강조)",
+          "options": {
+            "collapse-filter": false,
+            "search": "",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": false,
+            "showOrphans": false,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#b-type",
+                "color": {
+                  "a": 1,
+                  "rgb": 15158332
+                }
+              },
+              {
+                "query": "[\"type\":algorithm]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3447003
+                }
+              },
+              {
+                "query": "[\"type\":concept]",
+                "color": {
+                  "a": 1,
+                  "rgb": 10181046
+                }
+              },
+              {
+                "query": "[\"type\":data-structure]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3066993
+                }
+              },
+              {
+                "query": "[\"type\":technique]",
+                "color": {
+                  "a": 1,
+                  "rgb": 15844367
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": false,
+            "centerStrength": 0.764409722222222,
+            "repelStrength": 20,
+            "linkStrength": 1,
+            "linkDistance": 30,
+            "scale": 0.21787418811433093,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1772868261803,
+          "title": "작업용 (status + #b-type 강조)",
+          "options": {
+            "collapse-filter": false,
+            "search": "",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": false,
+            "showOrphans": false,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#b-type",
+                "color": {
+                  "a": 1,
+                  "rgb": 15158332
+                }
+              },
+              {
+                "query": "[\"status\":in-review]",
+                "color": {
+                  "a": 1,
+                  "rgb": 15973138
+                }
+              },
+              {
+                "query": "[\"status\":draft]",
+                "color": {
+                  "a": 1,
+                  "rgb": 9807270
+                }
+              },
+              {
+                "query": "[\"status\":done]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3066993
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": false,
+            "centerStrength": 0.764409722222222,
+            "repelStrength": 20,
+            "linkStrength": 1,
+            "linkDistance": 30,
+            "scale": 0.21787418811433093,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1772868261804,
+          "title": "B형만 (항상 강조 + 필터)",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#b-type",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": false,
+            "showOrphans": false,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#b-type",
+                "color": {
+                  "a": 1,
+                  "rgb": 15158332
+                }
+              },
+              {
+                "query": "[\"type\":algorithm]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3447003
+                }
+              },
+              {
+                "query": "[\"type\":concept]",
+                "color": {
+                  "a": 1,
+                  "rgb": 10181046
+                }
+              },
+              {
+                "query": "[\"type\":data-structure]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3066993
+                }
+              },
+              {
+                "query": "[\"type\":technique]",
+                "color": {
+                  "a": 1,
+                  "rgb": 15844367
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": false,
+            "centerStrength": 0.764409722222222,
+            "repelStrength": 20,
+            "linkStrength": 1,
+            "linkDistance": 30,
+            "scale": 0.21787418811433093,
+            "close": true
+          }
+        }
+      ],
+      "title": "그래프뷰"
+    }
+  ]
+}
