@@ -4,7 +4,7 @@
   "spellcheck": false,
   "newFileLocation": "folder",
   "newFileFolderPath": "inbox",
-  "attachmentFolderPath": "assets/images",
+  "attachmentFolderPath": "attachments/images",
   "alwaysUpdateLinks": true,
   "trashOption": "local",
   "showInlineTitle": false
