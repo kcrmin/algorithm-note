@@ -4,7 +4,7 @@ tags:
   - data-structure
   - union-find
 language: java
-status: in-review
+status: done
 source: []
 ---
 
@@ -22,7 +22,7 @@ source: []
   - union(a, b): a와 b가 속한 집합을 합친다 (union by size/rank)
   - 시간복잡도는 거의 상수(`amortized O(alpha(N))`)라서 대량 쿼리에 강함
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Init | `parent[i] = i; size[i] = 1;` | 초기화 | 각 원소가 자기 집합 |
