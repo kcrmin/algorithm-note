@@ -9,6 +9,7 @@
 ## 노트 정리
 - [ ] Parametric Search 개념/판별 함수 정리
 - [ ] BFS 방문 처리 방식 비교 정리: `enqueue 시점` vs `dequeue 시점`
+- [ ] data structure의 경우 클래스로 구현
 
 ## 도구 정리
 - [ ] Eclipse Debug 학습
