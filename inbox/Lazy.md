@@ -2,9 +2,8 @@
 language: java
 status: in-review
 tags:
-- lazy
-- optimization
-- data-structure
+  - lazy
+  - optimization
 type: technique
 ---
 
