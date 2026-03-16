@@ -3,6 +3,7 @@ type: data-structure
 tags:
   - data-structure
   - fenwick-tree
+  - tree
 language: java
 status: in-review
 source: []

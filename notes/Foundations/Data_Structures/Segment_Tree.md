@@ -3,6 +3,7 @@ type: data-structure
 tags:
   - data-structure
   - segment-tree
+  - tree
 language: java
 status: in-review
 source: []
