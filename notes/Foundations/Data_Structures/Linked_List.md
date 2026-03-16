@@ -50,6 +50,10 @@ class SinglyLinkedList {
     Node head;
     Node tail; // 없으면 addLast가 O(N)
 
+    // 예: '커서' 의미로 현재 위치 노드를 하나 들고 있으면,
+    // 그 앞/뒤 삽입·삭제를 O(1)에 처리할 수 있다.
+    Node cursor;
+
     void addFirst(int x) {
         Node node = new Node(x);
         node.next = head;
@@ -79,13 +83,25 @@ class SinglyLinkedList {
         }
         return null;
     }
+
+    // cursor 뒤에 삽입 (cursor가 가리키는 노드 바로 다음)
+    void insertAfterCursor(int x) {
+        if (cursor == null) return;
+        Node node = new Node(x);
+        node.next = cursor.next;
+        cursor.next = node;
+        if (cursor == tail) tail = node;
+    }
 }
 ```
 
-### Pattern B: 중간 삽입/삭제 (노드 참조를 알고 있을 때)
+### Pattern B: 중간 삽입/삭제 (노드 참조/커서를 알고 있을 때)
 
 - 단일 연결 리스트는 **이전 노드(prev)** 를 모르면 삭제가 불편
-- 하지만 아래처럼 "뒤 노드를 복사" 하는 트릭이 가끔 문제로 출제됨
+- 그래서 실전 문제에서는
+  - 삽입/삭제가 많은 경우, 아예 노드 포인터(커서)를 배열 등에 따로 들고 다니거나
+  - 입력 단계에서 "어떤 노드 뒤에 삽입"처럼, **기준 노드 참조를 직접 주는 형식**이 자주 나온다.
+- 아래처럼 "뒤 노드를 복사" 하는 트릭도 가끔 출제됨
 
 ```java
 // node: 삭제하고 싶은 노드 (마지막 노드가 아니라고 가정)

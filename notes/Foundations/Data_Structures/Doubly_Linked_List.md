@@ -34,7 +34,7 @@ source: []
 
 ## Patterns
 
-### Pattern A: 기본 이중 연결 리스트
+### Pattern A: 기본 이중 연결 리스트 (직접 head/tail + 커서 관리)
 
 ```java
 class DNode {
@@ -48,6 +48,8 @@ class DNode {
 
 class DoublyLinkedList {
     DNode head, tail;
+    // 중간 삽입/삭제를 자주 한다면, 이렇게 '커서' 노드를 하나 들고 다니는 패턴이 유용하다.
+    DNode cursor;
 
     void addFirst(int x) {
         DNode node = new DNode(x);
@@ -72,74 +74,82 @@ class DoublyLinkedList {
         if (node.next != null) node.next.prev = node.prev;
         else tail = node.prev;          // node가 tail일 때
     }
+
+    // cursor 앞/뒤 삽입 예시
+    void insertAfterCursor(int x) {
+        if (cursor == null) return;
+        DNode node = new DNode(x);
+        node.prev = cursor;
+        node.next = cursor.next;
+        if (cursor.next != null) cursor.next.prev = node;
+        else tail = node;
+        cursor.next = node;
+    }
+
+    void insertBeforeCursor(int x) {
+        if (cursor == null) return;
+        DNode node = new DNode(x);
+        node.next = cursor;
+        node.prev = cursor.prev;
+        if (cursor.prev != null) cursor.prev.next = node;
+        else head = node;
+        cursor.prev = node;
+    }
 }
 ```
 
-### Pattern B: LRU Cache / 양방향 연결 리스트 + 해시맵
 
-- 고전적인 LRU Cache 구현 패턴
-- **HashMap\<K, Node\> + Doubly Linked List** 조합
-  - HashMap: key -> 노드 참조 (O(1) 접근)
-  - DLL: 사용 빈도에 따라 노드 순서 유지 (가장 최근 사용을 맨 앞 등)
+### Pattern B: 더미(sentinel) head / tail 사용
+
+- 항상 `head <-> ... <-> tail` 구조를 유지해서 **빈 리스트 / 한 개짜리 리스트 경계 처리가 단순해지는** 패턴
+- 실제 데이터는 `head.next` 부터 `tail.prev` 사이에만 존재
 
 ```java
-class LRUCache {
+class DList {
     static class Node {
-        int key, value;
+        int val;
         Node prev, next;
-        Node(int k, int v) { key = k; value = v; }
+        Node(int v) { val = v; }
     }
 
-    int capacity;
-    Map<Integer, Node> map = new HashMap<>();
-    Node head, tail; // head: 가장 최근, tail: 가장 오래된
+    Node head, tail; // 더미 노드
 
-    LRUCache(int capacity) {
-        this.capacity = capacity;
+    DList() {
+        head = new Node(0);
+        tail = new Node(0);
+        head.next = tail;
+        tail.prev = head;
     }
 
-    int get(int key) {
-        Node node = map.get(key);
-        if (node == null) return -1;
-        moveToFront(node);
-        return node.value;
+    // head 바로 뒤에 삽입
+    void addFirst(int x) {
+        insertAfter(head, new Node(x));
     }
 
-    void put(int key, int value) {
-        Node node = map.get(key);
-        if (node != null) {
-            node.value = value;
-            moveToFront(node);
-            return;
-        }
-        node = new Node(key, value);
-        map.put(key, node);
-        addFirst(node);
-        if (map.size() > capacity) {
-            map.remove(tail.key);
-            remove(tail);
-        }
+    // tail 바로 앞에 삽입
+    void addLast(int x) {
+        insertBefore(tail, new Node(x));
     }
 
-    private void addFirst(Node node) {
-        node.prev = null;
-        node.next = head;
-        if (head != null) head.prev = node;
-        head = node;
-        if (tail == null) tail = node;
+    void insertAfter(Node p, Node node) {
+        node.prev = p;
+        node.next = p.next;
+        p.next.prev = node;
+        p.next = node;
     }
 
-    private void moveToFront(Node node) {
-        if (node == head) return;
-        remove(node);
-        addFirst(node);
+    void insertBefore(Node p, Node node) {
+        insertAfter(p.prev, node);
     }
 
-    private void remove(Node node) {
-        if (node.prev != null) node.prev.next = node.next;
-        else head = node.next;
-        if (node.next != null) node.next.prev = node.prev;
-        else tail = node.prev;
+    void remove(Node node) {
+        if (node == head || node == tail) return; // 더미는 삭제 X
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    boolean isEmpty() {
+        return head.next == tail;
     }
 }
 ```
