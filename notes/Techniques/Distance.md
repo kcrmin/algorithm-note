@@ -21,7 +21,7 @@ source: []
   - 양의 가중치 그래프: Dijkstra에서 `dist`를 기준으로 relax
   - `dist`는 visited의 상위 개념 (더 좋은 비용이 나오면 재방문 가능)
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Init | `Arrays.fill(dist, INF); dist[s]=0;` | 초기화 | 시작점 거리 0 |

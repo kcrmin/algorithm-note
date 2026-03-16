@@ -6,6 +6,62 @@
       "items": [
         {
           "type": "graph",
+          "ctime": 1773637549538,
+          "title": "기본",
+          "options": {
+            "collapse-filter": false,
+            "search": "",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": false,
+            "showOrphans": false,
+            "collapse-color-groups": false,
+            "colorGroups": [
+              {
+                "query": "[\"type\":algorithm]",
+                "color": {
+                  "a": 1,
+                  "rgb": 15094097
+                }
+              },
+              {
+                "query": "[\"type\":concept]",
+                "color": {
+                  "a": 1,
+                  "rgb": 15117404
+                }
+              },
+              {
+                "query": "[\"type\":data-structure]",
+                "color": {
+                  "a": 1,
+                  "rgb": 3044044
+                }
+              },
+              {
+                "query": "[\"type\":technique]",
+                "color": {
+                  "a": 1,
+                  "rgb": 12076525
+                }
+              }
+            ],
+            "collapse-display": false,
+            "showArrow": false,
+            "textFadeMultiplier": -2.5,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": false,
+            "centerStrength": 0.764409722222222,
+            "repelStrength": 20,
+            "linkStrength": 1,
+            "linkDistance": 30,
+            "scale": 0.3054558856031431,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
           "ctime": 1772868261802,
           "title": "기본 (type + #b-type 강조)",
           "options": {

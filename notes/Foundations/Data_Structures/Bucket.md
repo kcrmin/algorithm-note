@@ -20,7 +20,7 @@ source: []
   - 인덱스 계산만 맞으면 구현이 단순하고 디버깅이 쉬움
   - 메모리는 `범위 크기`에 비례하므로 범위가 너무 크면 비효율
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Init | `int[] freq = new int[MAX+1];` | 초기화 | 값별 카운트 배열 |

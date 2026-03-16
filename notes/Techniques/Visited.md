@@ -20,7 +20,8 @@ source: []
   - BFS는 보통 `큐에 넣을 때` 방문 처리, DFS는 진입 시점 방문 처리
   - 테스트케이스가 많으면 visited 초기화 방식(`fill` vs timestamp)도 성능 요소
 
-## API & State Change (if applicable)
+## API & State Change
+
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Check | `if (visited[v]) continue;` | 분기 | 이미 방문한 상태 스킵 |

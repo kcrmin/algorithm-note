@@ -19,7 +19,7 @@ source: []
   - 동일한 Big-O라도 구현 상수 차이가 크게 난다
   - 주제별 병목을 미리 알면 디버깅 시간을 줄일 수 있다
 
-## API & State Change (if applicable)
+## API & State Change
 | Topic | Default | Optimization Pivot | 설명 |
 | :--- | :--- | :--- | :--- |
 | Dijkstra/Heap | `PQ<Node>` | stale skip, 조기 종료, 객체 최소화 | 최단거리/이벤트 처리 |

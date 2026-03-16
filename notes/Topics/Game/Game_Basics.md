@@ -20,7 +20,7 @@ source: []
   - 내 차례에서 **하나라도 lose 상태로 보낼 수 있으면 win**
   - 모든 다음 상태가 win이면 lose
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Transition | `nextStates(s)` | 상태 목록 | 가능한 다음 수 |

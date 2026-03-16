@@ -20,7 +20,8 @@ source: []
   - 상태 방문 순서가 정답/성능에 영향을 줄 수 있음
   - B형에서는 `가지치기 + 방문 상태 표현 최적화`가 성능 핵심
 
-## API & State Change (if applicable)
+## API & State Change
+
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Visit | `visited[u] = true;` | 상태 변경 | 정점 방문 처리 |

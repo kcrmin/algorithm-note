@@ -20,7 +20,7 @@ source: []
   - 키 타입(`int`, `long`, `String`, 커스텀 객체`)에 따라 성능 차이가 큼
   - B형에서는 범위가 작으면 해시보다 배열 버킷이 더 빠른 경우가 많음
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Put | `map.put(k, v);` | 상태 변경 | 값 저장/갱신 |

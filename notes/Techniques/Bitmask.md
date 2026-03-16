@@ -19,7 +19,7 @@ source: []
   - Bit Flag: 비트 단위 상태 관리
   - Bitmask: mask 하나 = 하나의 부분집합
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | 설명 |
 | :--- | :--- | :--- |
 | Init | `int flags = 0;` | 초기화 |

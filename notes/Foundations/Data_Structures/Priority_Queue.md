@@ -21,7 +21,7 @@ source: []
   - 내부적으로 완전 이진 트리로 구현, **top만 정렬 보장**
   - B형에서는 "정답 아이디어 + 자료구조 선택" 다음으로, **불필요한 객체 생성/비교 비용**을 줄여야 시간 여유가 생김
 
-## API & State Change (if applicable)
+## API & State Change
 | Operation | Code Snippet | State / Return | 설명 |
 | :--- | :--- | :--- | :--- |
 | Init (Min-Heap) | `new PriorityQueue<>();` | `pq` 초기화 | 기본은 최소 힙 |
