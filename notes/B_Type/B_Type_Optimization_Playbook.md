@@ -9,14 +9,6 @@ source:
 # Samsung B형 Optimization Playbook
 > **한 줄 요약:** 정답 아이디어를 코드로 옮길 때, 시간/메모리 병목을 사전에 차단하기 위한 실전 체크리스트
 
-## Linked Notes
-
-- [[B_Type_Master_Index]]
-- [[B_Type_Solve_Strategy]]
-- [[B_Type_Implementation_Kit]]
-- [[B_Type_Performance_Debug_Checklist]]
-- [[B_Type_Mistake_Log_Template]]
-
 ## Core Concept
 * **When to use:**
   - 구현은 맞는데 시간초과/메모리초과가 반복될 때

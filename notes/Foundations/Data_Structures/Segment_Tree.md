@@ -107,8 +107,52 @@ class IterSegTree {
 }
 ```
 
+### Pattern C: Lazy Propagation (구간 업데이트)
+
+- 구간 전체에 특정 값을 더하거나 변경할 때, 해당 노드를 실제로 사용할 때까지 갱신을 미루는 방식
+- **핵심:** `push` 함수를 통해 부모의 "미뤄둔 숙제(lazy)"를 자식에게 전파
+```java
+long[] tree, lazy;
+
+// 미뤄둔 값을 실제 트리에 반영하고 자식에게 전파
+void push(int node, int start, int end) {
+    if (lazy[node] != 0) {
+        tree[node] += (end - start + 1) * lazy[node]; // 구간 합일 경우 개수만큼 곱함
+        if (start != end) { // 리프 노드가 아니면 자식들에게 전파
+            lazy[node * 2] += lazy[node];
+            lazy[node * 2 + 1] += lazy[node];
+        }
+        lazy[node] = 0;
+    }
+}
+
+void updateRange(int node, int start, int end, int l, int r, long val) {
+    push(node, start, end); // 방문 시 일단 push
+    if (r < start || end < l) return;
+    if (l <= start && end <= r) {
+        lazy[node] += val;
+        push(node, start, end);
+        return;
+    }
+    int mid = (start + end) / 2;
+    updateRange(node * 2, start, mid, l, r, val);
+    updateRange(node * 2 + 1, mid + 1, end, l, r, val);
+    tree[node] = tree[node * 2] + tree[node * 2 + 1];
+}
+
+long queryRange(int node, int start, int end, int l, int r) {
+    push(node, start, end); // 질의 시에도 반드시 push 호출
+    if (r < start || end < l) return 0;
+    if (l <= start && end <= r) return tree[node];
+    int mid = (start + end) / 2;
+    return queryRange(node * 2, start, mid, l, r) 
+         + queryRange(node * 2 + 1, mid + 1, end, l, r);
+}
+```
+
 ## Pitfalls & Tips
 - 트리 크기는 보통 `4 * N`으로 잡으면 안전
 - mid 계산 실수, 인덱스 범위 실수 빈번
 - 값이 안 바뀌면 Prefix Sum이 더 단순하고 빠르다
-- 구간 업데이트 + 구간 질의가 같이 나오면 Lazy Propagation이 사실상 필수
+- 구간 업데이트 + 구간 질의가 같이 나오면 **Lazy Propagation**이 사실상 필수
+- **Lazy 주의사항:** `updateRange`뿐만 아니라 `queryRange` 호출 시에도 반드시 `push`를 먼저 수행하여 최신 상태를 유지해야 함
