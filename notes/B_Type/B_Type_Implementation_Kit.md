@@ -11,41 +11,7 @@ source:
 
 > **한 줄 요약:** Java 기준으로 느린 기본기를 제거한 실전 템플릿 모음.
 
-## Pattern A: FastScanner (입력 병목 제거)
-
-```java
-static class FastScanner {
-    private final InputStream in;
-    private final byte[] buffer = new byte[1 << 16];
-    private int ptr = 0, len = 0;
-
-    FastScanner(InputStream is) { this.in = is; }
-
-    private int read() throws IOException {
-        if (ptr >= len) {
-            len = in.read(buffer);
-            ptr = 0;
-            if (len <= 0) return -1;
-        }
-        return buffer[ptr++];
-    }
-
-    int nextInt() throws IOException {
-        int c;
-        do c = read(); while (c <= ' ');
-        int sign = 1;
-        if (c == '-') { sign = -1; c = read(); }
-        int val = 0;
-        while (c > ' ') {
-            val = val * 10 + (c - '0');
-            c = read();
-        }
-        return val * sign;
-    }
-}
-```
-
-## Pattern B: 테스트케이스 재사용 버퍼
+## Pattern A: 테스트케이스 재사용 버퍼
 
 ```java
 int[] dist = new int[MAX_N + 1];
@@ -59,7 +25,7 @@ if (seen[x] != turn) {
 }
 ```
 
-## Pattern C: 객체 생성 최소화
+## Pattern B: 객체 생성 최소화
 
 ```java
 // Node 객체를 매번 new 하지 않고 primitive 배열/인덱스 기반으로 관리
