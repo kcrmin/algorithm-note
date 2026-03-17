@@ -6,64 +6,8 @@
       "items": [
         {
           "type": "graph",
-          "ctime": 1773637549538,
+          "ctime": 1773638460791,
           "title": "기본",
-          "options": {
-            "collapse-filter": false,
-            "search": "",
-            "showTags": true,
-            "showAttachments": false,
-            "hideUnresolved": false,
-            "showOrphans": false,
-            "collapse-color-groups": false,
-            "colorGroups": [
-              {
-                "query": "[\"type\":algorithm]",
-                "color": {
-                  "a": 1,
-                  "rgb": 15094097
-                }
-              },
-              {
-                "query": "[\"type\":concept]",
-                "color": {
-                  "a": 1,
-                  "rgb": 15117404
-                }
-              },
-              {
-                "query": "[\"type\":data-structure]",
-                "color": {
-                  "a": 1,
-                  "rgb": 3044044
-                }
-              },
-              {
-                "query": "[\"type\":technique]",
-                "color": {
-                  "a": 1,
-                  "rgb": 12076525
-                }
-              }
-            ],
-            "collapse-display": false,
-            "showArrow": false,
-            "textFadeMultiplier": -2.5,
-            "nodeSizeMultiplier": 1,
-            "lineSizeMultiplier": 1,
-            "collapse-forces": false,
-            "centerStrength": 0.764409722222222,
-            "repelStrength": 20,
-            "linkStrength": 1,
-            "linkDistance": 30,
-            "scale": 0.3054558856031431,
-            "close": true
-          }
-        },
-        {
-          "type": "graph",
-          "ctime": 1772868261802,
-          "title": "기본 (type + #b-type 강조)",
           "options": {
             "collapse-filter": false,
             "search": "",
@@ -74,59 +18,52 @@
             "collapse-color-groups": true,
             "colorGroups": [
               {
-                "query": "tag:#b-type",
-                "color": {
-                  "a": 1,
-                  "rgb": 15158332
-                }
-              },
-              {
                 "query": "[\"type\":algorithm]",
                 "color": {
                   "a": 1,
-                  "rgb": 3447003
+                  "rgb": 15487336
                 }
               },
               {
                 "query": "[\"type\":concept]",
                 "color": {
                   "a": 1,
-                  "rgb": 10181046
+                  "rgb": 16701517
                 }
               },
               {
                 "query": "[\"type\":data-structure]",
                 "color": {
                   "a": 1,
-                  "rgb": 3066993
+                  "rgb": 5264882
                 }
               },
               {
                 "query": "[\"type\":technique]",
                 "color": {
                   "a": 1,
-                  "rgb": 15844367
+                  "rgb": 9197250
                 }
               }
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1,
             "lineSizeMultiplier": 1,
-            "collapse-forces": false,
+            "collapse-forces": true,
             "centerStrength": 0.764409722222222,
             "repelStrength": 20,
             "linkStrength": 1,
             "linkDistance": 30,
             "scale": 0.21787418811433093,
-            "close": true
+            "close": false
           }
         },
         {
           "type": "graph",
           "ctime": 1772868261803,
-          "title": "작업용 (status + #b-type 강조)",
+          "title": "작업용",
           "options": {
             "collapse-filter": false,
             "search": "",
@@ -182,7 +119,7 @@
         {
           "type": "graph",
           "ctime": 1772868261804,
-          "title": "B형만 (항상 강조 + 필터)",
+          "title": "B형만",
           "options": {
             "collapse-filter": false,
             "search": "tag:#b-type",
