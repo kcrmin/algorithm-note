@@ -1,8 +1,6 @@
 ---
 type: concept
 tags:
-  - b-type
-  - b-type-practice-routine
 language: java
 status: in-review
 source:

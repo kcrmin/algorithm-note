@@ -1,13 +1,9 @@
 ---
 type: technique
 tags:
-  - b-type
-  - b-type-optimization-playbook
 language: java
 status: in-review
 source:
-  - "[[B_Type_Master_Index]]"
-  - "[[B_Type_Performance_Debug_Checklist]]"
 ---
 
 # Samsung B형 Optimization Playbook

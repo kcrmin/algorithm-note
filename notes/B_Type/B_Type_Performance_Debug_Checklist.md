@@ -1,16 +1,10 @@
 ---
 type: technique
 tags:
-  - b-type
-  - b-type-performance-debug-checklist
 language: java
 status: in-review
 source:
-  - "[[B_Type_Optimization_Playbook]]"
-  - "Distance"
-  - "Visited"
-  - "Prefix_Sum"
-  - "Bitmask"
+  - "[[B_Type_Master_Index]]"
 ---
 
 # B형 Performance Debug Checklist

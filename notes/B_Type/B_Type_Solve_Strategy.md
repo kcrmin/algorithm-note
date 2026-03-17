@@ -1,16 +1,10 @@
 ---
 type: technique
 tags:
-  - b-type
-  - b-type-solve-strategy
 language: java
 status: in-review
 source:
-  - "Dijkstra"
-  - "DFS"
-  - "DP_Basics"
-  - "Backtracking"
-  - "[[B_Type_Optimization_Playbook]]"
+  - "[[B_Type_Master_Index]]"
 ---
 
 # B형 Solve Strategy

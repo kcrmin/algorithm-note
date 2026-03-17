@@ -1,15 +1,10 @@
 ---
 type: technique
 tags:
-  - b-type
-  - b-type-implementation-kit
 language: java
 status: in-review
 source:
-  - "Priority_Queue"
-  - "Union_Find"
-  - "Visited"
-  - "Coordinate_Compression"
+  - "[[B_Type_Master_Index]]"
 ---
 
 # B형 Implementation Kit

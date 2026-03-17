@@ -10,68 +10,56 @@ source: []
 
 # Binary Search (이분 탐색)
 
-> **한 줄 요약:** 정렬된 구간에서 조건을 만족하는 경계(최소/최대)를 O(log N)에 찾는 기법
+> **한 줄 요약:** 정렬된 구간에서 조건을 만족하는 경계(최소/최대)를 $O(\log N)$에 찾는 기법
 
 ## Core Concept
 
-- **When to use:** 정렬된 배열에서 위치 찾기, 파라미터(답)를 이분 탐색으로 정할 때
+- **When to use:** 정렬된 배열에서 위치 찾기, 최적화 문제를 결정 문제로 바꿀 때
 - **Key Point:**
-  - 구간 [lo, hi]를 유지하며 mid에서 조건 확인 후 lo/hi를 좁힘
-  - "최소인 x" / "최대인 x"에 따라 lo=mid+1 vs hi=mid 등 결정
-  - 무한 루프 방지: mid 계산 시 overflow 주의, 종료 조건 명확히
+  - 구간 `[lo, hi]`를 유지하며 `mid` 검사 후 범위를 절반씩 제거
 
 ## API & State Change
 
-| Operation | Code | 설명 |
-| :-------- | :--- | :--- |
-| Mid | `int mid = lo + (hi - lo) / 2;` | overflow 방지 |
-| Lower bound | 조건 만족 시 hi=mid, 아니면 lo=mid+1 | 최소 인덱스 |
-| Upper bound | 조건 만족 시 lo=mid+1, 아니면 hi=mid | 최대 인덱스 |
-| Loop | `while (lo < hi)` 또는 `while (lo <= hi)` | 목적에 따라 선택 |
+| Operation   | Code                                      | 설명                             |
+|:----------- |:----------------------------------------- |:-------------------------------- |
+| Mid         | `int mid = lo + (hi - lo) / 2;`           | overflow 방지                    |
+| Lower bound | `hi = mid`, `lo = mid + 1`                | 최소 인덱스                      |
+| Upper bound | `lo = mid`, `hi = mid - 1`                | 최대 인덱스                      |
+| Loop        | `while (lo < hi)` 또는 `while (lo <= hi)` | 목적에 따라 선택                 |
+| Check       | `isValid(mid)`                            | 해당 값이 조건을 만족하는지 판별 | 
 
 ## Patterns
 
-### Pattern A: Lower bound (처음으로 조건 만족하는 인덱스)
+### Pattern A: 최소값 찾기 (Lower Bound)
 
-- `f(mid)`가 true가 되는 **최소** 인덱스. [lo, hi] 닫힌 구간 가정.
+- 조건을 만족하는 **가장 작은** 인덱스 또는 값을 찾음
 
 ```java
-int lo = 0, hi = n - 1;
+int lo = 0, hi = n; 
 while (lo < hi) {
     int mid = lo + (hi - lo) / 2;
-    if (f(mid)) hi = mid;
-    else        lo = mid + 1;
+    if (isValid(mid)) hi = mid;     // 만족하면 왼쪽(작은 쪽) 탐색
+    else              lo = mid + 1; // 만족 안 하면 오른쪽 탐색
 }
-// lo가 최소 인덱스 (f(lo)==true). 전부 false면 lo==n이거나 범위 밖
+return lo;
 ```
 
-### Pattern B: 정렬된 배열에서 값의 첫 위치 (lower_bound)
+### Pattern B: 최대값 찾기 (Upper Bound)
+
+- 조건을 만족하는 **가장 큰** 인덱스 또는 값을 찾음
 
 ```java
 int lo = 0, hi = n;
 while (lo < hi) {
-    int mid = lo + (hi - lo) / 2;
-    if (a[mid] < key) lo = mid + 1;
-    else              hi = mid;
+    int mid = lo + (hi - lo + 1) / 2; // +1로 올림 처리 (무한 루프 방지)
+    if (isValid(mid)) lo = mid;       // 만족하면 오른쪽(큰 쪽) 탐색
+    else              hi = mid - 1;   // 만족 안 하면 왼쪽 탐색
 }
-// lo: a[lo] >= key인 최소 인덱스 (없으면 n)
-```
-
-### Pattern C: 파라미터 이분 탐색 (답을 x로 두고 가능 여부로 이분 탐색)
-
-```java
-long lo = 0, hi = (long)1e18;
-while (lo < hi) {
-    long mid = lo + (hi - lo + 1) / 2;  // 상한 찾을 때는 +1
-    if (possible(mid)) lo = mid;
-    else                hi = mid - 1;
-}
-// lo가 가능한 최대(또는 최소는 반대로)
+return lo;
 ```
 
 ## Pitfalls & Tips
 
-- `(lo + hi) / 2`는 lo+hi overflow 가능 → `lo + (hi - lo) / 2` 사용
-- "최대 x" 찾을 때 mid 계산을 `(lo+hi+1)/2`로 하여 무한 루프 방지
-- 인덱스 범위: 0~n-1 vs 0~n (끝 한 칸 past) 혼동하지 않기
-- 정렬 여부 확인; 조건 f가 단조여야 이분 탐색 적용 가능
+- **Overflow:** `(lo + hi) / 2` 대신 `lo + (hi - lo) / 2`를 습관화
+- **무한 루프:** `lo = mid`를 사용할 때는 반드시 `mid` 계산 시 `+ 1`을 해서 상향 조정
+- **단조성(Monotonicity):** `isValid(x)`가 참이다가 어느 지점부터 거짓(혹은 반대)으로 변하는 구간이 명확해야 이분 탐색이 작동

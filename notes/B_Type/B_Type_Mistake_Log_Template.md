@@ -1,8 +1,6 @@
 ---
 type: concept
 tags:
-  - b-type
-  - b-type-mistake-log-template
 language: java
 status: in-review
 source:

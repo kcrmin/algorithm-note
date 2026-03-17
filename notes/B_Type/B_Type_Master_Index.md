@@ -2,11 +2,9 @@
 type: concept
 tags:
   - b-type
-  - b-type-master-index
 language: java
 status: in-review
 source:
-  - "[[B_Type_Optimization_Playbook]]"
 ---
 
 # Samsung B형 Master Index
