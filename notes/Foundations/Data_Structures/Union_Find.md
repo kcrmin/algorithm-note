@@ -52,8 +52,7 @@ class DSU {
     // 재귀 find: 코드 짧고 실전에서 가장 자주 사용
     int find(int x) {
         if (parent[x] == x) return x;
-        parent[x] = find(parent[x]); // path compression
-        return parent[x];
+        return parent[x] = find(parent[x]); // path compression
     }
 
     boolean union(int a, int b) {
