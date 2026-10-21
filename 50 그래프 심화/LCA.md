@@ -1,6 +1,5 @@
 ---
 type: template
-cssclasses: [algorithm-reference]
 tags: [그래프]
 aliases: [Lowest Common Ancestor, 최소 공통 조상, 이진 리프팅]
 ---

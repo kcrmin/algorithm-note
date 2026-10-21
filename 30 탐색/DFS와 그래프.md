@@ -1,6 +1,5 @@
 ---
 type: template
-cssclasses: [algorithm-reference]
 tags: [탐색]
 aliases: [DFS, Graph_Basics, Directed_Graph, Undirected_Graph]
 ---

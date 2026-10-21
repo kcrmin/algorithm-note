@@ -1,7 +1,6 @@
 ---
 type: template
 aliases: [Fenwick_Tree]
-cssclasses: [algorithm-reference]
 tags: [자료구조]
 ---
 

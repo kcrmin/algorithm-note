@@ -1,6 +1,5 @@
 ---
 type: template
-cssclasses: [algorithm-reference]
 tags: [Java]
 ---
 

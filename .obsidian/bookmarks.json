@@ -84,7 +84,7 @@
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
             "collapse-forces": true,
@@ -92,7 +92,7 @@
             "repelStrength": 12,
             "linkStrength": 0.7,
             "linkDistance": 100,
-            "scale": 1,
+            "scale": 0.3461209381112713,
             "close": true
           }
         },
@@ -175,7 +175,7 @@
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
             "collapse-forces": true,
@@ -183,7 +183,7 @@
             "repelStrength": 12,
             "linkStrength": 0.7,
             "linkDistance": 100,
-            "scale": 1,
+            "scale": 0.55,
             "close": true
           }
         },
@@ -266,7 +266,7 @@
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
             "collapse-forces": true,
@@ -274,7 +274,7 @@
             "repelStrength": 12,
             "linkStrength": 0.7,
             "linkDistance": 100,
-            "scale": 1,
+            "scale": 0.55,
             "close": true
           }
         },
@@ -357,7 +357,7 @@
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
             "collapse-forces": true,
@@ -365,7 +365,7 @@
             "repelStrength": 12,
             "linkStrength": 0.7,
             "linkDistance": 100,
-            "scale": 1,
+            "scale": 1.0,
             "close": true
           }
         },
@@ -448,7 +448,7 @@
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": 0,
+            "textFadeMultiplier": -2.5,
             "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
             "collapse-forces": true,
@@ -456,7 +456,7 @@
             "repelStrength": 12,
             "linkStrength": 0.7,
             "linkDistance": 100,
-            "scale": 1,
+            "scale": 0.7,
             "close": true
           }
         }

@@ -1,6 +1,5 @@
 ---
 type: template
-cssclasses: [algorithm-reference]
 tags: [그래프]
 aliases: [Strongly Connected Components, 강한 연결 요소]
 ---

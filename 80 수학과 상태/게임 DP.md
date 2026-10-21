@@ -1,7 +1,6 @@
 ---
 type: template
 aliases: [Game_Basics]
-cssclasses: [algorithm-reference]
 tags: [DP]
 ---
 
