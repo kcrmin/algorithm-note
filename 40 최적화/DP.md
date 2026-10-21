@@ -6,80 +6,33 @@ aliases: [DP_Basics]
 
 # DP
 
-> **핵심:** `dp` 한 칸의 뜻 → 이전 칸에서 오는 식 → 처음 값 → 채우는 순서를 정한다.
+DP는 같은 상태의 답을 저장하고 이전 상태의 답으로 다음 답을 만드는 방법이다.
 
-## 개념
+> **기억:** 한 칸의 뜻 → 이전 칸에서 오는 식 → 초기값 → 계산 순서.
 
-동적 계획법(DP)은 문제를 작은 상태로 나누고 각 상태의 답을 저장해 다시 사용하는 방법이다. **상태가 같으면 남은 문제의 답도 같아야 하며**, 상태 사이의 관계를 점화식으로 표현한다.
+**전제:** 아래 dp[i]는 1칸·2칸씩 올라 정확히 i칸에 도착하는 방법 수. n≥0, MOD=1,000,000,007. O(n).
 
-## 적용 조건
-
-- 같은 부분 문제의 답을 반복해서 쓰고, 필요한 과거 정보를 작은 상태에 담을 수 있을 때 쓴다.
-- “경우의 수”, “최대/최소”라는 단어만 보고 결정하지 않는다. `dp[i]`가 무엇을 뜻하는지 먼저 문장으로 쓴다.
-- 1D 계단 경우의 수와 2D 삼각형 최대합은 서로 다른 상태를 사용하므로 초기값도 다르다.
-- 계단은 시간/공간 `O(N)`, 높이 N의 삼각형은 시간/공간 `O(N²)`.
-
-## Java 템플릿
-
-### 1D — 한 번에 1칸 또는 2칸 올라가는 경우의 수
-
-`dp[i]`는 **정확히 i칸에 도착하는 방법의 수**다. 결과는 1,000,000,007로 나눈 나머지다.
+## 템플릿
 
 ```java
-class DpStepsTemplate {
-    static final int MOD = 1_000_000_007;
-
-    static int countWays(int n) {
-        long[] dp = new long[n + 1];
-        dp[0] = 1;
-
-        for (int i = 1; i <= n; i++) {
-            dp[i] = dp[i - 1];
-            if (i >= 2) dp[i] += dp[i - 2];
-            dp[i] %= MOD;
-        }
-        return (int) dp[n];
-    }
+long[] dp = new long[n + 1];
+dp[0] = 1;
+for (int i = 1; i <= n; i++) {
+    dp[i] = dp[i - 1];
+    if (i >= 2) dp[i] += dp[i - 2];
+    dp[i] %= MOD;
 }
 ```
 
-### 2D — 삼각형 꼭대기에서 바닥까지 최대합
+## 왜 이렇게 쓰나
 
-입력의 y행에는 y+1개 원소가 있다. `(y,x)`에서 다음 행의 `(y+1,x)` 또는 `(y+1,x+1)`로 내려간다. `dp[y][x]`는 **그 칸에 도착한 경로 중 최대합**이다.
+- 마지막 이동이 1칸이면 i-1에서, 2칸이면 i-2에서 온다. 두 경우가 겹치지 않아 더한다.
+- `dp[0]=1`은 아무것도 하지 않고 0칸에 있는 방법 하나다. 그래야 2칸을 한 번에 오르는 경우가 세어진다.
+- 작은 i부터 채워야 읽는 이전 값이 이미 계산되어 있다. 다른 DP에서는 상태의 뜻과 전이식에 맞춰 초기값·순서를 바꾼다.
 
-```java
-class DpTriangleTemplate {
-    static long maxPath(int[][] triangle) {
-        int n = triangle.length;
-        if (n == 0) return 0;
+i가 `0,1,2,3,4`면 dp는 `1,1,2,3,5`. 4칸의 답은 3칸의 3가지 + 2칸의 2가지 = 5다.
 
-        long[][] dp = new long[n][n];
-        dp[0][0] = triangle[0][0];
-
-        for (int y = 1; y < n; y++) {
-            for (int x = 0; x <= y; x++) {
-                if (x == 0) {
-                    dp[y][x] = dp[y - 1][x] + triangle[y][x];
-                } else if (x == y) {
-                    dp[y][x] = dp[y - 1][x - 1] + triangle[y][x];
-                } else {
-                    long previous = Math.max(
-                            dp[y - 1][x - 1], dp[y - 1][x]);
-                    dp[y][x] = previous + triangle[y][x];
-                }
-            }
-        }
-
-        long answer = dp[n - 1][0];
-        for (int x = 1; x < n; x++) {
-            answer = Math.max(answer, dp[n - 1][x]);
-        }
-        return answer;
-    }
-}
-```
-
-> [!info]- 원리와 코드 설명
+> [!info]- 더 자세한 설명
 >
 > **계단:** 마지막 이동은 1칸 또는 2칸이다. i에 도착하는 경로를 마지막 이동으로 나누면 서로 겹치지 않으므로 `dp[i-1]+dp[i-2]`다.
 >
@@ -111,9 +64,65 @@ class DpTriangleTemplate {
 > - 최대합이 음수일 수 있다. 삼각형의 답을 0부터 시작하면 모든 경로가 음수인 입력에서 틀린다.
 > - 삼각형 코드가 모서리를 나누는 이유는 존재하지 않는 위쪽 칸의 0을 답 후보로 쓰지 않기 위해서다.
 > - 선택 제한·직전 방향 등이 미래 결과에 영향을 주면 그 정보를 상태에 추가해야 한다.
+>
+> ## 관련 개념
+>
+> - [[백트래킹]] — 모든 선택을 따라가는 방식과 비교
+> - [[그리디]] — 한 선택을 즉시 확정할 근거가 있는지 비교
+> - [[배낭 DP]] · [[LIS]] · [[재귀와 메모이제이션]] — 상태와 전이 확장
 
-## 관련 개념
+> [!example]- 준비 코드 · 전체 구현
+>
+> 필요한 import와 초기화까지 포함한 전체 코드다. 각 코드 블록은 별도 예시다.
+>
+> ```java
+> class DpStepsTemplate {
+>     static final int MOD = 1_000_000_007;
+>
+>     static int countWays(int n) {
+>         long[] dp = new long[n + 1];
+>         dp[0] = 1;
+>
+>         for (int i = 1; i <= n; i++) {
+>             dp[i] = dp[i - 1];
+>             if (i >= 2) dp[i] += dp[i - 2];
+>             dp[i] %= MOD;
+>         }
+>         return (int) dp[n];
+>     }
+> }
+> ```
+>
+> ```java
+> class DpTriangleTemplate {
+>     static long maxPath(int[][] triangle) {
+>         int n = triangle.length;
+>         if (n == 0) return 0;
+>
+>         long[][] dp = new long[n][n];
+>         dp[0][0] = triangle[0][0];
+>
+>         for (int y = 1; y < n; y++) {
+>             for (int x = 0; x <= y; x++) {
+>                 if (x == 0) {
+>                     dp[y][x] = dp[y - 1][x] + triangle[y][x];
+>                 } else if (x == y) {
+>                     dp[y][x] = dp[y - 1][x - 1] + triangle[y][x];
+>                 } else {
+>                     long previous = Math.max(
+>                             dp[y - 1][x - 1], dp[y - 1][x]);
+>                     dp[y][x] = previous + triangle[y][x];
+>                 }
+>             }
+>         }
+>
+>         long answer = dp[n - 1][0];
+>         for (int x = 1; x < n; x++) {
+>             answer = Math.max(answer, dp[n - 1][x]);
+>         }
+>         return answer;
+>     }
+> }
+> ```
 
-- [[백트래킹]] — 모든 선택을 따라가는 방식과 비교
-- [[그리디]] — 한 선택을 즉시 확정할 근거가 있는지 비교
-- [[배낭 DP]] · [[LIS]] · [[재귀와 메모이제이션]] — 상태와 전이 확장
+**관련:** [[백트래킹]] · [[그리디]] · [[배낭 DP]] · [[LIS]] · [[재귀와 메모이제이션]]

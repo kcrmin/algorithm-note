@@ -6,73 +6,56 @@ aliases: [DFS, Graph_Basics, Directed_Graph, Undirected_Graph]
 
 # DFS와 그래프
 
-> **핵심:** **현재 정점을 방문 처리하고, 아직 방문하지 않은 이웃으로 깊게 들어간다.**
+이웃을 끝까지 따라가며 연결된 정점들을 한 덩어리씩 방문한다.
 
-## 개념
+> **기억:** 현재 방문 표시 → 미방문 이웃으로 재귀 → 돌아오기; 전체 정점에서 새 DFS를 시작한 횟수가 연결 요소 수.
 
-그래프는 정점과 간선으로 관계를 표현한다. DFS는 한 경로를 더 진행할 수 없을 때까지 깊게 탐색한 뒤 돌아와 다른 경로를 살피며, 재귀 호출이나 명시적 스택으로 돌아갈 위치를 기억한다.
+**전제:** 0부터 n−1인 무방향 그래프. 시간 `O(V+E)`, 저장 공간 `O(V+E)`, 재귀 깊이 최악 `O(V)`.
 
-## 적용 조건
+## 템플릿
 
-- 서로 연결된 정점 찾기, 연결 요소 개수, 그래프 전체 순회처럼 **어디까지 이어지는지** 확인할 때 쓴다.
-- 그래프는 정점과 간선으로 나타낸다. 사람과 친구 관계, 컴퓨터와 통신선도 그래프로 바꿀 수 있다.
-- 이 템플릿은 정점 번호가 `0`부터 `n - 1`인 **무방향 그래프의 연결 요소 수**를 반환한다.
-- 간선은 `edges[i] = {a, b}`로 주어지고, 두 정점 번호는 모두 유효하다고 가정한다.
-- 정점 수 `V`, 간선 수 `E`일 때 시간 `O(V + E)`, 공간 `O(V + E)`다. 재귀 호출 스택은 최악 `O(V)`다.
-- 같은 비용의 최단 거리를 구하는 문제라면 BFS가 먼저다. DFS의 첫 발견 경로가 최단 경로라는 보장은 없다.
-
-## Java 템플릿
-
-인접 리스트는 `graph.get(cur)`에 **현재 정점과 직접 연결된 정점 번호들**을 저장한다.
-`solution(6, new int[][] {{0, 1}, {1, 2}, {2, 0}, {3, 4}})`의 결과는 `3`이다.
+`graph.get(cur)`는 이웃 목록, `visited`는 모두 false로 시작한다. 무방향 간선은 양쪽 목록에 넣는다.
 
 ```java
-import java.util.ArrayList;
-import java.util.List;
-
-public class Solution {
-    static List<List<Integer>> graph;
-    static boolean[] visited;
-
-    public int solution(int n, int[][] edges) {
-        graph = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            graph.add(new ArrayList<>());
-        }
-        visited = new boolean[n];
-
-        for (int[] edge : edges) {
-            int a = edge[0];
-            int b = edge[1];
-            graph.get(a).add(b);
-            graph.get(b).add(a);
-        }
-
-        int components = 0;
-        for (int start = 0; start < n; start++) {
-            if (visited[start]) {
-                continue;
-            }
-
-            components++;
-            dfs(start);
-        }
-        return components;
+static void dfs(int cur) {
+    visited[cur] = true;
+    for (int next : graph.get(cur)) {
+        if (!visited[next]) dfs(next);
     }
+}
 
-    private static void dfs(int cur) {
-        visited[cur] = true;
-
-        for (int next : graph.get(cur)) {
-            if (!visited[next]) {
-                dfs(next);
-            }
-        }
+static int countComponents(int n) {
+    int components = 0;
+    for (int start = 0; start < n; start++) {
+        if (visited[start]) continue;
+        components++;
+        dfs(start);
     }
+    return components;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 들어오자마자 방문 표시해야 `0→1→0`처럼 되돌아오는 간선에서 재귀를 멈춘다.
+- DFS 한 번은 시작점과 이어진 정점만 방문한다. **모든 정점**에서 확인해야 끊긴 덩어리와 고립 정점을 센다.
+- DFS의 첫 경로는 최단거리라는 보장이 없다. 긴 일자 경로에서는 재귀 대신 명시적 스택을 쓴다.
+
+**작게 추적:** 정점 0~5, 간선 `0—1, 1—2, 3—4`: `dfs(0)`이 `{0,1,2}`, `dfs(3)`이 `{3,4}`, `dfs(5)`가 `{5}` → 3개.
+
+> [!info]- 더 자세한 설명
+> ### 기존 전체 구현의 개념과 적용 조건
+>
+> 그래프는 정점과 간선으로 관계를 표현한다. DFS는 한 경로를 더 진행할 수 없을 때까지 깊게 탐색한 뒤 돌아와 다른 경로를 살피며, 재귀 호출이나 명시적 스택으로 돌아갈 위치를 기억한다.
+>
+> ## 적용 조건
+>
+> - 서로 연결된 정점 찾기, 연결 요소 개수, 그래프 전체 순회처럼 **어디까지 이어지는지** 확인할 때 쓴다.
+> - 그래프는 정점과 간선으로 나타낸다. 사람과 친구 관계, 컴퓨터와 통신선도 그래프로 바꿀 수 있다.
+> - 이 템플릿은 정점 번호가 `0`부터 `n - 1`인 **무방향 그래프의 연결 요소 수**를 반환한다.
+> - 간선은 `edges[i] = {a, b}`로 주어지고, 두 정점 번호는 모두 유효하다고 가정한다.
+> - 정점 수 `V`, 간선 수 `E`일 때 시간 `O(V + E)`, 공간 `O(V + E)`다. 재귀 호출 스택은 최악 `O(V)`다.
+> - 같은 비용의 최단 거리를 구하는 문제라면 BFS가 먼저다. DFS의 첫 발견 경로가 최단 경로라는 보장은 없다.
 >
 > ### 1. 무방향 간선 한 개는 두 리스트에 넣는다
 >
@@ -139,5 +122,110 @@ public class Solution {
 > - **상태 초기화**: `solution()`을 다시 호출할 때 `graph`와 `visited`를 새로 만든다. 이전 입력의 간선이나 방문 표시가 남으면 결과가 섞인다.
 > - **재귀 깊이**: 정점이 일렬로 아주 길게 이어지면 Java에서 `StackOverflowError`가 날 수 있다. 이때 `ArrayDeque<Integer>`를 명시적 스택으로 쓰는 반복 DFS로 바꾸고, 스택에 넣을 때 방문 표시한다.
 > - **거리**: DFS로 기록한 깊이는 탐색 경로의 깊이다. 일반 그래프에서 시작점의 최단 거리로 사용하지 않는다.
+>
+> **관련 개념:** [[Java 기본 도구]] · [[BFS]] · [[백트래킹]]
 
-**관련 개념:** [[Java 기본 도구]] · [[BFS]] · [[백트래킹]]
+> [!example]- 준비 코드 · 전체 구현
+> ### 위 핵심의 준비 코드와 실행 예
+>
+> 필드·초기화·헬퍼를 포함하며, main의 숫자 사례를 그대로 실행할 수 있다. 새 입력을 풀 때는 배열·큐·방문 상태를 새로 준비한다.
+>
+> ```java
+> import java.util.*;
+>
+> class GraphKernel1 {
+>     static List<List<Integer>> graph;
+>     static boolean[] visited;
+>
+>     static void dfs(int cur) {
+>         visited[cur] = true;
+>         for (int next : graph.get(cur)) {
+>             if (!visited[next]) dfs(next);
+>         }
+>     }
+>
+>     static int countComponents(int n) {
+>         int components = 0;
+>         for (int start = 0; start < n; start++) {
+>             if (visited[start]) continue;
+>             components++;
+>             dfs(start);
+>         }
+>         return components;
+>     }
+>
+>     static List<List<Integer>> lists(int n) {
+>         List<List<Integer>> result = new ArrayList<>();
+>         for (int i = 0; i < n; i++) result.add(new ArrayList<>());
+>         return result;
+>     }
+>
+>     static void check(boolean success, String message) {
+>         if (!success) throw new AssertionError(message);
+>     }
+>
+>     public static void main(String[] args) {
+>         graph = lists(6);
+>         for (int[] edge : new int[][] {{0,1},{1,2},{2,0},{3,4}}) {
+>             graph.get(edge[0]).add(edge[1]);
+>             graph.get(edge[1]).add(edge[0]);
+>         }
+>         visited = new boolean[6];
+>         check(countComponents(6) == 3, "cycle plus disconnected plus isolated");
+>         check(visited[5], "isolated vertex visited");
+>         System.out.println("PASS DFS와 그래프");
+>     }
+> }
+> ```
+>
+> ### 기존 전체 구현
+>
+>
+> 인접 리스트는 `graph.get(cur)`에 **현재 정점과 직접 연결된 정점 번호들**을 저장한다.
+> `solution(6, new int[][] {{0, 1}, {1, 2}, {2, 0}, {3, 4}})`의 결과는 `3`이다.
+>
+> ```java
+> import java.util.ArrayList;
+> import java.util.List;
+>
+> public class Solution {
+>     static List<List<Integer>> graph;
+>     static boolean[] visited;
+>
+>     public int solution(int n, int[][] edges) {
+>         graph = new ArrayList<>();
+>         for (int i = 0; i < n; i++) {
+>             graph.add(new ArrayList<>());
+>         }
+>         visited = new boolean[n];
+>
+>         for (int[] edge : edges) {
+>             int a = edge[0];
+>             int b = edge[1];
+>             graph.get(a).add(b);
+>             graph.get(b).add(a);
+>         }
+>
+>         int components = 0;
+>         for (int start = 0; start < n; start++) {
+>             if (visited[start]) {
+>                 continue;
+>             }
+>
+>             components++;
+>             dfs(start);
+>         }
+>         return components;
+>     }
+>
+>     private static void dfs(int cur) {
+>         visited[cur] = true;
+>
+>         for (int next : graph.get(cur)) {
+>             if (!visited[next]) {
+>                 dfs(next);
+>             }
+>         }
+>     }
+> }
+> ```

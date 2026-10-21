@@ -5,98 +5,77 @@ tags: [자료구조]
 
 # Lazy Propagation
 
-> **핵심:** `tree[node]`의 구간 합에는 갱신이 이미 반영되어 있다. `lazy[node]`는 자식 구간에 아직 전달하지 않은 원소당 추가량이다.
+세그먼트 트리에서 구간에 같은 값을 더하고 구간 합을 구한다.
 
-## 개념
+> **기억:** 노드 합에는 즉시 반영, 자식 전달만 lazy에 미룬다. 일부만 내려갈 때 push 후 재계산.
 
-Lazy Propagation은 [[세그먼트 트리]]에서 구간 전체를 바꿀 때, 그 구간을 대표하는 노드만 갱신하고 자식의 갱신을 미루는 방법이다. 질의나 갱신 때문에 자식으로 내려갈 때만 미뤄 둔 값을 전달하므로 원소를 하나씩 바꾸지 않는다. 아래 코드는 **구간에 같은 값 더하기 + 구간 합**을 처리한다.
+**전제:** 0-index·양 끝 포함, N≥1, 합·길이×증분은 long 범위. 생성 O(N), 갱신·질의 O(log N), 공간 O(N).
 
-## 적용 조건
+## 템플릿
 
-| 연산 | 시간 |
-|---|---|
-| 생성 | `O(N)` |
-| `add(left, right, delta)` | `O(log N)` |
-| `sum(left, right)` | `O(log N)` |
-| 공간 | `O(N)` |
-
-- 외부 API는 **0-index, 양 끝 포함**이다. `left > right`이면 갱신은 아무 일도 하지 않고 합은 `0`이다.
-- 구간 길이와 추가량만으로 새 구간 합을 계산할 수 있다. 원소마다 `delta`를 더하면 구간 합에는 `delta × 구간 길이`가 더해진다.
-- 추가량끼리는 합쳐서 미룰 수 있다. 구간 대입·곱하기를 처리하려면 지연 태그와 합성 규칙을 별도로 설계해야 한다.
-
-## Java 템플릿
+`tree/lazy`는 아래 전체 구현처럼 초기화한다. `node`의 담당 범위는 `[lo,hi]`, 요청은 `[l,r]`이다.
 
 ```java
-final class LazySegmentTree {
-    private final int n;
-    private final long[] tree, lazy;
-
-    LazySegmentTree(long[] a) {
-        n = a.length;
-        tree = new long[Math.max(1, 4 * n)];
-        lazy = new long[tree.length];
-        if (n > 0) build(1, 0, n - 1, a);
+void apply(int node, int lo, int hi, long delta) {
+    tree[node] += delta * (hi - lo + 1);
+    if (lo != hi) lazy[node] += delta;
+}
+void push(int node, int lo, int hi) {
+    if (lazy[node] == 0 || lo == hi) return;
+    int mid = (lo + hi) >>> 1;
+    apply(node * 2, lo, mid, lazy[node]);
+    apply(node * 2 + 1, mid + 1, hi, lazy[node]);
+    lazy[node] = 0;
+}
+void add(int node, int lo, int hi, int l, int r, long delta) {
+    if (r < lo || hi < l) return;
+    if (l <= lo && hi <= r) {
+        apply(node, lo, hi, delta);
+        return;
     }
-
-    private void build(int node, int lo, int hi, long[] a) {
-        if (lo == hi) { tree[node] = a[lo]; return; }
-        int mid = (lo + hi) >>> 1;
-        build(node * 2, lo, mid, a);
-        build(node * 2 + 1, mid + 1, hi, a);
-        tree[node] = tree[node * 2] + tree[node * 2 + 1];
-    }
-
-    private void apply(int node, int lo, int hi, long delta) {
-        tree[node] += delta * (hi - lo + 1);
-        if (lo != hi) lazy[node] += delta;
-    }
-
-    private void push(int node, int lo, int hi) {
-        if (lazy[node] == 0 || lo == hi) return;
-        int mid = (lo + hi) >>> 1;
-        apply(node * 2, lo, mid, lazy[node]);
-        apply(node * 2 + 1, mid + 1, hi, lazy[node]);
-        lazy[node] = 0;
-    }
-
-    void add(int left, int right, long delta) {
-        if (left > right) return;
-        checkRange(left, right);
-        add(1, 0, n - 1, left, right, delta);
-    }
-
-    private void add(int node, int lo, int hi, int l, int r, long delta) {
-        if (r < lo || hi < l) return;
-        if (l <= lo && hi <= r) { apply(node, lo, hi, delta); return; }
-        push(node, lo, hi);
-        int mid = (lo + hi) >>> 1;
-        add(node * 2, lo, mid, l, r, delta);
-        add(node * 2 + 1, mid + 1, hi, l, r, delta);
-        tree[node] = tree[node * 2] + tree[node * 2 + 1];
-    }
-
-    long sum(int left, int right) {
-        if (left > right) return 0;
-        checkRange(left, right);
-        return sum(1, 0, n - 1, left, right);
-    }
-
-    private long sum(int node, int lo, int hi, int l, int r) {
-        if (r < lo || hi < l) return 0;
-        if (l <= lo && hi <= r) return tree[node];
-        push(node, lo, hi);
-        int mid = (lo + hi) >>> 1;
-        return sum(node * 2, lo, mid, l, r)
-             + sum(node * 2 + 1, mid + 1, hi, l, r);
-    }
-
-    private void checkRange(int left, int right) {
-        if (left < 0 || right >= n) throw new IndexOutOfBoundsException();
-    }
+    push(node, lo, hi);
+    int mid = (lo + hi) >>> 1;
+    add(node * 2, lo, mid, l, r, delta);
+    add(node * 2 + 1, mid + 1, hi, l, r, delta);
+    tree[node] = tree[node * 2] + tree[node * 2 + 1];
+}
+long sum(int node, int lo, int hi, int l, int r) {
+    if (r < lo || hi < l) return 0;
+    if (l <= lo && hi <= r) return tree[node];
+    push(node, lo, hi);
+    int mid = (lo + hi) >>> 1;
+    return sum(node * 2, lo, mid, l, r) + sum(node * 2 + 1, mid + 1, hi, l, r);
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 원소마다 delta를 더하면 합은 `delta × 구간 길이`만큼 늘어난다.
+- lazy는 이미 노드 합에 들어간 값이다. push는 자식에게 전달한 뒤 0으로 지워 중복 적용을 막는다.
+- 부분 갱신 전에 push해야 자식이 최신 상태가 된다. 갱신 뒤에는 두 자식의 합으로 부모를 고친다.
+
+**추적:** `[1,2,3,4]` 전체에 +5 → 루트 합 30, lazy=5. `[0,1]` 질의 때 push → 왼쪽 합 `3+5×2=13`.
+
+> [!info]- 더 자세한 설명
+>
+> > **핵심:** `tree[node]`의 구간 합에는 갱신이 이미 반영되어 있다. `lazy[node]`는 자식 구간에 아직 전달하지 않은 원소당 추가량이다.
+>
+> ## 개념
+>
+> Lazy Propagation은 [[세그먼트 트리]]에서 구간 전체를 바꿀 때, 그 구간을 대표하는 노드만 갱신하고 자식의 갱신을 미루는 방법이다. 질의나 갱신 때문에 자식으로 내려갈 때만 미뤄 둔 값을 전달하므로 원소를 하나씩 바꾸지 않는다. 아래 코드는 **구간에 같은 값 더하기 + 구간 합**을 처리한다.
+>
+> ## 적용 조건
+>
+> | 연산 | 시간 |
+> |---|---|
+> | 생성 | `O(N)` |
+> | `add(left, right, delta)` | `O(log N)` |
+> | `sum(left, right)` | `O(log N)` |
+> | 공간 | `O(N)` |
+>
+> - 외부 API는 **0-index, 양 끝 포함**이다. `left > right`이면 갱신은 아무 일도 하지 않고 합은 `0`이다.
+> - 구간 길이와 추가량만으로 새 구간 합을 계산할 수 있다. 원소마다 `delta`를 더하면 구간 합에는 `delta × 구간 길이`가 더해진다.
+> - 추가량끼리는 합쳐서 미룰 수 있다. 구간 대입·곱하기를 처리하려면 지연 태그와 합성 규칙을 별도로 설계해야 한다.
 >
 > `a = [1, 2, 3, 4]`에서 처음 루트 `[0, 3]`의 합은 `10`, 두 자식 `[0, 1]`, `[2, 3]`의 합은 각각 `3`, `7`이다.
 >
@@ -115,3 +94,75 @@ final class LazySegmentTree {
 > - 길이는 양 끝을 포함하므로 `hi - lo + 1`이다. `delta`가 `long`이므로 곱셈도 `long`으로 수행된다.
 > - 대입 태그에서 `0`은 유효한 대입 값이다. 대입 기능을 추가한다면 태그 존재 여부를 별도로 관리해야 한다.
 > - 빈 배열은 생성 가능하며 `sum(0, -1) = 0`이다. 실제 원소가 있는 범위만 갱신·조회할 수 있다.
+
+> [!example]- 준비 코드 · 전체 구현
+>
+> ```java
+> final class LazySegmentTree {
+>     private final int n;
+>     private final long[] tree, lazy;
+>
+>     LazySegmentTree(long[] a) {
+>         n = a.length;
+>         tree = new long[Math.max(1, 4 * n)];
+>         lazy = new long[tree.length];
+>         if (n > 0) build(1, 0, n - 1, a);
+>     }
+>
+>     private void build(int node, int lo, int hi, long[] a) {
+>         if (lo == hi) { tree[node] = a[lo]; return; }
+>         int mid = (lo + hi) >>> 1;
+>         build(node * 2, lo, mid, a);
+>         build(node * 2 + 1, mid + 1, hi, a);
+>         tree[node] = tree[node * 2] + tree[node * 2 + 1];
+>     }
+>
+>     private void apply(int node, int lo, int hi, long delta) {
+>         tree[node] += delta * (hi - lo + 1);
+>         if (lo != hi) lazy[node] += delta;
+>     }
+>
+>     private void push(int node, int lo, int hi) {
+>         if (lazy[node] == 0 || lo == hi) return;
+>         int mid = (lo + hi) >>> 1;
+>         apply(node * 2, lo, mid, lazy[node]);
+>         apply(node * 2 + 1, mid + 1, hi, lazy[node]);
+>         lazy[node] = 0;
+>     }
+>
+>     void add(int left, int right, long delta) {
+>         if (left > right) return;
+>         checkRange(left, right);
+>         add(1, 0, n - 1, left, right, delta);
+>     }
+>
+>     private void add(int node, int lo, int hi, int l, int r, long delta) {
+>         if (r < lo || hi < l) return;
+>         if (l <= lo && hi <= r) { apply(node, lo, hi, delta); return; }
+>         push(node, lo, hi);
+>         int mid = (lo + hi) >>> 1;
+>         add(node * 2, lo, mid, l, r, delta);
+>         add(node * 2 + 1, mid + 1, hi, l, r, delta);
+>         tree[node] = tree[node * 2] + tree[node * 2 + 1];
+>     }
+>
+>     long sum(int left, int right) {
+>         if (left > right) return 0;
+>         checkRange(left, right);
+>         return sum(1, 0, n - 1, left, right);
+>     }
+>
+>     private long sum(int node, int lo, int hi, int l, int r) {
+>         if (r < lo || hi < l) return 0;
+>         if (l <= lo && hi <= r) return tree[node];
+>         push(node, lo, hi);
+>         int mid = (lo + hi) >>> 1;
+>         return sum(node * 2, lo, mid, l, r)
+>              + sum(node * 2 + 1, mid + 1, hi, l, r);
+>     }
+>
+>     private void checkRange(int left, int right) {
+>         if (left < 0 || right >= n) throw new IndexOutOfBoundsException();
+>     }
+> }
+> ```

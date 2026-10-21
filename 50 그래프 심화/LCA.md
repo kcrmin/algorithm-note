@@ -6,109 +6,67 @@ aliases: [Lowest Common Ancestor, 최소 공통 조상, 이진 리프팅]
 
 # LCA
 
-> 두 정점의 깊이를 맞춘 뒤, 조상이 서로 다른 동안 함께 올라가면 마지막에 같은 부모를 만난다.
+루트 트리에서 두 정점의 공통 조상 중 가장 깊은 정점을 찾는다.
 
-## 개념
+> **기억:** 2배 조상 표 → 깊이 맞춤 → 같으면 반환 → 큰 점프부터 조상이 다를 때 함께 상승 → 바로 위 부모.
 
-LCA(최소 공통 조상)는 루트가 정해진 트리에서 두 정점의 공통 조상 중 깊이가 가장 깊은 정점이다. 각 정점의 `2^k`번째 조상을 미리 저장하면 긴 부모 경로를 이진수의 자리처럼 나누어 건너뛰어 조상과 경로 질문에 빠르게 답할 수 있다.
+**전제:** 연결된 루트 트리. 전처리 시간·공간 `O(n log n)`, 질의 `O(log n)`.
 
-## 적용 조건
+## 템플릿
 
-- 정점 `0 ~ n-1`, `n >= 1`인 연결된 무방향 트리와 유효한 root를 받는다. 자기 자신도 자신의 조상에 포함하므로 `lca(v,v) = v`다.
-- `edges[i] = {정점1, 정점2}`다. 간선은 정확히 `n-1`개여야 하며 BFS로 모든 정점에 도달해야 한다. 입력의 정점 번호는 유효하다고 가정한다.
-- `up[k][v]`는 v에서 부모 방향으로 `2^k`번 이동한 정점이다. 루트 위로 넘어가는 표의 값은 루트로 유지한다.
-- 전처리 시간·공간 `O(n log n)`, LCA·k번째 조상·두 정점 거리 질의는 각각 `O(log n)`이다.
-- `kthAncestor(v,k)`는 k가 v의 깊이보다 크면 `-1`을 반환한다. `distance(a,b)`는 경로의 **간선 수**를 `long`으로 반환한다.
-- 부모와 깊이는 반복 BFS로 구하므로 일자형 트리에서도 전처리에 재귀 호출을 사용하지 않는다.
-
-## Java 템플릿
+BFS로 `depth`, `up[0][v]=부모`를 먼저 채운다. 루트의 부모는 자신, `log`는 표 높이이며 `up[k][v]`는 2^k칸 위다.
 
 ```java
-import java.util.*;
-
-class BinaryLiftingLca {
-    final int[][] up;
-    final int[] depth;
-    final int log;
-
-    // n >= 1, 정점 0..n-1, 연결된 무방향 트리, 유효한 root.
-    BinaryLiftingLca(int n, int[][] edges, int root) {
-        if (n <= 0 || root < 0 || root >= n || edges.length != n - 1) {
-            throw new IllegalArgumentException("invalid tree or root");
-        }
-        int levels = 1;
-        while ((1L << levels) <= n) levels++;
-        log = levels;
-        up = new int[log][n];
-        depth = new int[n];
-        Arrays.fill(depth, -1);
-
-        List<List<Integer>> graph = new ArrayList<>();
-        for (int i = 0; i < n; i++) graph.add(new ArrayList<>());
-        for (int[] edge : edges) {
-            graph.get(edge[0]).add(edge[1]);
-            graph.get(edge[1]).add(edge[0]);
-        }
-
-        Queue<Integer> queue = new ArrayDeque<>();
-        depth[root] = 0;
-        up[0][root] = root;
-        queue.offer(root);
-        int visitedCount = 0;
-        while (!queue.isEmpty()) {
-            int current = queue.poll();
-            visitedCount++;
-            for (int next : graph.get(current)) {
-                if (depth[next] != -1) continue;
-                depth[next] = depth[current] + 1;
-                up[0][next] = current;
-                queue.offer(next);
-            }
-        }
-        if (visitedCount != n) throw new IllegalArgumentException("disconnected tree");
-
-        for (int k = 1; k < log; k++) {
-            for (int vertex = 0; vertex < n; vertex++) {
-                up[k][vertex] = up[k - 1][up[k - 1][vertex]];
-            }
+void buildTable(int n) {
+    for (int k = 1; k < log; k++) {
+        for (int v = 0; v < n; v++) {
+            up[k][v] = up[k - 1][up[k - 1][v]];
         }
     }
+}
 
-    int lca(int a, int b) {
-        if (depth[a] < depth[b]) {
-            int temporary = a;
-            a = b;
-            b = temporary;
-        }
-        a = kthAncestor(a, depth[a] - depth[b]);
-        if (a == b) return a;
-
-        for (int k = log - 1; k >= 0; k--) {
-            if (up[k][a] != up[k][b]) {
-                a = up[k][a];
-                b = up[k][b];
-            }
-        }
-        return up[0][a];
+int lca(int a, int b) {
+    if (depth[a] < depth[b]) {
+        int temporary = a;
+        a = b;
+        b = temporary;
     }
-
-    int kthAncestor(int vertex, int steps) {
-        if (steps < 0) throw new IllegalArgumentException("steps must be nonnegative");
-        if (steps > depth[vertex]) return -1;
-        for (int k = 0; k < log; k++) {
-            if (((steps >>> k) & 1) != 0) vertex = up[k][vertex];
+    int difference = depth[a] - depth[b];
+    for (int k = 0; k < log; k++) {
+        if (((difference >>> k) & 1) != 0) a = up[k][a];
+    }
+    if (a == b) return a;
+    for (int k = log - 1; k >= 0; k--) {
+        if (up[k][a] != up[k][b]) {
+            a = up[k][a];
+            b = up[k][b];
         }
-        return vertex;
     }
-
-    long distance(int a, int b) {
-        int common = lca(a, b);
-        return (long) depth[a] + depth[b] - 2L * depth[common];
-    }
+    return up[0][a];
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- `2^k`칸은 `2^(k−1)`칸을 두 번 간다. 이전 행이 완성되어야 하므로 표는 k를 바깥에서 채운다.
+- 깊이를 먼저 맞춰야 두 정점이 같은 높이에서 같은 조상을 비교한다. 같아지면 한쪽이 다른 쪽의 조상이다.
+- 점프한 조상이 **다를 때만** 올라간다. 같을 때 뛰면 가장 낮은 공통 조상을 지나칠 수 있다.
+
+**작게 추적:** 부모 `3→1→0`, `6→5→2→0`: lca(6,3)은 깊이 차 1로 `(5,3)` → 1칸 위 `(2,1)`은 달라 이동 → 바로 위 부모 0 반환.
+
+> [!info]- 더 자세한 설명
+> ### 기존 전체 구현의 개념과 적용 조건
+>
+> LCA(최소 공통 조상)는 루트가 정해진 트리에서 두 정점의 공통 조상 중 깊이가 가장 깊은 정점이다. 각 정점의 `2^k`번째 조상을 미리 저장하면 긴 부모 경로를 이진수의 자리처럼 나누어 건너뛰어 조상과 경로 질문에 빠르게 답할 수 있다.
+>
+> ## 적용 조건
+>
+> - 정점 `0 ~ n-1`, `n >= 1`인 연결된 무방향 트리와 유효한 root를 받는다. 자기 자신도 자신의 조상에 포함하므로 `lca(v,v) = v`다.
+> - `edges[i] = {정점1, 정점2}`다. 간선은 정확히 `n-1`개여야 하며 BFS로 모든 정점에 도달해야 한다. 입력의 정점 번호는 유효하다고 가정한다.
+> - `up[k][v]`는 v에서 부모 방향으로 `2^k`번 이동한 정점이다. 루트 위로 넘어가는 표의 값은 루트로 유지한다.
+> - 전처리 시간·공간 `O(n log n)`, LCA·k번째 조상·두 정점 거리 질의는 각각 `O(log n)`이다.
+> - `kthAncestor(v,k)`는 k가 v의 깊이보다 크면 `-1`을 반환한다. `distance(a,b)`는 경로의 **간선 수**를 `long`으로 반환한다.
+> - 부모와 깊이는 반복 BFS로 구하므로 일자형 트리에서도 전처리에 재귀 호출을 사용하지 않는다.
 >
 > ### 1. 부모를 두 배씩 건너뛰는 표
 >
@@ -181,3 +139,154 @@ class BinaryLiftingLca {
 > - [[트리와 재귀]] — 루트, 부모, 깊이와 유일한 경로
 > - [[BFS]] — 재귀 없이 부모와 깊이 배열 만들기
 > - [[유니온 파인드와 MST]] — MST로 얻은 트리에서 경로의 최댓값을 질의하는 조합
+
+> [!example]- 준비 코드 · 전체 구현
+> ### 위 핵심의 준비 코드와 실행 예
+>
+> 필드·초기화·헬퍼를 포함하며, main의 숫자 사례를 그대로 실행할 수 있다. 새 입력을 풀 때는 배열·큐·방문 상태를 새로 준비한다.
+>
+> ```java
+> import java.util.*;
+>
+> class GraphKernel6 {
+>     int[][] up;
+>     int[] depth;
+>     int log;
+>
+>     void buildTable(int n) {
+>         for (int k = 1; k < log; k++) {
+>             for (int v = 0; v < n; v++) {
+>                 up[k][v] = up[k - 1][up[k - 1][v]];
+>             }
+>         }
+>     }
+>
+>     int lca(int a, int b) {
+>         if (depth[a] < depth[b]) {
+>             int temporary = a;
+>             a = b;
+>             b = temporary;
+>         }
+>         int difference = depth[a] - depth[b];
+>         for (int k = 0; k < log; k++) {
+>             if (((difference >>> k) & 1) != 0) a = up[k][a];
+>         }
+>         if (a == b) return a;
+>         for (int k = log - 1; k >= 0; k--) {
+>             if (up[k][a] != up[k][b]) {
+>                 a = up[k][a];
+>                 b = up[k][b];
+>             }
+>         }
+>         return up[0][a];
+>     }
+>
+>     static void check(boolean success, String message) {
+>         if (!success) throw new AssertionError(message);
+>     }
+>
+>     public static void main(String[] args) {
+>         GraphKernel6 instance = new GraphKernel6();
+>         int n = 7;
+>         instance.log = 3;
+>         instance.up = new int[instance.log][n];
+>         instance.depth = new int[] {0,1,1,2,2,2,3};
+>         instance.up[0] = new int[] {0,0,0,1,1,2,5};
+>         instance.buildTable(n);
+>         check(instance.up[1][6] == 2, "doubling recurrence");
+>         check(instance.lca(6,3) == 0, "depth alignment and paired jump");
+>         check(instance.lca(3,4) == 1, "siblings");
+>         check(instance.lca(6,2) == 2, "ancestor");
+>         check(instance.lca(0,0) == 0, "root itself");
+>         System.out.println("PASS LCA");
+>     }
+> }
+> ```
+>
+> ### 기존 전체 구현
+>
+>
+> ```java
+> import java.util.*;
+>
+> class BinaryLiftingLca {
+>     final int[][] up;
+>     final int[] depth;
+>     final int log;
+>
+>     // n >= 1, 정점 0..n-1, 연결된 무방향 트리, 유효한 root.
+>     BinaryLiftingLca(int n, int[][] edges, int root) {
+>         if (n <= 0 || root < 0 || root >= n || edges.length != n - 1) {
+>             throw new IllegalArgumentException("invalid tree or root");
+>         }
+>         int levels = 1;
+>         while ((1L << levels) <= n) levels++;
+>         log = levels;
+>         up = new int[log][n];
+>         depth = new int[n];
+>         Arrays.fill(depth, -1);
+>
+>         List<List<Integer>> graph = new ArrayList<>();
+>         for (int i = 0; i < n; i++) graph.add(new ArrayList<>());
+>         for (int[] edge : edges) {
+>             graph.get(edge[0]).add(edge[1]);
+>             graph.get(edge[1]).add(edge[0]);
+>         }
+>
+>         Queue<Integer> queue = new ArrayDeque<>();
+>         depth[root] = 0;
+>         up[0][root] = root;
+>         queue.offer(root);
+>         int visitedCount = 0;
+>         while (!queue.isEmpty()) {
+>             int current = queue.poll();
+>             visitedCount++;
+>             for (int next : graph.get(current)) {
+>                 if (depth[next] != -1) continue;
+>                 depth[next] = depth[current] + 1;
+>                 up[0][next] = current;
+>                 queue.offer(next);
+>             }
+>         }
+>         if (visitedCount != n) throw new IllegalArgumentException("disconnected tree");
+>
+>         for (int k = 1; k < log; k++) {
+>             for (int vertex = 0; vertex < n; vertex++) {
+>                 up[k][vertex] = up[k - 1][up[k - 1][vertex]];
+>             }
+>         }
+>     }
+>
+>     int lca(int a, int b) {
+>         if (depth[a] < depth[b]) {
+>             int temporary = a;
+>             a = b;
+>             b = temporary;
+>         }
+>         a = kthAncestor(a, depth[a] - depth[b]);
+>         if (a == b) return a;
+>
+>         for (int k = log - 1; k >= 0; k--) {
+>             if (up[k][a] != up[k][b]) {
+>                 a = up[k][a];
+>                 b = up[k][b];
+>             }
+>         }
+>         return up[0][a];
+>     }
+>
+>     int kthAncestor(int vertex, int steps) {
+>         if (steps < 0) throw new IllegalArgumentException("steps must be nonnegative");
+>         if (steps > depth[vertex]) return -1;
+>         for (int k = 0; k < log; k++) {
+>             if (((steps >>> k) & 1) != 0) vertex = up[k][vertex];
+>         }
+>         return vertex;
+>     }
+>
+>     long distance(int a, int b) {
+>         int common = lca(a, b);
+>         return (long) depth[a] + depth[b] - 2L * depth[common];
+>     }
+> }
+> ```

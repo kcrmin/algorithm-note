@@ -5,47 +5,36 @@ tags: [Java]
 
 # Java 기본 도구
 
-> **핵심:** 배열은 `length`, 문자열은 `length()`, 컬렉션은 `size()`. 큰 합은 계산하기 전부터 `long`.
+배열·문자열을 순회하고 값을 누적할 때 반복해서 쓰는 Java 문법이다.
 
-## 개념
+> **기억:** 배열 `length` · 문자열 `length()` · 컬렉션 `size()` · 큰 계산은 시작부터 `long`.
 
-Java 알고리즘 구현에서 반복해서 쓰는 배열·문자열·컬렉션·자료형의 기본 규칙이다. 값이 저장되는 자료형뿐 아니라 **계산이 수행되는 자료형**과 인덱스의 범위를 함께 확인한다.
+**전제:** 아래 arr는 int 배열, s는 문자열이다.
 
-## 적용 조건
-
-배열·문자열을 순회하거나 값을 누적하는 구현에 사용한다.
-
-## Java 템플릿
-
-배열 합을 long으로 누적하는 메서드 예시다.
+## 템플릿
 
 ```java
-class Solution {
-    public long solution(int[] numbers) {
-        long sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
-        }
-        return sum;
-    }
+long sum = 0;
+for (int value : arr) {
+    sum += value;
 }
-```
 
-문자열을 가공할 때는 다음 도구를 고른다. 이 블록은 메서드 안에서 실행하는 예시다.
-
-```java
-String s = "abca";
-int count = 0;
 StringBuilder result = new StringBuilder();
 for (int i = 0; i < s.length(); i++) {
     char ch = s.charAt(i);
-    if (ch == 'a') count++;
     result.append(ch);
 }
-boolean same = result.toString().equals(s);
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- `sum`이 long이면 int 원소를 더할 때 long으로 누적한다. 두 int를 먼저 계산하는 `(long)(a+b)`는 이미 넘칠 수 있으므로 `(long)a+b`다.
+- 마지막 인덱스는 길이−1이라 `i < s.length()`다.
+- 문자는 `'a'`와 `==`, 문자열 내용은 `"a"`와 `.equals()`다.
+
+`[10,20,30]`을 더하면 sum은 `0 → 10 → 30 → 60`. `2_000_000_000 + 2_000_000_000`은 `(long)a+b`로 계산해야 4,000,000,000이 된다.
+
+> [!info]- 더 자세한 설명
 >
 > `numbers = [10, 20, 30]`이면 인덱스는 `0, 1, 2`다. 길이 `3`은 마지막 인덱스가 아니므로 `i < numbers.length`를 쓴다. `<=`를 쓰면 없는 `numbers[3]`에 접근한다.
 >
@@ -79,4 +68,32 @@ boolean same = result.toString().equals(s);
 > - `split(".")`의 점은 정규식이다. 점 자체로 자르려면 `split("\\.")`를 쓴다.
 > - 여러 번 호출될 수 있는 `solution`에서는 필드·방문 배열·정답 값을 매번 초기화한다.
 
-**관련 개념:** [[정렬]] · [[해시]]
+> [!example]- 준비 코드 · 전체 구현
+>
+> 필요한 import와 초기화까지 포함한 전체 코드다. 각 코드 블록은 별도 예시다.
+>
+> ```java
+> class Solution {
+>     public long solution(int[] numbers) {
+>         long sum = 0;
+>         for (int i = 0; i < numbers.length; i++) {
+>             sum += numbers[i];
+>         }
+>         return sum;
+>     }
+> }
+> ```
+>
+> ```java
+> String s = "abca";
+> int count = 0;
+> StringBuilder result = new StringBuilder();
+> for (int i = 0; i < s.length(); i++) {
+>     char ch = s.charAt(i);
+>     if (ch == 'a') count++;
+>     result.append(ch);
+> }
+> boolean same = result.toString().equals(s);
+> ```
+
+**관련:** [[BFS]] · [[정렬]] · [[해시]]

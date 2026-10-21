@@ -6,87 +6,71 @@ aliases: [Union_Find, MST]
 
 # 유니온 파인드와 MST
 
-> **핵심:** 같은 집합은 대표가 같다. MST는 싼 간선부터 보며 서로 다른 집합일 때만 연결한다.
+같은 집합인지 빠르게 확인하며, 싼 간선부터 사이클 없이 골라 최소 연결 비용을 구한다.
 
-## 개념
+> **기억:** find는 루트까지 압축 → union은 다른 집합만 합침 → 간선 비용순 → 합쳐지면 선택 → V−1개면 완성.
 
-유니온 파인드는 원소들이 속한 집합을 대표 원소로 관리하고, 두 집합을 합치는 자료구조다. Kruskal은 간선을 싼 순서로 보며 다른 집합을 잇는 간선만 골라 모든 정점을 연결하는 최소 신장 트리(MST)를 만든다.
+**전제:** 무방향 그래프, 음수 비용 가능. Kruskal 시간 `O(E log E+V)`, 공간 `O(V+E)`; 아래 크기 기준 union의 연산당 분할 상환 `O(α(V))`.
 
-## 적용 조건
+## 템플릿
 
-- Union-Find: 여러 원소를 집합으로 합치고 두 원소가 같은 집합인지 반복해서 물을 때 쓴다.
-- MST: **무향 가중치 그래프**의 모든 정점을 연결하는 최소 비용이 필요할 때 쓴다.
-- MST는 시작점에서의 최단거리가 아니다. “전체 연결 비용”과 “특정 경로 비용”을 구분한다.
-- Kruskal은 간선을 비용순으로 정렬하고 사이클을 만드는 간선을 제외한다.
-- 정점은 `0 ~ n-1`, `edges[i]={정점1, 정점2, 비용}`이다. 간선 비용은 음수여도 된다.
-- 정렬을 포함한 시간 `O(E log E + V)`, 공간 `O(V+E)`.
-- Union-Find만 보면 크기 기준 합치기+경로 압축의 연산당 분할 상환 시간은 `O(α(V))`다.
-
-## Java 템플릿
-
-연결 실패는 `OptionalLong.empty()`로 표현한다. 비용이 음수일 수도 있으므로 `-1`을 실패값으로 쓰지 않는다.
+`parent[i]=i`, `size[i]=1`로 시작한다. `find/union` 뒤의 Kruskal 반복은 간선을 비용순으로 정렬한 상태다.
 
 ```java
-import java.util.*;
+static int find(int vertex) {
+    if (parent[vertex] == vertex) return vertex;
+    return parent[vertex] = find(parent[vertex]);
+}
 
-class KruskalTemplate {
-    static class UnionFind {
-        int[] parent;
-        int[] size;
-
-        UnionFind(int n) {
-            parent = new int[n];
-            size = new int[n];
-            for (int i = 0; i < n; i++) {
-                parent[i] = i;
-                size[i] = 1;
-            }
-        }
-
-        int find(int vertex) {
-            if (parent[vertex] == vertex) return vertex;
-            parent[vertex] = find(parent[vertex]);
-            return parent[vertex];
-        }
-
-        boolean union(int a, int b) {
-            int rootA = find(a);
-            int rootB = find(b);
-            if (rootA == rootB) return false;
-
-            if (size[rootA] < size[rootB]) {
-                int temporary = rootA;
-                rootA = rootB;
-                rootB = temporary;
-            }
-            parent[rootB] = rootA;
-            size[rootA] += size[rootB];
-            return true;
-        }
+static boolean union(int a, int b) {
+    int rootA = find(a);
+    int rootB = find(b);
+    if (rootA == rootB) return false;
+    if (size[rootA] < size[rootB]) {
+        int temporary = rootA;
+        rootA = rootB;
+        rootB = temporary;
     }
-
-    static OptionalLong minimumSpanningTree(int n, int[][] edges) {
-        if (n <= 1) return OptionalLong.of(0);
-
-        int[][] sorted = edges.clone();
-        Arrays.sort(sorted, Comparator.comparingInt(edge -> edge[2]));
-        UnionFind uf = new UnionFind(n);
-
-        long total = 0;
-        int selected = 0;
-        for (int[] edge : sorted) {
-            if (!uf.union(edge[0], edge[1])) continue;
-
-            total += edge[2];
-            selected++;
-            if (selected == n - 1) return OptionalLong.of(total);
-        }
-        return OptionalLong.empty();
+    parent[rootB] = rootA;
+    size[rootA] += size[rootB];
+    return true;
+}
+static long kruskal(int n, int[][] sorted) {
+    long total = 0;
+    int selected = 0;
+    for (int[] edge : sorted) {
+        if (!union(edge[0], edge[1])) continue;
+        total += edge[2];
+        selected++;
+        if (selected == n - 1) break;
     }
+    // selected != n-1이면 MST가 없고 total은 최소 신장 숲 비용이다.
+    return total;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 대표가 같으면 이미 연결되어 있어 그 간선은 사이클을 만든다. 다른 대표끼리만 합친다.
+- find가 지나온 정점의 부모를 루트로 바꿔 다음 탐색을 줄인다. 작은 집합을 큰 집합 아래 붙여 트리도 얕게 유지한다.
+- 비용순으로 연결에 필요한 간선을 고른다. **V−1개 선택**을 확인해야 전체 연결에 성공한 것이다.
+
+**작게 추적:** `0—1:1,1—2:2,0—2:3,2—3:4`: 1·2 선택 → 비용 3은 같은 대표라 제외 → 4 선택 → 합계 7, 선택 3개.
+
+> [!info]- 더 자세한 설명
+> ### 기존 전체 구현의 개념과 적용 조건
+>
+> 유니온 파인드는 원소들이 속한 집합을 대표 원소로 관리하고, 두 집합을 합치는 자료구조다. Kruskal은 간선을 싼 순서로 보며 다른 집합을 잇는 간선만 골라 모든 정점을 연결하는 최소 신장 트리(MST)를 만든다.
+>
+> ## 적용 조건
+>
+> - Union-Find: 여러 원소를 집합으로 합치고 두 원소가 같은 집합인지 반복해서 물을 때 쓴다.
+> - MST: **무향 가중치 그래프**의 모든 정점을 연결하는 최소 비용이 필요할 때 쓴다.
+> - MST는 시작점에서의 최단거리가 아니다. “전체 연결 비용”과 “특정 경로 비용”을 구분한다.
+> - Kruskal은 간선을 비용순으로 정렬하고 사이클을 만드는 간선을 제외한다.
+> - 정점은 `0 ~ n-1`, `edges[i]={정점1, 정점2, 비용}`이다. 간선 비용은 음수여도 된다.
+> - 정렬을 포함한 시간 `O(E log E + V)`, 공간 `O(V+E)`.
+> - Union-Find만 보면 크기 기준 합치기+경로 압축의 연산당 분할 상환 시간은 `O(α(V))`다.
 >
 > 4개 정점의 간선이 `(0,1,1), (1,2,2), (0,2,3), (2,3,4)`이면 다음과 같다.
 >
@@ -116,9 +100,146 @@ class KruskalTemplate {
 > - 메서드는 빈 그래프/정점 하나의 연결 비용을 0으로 정했다.
 > - 결과를 쓸 때 `isPresent()`로 연결 성공을 확인한 뒤 `getAsLong()`을 읽는다.
 > - 일반 Union-Find는 합친 집합을 다시 분리하거나 간선을 삭제하는 기능을 제공하지 않는다.
+>
+> ## 관련 개념
+>
+> - [[그리디]] — 선택을 확정할 수 있는 이유
+> - [[DFS와 그래프]] — 탐색으로 연결 요소를 구하는 방법
+> - [[다익스트라]] — 시작점 기준의 최단거리와 구분
 
-## 관련 개념
-
-- [[그리디]] — 선택을 확정할 수 있는 이유
-- [[DFS와 그래프]] — 탐색으로 연결 요소를 구하는 방법
-- [[다익스트라]] — 시작점 기준의 최단거리와 구분
+> [!example]- 준비 코드 · 전체 구현
+> ### 위 핵심의 준비 코드와 실행 예
+>
+> 필드·초기화·헬퍼를 포함하며, main의 숫자 사례를 그대로 실행할 수 있다. 새 입력을 풀 때는 배열·큐·방문 상태를 새로 준비한다.
+>
+> ```java
+> import java.util.*;
+>
+> class GraphKernel11 {
+>     static int[] parent, size;
+>
+>     static int find(int vertex) {
+>         if (parent[vertex] == vertex) return vertex;
+>         return parent[vertex] = find(parent[vertex]);
+>     }
+>
+>     static boolean union(int a, int b) {
+>         int rootA = find(a);
+>         int rootB = find(b);
+>         if (rootA == rootB) return false;
+>         if (size[rootA] < size[rootB]) {
+>             int temporary = rootA;
+>             rootA = rootB;
+>             rootB = temporary;
+>         }
+>         parent[rootB] = rootA;
+>         size[rootA] += size[rootB];
+>         return true;
+>     }
+>     static long kruskal(int n, int[][] sorted) {
+>         long total = 0;
+>         int selected = 0;
+>         for (int[] edge : sorted) {
+>             if (!union(edge[0], edge[1])) continue;
+>             total += edge[2];
+>             selected++;
+>             if (selected == n - 1) break;
+>         }
+>         // selected != n-1이면 MST가 없고 total은 최소 신장 숲 비용이다.
+>         return total;
+>     }
+>
+>     static void initialize(int n) {
+>         parent = new int[n];
+>         size = new int[n];
+>         for (int i = 0; i < n; i++) {
+>             parent[i] = i;
+>             size[i] = 1;
+>         }
+>     }
+>
+>     static void check(boolean success, String message) {
+>         if (!success) throw new AssertionError(message);
+>     }
+>
+>     public static void main(String[] args) {
+>         int n = 4;
+>         initialize(n);
+>         int[][] edges = {{0,1,1},{1,2,2},{0,2,3},{2,3,4}};
+>         Arrays.sort(edges, Comparator.comparingInt(edge -> edge[2]));
+>         check(kruskal(n, edges) == 7 && find(0) == find(3), "minimum tree excludes cycle");
+>         check(!union(0,3), "already connected");
+>         initialize(3);
+>         edges = new int[][] {{0,1,-2}};
+>         check(kruskal(3, edges) == -2 && find(0) != find(2), "forest cost when disconnected");
+>         initialize(1);
+>         check(kruskal(1, new int[0][]) == 0, "single vertex");
+>         System.out.println("PASS 유니온 파인드와 MST");
+>     }
+> }
+> ```
+>
+> ### 기존 전체 구현
+>
+>
+> 연결 실패는 `OptionalLong.empty()`로 표현한다. 비용이 음수일 수도 있으므로 `-1`을 실패값으로 쓰지 않는다.
+>
+> ```java
+> import java.util.*;
+>
+> class KruskalTemplate {
+>     static class UnionFind {
+>         int[] parent;
+>         int[] size;
+>
+>         UnionFind(int n) {
+>             parent = new int[n];
+>             size = new int[n];
+>             for (int i = 0; i < n; i++) {
+>                 parent[i] = i;
+>                 size[i] = 1;
+>             }
+>         }
+>
+>         int find(int vertex) {
+>             if (parent[vertex] == vertex) return vertex;
+>             parent[vertex] = find(parent[vertex]);
+>             return parent[vertex];
+>         }
+>
+>         boolean union(int a, int b) {
+>             int rootA = find(a);
+>             int rootB = find(b);
+>             if (rootA == rootB) return false;
+>
+>             if (size[rootA] < size[rootB]) {
+>                 int temporary = rootA;
+>                 rootA = rootB;
+>                 rootB = temporary;
+>             }
+>             parent[rootB] = rootA;
+>             size[rootA] += size[rootB];
+>             return true;
+>         }
+>     }
+>
+>     static OptionalLong minimumSpanningTree(int n, int[][] edges) {
+>         if (n <= 1) return OptionalLong.of(0);
+>
+>         int[][] sorted = edges.clone();
+>         Arrays.sort(sorted, Comparator.comparingInt(edge -> edge[2]));
+>         UnionFind uf = new UnionFind(n);
+>
+>         long total = 0;
+>         int selected = 0;
+>         for (int[] edge : sorted) {
+>             if (!uf.union(edge[0], edge[1])) continue;
+>
+>             total += edge[2];
+>             selected++;
+>             if (selected == n - 1) return OptionalLong.of(total);
+>         }
+>         return OptionalLong.empty();
+>     }
+> }
+> ```

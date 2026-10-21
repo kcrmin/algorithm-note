@@ -6,95 +6,56 @@ aliases: [Visited, Distance]
 
 # BFS
 
-> **핵심:** **큐에서 꺼내 사방을 보고, 처음 가는 칸의 거리를 기록한 뒤 큐에 넣는다.**
+같은 비용으로 이동할 때 시작점에서 각 칸까지의 최단거리를 구한다.
 
-## 개념
+> **기억:** 시작을 큐에 → 하나 꺼냄 → 사방 확인 → 처음 가는 칸의 거리 기록 → 큐에 넣기.
 
-BFS는 시작점에서 간선 한 개로 닿는 곳, 두 개로 닿는 곳 순서로 탐색하는 방법이다. 큐의 선입선출 순서가 거리가 작은 층부터 처리하게 하므로 모든 이동 비용이 같을 때 처음 발견한 거리가 최단거리다.
+**전제:** `1`은 길, `0`은 벽인 H×W 격자, 출발·도착은 길, 상하좌우 비용 동일. 시간·추가 공간 `O(HW)`.
 
-## 적용 조건
+## 템플릿
 
-- 미로에서 최소 이동 횟수, 같은 비용의 간선으로 연결된 그래프에서 최단 거리를 구한다.
-- 이 템플릿은 `1`이 길, `0`이 벽인 직사각형 격자에서 상하좌우로 한 칸씩 이동한다.
-- 시작은 왼쪽 위 `(0, 0)`, 도착은 오른쪽 아래 `(W - 1, H - 1)`이다.
-- **모든 이동 비용이 같아야** 먼저 도착한 경로가 최단 경로가 된다. 비용이 제각각이면 다익스트라를 검토한다.
-- 높이 `H`, 너비 `W`일 때 시간 `O(HW)`, 추가 공간 `O(HW)`다. 한 칸을 한 번만 큐에 넣는다.
-
-## Java 템플릿
-
-프로그래머스 「게임 맵 최단거리」처럼 **시작 칸을 포함한 칸 수**를 반환한다. 도달할 수 없으면 `-1`이다.
-입력은 비어 있지 않은 직사각형 `int[][]`라고 가정한다. 원본 `maps`는 바꾸지 않는다.
+`Point`는 `x=열, y=행`, 배열은 `map[y][x]`다. `queue`에는 `(0,0)`, `dist[0][0]=1`을 넣고 시작한다. 나머지 거리는 0, `dx/dy`는 사방 이동이다.
 
 ```java
-import java.util.ArrayDeque;
-import java.util.Queue;
-
-public class Solution {
-    static int H, W;
-    static int[][] map;
-    static int[][] dist;
-
-    // 오른쪽, 아래, 왼쪽, 위
-    static final int[] dx = {1, 0, -1, 0};
-    static final int[] dy = {0, 1, 0, -1};
-
-    static class Point {
-        int x;
-        int y;
-
-        Point(int x, int y) {
-            this.x = x;
-            this.y = y;
+static int bfs(Queue<Point> queue) {
+    while (!queue.isEmpty()) {
+        Point cur = queue.poll();
+        if (cur.x == W - 1 && cur.y == H - 1) {
+            return dist[cur.y][cur.x];
+        }
+        for (int dir = 0; dir < 4; dir++) {
+            int nx = cur.x + dx[dir];
+            int ny = cur.y + dy[dir];
+            if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+            if (map[ny][nx] == 0 || dist[ny][nx] != 0) continue;
+            dist[ny][nx] = dist[cur.y][cur.x] + 1;
+            queue.offer(new Point(nx, ny));
         }
     }
-
-    public int solution(int[][] maps) {
-        map = maps;
-        H = map.length;
-        W = map[0].length;
-        dist = new int[H][W];
-
-        if (map[0][0] == 0 || map[H - 1][W - 1] == 0) {
-            return -1;
-        }
-
-        return bfs();
-    }
-
-    private static int bfs() {
-        Queue<Point> queue = new ArrayDeque<>();
-        dist[0][0] = 1;
-        queue.offer(new Point(0, 0));
-
-        while (!queue.isEmpty()) {
-            Point cur = queue.poll();
-
-            if (cur.x == W - 1 && cur.y == H - 1) {
-                return dist[cur.y][cur.x];
-            }
-
-            for (int dir = 0; dir < 4; dir++) {
-                int nx = cur.x + dx[dir];
-                int ny = cur.y + dy[dir];
-
-                if (nx < 0 || nx >= W || ny < 0 || ny >= H) {
-                    continue;
-                }
-                if (map[ny][nx] == 0 || dist[ny][nx] != 0) {
-                    continue;
-                }
-
-                dist[ny][nx] = dist[cur.y][cur.x] + 1;
-                queue.offer(new Point(nx, ny));
-            }
-        }
-
-        return -1;
-    }
+    return -1;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 큐는 거리 1인 칸 다음에 거리 2인 칸을 꺼내므로 **처음 발견한 거리**가 최단이다.
+- 방문 표시는 **넣기 직전** 거리 기록으로 한다. 꺼낼 때 표시하면 같은 칸이 여러 번 들어간다.
+- 범위를 먼저 검사해야 `map[ny][nx]`를 안전하게 읽는다. 시작을 1로 두므로 답은 간선 수가 아닌 칸 수다.
+
+**작게 추적:** 모두 길인 2×2: `(0,0):1 → (1,0),(0,1):2 → (1,1):3`. 두 경로가 만나도 도착 칸은 한 번만 넣는다.
+
+> [!info]- 더 자세한 설명
+> ### 기존 전체 구현의 개념과 적용 조건
+>
+> BFS는 시작점에서 간선 한 개로 닿는 곳, 두 개로 닿는 곳 순서로 탐색하는 방법이다. 큐의 선입선출 순서가 거리가 작은 층부터 처리하게 하므로 모든 이동 비용이 같을 때 처음 발견한 거리가 최단거리다.
+>
+> ## 적용 조건
+>
+> - 미로에서 최소 이동 횟수, 같은 비용의 간선으로 연결된 그래프에서 최단 거리를 구한다.
+> - 이 템플릿은 `1`이 길, `0`이 벽인 직사각형 격자에서 상하좌우로 한 칸씩 이동한다.
+> - 시작은 왼쪽 위 `(0, 0)`, 도착은 오른쪽 아래 `(W - 1, H - 1)`이다.
+> - **모든 이동 비용이 같아야** 먼저 도착한 경로가 최단 경로가 된다. 비용이 제각각이면 다익스트라를 검토한다.
+> - 높이 `H`, 너비 `W`일 때 시간 `O(HW)`, 추가 공간 `O(HW)`다. 한 칸을 한 번만 큐에 넣는다.
 >
 > ### 1. 좌표는 `x = 열`, `y = 행`, 배열은 `map[y][x]`
 >
@@ -172,5 +133,147 @@ public class Solution {
 > - **도착점 처리**: 범위 밖·벽·방문한 칸은 큐에 넣지 않으므로, 큐에서 꺼낸 도착점의 거리는 유효하다.
 > - **가중치**: 이동 비용이 `1, 5, 10`처럼 다르면 이 방문 규칙으로 최단 거리를 확정할 수 없다.
 > - **DFS와 선택**: 갈 수 있는지만 확인하면 DFS도 가능하지만, 같은 비용의 최단 거리는 BFS를 먼저 떠올린다.
+>
+> **관련 개념:** [[스택과 큐]] · [[다익스트라]] · [[DFS와 그래프]]
 
-**관련 개념:** [[스택과 큐]] · [[다익스트라]] · [[DFS와 그래프]]
+> [!example]- 준비 코드 · 전체 구현
+> ### 위 핵심의 준비 코드와 실행 예
+>
+> 필드·초기화·헬퍼를 포함하며, main의 숫자 사례를 그대로 실행할 수 있다. 새 입력을 풀 때는 배열·큐·방문 상태를 새로 준비한다.
+>
+> ```java
+> import java.util.*;
+>
+> class GraphKernel0 {
+>     static int H, W;
+>     static int[][] map, dist;
+>     static final int[] dx = {1, 0, -1, 0};
+>     static final int[] dy = {0, 1, 0, -1};
+>     static class Point {
+>         int x, y;
+>         Point(int x, int y) { this.x = x; this.y = y; }
+>     }
+>
+>     static int bfs(Queue<Point> queue) {
+>         while (!queue.isEmpty()) {
+>             Point cur = queue.poll();
+>             if (cur.x == W - 1 && cur.y == H - 1) {
+>                 return dist[cur.y][cur.x];
+>             }
+>             for (int dir = 0; dir < 4; dir++) {
+>                 int nx = cur.x + dx[dir];
+>                 int ny = cur.y + dy[dir];
+>                 if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+>                 if (map[ny][nx] == 0 || dist[ny][nx] != 0) continue;
+>                 dist[ny][nx] = dist[cur.y][cur.x] + 1;
+>                 queue.offer(new Point(nx, ny));
+>             }
+>         }
+>         return -1;
+>     }
+>
+>     static void check(boolean success, String message) {
+>         if (!success) throw new AssertionError(message);
+>     }
+>
+>     public static void main(String[] args) {
+>         map = new int[][] {{1, 1}, {1, 1}};
+>         H = 2;
+>         W = 2;
+>         dist = new int[H][W];
+>         dist[0][0] = 1;
+>         Queue<Point> queue = new ArrayDeque<>();
+>         queue.offer(new Point(0, 0));
+>         check(bfs(queue) == 3, "2x2 shortest includes start");
+>         map = new int[][] {{1, 0, 1}, {0, 1, 1}};
+>         H = 2;
+>         W = 3;
+>         dist = new int[H][W];
+>         dist[0][0] = 1;
+>         queue.offer(new Point(0, 0));
+>         check(bfs(queue) == -1, "unreachable");
+>         map = new int[][] {{1}};
+>         H = W = 1;
+>         dist = new int[][] {{1}};
+>         queue.clear();
+>         queue.offer(new Point(0, 0));
+>         check(bfs(queue) == 1, "one cell");
+>         System.out.println("PASS BFS");
+>     }
+> }
+> ```
+>
+> ### 기존 전체 구현
+>
+>
+> 프로그래머스 「게임 맵 최단거리」처럼 **시작 칸을 포함한 칸 수**를 반환한다. 도달할 수 없으면 `-1`이다.
+> 입력은 비어 있지 않은 직사각형 `int[][]`라고 가정한다. 원본 `maps`는 바꾸지 않는다.
+>
+> ```java
+> import java.util.ArrayDeque;
+> import java.util.Queue;
+>
+> public class Solution {
+>     static int H, W;
+>     static int[][] map;
+>     static int[][] dist;
+>
+>     // 오른쪽, 아래, 왼쪽, 위
+>     static final int[] dx = {1, 0, -1, 0};
+>     static final int[] dy = {0, 1, 0, -1};
+>
+>     static class Point {
+>         int x;
+>         int y;
+>
+>         Point(int x, int y) {
+>             this.x = x;
+>             this.y = y;
+>         }
+>     }
+>
+>     public int solution(int[][] maps) {
+>         map = maps;
+>         H = map.length;
+>         W = map[0].length;
+>         dist = new int[H][W];
+>
+>         if (map[0][0] == 0 || map[H - 1][W - 1] == 0) {
+>             return -1;
+>         }
+>
+>         return bfs();
+>     }
+>
+>     private static int bfs() {
+>         Queue<Point> queue = new ArrayDeque<>();
+>         dist[0][0] = 1;
+>         queue.offer(new Point(0, 0));
+>
+>         while (!queue.isEmpty()) {
+>             Point cur = queue.poll();
+>
+>             if (cur.x == W - 1 && cur.y == H - 1) {
+>                 return dist[cur.y][cur.x];
+>             }
+>
+>             for (int dir = 0; dir < 4; dir++) {
+>                 int nx = cur.x + dx[dir];
+>                 int ny = cur.y + dy[dir];
+>
+>                 if (nx < 0 || nx >= W || ny < 0 || ny >= H) {
+>                     continue;
+>                 }
+>                 if (map[ny][nx] == 0 || dist[ny][nx] != 0) {
+>                     continue;
+>                 }
+>
+>                 dist[ny][nx] = dist[cur.y][cur.x] + 1;
+>                 queue.offer(new Point(nx, ny));
+>             }
+>         }
+>
+>         return -1;
+>     }
+> }
+> ```

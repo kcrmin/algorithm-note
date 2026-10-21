@@ -6,40 +6,38 @@ aliases: [LIS]
 
 # LIS
 
-> **핵심:** `tails`에서 현재 값 이상인 첫 자리를 바꾼다. 끝에 붙으면 길이가 늘어난다.
+LIS는 원래 순서를 지키며 고른 엄격히 증가하는 부분 수열 중 가장 긴 길이다.
 
-## 개념
+> **기억:** 현재 값 이상인 첫 자리 찾기 → 그 자리를 교체 → 끝이면 길이 증가.
 
-LIS는 원래 인덱스 순서를 지키며 골랐을 때 값이 엄격히 증가하는 가장 긴 부분 수열이다. 아래 tails[i]는 길이 i+1인 증가 수열의 가능한 끝값 중 최솟값으로, 다음 값을 붙이기 유리한 후보를 남긴다.
+**전제:** tails[i]=길이 i+1인 증가 수열의 가능한 최소 끝값. O(n log n).
 
-## 적용 조건
-
-원래 인덱스 순서를 지키며 **엄격히 증가하는 부분 수열의 길이**를 구한다. 연속할 필요는 없다. 시간 `O(n log n)`, 공간 `O(n)`. 위치 갱신은 [[배열 이분 탐색]]의 lower bound와 같다.
-
-## Java 템플릿
+## 템플릿
 
 ```java
-class LisTemplate {
-    static int length(int[] arr) {
-        int[] tails = new int[arr.length];
-        int size = 0;
-        for (int value : arr) {
-            int left = 0;
-            int right = size; // [left, right), size는 끝 다음 위치
-            while (left < right) {
-                int mid = left + (right - left) / 2;
-                if (tails[mid] >= value) right = mid;
-                else left = mid + 1;
-            }
-            tails[left] = value;
-            if (left == size) size++;
-        }
-        return size;
+int[] tails = new int[arr.length];
+int size = 0;
+for (int value : arr) {
+    int left = 0, right = size;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (tails[mid] >= value) right = mid;
+        else left = mid + 1;
     }
+    tails[left] = value;
+    if (left == size) size++;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 같은 길이 수열이라면 끝값이 작을수록 나중에 붙일 값이 많다. 그래서 더 작은 끝값으로 교체한다.
+- 이미 있는 값과 같을 때 교체해야 같은 값으로 길이를 늘리지 않는다. 따라서 `>=`인 첫 자리를 찾는다.
+- tails는 길이별 최소 끝값을 모은 것이며 그 자체가 실제 선택 수열인 것은 아니다.
+
+`2,5,3,4` → tails는 `[2] → [2,5] → [2,3] → [2,3,4]`. 길이는 3이다.
+
+> [!info]- 더 자세한 설명
 >
 > `tails[i]`는 길이 i+1인 증가 수열에서 만들 수 있는 **가장 작은 끝값**이다. 같은 길이라면 끝값이 작아야 다음 큰 값을 붙이기 유리하다.
 >
@@ -53,4 +51,29 @@ class LisTemplate {
 > - 입력을 정렬하면 원래 인덱스 순서가 사라져 다른 문제가 된다.
 > - 빈 배열은 size=0을 반환한다.
 
-**관련 개념:** [[이분 탐색]] · [[DP]]
+> [!example]- 준비 코드 · 전체 구현
+>
+> 필요한 import와 초기화까지 포함한 전체 코드다. 각 코드 블록은 별도 예시다.
+>
+> ```java
+> class LisTemplate {
+>     static int length(int[] arr) {
+>         int[] tails = new int[arr.length];
+>         int size = 0;
+>         for (int value : arr) {
+>             int left = 0;
+>             int right = size; // [left, right), size는 끝 다음 위치
+>             while (left < right) {
+>                 int mid = left + (right - left) / 2;
+>                 if (tails[mid] >= value) right = mid;
+>                 else left = mid + 1;
+>             }
+>             tails[left] = value;
+>             if (left == size) size++;
+>         }
+>         return size;
+>     }
+> }
+> ```
+
+**관련:** [[배열 이분 탐색]] · [[이분 탐색]] · [[DP]]

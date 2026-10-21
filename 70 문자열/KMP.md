@@ -5,74 +5,59 @@ tags: [문자열]
 
 # KMP
 
-> **핵심:** `j`는 지금까지 읽은 텍스트의 접미사와 일치하는 패턴 접두사의 길이다. 불일치하면 `pi[j - 1]`로 줄여 이미 확인한 문자를 다시 비교하지 않는다.
+텍스트에서 패턴이 시작하는 모든 위치를 겹치는 경우까지 찾는다.
 
-## 개념
+> **기억:** 불일치하면 `j = pi[j-1]`로 후보 길이를 줄인다. 완전 일치 뒤에도 이 길이를 남긴다.
 
-KMP는 텍스트에서 패턴이 나타나는 모든 시작 위치를 선형 시간에 찾는다. 패턴의 접두사와 접미사가 얼마나 겹치는지 `pi` 배열에 저장해, 불일치하더라도 텍스트 위치를 뒤로 돌리지 않는다. 일치를 찾은 뒤에도 겹치는 부분을 남기므로 중첩된 등장까지 찾을 수 있다.
+**전제:** 비어 있지 않은 패턴, UTF-16·시작 위치 0-index. 시간 O(N+M), 보조 공간 O(M)+결과 목록.
 
-## 적용 조건
+## 템플릿
 
-- 한 패턴을 긴 텍스트에서 찾거나, 겹치는 등장 횟수와 위치가 필요할 때 사용한다.
-- 텍스트 길이 `N`, 패턴 길이 `M`에 대해 시간 `O(N + M)`, 보조 공간 `O(M)`이다. 반환하는 일치 위치 목록에는 추가로 `O(일치 개수)`가 필요하다.
-- 아래 코드는 0-based 시작 위치를 반환한다. 빈 패턴은 `IllegalArgumentException`으로 거부하며, 빈 텍스트와 비어 있지 않은 패턴의 결과는 빈 목록이다.
-
-## Java 템플릿
+`text`는 텍스트, `pattern`은 패턴. 반환 목록이 일치 시작 위치다. java.util의 List/ArrayList를 쓴다.
 
 ```java
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
-public final class KMP {
-    // pi[i]: pattern[0..i]의 접두사이면서 접미사인
-    // 가장 긴 진부분 문자열의 길이. 자기 자신 전체는 제외한다.
-    public static int[] prefixFunction(String pattern) {
-        Objects.requireNonNull(pattern, "pattern");
-        int[] pi = new int[pattern.length()];
-
-        for (int i = 1; i < pattern.length(); i++) {
-            int j = pi[i - 1];
-            while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
-                j = pi[j - 1];
-            }
-            if (pattern.charAt(i) == pattern.charAt(j)) {
-                j++;
-            }
-            pi[i] = j;
-        }
-        return pi;
+List<Integer> findAll(String text, String pattern) {
+    int m = pattern.length();
+    int[] pi = new int[m];
+    for (int i = 1, j = 0; i < m; i++) {
+        while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
+        if (pattern.charAt(i) == pattern.charAt(j)) j++;
+        pi[i] = j;
     }
-
-    public static List<Integer> findAll(String text, String pattern) {
-        Objects.requireNonNull(text, "text");
-        Objects.requireNonNull(pattern, "pattern");
-        if (pattern.isEmpty()) {
-            throw new IllegalArgumentException("pattern must not be empty");
+    List<Integer> matches = new ArrayList<>();
+    for (int i = 0, j = 0; i < text.length(); i++) {
+        while (j > 0 && text.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
+        if (text.charAt(i) == pattern.charAt(j)) j++;
+        if (j == m) {
+            matches.add(i - m + 1);
+            j = pi[j - 1];
         }
-
-        int[] pi = prefixFunction(pattern);
-        List<Integer> matches = new ArrayList<>();
-        int j = 0;
-
-        for (int i = 0; i < text.length(); i++) {
-            while (j > 0 && text.charAt(i) != pattern.charAt(j)) {
-                j = pi[j - 1];
-            }
-            if (text.charAt(i) == pattern.charAt(j)) {
-                j++;
-            }
-            if (j == pattern.length()) {
-                matches.add(i - pattern.length() + 1);
-                j = pi[j - 1];
-            }
-        }
-        return matches;
     }
+    return matches;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- j는 지금까지 맞은 패턴 접두사의 길이다. `pi[j-1]`은 그 접두사의 끝에 남길 수 있는 다음 후보 길이다.
+- 한 번 후퇴해도 다시 다를 수 있어 if가 아닌 while이다. 텍스트 i는 뒤로 돌리지 않는다.
+- 완전 일치 후 j를 줄이면 겹친 일치도 남고, 다음 반복에서 `pattern[m]` 접근도 막는다.
+
+**추적:** `text=abababa`, `pattern=ababa`: 위치 0 일치 → j는 `5→pi[4]=3` → 두 글자 뒤 위치 2도 일치.
+
+> [!info]- 더 자세한 설명
+>
+> > **핵심:** `j`는 지금까지 읽은 텍스트의 접미사와 일치하는 패턴 접두사의 길이다. 불일치하면 `pi[j - 1]`로 줄여 이미 확인한 문자를 다시 비교하지 않는다.
+>
+> ## 개념
+>
+> KMP는 텍스트에서 패턴이 나타나는 모든 시작 위치를 선형 시간에 찾는다. 패턴의 접두사와 접미사가 얼마나 겹치는지 `pi` 배열에 저장해, 불일치하더라도 텍스트 위치를 뒤로 돌리지 않는다. 일치를 찾은 뒤에도 겹치는 부분을 남기므로 중첩된 등장까지 찾을 수 있다.
+>
+> ## 적용 조건
+>
+> - 한 패턴을 긴 텍스트에서 찾거나, 겹치는 등장 횟수와 위치가 필요할 때 사용한다.
+> - 텍스트 길이 `N`, 패턴 길이 `M`에 대해 시간 `O(N + M)`, 보조 공간 `O(M)`이다. 반환하는 일치 위치 목록에는 추가로 `O(일치 개수)`가 필요하다.
+> - 아래 코드는 0-based 시작 위치를 반환한다. 빈 패턴은 `IllegalArgumentException`으로 거부하며, 빈 텍스트와 비어 있지 않은 패턴의 결과는 빈 목록이다.
 >
 > `pi[i]`는 `pattern[0..i]` 끝부분에 남아 있는 접두사의 길이다. 예를 들어 패턴이 `ababaca`이면 다음과 같다.
 >
@@ -99,3 +84,58 @@ public final class KMP {
 > - 완전 일치 뒤 `j`를 반드시 줄여야 다음 반복에서 `pattern.charAt(M)`에 접근하지 않는다.
 > - `charAt`과 인덱스는 UTF-16 코드 단위 기준이다. 대소문자 구분 등 비교 규칙을 바꾸려면 입력과 패턴에 같은 처리를 적용한다.
 > - 관련: [[문자열 해싱]] — 반복 부분 문자열 비교, [[Trie]] — 여러 단어의 접두사 탐색.
+
+> [!example]- 준비 코드 · 전체 구현
+>
+> ```java
+> import java.util.ArrayList;
+> import java.util.List;
+> import java.util.Objects;
+>
+> public final class KMP {
+>     // pi[i]: pattern[0..i]의 접두사이면서 접미사인
+>     // 가장 긴 진부분 문자열의 길이. 자기 자신 전체는 제외한다.
+>     public static int[] prefixFunction(String pattern) {
+>         Objects.requireNonNull(pattern, "pattern");
+>         int[] pi = new int[pattern.length()];
+>
+>         for (int i = 1; i < pattern.length(); i++) {
+>             int j = pi[i - 1];
+>             while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
+>                 j = pi[j - 1];
+>             }
+>             if (pattern.charAt(i) == pattern.charAt(j)) {
+>                 j++;
+>             }
+>             pi[i] = j;
+>         }
+>         return pi;
+>     }
+>
+>     public static List<Integer> findAll(String text, String pattern) {
+>         Objects.requireNonNull(text, "text");
+>         Objects.requireNonNull(pattern, "pattern");
+>         if (pattern.isEmpty()) {
+>             throw new IllegalArgumentException("pattern must not be empty");
+>         }
+>
+>         int[] pi = prefixFunction(pattern);
+>         List<Integer> matches = new ArrayList<>();
+>         int j = 0;
+>
+>         for (int i = 0; i < text.length(); i++) {
+>             while (j > 0 && text.charAt(i) != pattern.charAt(j)) {
+>                 j = pi[j - 1];
+>             }
+>             if (text.charAt(i) == pattern.charAt(j)) {
+>                 j++;
+>             }
+>             if (j == pattern.length()) {
+>                 matches.add(i - pattern.length() + 1);
+>                 j = pi[j - 1];
+>             }
+>         }
+>         return matches;
+>     }
+> }
+> ```

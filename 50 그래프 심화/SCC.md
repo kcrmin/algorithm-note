@@ -6,102 +6,66 @@ aliases: [Strongly Connected Components, 강한 연결 요소]
 
 # SCC
 
-> 같은 SCC의 정점은 서로 도달할 수 있고, SCC를 하나의 정점으로 압축하면 사이클 없는 유향 그래프가 된다.
+유향 그래프에서 서로 왕복할 수 있는 정점들을 최대한 크게 묶는다.
 
-## 개념
+> **기억:** 원래 그래프 DFS가 끝날 때 기록 → 종료 역순으로 꺼냄 → 뒤집은 그래프 DFS로 한 묶음씩 번호 부여.
 
-SCC(강한 연결 요소)는 유향 그래프에서 서로 왕복할 수 있는 정점들을 가능한 한 크게 묶은 집합이다. 각 SCC를 하나의 정점으로 압축하면 DAG가 되므로, 순환하는 관계를 하나의 덩어리로 처리한 뒤 덩어리 사이의 선후 관계를 다룰 수 있다.
+**전제:** 유향 그래프, 시간·공간 `O(V+E)`. 아래 재귀 깊이 최악 `O(V)`; 깊은 입력용 반복 구현은 아래에 있다.
 
-## 적용 조건
+## 템플릿
 
-- 정점은 `0 ~ n-1`, `edges[i] = {출발, 도착}`인 유향 그래프다. 같은 두 정점 사이의 중복 간선과 자기 루프가 있어도 된다.
-- `component[v]`는 정점 v의 SCC 번호, `groups[id]`는 그 SCC의 정점 목록, `count`는 SCC 개수다. 번호는 `0 ~ count-1`이며 정점 목록은 정렬되지 않는다.
-- Kosaraju 알고리즘이다. 원래 그래프에서 DFS의 **종료 순서**를 구하고, 그 역순으로 역방향 그래프를 탐색한다.
-- 시간 `O(V+E)`, 그래프·종료 순서·명시적 스택을 포함한 공간 `O(V+E)`다. 두 탐색 모두 반복문이므로 재귀 호출 깊이에 의존하지 않는다.
-- `n = 0`이면 SCC 개수는 0이고 결과 배열과 목록도 비어 있다.
-
-## Java 템플릿
+`graph`와 `reverse`는 원래·역방향 목록, `visited`는 false, `component`는 −1, `finishOrder`는 빈 목록이다.
 
 ```java
-import java.util.*;
-
-class SCC {
-    static class Result {
-        final int count;
-        final int[] component;
-        final List<List<Integer>> groups;
-
-        Result(int[] component, List<List<Integer>> groups) {
-            this.count = groups.size();
-            this.component = component;
-            this.groups = groups;
-        }
+static void finish(int cur) {
+    visited[cur] = true;
+    for (int next : graph.get(cur)) {
+        if (!visited[next]) finish(next);
     }
+    finishOrder.add(cur);
+}
 
-    static Result decompose(int n, int[][] edges) {
-        List<List<Integer>> graph = new ArrayList<>();
-        List<List<Integer>> reverse = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            graph.add(new ArrayList<>());
-            reverse.add(new ArrayList<>());
-        }
-        for (int[] edge : edges) {
-            graph.get(edge[0]).add(edge[1]);
-            reverse.get(edge[1]).add(edge[0]);
-        }
-
-        boolean[] visited = new boolean[n];
-        int[] nextEdge = new int[n];
-        List<Integer> finishOrder = new ArrayList<>();
-        Deque<Integer> stack = new ArrayDeque<>();
-
-        for (int start = 0; start < n; start++) {
-            if (visited[start]) continue;
-            visited[start] = true;
-            stack.push(start);
-            while (!stack.isEmpty()) {
-                int current = stack.peek();
-                if (nextEdge[current] == graph.get(current).size()) {
-                    stack.pop();
-                    finishOrder.add(current); // 모든 자식 처리가 끝난 시점
-                } else {
-                    int next = graph.get(current).get(nextEdge[current]++);
-                    if (!visited[next]) {
-                        visited[next] = true;
-                        stack.push(next);
-                    }
-                }
-            }
-        }
-
-        int[] component = new int[n];
-        Arrays.fill(component, -1);
-        List<List<Integer>> groups = new ArrayList<>();
-
-        for (int i = finishOrder.size() - 1; i >= 0; i--) {
-            int start = finishOrder.get(i);
-            if (component[start] != -1) continue;
-            int id = groups.size();
-            List<Integer> group = new ArrayList<>();
-            groups.add(group);
-            component[start] = id;
-            stack.push(start);
-            while (!stack.isEmpty()) {
-                int current = stack.pop();
-                group.add(current);
-                for (int next : reverse.get(current)) {
-                    if (component[next] != -1) continue;
-                    component[next] = id;
-                    stack.push(next);
-                }
-            }
-        }
-        return new Result(component, groups);
+static void assign(int cur, int id) {
+    component[cur] = id;
+    for (int next : reverse.get(cur)) {
+        if (component[next] == -1) assign(next, id);
     }
+}
+
+static int decompose(int n) {
+    for (int v = 0; v < n; v++) {
+        if (!visited[v]) finish(v);
+    }
+    int count = 0;
+    for (int i = finishOrder.size() - 1; i >= 0; i--) {
+        int start = finishOrder.get(i);
+        if (component[start] != -1) continue;
+        assign(start, count++);
+    }
+    return count;
 }
 ```
 
-> [!info]- 원리와 코드 설명
+## 왜 이렇게 쓰나
+
+- 처음 만난 순서가 아니라 **자식 탐색을 마친 종료 순서**를 기록한다. SCC 사이 A→B가 있으면 A의 가장 늦은 종료가 B보다 늦다.
+- 종료 역순으로 골라 **역방향**을 탐색해야 아직 안 묶은 다음 SCC로 흘러가지 않는다.
+- 두 번째 탐색은 component=−1을 미방문 표시로 쓴다. 첫 탐색의 visited는 이미 모두 true다.
+
+**작게 추적:** `0↔1,1→2`: 종료 `[2,1,0]` → 역순 0에서 뒤집힌 간선으로 `{0,1}` → 2 혼자 → SCC 2개. 압축하면 `{0,1}→{2}`인 DAG다.
+
+> [!info]- 더 자세한 설명
+> ### 기존 전체 구현의 개념과 적용 조건
+>
+> SCC(강한 연결 요소)는 유향 그래프에서 서로 왕복할 수 있는 정점들을 가능한 한 크게 묶은 집합이다. 각 SCC를 하나의 정점으로 압축하면 DAG가 되므로, 순환하는 관계를 하나의 덩어리로 처리한 뒤 덩어리 사이의 선후 관계를 다룰 수 있다.
+>
+> ## 적용 조건
+>
+> - 정점은 `0 ~ n-1`, `edges[i] = {출발, 도착}`인 유향 그래프다. 같은 두 정점 사이의 중복 간선과 자기 루프가 있어도 된다.
+> - `component[v]`는 정점 v의 SCC 번호, `groups[id]`는 그 SCC의 정점 목록, `count`는 SCC 개수다. 번호는 `0 ~ count-1`이며 정점 목록은 정렬되지 않는다.
+> - Kosaraju 알고리즘이다. 원래 그래프에서 DFS의 **종료 순서**를 구하고, 그 역순으로 역방향 그래프를 탐색한다.
+> - 시간 `O(V+E)`, 그래프·종료 순서·명시적 스택을 포함한 공간 `O(V+E)`다. 두 탐색 모두 반복문이므로 재귀 호출 깊이에 의존하지 않는다.
+> - `n = 0`이면 SCC 개수는 0이고 결과 배열과 목록도 비어 있다.
 >
 > ### 1. 연결되어 있다는 것과 서로 왕복할 수 있다는 것은 다르다
 >
@@ -167,3 +131,162 @@ class SCC {
 > - [[DFS와 그래프]] — DFS가 들어가는 시점과 종료되는 시점의 차이
 > - [[위상 정렬]] — SCC를 압축한 DAG의 선후 관계
 > - [[유니온 파인드와 MST]] — 무방향 집합 연결과 유향 왕복 관계의 차이
+
+> [!example]- 준비 코드 · 전체 구현
+> ### 위 핵심의 준비 코드와 실행 예
+>
+> 필드·초기화·헬퍼를 포함하며, main의 숫자 사례를 그대로 실행할 수 있다. 새 입력을 풀 때는 배열·큐·방문 상태를 새로 준비한다.
+>
+> ```java
+> import java.util.*;
+>
+> class GraphKernel7 {
+>     static List<List<Integer>> graph, reverse;
+>     static boolean[] visited;
+>     static int[] component;
+>     static List<Integer> finishOrder;
+>
+>     static void finish(int cur) {
+>         visited[cur] = true;
+>         for (int next : graph.get(cur)) {
+>             if (!visited[next]) finish(next);
+>         }
+>         finishOrder.add(cur);
+>     }
+>
+>     static void assign(int cur, int id) {
+>         component[cur] = id;
+>         for (int next : reverse.get(cur)) {
+>             if (component[next] == -1) assign(next, id);
+>         }
+>     }
+>
+>     static int decompose(int n) {
+>         for (int v = 0; v < n; v++) {
+>             if (!visited[v]) finish(v);
+>         }
+>         int count = 0;
+>         for (int i = finishOrder.size() - 1; i >= 0; i--) {
+>             int start = finishOrder.get(i);
+>             if (component[start] != -1) continue;
+>             assign(start, count++);
+>         }
+>         return count;
+>     }
+>
+>     static List<List<Integer>> lists(int n) {
+>         List<List<Integer>> result = new ArrayList<>();
+>         for (int i = 0; i < n; i++) result.add(new ArrayList<>());
+>         return result;
+>     }
+>
+>     static void check(boolean success, String message) {
+>         if (!success) throw new AssertionError(message);
+>     }
+>
+>     public static void main(String[] args) {
+>         int n = 6;
+>         graph = lists(n);
+>         reverse = lists(n);
+>         for (int[] edge : new int[][] {{0,1},{1,2},{2,0},{2,3},{3,4},{4,3},{4,5}}) {
+>             graph.get(edge[0]).add(edge[1]);
+>             reverse.get(edge[1]).add(edge[0]);
+>         }
+>         visited = new boolean[n];
+>         component = new int[n];
+>         Arrays.fill(component, -1);
+>         finishOrder = new ArrayList<>();
+>         check(decompose(n) == 3, "three SCCs");
+>         check(Arrays.equals(component, new int[] {0,0,0,1,1,2}), "finish reverse and transpose");
+>         graph = lists(3);
+>         reverse = lists(3);
+>         visited = new boolean[3];
+>         component = new int[] {-1,-1,-1};
+>         finishOrder.clear();
+>         check(decompose(3) == 3, "isolated SCCs");
+>         System.out.println("PASS SCC");
+>     }
+> }
+> ```
+>
+> ### 기존 전체 구현
+>
+>
+> ```java
+> import java.util.*;
+>
+> class SCC {
+>     static class Result {
+>         final int count;
+>         final int[] component;
+>         final List<List<Integer>> groups;
+>
+>         Result(int[] component, List<List<Integer>> groups) {
+>             this.count = groups.size();
+>             this.component = component;
+>             this.groups = groups;
+>         }
+>     }
+>
+>     static Result decompose(int n, int[][] edges) {
+>         List<List<Integer>> graph = new ArrayList<>();
+>         List<List<Integer>> reverse = new ArrayList<>();
+>         for (int i = 0; i < n; i++) {
+>             graph.add(new ArrayList<>());
+>             reverse.add(new ArrayList<>());
+>         }
+>         for (int[] edge : edges) {
+>             graph.get(edge[0]).add(edge[1]);
+>             reverse.get(edge[1]).add(edge[0]);
+>         }
+>
+>         boolean[] visited = new boolean[n];
+>         int[] nextEdge = new int[n];
+>         List<Integer> finishOrder = new ArrayList<>();
+>         Deque<Integer> stack = new ArrayDeque<>();
+>
+>         for (int start = 0; start < n; start++) {
+>             if (visited[start]) continue;
+>             visited[start] = true;
+>             stack.push(start);
+>             while (!stack.isEmpty()) {
+>                 int current = stack.peek();
+>                 if (nextEdge[current] == graph.get(current).size()) {
+>                     stack.pop();
+>                     finishOrder.add(current); // 모든 자식 처리가 끝난 시점
+>                 } else {
+>                     int next = graph.get(current).get(nextEdge[current]++);
+>                     if (!visited[next]) {
+>                         visited[next] = true;
+>                         stack.push(next);
+>                     }
+>                 }
+>             }
+>         }
+>
+>         int[] component = new int[n];
+>         Arrays.fill(component, -1);
+>         List<List<Integer>> groups = new ArrayList<>();
+>
+>         for (int i = finishOrder.size() - 1; i >= 0; i--) {
+>             int start = finishOrder.get(i);
+>             if (component[start] != -1) continue;
+>             int id = groups.size();
+>             List<Integer> group = new ArrayList<>();
+>             groups.add(group);
+>             component[start] = id;
+>             stack.push(start);
+>             while (!stack.isEmpty()) {
+>                 int current = stack.pop();
+>                 group.add(current);
+>                 for (int next : reverse.get(current)) {
+>                     if (component[next] != -1) continue;
+>                     component[next] = id;
+>                     stack.push(next);
+>                 }
+>             }
+>         }
+>         return new Result(component, groups);
+>     }
+> }
+> ```
