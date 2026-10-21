@@ -1,39 +1,22 @@
-# algo-docs
+---
+type: guide
+level: guide
+---
 
-알고리즘/자료구조 학습 노트 저장소입니다.
-README는 자주 바뀌는 상세 목차 대신, 오래 유지되는 구조 원칙만 관리합니다.
+# algorithm-note
 
-## 목적
-- 개념을 빠르게 복습할 수 있는 개인 레퍼런스 유지
-- Java 기준 구현 패턴 축적
-- 문제 풀이 전에 핵심 체크리스트를 즉시 확인
+시작은 [[00 시작하기]]. 학습 순서는 [[01 학습 순서]], 문제를 읽고 도구를 고를 때는 [[02 유형 선택표]], 연결 관계는 [[03 그래프 지도]]를 본다.
 
-## 폴더 규칙
-- `notes/Foundations`: 자료구조, 수학, 복잡도 등 기초
-- `notes/Topics`: 알고리즘 주제별 정리 (예: Graph, DP, Greedy, Tree, String)
-- `notes/Techniques`: 공통 풀이 테크닉 (예: Two Pointers, Sliding Window, Parametric Search)
-- `templates/`: 노트 작성 템플릿
-- `inbox/`: 임시 메모, TODO, 초안
-- `attachments/`: 이미지/첨부 자료
+| 위치 | 내용 |
+|---|---|
+| `10 Java` | 기본 구문·정렬·해시·스택과 큐 |
+| `20 구간` | 누적합·해시 조합·투 포인터·윈도우·이분 탐색 |
+| `30 탐색` | 완전탐색·DFS·BFS·백트래킹 |
+| `40 최적화` | 그리디·힙·DP·다익스트라, 후반 그래프 확장 |
+| `90 심화` | 핵심 다음에 필요한 템플릿과 고급 주제 진입 기준 |
+| `templates` | 새 주제 노트를 추가할 때 쓰는 양식 하나 |
+| `attachments` | 기존 이미지·첨부 보존 |
 
-## 분류 원칙
-- 폴더 깊이는 최대 2단계를 기본으로 유지
-- 분류가 애매하면 우선 `_notes/Topics`에 배치
-- 세부 재분류는 노트가 쌓일 때만 수행
+노트는 **암기 한 줄 → 사용할 조건 → 템플릿 → 숫자로 이해 → 실수** 형식으로 통일한다. 데일리 노트는 사용하지 않는다.
 
-## 문서 작성 규칙
-모든 주제 문서는 아래 흐름을 기본으로 작성합니다.
-- 한 줄 요약
-- Core Concept (언제 쓰는지 / 핵심 아이디어)
-- API & State Change (연산과 상태 변화)
-- Patterns (자주 쓰는 코드 패턴)
-- Pitfalls & Tips (실수/디버깅 포인트)
-
-새 문서는 `_templates/Main Template.md`를 복사해 시작합니다.
-
-## B형 대비 빠른 진입
-- 최적화 전략: `_notes/Techniques/B_Type_Optimization_Playbook.md`
-- 주제별 최적화: `_notes/Techniques/Topic_Optimization_Strategies.md`
-- 자바 성능 팁: `_notes/Techniques/Java_Fast_IO_and_Memory.md`
-- 60% 축: `Dijkstra`, `Priority_Queue`, `Bucket`, `Union_Find`
-- 40% 축: `DFS`, `Segment_Tree`, `Trie`, `Game_Basics`, `Hash`
+2026-10-21에 전체 구조를 정리했다. 원본과 복구 정보는 볼트 밖 `/Users/ryanmin/Documents/ChatGPT/algorithm-note-rework-20261021-221904/original`에 보관했다. 원본을 볼트 안에 다시 넣으면 중복 노트가 검색과 그래프에 나타난다.

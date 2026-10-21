@@ -1,186 +1,218 @@
 {
   "items": [
     {
+      "type": "file",
+      "path": "00 시작하기.md",
+      "title": "시작하기",
+      "ctime": 1792588800000
+    },
+    {
+      "type": "file",
+      "path": "01 학습 순서.md",
+      "title": "학습 순서",
+      "ctime": 1792588800000
+    },
+    {
+      "type": "file",
+      "path": "02 유형 선택표.md",
+      "title": "유형 선택표",
+      "ctime": 1792588800000
+    },
+    {
       "type": "group",
-      "ctime": 1772868249193,
+      "ctime": 1792588800000,
+      "title": "학습 그래프",
       "items": [
         {
           "type": "graph",
-          "ctime": 1773638460791,
-          "title": "기본",
+          "ctime": 1792588800000,
+          "title": "핵심 17개",
           "options": {
             "collapse-filter": false,
-            "search": "",
-            "showTags": true,
+            "search": "[type:template] [level:core] -path:\"templates\"",
+            "showTags": false,
             "showAttachments": false,
-            "hideUnresolved": false,
-            "showOrphans": false,
-            "collapse-color-groups": true,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": false,
             "colorGroups": [
               {
-                "query": "[\"type\":algorithm]",
+                "query": "path:\"10 Java\"",
                 "color": {
                   "a": 1,
-                  "rgb": 15487336
+                  "rgb": 5089023
                 }
               },
               {
-                "query": "[\"type\":concept]",
+                "query": "path:\"20 구간\"",
                 "color": {
                   "a": 1,
-                  "rgb": 16701517
+                  "rgb": 15776074
                 }
               },
               {
-                "query": "[\"type\":data-structure]",
+                "query": "path:\"30 탐색\"",
                 "color": {
                   "a": 1,
-                  "rgb": 5264882
+                  "rgb": 5490572
                 }
               },
               {
-                "query": "[\"type\":technique]",
+                "query": "path:\"40 최적화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 9197250
-                }
-              }
-            ],
-            "collapse-display": true,
-            "showArrow": false,
-            "textFadeMultiplier": -2.5,
-            "nodeSizeMultiplier": 1,
-            "lineSizeMultiplier": 1,
-            "collapse-forces": true,
-            "centerStrength": 0.764409722222222,
-            "repelStrength": 20,
-            "linkStrength": 1,
-            "linkDistance": 30,
-            "scale": 0.21787418811433093,
-            "close": false
-          }
-        },
-        {
-          "type": "graph",
-          "ctime": 1772868261803,
-          "title": "작업용",
-          "options": {
-            "collapse-filter": false,
-            "search": "",
-            "showTags": true,
-            "showAttachments": false,
-            "hideUnresolved": false,
-            "showOrphans": false,
-            "collapse-color-groups": true,
-            "colorGroups": [
-              {
-                "query": "tag:#b-type",
-                "color": {
-                  "a": 1,
-                  "rgb": 15158332
+                  "rgb": 11833069
                 }
               },
               {
-                "query": "[\"status\":in-review]",
+                "query": "path:\"90 심화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 15973138
-                }
-              },
-              {
-                "query": "[\"status\":draft]",
-                "color": {
-                  "a": 1,
-                  "rgb": 9807270
-                }
-              },
-              {
-                "query": "[\"status\":done]",
-                "color": {
-                  "a": 1,
-                  "rgb": 3066993
+                  "rgb": 10066329
                 }
               }
             ],
             "collapse-display": true,
             "showArrow": false,
             "textFadeMultiplier": 0,
-            "nodeSizeMultiplier": 1,
+            "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
-            "collapse-forces": false,
-            "centerStrength": 0.764409722222222,
-            "repelStrength": 20,
-            "linkStrength": 1,
-            "linkDistance": 30,
-            "scale": 0.21787418811433093,
+            "collapse-forces": true,
+            "centerStrength": 0.5,
+            "repelStrength": 12,
+            "linkStrength": 0.7,
+            "linkDistance": 100,
+            "scale": 1,
             "close": true
           }
         },
         {
           "type": "graph",
-          "ctime": 1772868261804,
-          "title": "B형만",
+          "ctime": 1792588800000,
+          "title": "전체 템플릿",
           "options": {
             "collapse-filter": false,
-            "search": "tag:#b-type",
-            "showTags": true,
+            "search": "[type:template] -path:\"templates\"",
+            "showTags": false,
             "showAttachments": false,
-            "hideUnresolved": false,
-            "showOrphans": false,
-            "collapse-color-groups": true,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": false,
             "colorGroups": [
               {
-                "query": "tag:#b-type",
+                "query": "path:\"10 Java\"",
                 "color": {
                   "a": 1,
-                  "rgb": 15158332
+                  "rgb": 5089023
                 }
               },
               {
-                "query": "[\"type\":algorithm]",
+                "query": "path:\"20 구간\"",
                 "color": {
                   "a": 1,
-                  "rgb": 3447003
+                  "rgb": 15776074
                 }
               },
               {
-                "query": "[\"type\":concept]",
+                "query": "path:\"30 탐색\"",
                 "color": {
                   "a": 1,
-                  "rgb": 10181046
+                  "rgb": 5490572
                 }
               },
               {
-                "query": "[\"type\":data-structure]",
+                "query": "path:\"40 최적화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 3066993
+                  "rgb": 11833069
                 }
               },
               {
-                "query": "[\"type\":technique]",
+                "query": "path:\"90 심화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 15844367
+                  "rgb": 10066329
                 }
               }
             ],
             "collapse-display": true,
             "showArrow": false,
             "textFadeMultiplier": 0,
-            "nodeSizeMultiplier": 1,
+            "nodeSizeMultiplier": 1.1,
             "lineSizeMultiplier": 1,
-            "collapse-forces": false,
-            "centerStrength": 0.764409722222222,
-            "repelStrength": 20,
-            "linkStrength": 1,
-            "linkDistance": 30,
-            "scale": 0.21787418811433093,
+            "collapse-forces": true,
+            "centerStrength": 0.5,
+            "repelStrength": 12,
+            "linkStrength": 0.7,
+            "linkDistance": 100,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792588800000,
+          "title": "구간 집중",
+          "options": {
+            "collapse-filter": false,
+            "search": "[type:template] (path:\"20 구간\" OR file:\"해시\") -path:\"templates\"",
+            "showTags": false,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": false,
+            "colorGroups": [
+              {
+                "query": "path:\"10 Java\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5089023
+                }
+              },
+              {
+                "query": "path:\"20 구간\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15776074
+                }
+              },
+              {
+                "query": "path:\"30 탐색\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5490572
+                }
+              },
+              {
+                "query": "path:\"40 최적화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 11833069
+                }
+              },
+              {
+                "query": "path:\"90 심화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10066329
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1.1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": true,
+            "centerStrength": 0.5,
+            "repelStrength": 12,
+            "linkStrength": 0.7,
+            "linkDistance": 100,
+            "scale": 1,
             "close": true
           }
         }
-      ],
-      "title": "그래프뷰"
+      ]
     }
   ]
 }
