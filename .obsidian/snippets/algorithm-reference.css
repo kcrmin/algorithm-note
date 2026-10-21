@@ -1,0 +1,2 @@
+/* Keep reference metadata available for links and graph filters, out of the reading surface. */
+.algorithm-reference .metadata-container { display: none; }

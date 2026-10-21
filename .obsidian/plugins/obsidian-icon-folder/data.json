@@ -35,12 +35,5 @@
   "10 Java": "LiCode",
   "20 구간": "LiArrowLeftRight",
   "30 탐색": "LiNetwork",
-  "40 최적화": "LiChartNoAxesCombined",
-  "90 심화": "LiLibrary",
-  "templates": "LiLayoutTemplate",
-  "00 시작하기.md": "LiHouse",
-  "01 학습 순서.md": "LiListOrdered",
-  "02 유형 선택표.md": "LiListFilter",
-  "03 그래프 지도.md": "LiNetwork",
-  "README.md": "LiInfo"
+  "40 최적화": "LiChartNoAxesCombined"
 }

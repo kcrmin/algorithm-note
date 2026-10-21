@@ -1,35 +1,17 @@
 {
   "items": [
     {
-      "type": "file",
-      "path": "00 시작하기.md",
-      "title": "시작하기",
-      "ctime": 1792588800000
-    },
-    {
-      "type": "file",
-      "path": "01 학습 순서.md",
-      "title": "학습 순서",
-      "ctime": 1792588800000
-    },
-    {
-      "type": "file",
-      "path": "02 유형 선택표.md",
-      "title": "유형 선택표",
-      "ctime": 1792588800000
-    },
-    {
       "type": "group",
-      "ctime": 1792588800000,
-      "title": "학습 그래프",
+      "title": "알고리즘 그래프",
+      "ctime": 1792591200000,
       "items": [
         {
           "type": "graph",
-          "ctime": 1792588800000,
-          "title": "핵심 17개",
+          "ctime": 1792591200000,
+          "title": "전체",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] [level:core] -path:\"templates\"",
+            "search": "[type:template]",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -65,10 +47,38 @@
                 }
               },
               {
-                "query": "path:\"90 심화\"",
+                "query": "path:\"50 그래프 심화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 10066329
+                  "rgb": 15237759
+                }
+              },
+              {
+                "query": "path:\"60 구간 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 14394461
+                }
+              },
+              {
+                "query": "path:\"70 문자열\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5359573
+                }
+              },
+              {
+                "query": "path:\"80 수학과 상태\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15062895
+                }
+              },
+              {
+                "query": "path:\"90 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10989503
                 }
               }
             ],
@@ -88,11 +98,11 @@
         },
         {
           "type": "graph",
-          "ctime": 1792588800000,
-          "title": "전체 템플릿",
+          "ctime": 1792591200000,
+          "title": "그래프",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] -path:\"templates\"",
+            "search": "[type:template] (path:\"50 그래프 심화\" OR file:\"BFS\" OR file:\"DFS와 그래프\")",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -128,10 +138,38 @@
                 }
               },
               {
-                "query": "path:\"90 심화\"",
+                "query": "path:\"50 그래프 심화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 10066329
+                  "rgb": 15237759
+                }
+              },
+              {
+                "query": "path:\"60 구간 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 14394461
+                }
+              },
+              {
+                "query": "path:\"70 문자열\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5359573
+                }
+              },
+              {
+                "query": "path:\"80 수학과 상태\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15062895
+                }
+              },
+              {
+                "query": "path:\"90 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10989503
                 }
               }
             ],
@@ -151,11 +189,11 @@
         },
         {
           "type": "graph",
-          "ctime": 1792588800000,
-          "title": "구간 집중",
+          "ctime": 1792591200000,
+          "title": "구간과 자료구조",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] (path:\"20 구간\" OR file:\"해시\") -path:\"templates\"",
+            "search": "[type:template] (path:\"20 구간\" OR path:\"60 구간 자료구조\" OR path:\"90 자료구조\")",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -191,10 +229,220 @@
                 }
               },
               {
-                "query": "path:\"90 심화\"",
+                "query": "path:\"50 그래프 심화\"",
                 "color": {
                   "a": 1,
-                  "rgb": 10066329
+                  "rgb": 15237759
+                }
+              },
+              {
+                "query": "path:\"60 구간 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 14394461
+                }
+              },
+              {
+                "query": "path:\"70 문자열\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5359573
+                }
+              },
+              {
+                "query": "path:\"80 수학과 상태\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15062895
+                }
+              },
+              {
+                "query": "path:\"90 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10989503
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1.1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": true,
+            "centerStrength": 0.5,
+            "repelStrength": 12,
+            "linkStrength": 0.7,
+            "linkDistance": 100,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792591200000,
+          "title": "문자열",
+          "options": {
+            "collapse-filter": false,
+            "search": "[type:template] path:\"70 문자열\"",
+            "showTags": false,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": false,
+            "colorGroups": [
+              {
+                "query": "path:\"10 Java\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5089023
+                }
+              },
+              {
+                "query": "path:\"20 구간\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15776074
+                }
+              },
+              {
+                "query": "path:\"30 탐색\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5490572
+                }
+              },
+              {
+                "query": "path:\"40 최적화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 11833069
+                }
+              },
+              {
+                "query": "path:\"50 그래프 심화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15237759
+                }
+              },
+              {
+                "query": "path:\"60 구간 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 14394461
+                }
+              },
+              {
+                "query": "path:\"70 문자열\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5359573
+                }
+              },
+              {
+                "query": "path:\"80 수학과 상태\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15062895
+                }
+              },
+              {
+                "query": "path:\"90 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10989503
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1.1,
+            "lineSizeMultiplier": 1,
+            "collapse-forces": true,
+            "centerStrength": 0.5,
+            "repelStrength": 12,
+            "linkStrength": 0.7,
+            "linkDistance": 100,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792591200000,
+          "title": "DP와 상태",
+          "options": {
+            "collapse-filter": false,
+            "search": "[type:template] (path:\"40 최적화\" OR path:\"80 수학과 상태\")",
+            "showTags": false,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": false,
+            "colorGroups": [
+              {
+                "query": "path:\"10 Java\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5089023
+                }
+              },
+              {
+                "query": "path:\"20 구간\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15776074
+                }
+              },
+              {
+                "query": "path:\"30 탐색\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5490572
+                }
+              },
+              {
+                "query": "path:\"40 최적화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 11833069
+                }
+              },
+              {
+                "query": "path:\"50 그래프 심화\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15237759
+                }
+              },
+              {
+                "query": "path:\"60 구간 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 14394461
+                }
+              },
+              {
+                "query": "path:\"70 문자열\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 5359573
+                }
+              },
+              {
+                "query": "path:\"80 수학과 상태\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 15062895
+                }
+              },
+              {
+                "query": "path:\"90 자료구조\"",
+                "color": {
+                  "a": 1,
+                  "rgb": 10989503
                 }
               }
             ],

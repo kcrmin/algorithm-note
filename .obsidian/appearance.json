@@ -1,4 +1,7 @@
 {
   "theme": "obsidian",
-  "cssTheme": "Atom"
+  "cssTheme": "Atom",
+  "enabledCssSnippets": [
+    "algorithm-reference"
+  ]
 }
