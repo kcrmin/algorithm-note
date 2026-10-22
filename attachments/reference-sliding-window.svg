@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="280" viewBox="0 0 960 280"><title>Sliding Window: three answer timings</title><rect width="960" height="280" rx="8" fill="#252a31"/>
+<text x="22" y="59" fill="#dce1e8" font-family="Arial,sans-serif" font-size="19">Fixed Size</text>
+<rect x="210" y="16" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="317.5" y="45" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">EXPAND</text>
+<text x="317.5" y="72" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">오른쪽 추가</text>
+<text x="439" y="59" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="453" y="16" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="560.5" y="45" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">TRIM</text>
+<text x="560.5" y="72" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">길이가 k를 넘으면</text>
+<text x="682" y="59" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="696" y="16" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="803.5" y="45" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">ANSWER</text>
+<text x="803.5" y="72" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">길이가 k일 때</text>
+<text x="22" y="143" fill="#dce1e8" font-family="Arial,sans-serif" font-size="19">Longest Valid</text>
+<rect x="210" y="100" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="317.5" y="129" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">EXPAND</text>
+<text x="317.5" y="156" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">오른쪽 추가</text>
+<text x="439" y="143" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="453" y="100" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="560.5" y="129" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">SHRINK</text>
+<text x="560.5" y="156" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">위반하는 동안</text>
+<text x="682" y="143" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="696" y="100" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="803.5" y="129" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">ANSWER</text>
+<text x="803.5" y="156" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">유효해진 뒤</text>
+<text x="22" y="227" fill="#dce1e8" font-family="Arial,sans-serif" font-size="19">Shortest Valid</text>
+<rect x="210" y="184" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="317.5" y="213" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">EXPAND</text>
+<text x="317.5" y="240" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">오른쪽 추가</text>
+<text x="439" y="227" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="453" y="184" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="560.5" y="213" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">ANSWER</text>
+<text x="560.5" y="240" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">조건을 만족할 때</text>
+<text x="682" y="227" text-anchor="middle" fill="#aeb6c0" font-family="Arial" font-size="21">→</text>
+<rect x="696" y="184" width="215" height="73" rx="5" fill="#30363e" stroke="#626974"/>
+<text x="803.5" y="213" text-anchor="middle" fill="#f1f2f4" font-family="Arial,sans-serif" font-size="21" font-weight="600">SHRINK ↺</text>
+<text x="803.5" y="240" text-anchor="middle" fill="#c5cbd3" font-family="Arial,sans-serif" font-size="16">만족하는 동안 반복</text>
+</svg>

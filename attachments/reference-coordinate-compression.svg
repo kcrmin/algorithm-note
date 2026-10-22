@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="164" viewBox="0 0 960 164">
+<title>Coordinate Compression memory cue</title>
+<rect width="960" height="164" rx="8" fill="#252a31"/>
+<rect x="20.0" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="163.33333333333334" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">SORT</text>
+<text x="163.33333333333334" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">값 순서 정리</text>
+<text x="321.6666666666667" y="90" text-anchor="middle" font-family="Arial" font-size="22" fill="#aeb6c0">→</text>
+<rect x="336.6666666666667" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="480.0" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">UNIQUE</text>
+<text x="480.0" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">중복 제거</text>
+<text x="638.3333333333334" y="90" text-anchor="middle" font-family="Arial" font-size="22" fill="#aeb6c0">→</text>
+<rect x="653.3333333333334" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="796.6666666666667" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">RANK</text>
+<text x="796.6666666666667" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">0부터 번호 부여</text>
+</svg>

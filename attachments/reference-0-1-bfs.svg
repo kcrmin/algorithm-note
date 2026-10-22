@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="164" viewBox="0 0 960 164">
+<title>0-1 BFS memory cue</title>
+<rect width="960" height="164" rx="8" fill="#252a31"/>
+<rect x="20.0" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="163.33333333333334" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">POP FRONT</text>
+<text x="163.33333333333334" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">가장 가까운 후보</text>
+
+<rect x="336.6666666666667" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="480.0" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">0 → FRONT</text>
+<text x="480.0" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">현재 거리 유지</text>
+
+<rect x="653.3333333333334" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
+<text x="796.6666666666667" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">1 → BACK</text>
+<text x="796.6666666666667" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">다음 거리로 이동</text>
+</svg>

@@ -2,2541 +2,1286 @@
   "items": [
     {
       "type": "file",
+      "ctime": 1792693062846,
+      "path": "Index.md",
+      "title": "Index"
+    },
+    {
+      "type": "file",
       "ctime": 1792686512072,
       "path": "Search/Binary Search.md",
       "title": "Binary Search"
     },
     {
+      "type": "file",
+      "ctime": 1792693062846,
+      "path": "Graphs/Dijkstra.md",
+      "title": "Dijkstra"
+    },
+    {
       "type": "group",
-      "ctime": 1792641688205,
+      "ctime": 1792693062846,
       "title": "Algorithm Graph",
       "items": [
         {
           "type": "graph",
-          "ctime": 1792641688205,
-          "title": "Overview",
+          "ctime": 1792693062846,
+          "title": "All Algorithms",
           "options": {
             "collapse-filter": false,
-            "search": "[type:map]",
-            "showTags": false,
+            "search": "-file:Index",
+            "showTags": true,
             "showAttachments": false,
             "hideUnresolved": true,
             "showOrphans": true,
-            "collapse-color-groups": false,
+            "collapse-color-groups": true,
             "colorGroups": [
               {
-                "query": "[category:java-essentials]",
+                "query": "tag:#java",
                 "color": {
                   "a": 1,
-                  "rgb": 6333946
+                  "rgb": 9545140
                 }
               },
               {
-                "query": "[category:core-collections]",
+                "query": "tag:#search",
                 "color": {
                   "a": 1,
-                  "rgb": 10980346
+                  "rgb": 10860448
                 }
               },
               {
-                "query": "[category:exhaustive-search]",
+                "query": "tag:#ranges",
                 "color": {
                   "a": 1,
-                  "rgb": 16020150
+                  "rgb": 11970239
                 }
               },
               {
-                "query": "[category:binary-search]",
+                "query": "tag:#data-structures",
                 "color": {
                   "a": 1,
-                  "rgb": 16498468
+                  "rgb": 11906712
                 }
               },
               {
-                "query": "[category:two-pointers-windows]",
+                "query": "tag:#intervals",
                 "color": {
                   "a": 1,
-                  "rgb": 16347926
+                  "rgb": 12165537
                 }
               },
               {
-                "query": "[category:prefix-sums]",
+                "query": "tag:#graphs",
                 "color": {
                   "a": 1,
-                  "rgb": 3462041
+                  "rgb": 9152945
                 }
               },
               {
-                "query": "[category:range-queries]",
+                "query": "tag:#trees",
                 "color": {
                   "a": 1,
-                  "rgb": 1357990
+                  "rgb": 10860189
                 }
               },
               {
-                "query": "[category:string-algorithms]",
+                "query": "tag:#dp",
                 "color": {
                   "a": 1,
-                  "rgb": 2282478
+                  "rgb": 11051198
                 }
               },
               {
-                "query": "[category:traversal-trees]",
+                "query": "tag:#strings",
                 "color": {
                   "a": 1,
-                  "rgb": 8490232
+                  "rgb": 11122110
                 }
               },
               {
-                "query": "[category:connectivity-ordering]",
+                "query": "tag:#math",
                 "color": {
                   "a": 1,
-                  "rgb": 12616956
+                  "rgb": 12365713
                 }
               },
               {
-                "query": "[category:shortest-paths]",
+                "query": "tag:#geometry",
                 "color": {
                   "a": 1,
-                  "rgb": 16478597
-                }
-              },
-              {
-                "query": "[category:flow-matching]",
-                "color": {
-                  "a": 1,
-                  "rgb": 15235577
-                }
-              },
-              {
-                "query": "[category:dynamic-programming]",
-                "color": {
-                  "a": 1,
-                  "rgb": 8702998
-                }
-              },
-              {
-                "query": "[category:greedy]",
-                "color": {
-                  "a": 1,
-                  "rgb": 16436245
-                }
-              },
-              {
-                "query": "[category:number-theory]",
-                "color": {
-                  "a": 1,
-                  "rgb": 3003583
-                }
-              },
-              {
-                "query": "[type:map] [level:branch]",
-                "color": {
-                  "a": 1,
-                  "rgb": 13358561
-                }
-              },
-              {
-                "query": "[type:map] [level:root]",
-                "color": {
-                  "a": 1,
-                  "rgb": 16317180
+                  "rgb": 10398377
                 }
               }
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": -2.2,
-            "nodeSizeMultiplier": 1.15,
-            "lineSizeMultiplier": 0.8,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
             "collapse-forces": true,
-            "centerStrength": 0.35,
-            "repelStrength": 18,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
             "linkStrength": 0.7,
-            "linkDistance": 135,
-            "scale": 0.42,
+            "linkDistance": 130,
+            "scale": 0.6,
             "close": true
           }
         },
         {
           "type": "graph",
-          "ctime": 1792641688205,
-          "title": "All Algorithms",
+          "ctime": 1792693062846,
+          "title": "Java",
           "options": {
             "collapse-filter": false,
-            "search": "([type:template] OR [type:map])",
-            "showTags": false,
+            "search": "tag:#java",
+            "showTags": true,
             "showAttachments": false,
             "hideUnresolved": true,
             "showOrphans": true,
-            "collapse-color-groups": false,
+            "collapse-color-groups": true,
             "colorGroups": [
               {
-                "query": "[category:java-essentials]",
+                "query": "tag:#java",
                 "color": {
                   "a": 1,
-                  "rgb": 6333946
+                  "rgb": 9545140
                 }
               },
               {
-                "query": "[category:core-collections]",
+                "query": "tag:#search",
                 "color": {
                   "a": 1,
-                  "rgb": 10980346
+                  "rgb": 10860448
                 }
               },
               {
-                "query": "[category:exhaustive-search]",
+                "query": "tag:#ranges",
                 "color": {
                   "a": 1,
-                  "rgb": 16020150
+                  "rgb": 11970239
                 }
               },
               {
-                "query": "[category:binary-search]",
+                "query": "tag:#data-structures",
                 "color": {
                   "a": 1,
-                  "rgb": 16498468
+                  "rgb": 11906712
                 }
               },
               {
-                "query": "[category:two-pointers-windows]",
+                "query": "tag:#intervals",
                 "color": {
                   "a": 1,
-                  "rgb": 16347926
+                  "rgb": 12165537
                 }
               },
               {
-                "query": "[category:prefix-sums]",
+                "query": "tag:#graphs",
                 "color": {
                   "a": 1,
-                  "rgb": 3462041
+                  "rgb": 9152945
                 }
               },
               {
-                "query": "[category:range-queries]",
+                "query": "tag:#trees",
                 "color": {
                   "a": 1,
-                  "rgb": 1357990
+                  "rgb": 10860189
                 }
               },
               {
-                "query": "[category:string-algorithms]",
+                "query": "tag:#dp",
                 "color": {
                   "a": 1,
-                  "rgb": 2282478
+                  "rgb": 11051198
                 }
               },
               {
-                "query": "[category:traversal-trees]",
+                "query": "tag:#strings",
                 "color": {
                   "a": 1,
-                  "rgb": 8490232
+                  "rgb": 11122110
                 }
               },
               {
-                "query": "[category:connectivity-ordering]",
+                "query": "tag:#math",
                 "color": {
                   "a": 1,
-                  "rgb": 12616956
+                  "rgb": 12365713
                 }
               },
               {
-                "query": "[category:shortest-paths]",
+                "query": "tag:#geometry",
                 "color": {
                   "a": 1,
-                  "rgb": 16478597
-                }
-              },
-              {
-                "query": "[category:flow-matching]",
-                "color": {
-                  "a": 1,
-                  "rgb": 15235577
-                }
-              },
-              {
-                "query": "[category:dynamic-programming]",
-                "color": {
-                  "a": 1,
-                  "rgb": 8702998
-                }
-              },
-              {
-                "query": "[category:greedy]",
-                "color": {
-                  "a": 1,
-                  "rgb": 16436245
-                }
-              },
-              {
-                "query": "[category:number-theory]",
-                "color": {
-                  "a": 1,
-                  "rgb": 3003583
-                }
-              },
-              {
-                "query": "[type:map] [level:branch]",
-                "color": {
-                  "a": 1,
-                  "rgb": 13358561
-                }
-              },
-              {
-                "query": "[type:map] [level:root]",
-                "color": {
-                  "a": 1,
-                  "rgb": 16317180
+                  "rgb": 10398377
                 }
               }
             ],
             "collapse-display": true,
             "showArrow": false,
-            "textFadeMultiplier": -2.2,
-            "nodeSizeMultiplier": 1.15,
-            "lineSizeMultiplier": 0.8,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
             "collapse-forces": true,
-            "centerStrength": 0.35,
-            "repelStrength": 18,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
             "linkStrength": 0.7,
-            "linkDistance": 115,
-            "scale": 0.34,
+            "linkDistance": 130,
+            "scale": 1,
             "close": true
           }
         },
         {
-          "type": "group",
-          "ctime": 1792641688205,
-          "title": "Foundations",
-          "items": [
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Java Essentials",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:java-essentials]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Search",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#search",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Core Collections",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:core-collections]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Exhaustive Search",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:exhaustive-search]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            }
-          ]
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
         },
         {
-          "type": "group",
-          "ctime": 1792641688205,
-          "title": "Sequences",
-          "items": [
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Binary Search",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:binary-search]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Ranges",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#ranges",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Two Pointers and Windows",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:two-pointers-windows]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Prefix Sums",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:prefix-sums]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Range Queries",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:range-queries]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "String Algorithms",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:string-algorithms]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            }
-          ]
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
         },
         {
-          "type": "group",
-          "ctime": 1792641688205,
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Data Structures",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#data-structures",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Intervals",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#intervals",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
           "title": "Graphs",
-          "items": [
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Traversal and Trees",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:traversal-trees]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#graphs",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Connectivity and Ordering",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:connectivity-ordering]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Shortest Paths",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:shortest-paths]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Flow and Matching",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:flow-matching]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
-              }
-            }
-          ]
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
         },
         {
-          "type": "group",
-          "ctime": 1792641688205,
-          "title": "Optimization and Math",
-          "items": [
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Dynamic Programming",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:dynamic-programming]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Trees",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#trees",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Greedy Choices",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:greedy]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "DP",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#dp",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            },
-            {
-              "type": "graph",
-              "ctime": 1792641688205,
-              "title": "Number Theory",
-              "options": {
-                "collapse-filter": false,
-                "search": "[categories:number-theory]",
-                "showTags": false,
-                "showAttachments": false,
-                "hideUnresolved": true,
-                "showOrphans": true,
-                "collapse-color-groups": false,
-                "colorGroups": [
-                  {
-                    "query": "[category:java-essentials]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 6333946
-                    }
-                  },
-                  {
-                    "query": "[category:core-collections]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 10980346
-                    }
-                  },
-                  {
-                    "query": "[category:exhaustive-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16020150
-                    }
-                  },
-                  {
-                    "query": "[category:binary-search]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16498468
-                    }
-                  },
-                  {
-                    "query": "[category:two-pointers-windows]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16347926
-                    }
-                  },
-                  {
-                    "query": "[category:prefix-sums]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3462041
-                    }
-                  },
-                  {
-                    "query": "[category:range-queries]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 1357990
-                    }
-                  },
-                  {
-                    "query": "[category:string-algorithms]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 2282478
-                    }
-                  },
-                  {
-                    "query": "[category:traversal-trees]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8490232
-                    }
-                  },
-                  {
-                    "query": "[category:connectivity-ordering]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 12616956
-                    }
-                  },
-                  {
-                    "query": "[category:shortest-paths]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16478597
-                    }
-                  },
-                  {
-                    "query": "[category:flow-matching]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 15235577
-                    }
-                  },
-                  {
-                    "query": "[category:dynamic-programming]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 8702998
-                    }
-                  },
-                  {
-                    "query": "[category:greedy]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16436245
-                    }
-                  },
-                  {
-                    "query": "[category:number-theory]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 3003583
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:branch]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 13358561
-                    }
-                  },
-                  {
-                    "query": "[type:map] [level:root]",
-                    "color": {
-                      "a": 1,
-                      "rgb": 16317180
-                    }
-                  }
-                ],
-                "collapse-display": true,
-                "showArrow": false,
-                "textFadeMultiplier": -2.2,
-                "nodeSizeMultiplier": 1.15,
-                "lineSizeMultiplier": 0.8,
-                "collapse-forces": true,
-                "centerStrength": 0.35,
-                "repelStrength": 18,
-                "linkStrength": 0.7,
-                "linkDistance": 115,
-                "scale": 1,
-                "close": true
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Strings",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#strings",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
               }
-            }
-          ]
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Math",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#math",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
+        },
+        {
+          "type": "graph",
+          "ctime": 1792693062846,
+          "title": "Geometry",
+          "options": {
+            "collapse-filter": false,
+            "search": "tag:#geometry",
+            "showTags": true,
+            "showAttachments": false,
+            "hideUnresolved": true,
+            "showOrphans": true,
+            "collapse-color-groups": true,
+            "colorGroups": [
+              {
+                "query": "tag:#java",
+                "color": {
+                  "a": 1,
+                  "rgb": 9545140
+                }
+              },
+              {
+                "query": "tag:#search",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860448
+                }
+              },
+              {
+                "query": "tag:#ranges",
+                "color": {
+                  "a": 1,
+                  "rgb": 11970239
+                }
+              },
+              {
+                "query": "tag:#data-structures",
+                "color": {
+                  "a": 1,
+                  "rgb": 11906712
+                }
+              },
+              {
+                "query": "tag:#intervals",
+                "color": {
+                  "a": 1,
+                  "rgb": 12165537
+                }
+              },
+              {
+                "query": "tag:#graphs",
+                "color": {
+                  "a": 1,
+                  "rgb": 9152945
+                }
+              },
+              {
+                "query": "tag:#trees",
+                "color": {
+                  "a": 1,
+                  "rgb": 10860189
+                }
+              },
+              {
+                "query": "tag:#dp",
+                "color": {
+                  "a": 1,
+                  "rgb": 11051198
+                }
+              },
+              {
+                "query": "tag:#strings",
+                "color": {
+                  "a": 1,
+                  "rgb": 11122110
+                }
+              },
+              {
+                "query": "tag:#math",
+                "color": {
+                  "a": 1,
+                  "rgb": 12365713
+                }
+              },
+              {
+                "query": "tag:#geometry",
+                "color": {
+                  "a": 1,
+                  "rgb": 10398377
+                }
+              }
+            ],
+            "collapse-display": true,
+            "showArrow": false,
+            "textFadeMultiplier": 0,
+            "nodeSizeMultiplier": 1,
+            "lineSizeMultiplier": 0.6,
+            "collapse-forces": true,
+            "centerStrength": 0.25,
+            "repelStrength": 14,
+            "linkStrength": 0.7,
+            "linkDistance": 130,
+            "scale": 1,
+            "close": true
+          }
         }
       ]
     }

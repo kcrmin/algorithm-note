@@ -129,3 +129,13 @@
     font-weight: 500;
 }
 /* END algorithm-reference-sample */
+
+/* All approved catalog notes share the same restrained presentation. */
+.theme-dark .algorithm-reference-sample { color-scheme: dark; }
+.theme-light .algorithm-reference-sample { color-scheme: light; }
+.algorithm-reference-sample img[alt$="memory cue"] {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 22px auto 30px;
+}

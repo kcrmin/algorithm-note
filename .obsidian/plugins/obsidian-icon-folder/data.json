@@ -31,9 +31,5 @@
   "attachments": "LiFolderClosed",
   "attachments/images": "LiImage",
   "attachments/pdf": "LiFileText",
-  "attachments/files": "LiFiles",
-  "10 Java": "LiCode",
-  "20 Ranges": "LiArrowLeftRight",
-  "30 Search": "LiNetwork",
-  "40 Optimization": "LiChartNoAxesCombined"
+  "attachments/files": "LiFiles"
 }
