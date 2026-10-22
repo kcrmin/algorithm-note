@@ -16,7 +16,7 @@ categories: [shortest-paths]
 >
 > **조건** · 가중치 ≥ 0. 옛 후보를 제외하고 가장 가까운 정점을 꺼내면, 그 거리가 확정된다.
 >
-> **Edge → graph[v]** · `v → to` 간선 하나의 비용 `weight`. 정점 번호로 접근하며 각 리스트는 미리 생성.
+> **Edge → graph.get(v)** · `v → to` 간선 하나의 비용 `weight`. 정점마다 간선 목록 하나를 둔다.
 >
 > **State → pq** · `start → vertex`까지 도착한 후보의 누적 거리 `distance`.
 >
@@ -72,8 +72,8 @@ categories: [shortest-paths]
     }
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[] dijkstra(List&lt;Edge&gt;[] graph, <span class="algorithm-keyword">int</span> start) {
-    <span class="algorithm-keyword">long</span>[] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[graph.length];
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[] dijkstra(List&lt;List&lt;Edge&gt;&gt; graph, <span class="algorithm-keyword">int</span> start) {
+    <span class="algorithm-keyword">long</span>[] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[graph.size()];
     Arrays.fill(dist, Long.MAX_VALUE);
 
     PriorityQueue&lt;State&gt; pq = <span class="algorithm-keyword">new</span> PriorityQueue&lt;&gt;(
@@ -89,7 +89,7 @@ categories: [shortest-paths]
             <span class="algorithm-keyword">continue</span>;
         }
 
-        <span class="algorithm-keyword">for</span> (Edge edge : graph[v]) {
+        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
             <span class="algorithm-keyword">int</span> to = edge.to;
             <span class="algorithm-keyword">long</span> next = cur.distance + edge.weight;
 
@@ -109,17 +109,16 @@ categories: [shortest-paths]
 
 정점은 `0..n-1`, 입력 `edges[i]`는 `{from, to, weight}`, `start`는 시작 정점.
 
-<pre class="algorithm-code"><code>@SuppressWarnings("unchecked")
-List&lt;Edge&gt;[] graph = (List&lt;Edge&gt;[]) <span class="algorithm-keyword">new</span> List&lt;?&gt;[n];
+<pre class="algorithm-code"><code>List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);    <span class="algorithm-comment">// 용량만 확보; 원소는 아직 0개</span>
 <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-    graph[v] = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
 }
 
 <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
     <span class="algorithm-keyword">int</span> from = row[0], to = row[1], weight = row[2];
 
-    graph[from].add(<span class="algorithm-keyword">new</span> Edge(to, weight));
-    <span class="algorithm-comment">// <mark class="algorithm-change">graph[to].add(new Edge(from, weight));</mark>    // 무방향이면 주석 해제</span>
+    graph.get(from).add(<span class="algorithm-keyword">new</span> Edge(to, weight));
+    <span class="algorithm-comment">// <mark class="algorithm-change">graph.get(to).add(new Edge(from, weight));</mark>    // 무방향이면 주석 해제</span>
 }
 
 <span class="algorithm-keyword">long</span>[] dist = dijkstra(graph, start);</code></pre>
