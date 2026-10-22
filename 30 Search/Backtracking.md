@@ -6,27 +6,26 @@ tags: ["Search"]
 # Backtracking
 
 ```java
+// int[] numbers는 서로 다른 후보, int targetSize는 뽑을 개수.
+// used는 new boolean[numbers.length].
+// List<Integer> path, List<List<Integer>> answer는 각각 빈 ArrayList.
+// 빈 path에서 dfs(0) 호출. 한 가지 탐색이 끝나면 선택 직전 상태로 복구한다.
 static void dfs(int depth) {
-    if (depth == targetSize) {
-        answer.add(new ArrayList<>(path)); // ①
+    if (depth == targetSize) { // 완성되면 더 고르지 않고 이 가지를 끝냄
+        // path는 곧 바뀌므로 현재 내용의 복사본 저장
+        answer.add(new ArrayList<>(path));
         return;
     }
     for (int i = 0; i < numbers.length; i++) {
-        if (used[i]) continue;
+        if (used[i]) continue; // 같은 인덱스를 한 경로에서 두 번 고르지 않음
         used[i] = true;
         path.add(numbers[i]);
         dfs(depth + 1);
-        path.remove(path.size() - 1); // ②
-        used[i] = false;
+        path.remove(path.size() - 1); // 이번에 추가한 마지막 값만 제거
+        used[i] = false; // 다음 형제 가지에서도 이 후보를 고를 수 있게 복구
     }
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| 선택 → 재귀 → 복구 | 형제 가지는 같은 출발 상태에서 시작해야 한다. |
-| ① 복사해서 저장 | 원본 path는 다음 복구에서 다시 바뀐다. |
-| ② 값이 아닌 마지막 인덱스 | 이번 재귀 직전에 추가한 선택만 제거한다. |
 
 **예시**
 
@@ -36,10 +35,6 @@ static void dfs(int depth) {
           ← [1] 복구 → [1,3] 저장
    ← [] 복구 → [2] …
 ```
-
-**적용** 서로 다른 n개 중 r개를 순서 있게 뽑을 때, 선택을 복구하며 모든 후보를 만든다.
-
-**준비** 필드 `int[] numbers`, `int targetSize=r`. `boolean[] used=new boolean[numbers.length]`, `List<Integer> path`, `List<List<Integer>> answer`를 새로 준비하고 `dfs(0)` 호출. 두 List는 빈 ArrayList다.
 
 **주의** 같은 값이 여러 인덱스에 있으면 값 기준 중복 결과가 생긴다. O(n·P(n,r)) 시간, O(n+r) 보조 공간.
 

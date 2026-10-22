@@ -7,21 +7,17 @@ aliases: ["Two_Pointers", "Two Pointers"]
 # Two Pointers - Pair Sum
 
 ```java
+// arr는 오름차순. 서로 다른 두 원소의 합이 target인지 찾는다.
 int left = 0, right = arr.length - 1;
-while (left < right) {
+while (left < right) { // 같은 원소를 두 번 쓰지 않도록 두 위치가 달라야 한다.
+    // int끼리 먼저 더하면 넘칠 수 있어 덧셈 전 long으로 바꾼다.
     long sum = (long) arr[left] + arr[right];
     if (sum == target) return true;
-    if (sum < target) left++;
-    else right--;
+    if (sum < target) left++; // 현재 left는 가장 큰 right와도 부족하다.
+    else right--; // 현재 right는 가장 작은 left와도 너무 크다.
 }
 return false;
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| `sum < target` → left++ | 현재 왼쪽 값은 가장 큰 오른쪽 값과 더해도 부족하다. |
-| `sum > target` → right-- | 현재 오른쪽 값은 가장 작은 왼쪽 값과 더해도 너무 크다. |
-| `left < right` | 같은 원소를 두 번 쓰지 않는다. |
 
 **예시**
 
@@ -31,10 +27,6 @@ arr   -3  -1   2   4   8      target=6
            L           R      합7 → R--
            L       R          합3 → L++ → 2+4=6 ✓
 ```
-
-**적용** 정렬된 배열에서 합이 target인 서로 다른 두 원소. 연속 구간을 더하는 문제가 아니다.
-
-**준비** `arr`, `target`을 받는 boolean 메서드 내부.
 
 **주의** 오름차순 필수. 덧셈 전 long 변환. 탐색 O(n), 정렬 필요 시 O(n log n) 추가.
 

@@ -6,6 +6,8 @@ tags: ["Graphs"]
 # Dijkstra
 
 ```java
+// 모든 간선 비용≥0. graph는 List<Node>[], INF=Long.MAX_VALUE/4.
+// Node.cost는 graph에서 간선 비용, Heap에서 누적 거리. 도달 불가는 INF.
 static class Node {
     int vertex; long cost;
     Node(int v, long c) { vertex = v; cost = c; }
@@ -13,28 +15,26 @@ static class Node {
 static long[] dijkstra(int source) {
     long[] dist = new long[graph.length];
     Arrays.fill(dist, INF);
+    // 누적 거리가 가장 작은 후보부터
     PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a.cost));
     dist[source] = 0;
     pq.offer(new Node(source, 0));
     while (!pq.isEmpty()) {
         Node cur = pq.poll();
-        if (cur.cost != dist[cur.vertex]) continue; // ①
+        // Heap에 남은 옛 후보 제거; 유효한 최소 후보의 거리는 확정
+        if (cur.cost != dist[cur.vertex]) continue;
         for (Node edge : graph[cur.vertex]) {
             long next = cur.cost + edge.cost;
+            // 더 짧은 경우에만 갱신해 같은 후보 반복 방지
             if (next >= dist[edge.vertex]) continue;
             dist[edge.vertex] = next;
-            pq.offer(new Node(edge.vertex, next)); // ②
+            // Heap 안 옛 값을 고치지 않고 새 거리 후보를 추가
+            pq.offer(new Node(edge.vertex, next));
         }
     }
     return dist;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① 옛 후보 제거 | Heap에는 넣을 당시의 거리가 남아 있으므로 현재 dist와 비교한다. |
-| ② 개선할 때 다시 넣기 | 음수가 없어 최소 유효 후보를 꺼낼 때 그 거리가 확정된다. |
-| 목적지에서 조기 종료 | Heap에 넣을 때가 아니라 유효 후보로 꺼낸 뒤 종료한다. |
 
 **예시**
 
@@ -44,10 +44,6 @@ static long[] dijkstra(int source) {
 1:3을 먼저 꺼냄 → 거리 3 확정
 1:8은 옛 후보라 버림
 ```
-
-**적용** 간선 비용이 모두 0 이상일 때, 한 출발점에서의 최단거리를 구한다.
-
-**준비** `List<Node>[] graph`; 간선 Node의 cost는 비용, Heap Node의 cost는 누적 거리. INF는 `Long.MAX_VALUE/4`.
 
 **주의** 음수 간선 제외. 도달 불가=INF, 거리 합은 INF 미만. O(V+E log(E+2)) 시간, O(V+E) 공간.
 

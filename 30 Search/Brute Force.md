@@ -7,22 +7,20 @@ aliases: ["Exhaustive Search"]
 # Brute Force
 
 ```java
+// 서로 다른 두 인덱스의 합이 target인 쌍을 센다.
+// 모든 후보를 확인하므로 n이 작을 때 사용한다.
 static long countPairs(int[] numbers, long target) {
     long count = 0;
     for (int i = 0; i < numbers.length; i++) {
-        for (int j = i + 1; j < numbers.length; j++) { // ①
+        // i<j만 생성: 자기 자신과 역순 쌍 중복 제거
+        for (int j = i + 1; j < numbers.length; j++) {
+            // 더하기 전에 long으로 바꿔 int overflow 방지
             if ((long) numbers[i] + numbers[j] == target) count++;
         }
     }
     return count;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① j = i + 1 | i<j만 만들면 자기 자신과 (j,i) 중복이 사라진다. |
-| 먼저 long으로 변환 | int끼리 더한 뒤 변환하면 이미 overflow가 날 수 있다. |
-| 후보 생성 → 검사 → 집계 | 누락과 중복은 검사식보다 후보 생성 범위에서 먼저 결정된다. |
 
 **예시**
 
@@ -32,10 +30,6 @@ static long countPairs(int[] numbers, long target) {
 i=0 → j=1,2,3    i=1 → j=2,3
 자기 자신과 역순 쌍은 만들지 않음 → 답 2
 ```
-
-**적용** 가능한 후보 수를 전부 검사해도 시간 제한 안에 들어갈 때 사용한다.
-
-**준비** 예시는 서로 다른 두 인덱스의 합이 target인 쌍의 개수다.
 
 **주의** n²가 너무 크면 정렬·HashMap 등으로 후보를 줄여야 한다. O(n²) 시간, O(1) 공간.
 

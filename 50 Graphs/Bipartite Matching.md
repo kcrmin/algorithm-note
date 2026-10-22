@@ -7,11 +7,16 @@ aliases: ["Kuhn Algorithm"]
 # Bipartite Matching
 
 ```java
+// graph[left]는 가능한 right 목록. owner[right]=-1, seen[left]=0으로 시작.
+// owner는 오른쪽 자리의 왼쪽 주인. 두 그룹은 이미 나뉘어 있어야 한다.
 static boolean augment(int left, int searchId) {
+    // 이번 재배치에서 같은 주인을 다시 따라가면 순환
     if (seen[left] == searchId) return false;
     seen[left] = searchId;
     for (int right : graph[left]) {
-        if (owner[right] == -1 || augment(owner[right], searchId)) { // ①
+        // 빈 자리 또는 기존 주인을 옮길 수 있는 자리
+        if (owner[right] == -1 || augment(owner[right], searchId)) {
+            // 재배치 성공 뒤에만 바꿔 실패한 탐색은 기존 배정 유지
             owner[right] = left;
             return true;
         }
@@ -21,17 +26,12 @@ static boolean augment(int left, int searchId) {
 static int maximumMatching(int leftCount) {
     int size = 0;
     for (int left = 0; left < leftCount; left++) {
-        if (augment(left, left + 1)) size++; // ②
+        // 새 탐색 번호로 이전에 봤던 주인도 다시 재배치 가능
+        if (augment(left, left + 1)) size++;
     }
     return size;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① 빈 자리 또는 주인 재배치 | 빈 자리만 찾으면 L1을 배정하지 못해 최댓값을 놓친다. |
-| 성공했을 때만 owner 교체 | 실패한 경로는 기존 배정을 망가뜨리면 안 된다. |
-| ② 탐색마다 새 searchId | 이전 탐색에서 본 주인도 새 경로에서는 다시 옮길 수 있다. |
 
 **예시**
 
@@ -41,10 +41,6 @@ static int maximumMatching(int leftCount) {
 추가  L1 → R0 → L0 → R1 (기존 주인을 이동)
 최종  L1—R0        L0—R1 → 2개
 ```
-
-**적용** 이미 나뉜 왼쪽/오른쪽 후보 사이에서 겹치지 않는 일대일 배정을 최대화한다.
-
-**준비** `graph[left]`는 가능한 right 목록. `owner[right]=-1`, `seen[left]=0`으로 시작.
 
 **주의** Kuhn 방식. 일반 Graph 매칭에는 적용할 수 없다. O(L·E+L+R) 시간, O(L+R+E) 공간.
 

@@ -6,25 +6,23 @@ aliases: ["Longest Increasing Subsequence"]
 # LIS
 
 ```java
-int[] tails = new int[arr.length];
+// 엄격히 증가하는 부분 수열의 길이. 같은 값으로는 길이를 늘리지 않는다.
+int[] tails = new int[arr.length]; // tails[i] = 길이 i+1인 수열의 가능한 최소 끝값.
 int size = 0;
 for (int value : arr) {
     int left = 0, right = size;
     while (left < right) {
         int mid = left + (right - left) / 2;
-        if (tails[mid] >= value) right = mid; // ①
+        // 같은 값도 교체하도록 value 이상인 첫 자리를 찾는다.
+        if (tails[mid] >= value) right = mid;
         else left = mid + 1;
     }
-    tails[left] = value;                     // ②
+    tails[left] = value; // 같은 길이라면 끝값이 작을수록 나중에 붙일 값이 많다.
+    // 기존 끝값보다 커서 새 길이를 만들 수 있을 때만 연장한다.
     if (left == size) size++;
 }
+// 답은 size. tails 자체가 실제로 선택한 수열은 아니다.
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① value 이상인 첫 자리 | 같은 값은 교체해야 중복으로 길이가 늘지 않는다. |
-| ② 더 작은 끝값으로 교체 | 길이가 같으면 끝값이 작을수록 뒤에 붙일 수가 많다. |
-| left == size면 연장 | 기존 끝값보다 커서 길이 하나를 새로 만들 수 있다. |
 
 **예시**
 
@@ -34,10 +32,6 @@ for (int value : arr) {
                              ↑ 교체      ↑ 연장
 길이          1      2        2         3
 ```
-
-**적용** 원래 순서를 지키며 고른 엄격히 증가하는 부분 수열의 최대 길이를 구한다.
-
-**준비** `tails[i]` = 길이 i+1인 증가 수열의 가능한 최소 끝값.
 
 **주의** tails 자체가 실제 선택한 수열은 아니다. 길이 답은 size. O(n log n) 시간, O(n) 공간.
 

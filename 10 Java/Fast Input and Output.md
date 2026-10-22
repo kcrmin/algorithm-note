@@ -6,21 +6,20 @@ tags: ["Java"]
 # Fast Input and Output
 
 ```java
+// java.io.*, java.util.* 필요. main ... throws Exception 내부 예시.
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+// 한 줄을 읽어 나눠 쓰면 숫자마다 입력을 새로 요청하지 않는다.
 StringTokenizer st = new StringTokenizer(br.readLine());
+// nextToken은 현재 줄의 다음 값이다. 다음 줄은 Tokenizer도 새로 만든다.
 int a = Integer.parseInt(st.nextToken());
 int b = Integer.parseInt(st.nextToken());
 
+// 출력을 모아 한 번 보내면 반복 출력 호출 비용을 줄인다.
 StringBuilder out = new StringBuilder();
+// 덧셈 전 long 변환으로 int 합의 넘침을 막는다.
 out.append((long) a + b).append('\n');
 System.out.print(out);
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| `readLine → StringTokenizer` | 읽는 단위는 한 줄, 꺼내는 단위는 공백으로 나눈 값이다. |
-| `StringBuilder → print` | 출력을 쌓아 한 번 보내면 반복 출력 비용을 줄인다. |
-| `(long) a + b` | 덧셈 전에 long으로 바꿔야 int 넘침을 막는다. |
 
 **예시**
 
@@ -29,10 +28,6 @@ System.out.print(out);
                       → nextToken → "12", "7"
                       → parseInt  → 12, 7 → 출력 19
 ```
-
-**적용** 입력을 많이 읽고 출력할 때. 아래 예시는 한 줄에 정수 두 개.
-
-**준비** `java.io.*`, `java.util.*` 사용. `main ... throws Exception` 내부.
 
 **주의** 다음 줄은 br.readLine()으로 읽고 StringTokenizer도 새로 만든다.
 

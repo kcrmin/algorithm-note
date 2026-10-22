@@ -6,21 +6,18 @@ aliases: ["Greedy_Basics", "Interval Scheduling"]
 # Greedy
 
 ```java
-Arrays.sort(meetings, Comparator.comparingInt(a -> a[1])); // ①
-int end = Integer.MIN_VALUE;
+// meetings[i]={시작,끝}, 시작<끝. 겹치지 않는 회의의 최대 개수.
+// 일찍 끝나는 회의로 바꿔도 뒤 회의를 방해하지 않는다.
+Arrays.sort(meetings, Comparator.comparingInt(a -> a[1]));
+int end = Integer.MIN_VALUE; // 첫 회의는 시작 시각과 관계없이 선택 가능하다.
 int answer = 0;
 for (int[] meeting : meetings) {
-    if (meeting[0] < end) continue;                       // ②
+    // 이전 끝과 시작이 같으면 연달아 진행할 수 있다.
+    if (meeting[0] < end) continue;
     answer++;
-    end = meeting[1];
+    end = meeting[1]; // 방금 확정한 회의의 끝이 다음 선택의 기준이다.
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① 가장 일찍 끝나는 회의 | 최적해의 첫 회의를 이것으로 바꿔도 뒤 회의와 겹치지 않는다. |
-| ② 시작 < 이전 끝이면 제외 | 끝과 시작이 같으면 연달아 진행할 수 있다. |
-| 선택 뒤 end 갱신 | 이후 회의는 방금 확정한 회의의 끝을 기준으로 고른다. |
 
 **예시**
 
@@ -30,10 +27,6 @@ for (int[] meeting : meetings) {
 선택         ✓       ×       ✓
 다음 시작은 이전 끝 이상: 3 ≥ 3
 ```
-
-**적용** 지금의 선택을 확정해도 최적해가 남을 때. 아래는 겹치지 않는 회의를 최대한 많이 고른다.
-
-**준비** `meetings[i] = {start, end}`, start < end.
 
 **주의** 수익 최대화에는 이 기준을 그대로 쓰면 안 된다. 정렬 포함 O(n log n).
 

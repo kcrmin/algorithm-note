@@ -7,26 +7,25 @@ aliases: ["Minimum Spanning Tree", "MST"]
 # Kruskal
 
 ```java
+// Union-Find 카드의 union 사용; parent[i]=i, size[i]=1로 매번 초기화.
+// edges의 각 원소는 {u,v,cost}. 무방향 Graph이며 음수 비용도 가능.
 static long kruskal(int n, int[][] edges) {
+    // 서로 다른 덩어리를 잇는 가장 싼 간선부터 선택
     Arrays.sort(edges, Comparator.comparingInt(edge -> edge[2]));
     long total = 0;
     int selected = 0;
     for (int[] edge : edges) {
-        if (!union(edge[0], edge[1])) continue; // ①
+        // 이미 같은 집합이면 경로가 있으므로 사이클이 생김
+        if (!union(edge[0], edge[1])) continue;
         total += edge[2];
         selected++;
-        if (selected == n - 1) break;
+        if (selected == n - 1) break; // Tree는 정점 V개를 간선 V-1개로 연결
     }
+    // 비용 합만으로는 전체 연결 성공을 알 수 없음
     if (selected != n - 1) throw new IllegalStateException("disconnected");
     return total;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| 싼 간선부터 선택 | 현재 덩어리들을 잇는 가장 싼 간선은 MST에 포함시켜도 된다. |
-| ① 다른 집합일 때만 선택 | 같은 집합이면 이미 경로가 있어 새 간선은 사이클을 만든다. |
-| 선택 수 = V-1 | 모든 정점이 연결되었는지 비용 합과 별개로 확인한다. |
 
 **예시**
 
@@ -36,10 +35,6 @@ static long kruskal(int n, int[][] edges) {
 0—2는 이미 연결되어 사이클 → 버림
 선택 3개 = V-1 → 비용 1+2+4 = 7
 ```
-
-**적용** 무방향 가중 Graph의 모든 정점을 연결하는 최소 비용 Tree를 구한다.
-
-**준비** `Union-Find`의 find/union과 새 parent/size 사용. `edges`는 `{u,v,cost}` 배열.
 
 **주의** 끊긴 Graph는 위 코드에서 예외. 음수 비용도 가능. O(E log E+V) 시간, O(V+E) 공간.
 

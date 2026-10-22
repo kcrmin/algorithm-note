@@ -7,21 +7,18 @@ aliases: ["Hash"]
 # Hashing
 
 ```java
+// names는 String 배열. 횟수가 필요하면 Map, 존재만 필요하면 Set.
 Map<String, Integer> count = new HashMap<>();
 for (String name : names) {
+    // 처음 나온 이름도 0회에서 시작해 같은 식으로 센다.
     count.put(name, count.getOrDefault(name, 0) + 1);
 }
 
 Set<String> unique = new HashSet<>();
 for (String name : names) {
-    unique.add(name);
+    unique.add(name); // 같은 값은 다시 넣지 않는다. 이미 있으면 false를 반환한다.
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| `getOrDefault(name, 0) + 1` | 처음 나온 값도 0회에서 시작해 같은 식으로 센다. |
-| `unique.add(name)` | 이미 있으면 false, 새 값이면 true다. |
 
 **예시**
 
@@ -30,10 +27,6 @@ for (String name : names) {
 Map      {민:2, 준:1}   ← 몇 번?
 Set      {민, 준}       ← 있었나?
 ```
-
-**적용** 값별 개수는 HashMap, 중복 없이 존재만 저장하면 HashSet.
-
-**준비** `names`는 String 배열. 컬렉션은 `java.util.*`.
 
 **주의** 순서를 보장하지 않는다. 조회·삽입 평균 O(1).
 

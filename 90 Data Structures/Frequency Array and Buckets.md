@@ -6,25 +6,23 @@ aliases: ["Counting Sort", "Bucket"]
 # Frequency Array and Buckets
 
 ```java
+// 0≤arr[i]≤maxValue. 값 범위가 작을 때 사용하며, 정렬된 새 배열을 반환한다.
 int[] sort(int[] arr, int maxValue) {
-    int[] count = new int[maxValue + 1];
-    for (int value : arr) count[value]++;  // ①
+    int[] count = new int[maxValue + 1]; // count[value] = 해당 값의 등장 횟수.
+    // 값 자체를 인덱스로 쓰므로 비교·탐색이 필요 없다.
+    for (int value : arr) count[value]++;
     int[] result = new int[arr.length];
     int index = 0;
+    // 작은 값부터 복원하면 자동으로 정렬된다.
     for (int value = 0; value <= maxValue; value++) {
+        // 안쪽 반복의 총합은 n. 전체 O(n+값 범위).
         for (int repeat = 0; repeat < count[value]; repeat++) {
-            result[index++] = value;      // ②
+            result[index++] = value;
         }
     }
     return result;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| ① 값 → 인덱스 | 비교하거나 탐색하지 않고 해당 값의 빈도에 바로 접근한다. |
-| ② 작은 값부터 복원 | value가 증가하는 순서이므로 출력은 자동으로 정렬된다. |
-| 중첩 반복이어도 O(n+K) | 안쪽 반복의 총횟수는 모든 빈도의 합 n이다. |
 
 **예시**
 
@@ -34,10 +32,6 @@ int[] sort(int[] arr, int maxValue) {
 횟수 count     0  1  1  2
 작은 값부터 횟수만큼 출력 → [1,2,3,3]
 ```
-
-**적용** 값이 작은 정수 범위에 모여 있으면, 값을 배열 인덱스로 삼아 횟수를 세거나 정렬한다.
-
-**준비** 0 ≤ arr[i] ≤ maxValue. 정렬된 새 배열을 반환한다.
 
 **주의** K=maxValue+1이 크면 메모리 낭비가 크다. O(n+K) 시간·공간.
 

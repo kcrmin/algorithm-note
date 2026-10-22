@@ -7,28 +7,25 @@ aliases: ["Coordinate_Compression"]
 # Coordinate Compression
 
 ```java
+// java.util.* 사용. 값의 대소 관계만 보존하는 0부터의 번호를 반환한다.
 int[] compress(int[] arr) {
     int[] sorted = arr.clone();
-    Arrays.sort(sorted);
+    Arrays.sort(sorted); // 작은 값부터 번호를 붙여야 대소 관계가 유지된다.
     Map<Integer, Integer> rank = new HashMap<>();
     for (int value : sorted) {
         if (!rank.containsKey(value)) {
-            rank.put(value, rank.size()); // ①
+            // 중복에는 새 번호를 주지 않아 같은 값이 같은 순위다.
+            rank.put(value, rank.size());
         }
     }
     int[] result = new int[arr.length];
     for (int i = 0; i < arr.length; i++) {
-        result[i] = rank.get(arr[i]); // ②
+        // 원본 순서로 읽어야 입력 인덱스에 맞는 결과가 된다.
+        result[i] = rank.get(arr[i]);
     }
     return result;
 }
 ```
-
-| 암기 포인트 | 이유 |
-|---|---|
-| 정렬한 값을 순회 | 작은 값부터 번호를 붙여야 대소 관계가 유지된다. |
-| ① 처음 본 값만 | 중복에도 번호를 늘리면 같은 값의 순위가 달라진다. |
-| ② 원본을 다시 읽기 | 정렬 순서가 아닌 입력 인덱스에 맞춰 답을 돌려준다. |
 
 **예시**
 
@@ -38,10 +35,6 @@ int[] compress(int[] arr) {
 원본 순서로  [  2,  0,   2,  1]
                같은 값 → 같은 번호
 ```
-
-**적용** 값은 너무 커서 배열 인덱스로 못 쓰지만, 값의 대소 관계만 필요할 때.
-
-**준비** 반환 배열은 원본과 같은 순서이며, 번호는 0부터다. `java.util.*` 사용.
 
 **주의** 순서는 보존하지만 거리 `20-(-5)=25`는 보존하지 않는다. O(N log N) 시간·O(N) 공간.
 
