@@ -1,13 +1,13 @@
 ---
 type: template
 tags: ["Graphs"]
+category: flow-matching
+categories: [flow-matching]
 ---
 
 # Edmonds-Karp
 
 ```java
-// Max Flow 카드의 Edge/addEdge/graph 사용. source≠sink, remaining=잔여 용량.
-// parent[v]는 이전 정점, via[v]는 v로 들어온 실제 간선: BFS 경로를 뒤로 복원한다.
 static long maxFlow(int source, int sink) {
     long total = 0;
     int n = graph.length;
@@ -18,7 +18,6 @@ static long maxFlow(int source, int sink) {
         Queue<Integer> queue = new ArrayDeque<>();
         parent[source] = source;
         queue.offer(source);
-        // 잔여 간선 수가 가장 짧은 증대 경로를 BFS로 찾음
         while (!queue.isEmpty() && parent[sink] == -1) {
             int cur = queue.poll();
             for (Edge edge : graph[cur]) {
@@ -28,33 +27,25 @@ static long maxFlow(int source, int sink) {
                 queue.offer(edge.to);
             }
         }
-        // 더 보낼 경로가 없으면 현재 유량이 최대
-        if (parent[sink] == -1) return total;
+        if (parent[sink] == -1) return total; // 증대 경로가 없으면 최대 유량
         long sent = Long.MAX_VALUE;
         for (int v = sink; v != source; v = parent[v]) {
-            // 경로 중 가장 좁은 용량이 이번 전송량
-            sent = Math.min(sent, via[v].remaining);
+            sent = Math.min(sent, via[v].remaining); // 경로의 가장 좁은 용량이 전송량
         }
         for (int v = sink; v != source; v = parent[v]) {
             Edge edge = via[v];
             edge.remaining -= sent;
-            // 나중 경로에서 이번 전송을 취소·재배치할 수 있게 함
-            graph[v].get(edge.reverse).remaining += sent;
+            graph[v].get(edge.reverse).remaining += sent; // 나중에 이 전송을 취소할 수 있는 양
         }
         total += sent;
     }
 }
 ```
 
-**예시**
+[[Max Flow]]의 `Edge`·`graph` 사용, source≠sink; 잔여 용량을 변경하므로 새 계산은 새 그래프에서 시작. O(VE²).
 
-```text
-s ─3→ a ─2→ t     병목 = min(3,2) = 2
-잔여 s ─1→ a ─0→ t
-역방향에는 각각 +2      total = 2
-다시 BFS → 길이 없을 때 종료
-```
+**분류** [[00 Maps/Flow and Matching|Flow and Matching]]
 
-**주의** graph의 잔여 용량을 변경한다. 새 문제는 새 Graph로 시작. O(VE²) 시간, O(V+E) 공간.
+**필요 코드** [[50 Graphs/Max Flow|Max Flow]]
 
-[[Max Flow]] · [[Dinic]] · [[BFS]]
+**비교** [[50 Graphs/Dinic|Dinic]]

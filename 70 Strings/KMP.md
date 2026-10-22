@@ -2,47 +2,40 @@
 type: template
 tags: ["Strings"]
 aliases: ["Knuth-Morris-Pratt"]
+category: string-algorithms
+categories: [string-algorithms]
 ---
 
 # KMP
 
 ```java
-// 빈 패턴은 제외. 반환은 0-index 시작 위치 목록. java.util.* 사용.
-// prefixFunction은 Prefix Function 노트의 함수다.
-// j는 현재까지 일치한 패턴 접두사의 길이다.
 List<Integer> findAll(String text, String pattern) {
-    int[] pi = prefixFunction(pattern);
-    List<Integer> matches = new ArrayList<>();
     int m = pattern.length();
+    int[] pi = new int[m];
+    for (int i = 1, j = 0; i < m; i++) {
+        // 맞았던 접미사를 다음 접두사 후보로 줄인다.
+        while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
+        if (pattern.charAt(i) == pattern.charAt(j)) j++;
+        pi[i] = j;
+    }
+    List<Integer> matches = new ArrayList<>();
     for (int i = 0, j = 0; i < text.length(); i++) {
-        while (j > 0 && text.charAt(i) != pattern.charAt(j)) {
-            // 남은 접미사로 다음 후보 길이를 정한다.
-            // 또 다를 수 있어 while. 텍스트 i는 되돌리지 않는다.
-            j = pi[j - 1];
-        }
-        // 다음 한 글자도 맞으면 일치 길이를 늘린다.
+        // 텍스트를 되돌리지 않고 남은 접미사만 재사용한다.
+        while (j > 0 && text.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
         if (text.charAt(i) == pattern.charAt(j)) j++;
         if (j == m) {
-            // i는 끝 위치이므로 길이 m만큼 거슬러 시작을 기록한다.
             matches.add(i - m + 1);
-            // 겹친 일치를 남기고 다음 반복의 pattern[m] 접근도 막는다.
-            j = pi[j - 1];
+            j = pi[j - 1]; // 겹친 일치를 남기고 다음 pattern[m] 접근도 막는다.
         }
     }
     return matches;
 }
 ```
 
-**예시**
+빈 패턴 제외 · 0-index 시작 위치 반환 · 시간 O(n+m), 보조 공간 O(m)+결과.
 
-```text
-텍스트  a b a b a b a
-패턴    a b a b a        → 시작 0 발견
-            a b a b a    → 시작 2 발견
-첫 일치 뒤 j: 5 → pi[4]=3
-끝의 aba를 다음 패턴의 앞 aba로 남긴다.
-```
+**분류** [[00 Maps/String Algorithms|String Algorithms]]
 
-**주의** `pi`는 텍스트가 아닌 패턴으로 만든다. O(N+M) 시간·O(M) 보조 공간+결과.
+**사용 원리** [[70 Strings/Prefix Function|Prefix Function]]
 
-[[Prefix Function]] · [[String Hashing]] · [[Trie]]
+**비교** [[70 Strings/String Hashing|String Hashing]]

@@ -1,50 +1,39 @@
 ---
 type: template
 tags: ["Graphs"]
+category: shortest-paths
+categories: [shortest-paths]
 ---
 
 # Dijkstra
 
 ```java
-// 모든 간선 비용≥0. graph는 List<Node>[], INF=Long.MAX_VALUE/4.
-// Node.cost는 graph에서 간선 비용, Heap에서 누적 거리. 도달 불가는 INF.
-static class Node {
-    int vertex; long cost;
-    Node(int v, long c) { vertex = v; cost = c; }
-}
-static long[] dijkstra(int source) {
+static long[] dijkstra(List<int[]>[] graph, int start) {
+    long INF = Long.MAX_VALUE / 4;
     long[] dist = new long[graph.length];
     Arrays.fill(dist, INF);
-    // 누적 거리가 가장 작은 후보부터
-    PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a.cost));
-    dist[source] = 0;
-    pq.offer(new Node(source, 0));
+    // 상태는 {정점, 누적 거리}: 누적 거리가 작은 순서
+    PriorityQueue<long[]> pq = new PriorityQueue<>(Comparator.comparingLong(a -> a[1]));
+    dist[start] = 0;
+    pq.offer(new long[]{start, 0});
     while (!pq.isEmpty()) {
-        Node cur = pq.poll();
-        // Heap에 남은 옛 후보 제거; 유효한 최소 후보의 거리는 확정
-        if (cur.cost != dist[cur.vertex]) continue;
-        for (Node edge : graph[cur.vertex]) {
-            long next = cur.cost + edge.cost;
-            // 더 짧은 경우에만 갱신해 같은 후보 반복 방지
-            if (next >= dist[edge.vertex]) continue;
-            dist[edge.vertex] = next;
-            // Heap 안 옛 값을 고치지 않고 새 거리 후보를 추가
-            pq.offer(new Node(edge.vertex, next));
+        long[] cur = pq.poll();
+        int v = (int) cur[0];
+        if (cur[1] != dist[v]) continue; // 더 짧은 거리가 생긴 옛 후보는 버림
+        for (int[] edge : graph[v]) {
+            int to = edge[0];
+            long next = cur[1] + edge[1];
+            if (next >= dist[to]) continue; // 같을 때도 넣으면 0비용 순환을 반복
+            dist[to] = next;
+            pq.offer(new long[]{to, next});
         }
     }
     return dist;
 }
 ```
 
-**예시**
+`graph[v]`의 간선 `{to, weight}`, weight≥0인 int; 도달 불가=`Long.MAX_VALUE/4`, 거리 합은 그 미만. O(V+E log(E+2)).
 
-```text
-0 ─8→ 1       Heap(정점:거리)
-└─2→ 2 ─1→ 1  [2:2, 1:8] → [1:3, 1:8]
-1:3을 먼저 꺼냄 → 거리 3 확정
-1:8은 옛 후보라 버림
-```
+**분류** [[00 Maps/Shortest Paths|Shortest Paths]]
 
-**주의** 음수 간선 제외. 도달 불가=INF, 거리 합은 INF 미만. O(V+E log(E+2)) 시간, O(V+E) 공간.
-
-[[BFS]] · [[0-1 BFS]] · [[Bellman-Ford]] · [[Heap]]
+**비교** [[50 Graphs/0-1 BFS|0-1 BFS]] · [[50 Graphs/Bellman-Ford|Bellman-Ford]]

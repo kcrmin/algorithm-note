@@ -1,32 +1,28 @@
 ---
 type: template
 tags: ["Search"]
+category: binary-search
+categories: [binary-search]
 ---
 
 # Array Binary Search
 
 ```java
-// arr는 오름차순. target 이상인 첫 인덱스, 없으면 n을 반환.
-// 끝 다음 위치 n도 답으로 남겨 두면, 못 찾은 경우 n으로 모인다.
+// 못 찾은 답도 n으로 모이도록 끝 다음 칸을 둔다.
 int left = 0, right = arr.length;
 while (left < right) {
     int mid = left + (right - left) / 2;
-    // mid도 첫 위치일 수 있어 포함한다. upper bound는 >로 바꾼다.
+    // mid도 답 후보라 포함. >로 바꾸면 upper bound.
     if (arr[mid] >= target) right = mid;
-    else left = mid + 1; // mid까지는 모두 target보다 작아 버린다.
+    else left = mid + 1; // mid까지는 모두 작으므로 버린다.
 }
 return left;
 ```
 
-**예시**
+**조건** arr 오름차순. target 이상 첫 인덱스, 없으면 n. O(log n).
 
-```text
-index   0  1  2  3
-arr     1  3  3  5    target=3
-           ↑     ↑
-         lower  upper   → 같은 값 개수 = 3−1 = 2
-```
+`upper - lower` = target 개수.
 
-**주의** 정렬이 먼저다. 조회 O(log n).
+**분류** [[00 Maps/Binary Search|Binary Search]]
 
-[[Binary Search - First True]] · [[Binary Search - Last True]] · [[LIS]] · [[Sorting]]
+**비교** [[20 Ranges/Binary Search - First True|Binary Search - First True]]

@@ -2,18 +2,17 @@
 type: template
 tags: ["DataStructures"]
 aliases: ["Lazy Segment Tree"]
+category: range-queries
+categories: [range-queries]
 ---
 
 # Lazy Propagation
 
 ```java
-// n>=1; 필드 long[] tree = new long[4*n], lazy = new long[4*n]; 초기값은 0이다.
-// tree는 최신 합, lazy는 자식에게 아직 전달하지 않은 원소당 덧셈이다.
-// lo,hi는 현재 노드 담당 범위, left,right는 요청한 범위다.
-// 0-index·양끝 포함. 루트는 (1,0,n-1). 초기 a[i]는 add(1,0,n-1,i,i,a[i])로 넣는다.
+long[] tree, lazy;
+void init(int n) { tree = new long[4 * n]; lazy = new long[4 * n]; }
 void apply(int node, int lo, int hi, long delta) {
-    // 원소마다 delta를 더하므로 합은 길이 배만큼 늘어난다.
-    tree[node] += delta * (hi - lo + 1);
+    tree[node] += delta * (hi - lo + 1); // 원소마다 더하므로 합은 길이 배 증가한다.
     lazy[node] += delta;
 }
 void push(int node, int lo, int hi) {
@@ -21,7 +20,7 @@ void push(int node, int lo, int hi) {
     int mid = (lo + hi) >>> 1;
     apply(node * 2, lo, mid, lazy[node]);
     apply(node * 2 + 1, mid + 1, hi, lazy[node]);
-    lazy[node] = 0; // 전달한 값을 지우지 않으면 자식에게 두 번 적용된다.
+    lazy[node] = 0; // 전달 후 지워야 자식에게 두 번 적용하지 않는다.
 }
 void add(int node, int lo, int hi, int left, int right, long delta) {
     if (right < lo || hi < left) return;
@@ -29,8 +28,7 @@ void add(int node, int lo, int hi, int left, int right, long delta) {
         apply(node, lo, hi, delta);
         return;
     }
-    // 과거 상태의 자식을 고쳐 합치면 부모의 갱신을 잃으므로 먼저 전달한다.
-    push(node, lo, hi);
+    push(node, lo, hi); // 부모의 미전달 갱신부터 내려야 과거 자식을 합치지 않는다.
     int mid = (lo + hi) >>> 1;
     add(node * 2, lo, mid, left, right, delta);
     add(node * 2 + 1, mid + 1, hi, left, right, delta);
@@ -38,7 +36,6 @@ void add(int node, int lo, int hi, int left, int right, long delta) {
 }
 long sum(int node, int lo, int hi, int left, int right) {
     if (right < lo || hi < left) return 0;
-    // 현재 노드 합은 이미 최신이라 더 내려갈 필요가 없다.
     if (left <= lo && hi <= right) return tree[node];
     push(node, lo, hi);
     int mid = (lo + hi) >>> 1;
@@ -47,16 +44,8 @@ long sum(int node, int lo, int hi, int left, int right) {
 }
 ```
 
-**예시**
+init(n), n≥1 · 0-index [left,right], 루트 (1,0,n−1) · 덧셈·합 전용; 초기값은 원소별 add · 연산 O(log n), 공간 O(n).
 
-```text
-[1,2,3,4] 전체 +5       루트 sum=10+5×4=30, lazy=5
-           30(+5)       ← 부모 합은 이미 최신
-          /      \
-         3        7     ← 자식은 아직 과거
-부분 조회 → push        왼쪽 13, 오른쪽 17, 부모 lazy=0
-```
+**분류** [[00 Maps/Range Queries|Range Queries]]
 
-**주의** 이 태그는 **덧셈 전용**. 대입 태그와 섞지 않는다. 초기화 O(N log N)·연산 O(log N)·공간 O(N).
-
-[[Segment Tree]] · [[Fenwick Tree]]
+**사용 원리** [[60 Range Data Structures/Segment Tree|Segment Tree]]

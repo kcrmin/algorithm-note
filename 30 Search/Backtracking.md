@@ -1,41 +1,37 @@
 ---
 type: template
 tags: ["Search"]
+category: exhaustive-search
+categories: [exhaustive-search]
 ---
 
 # Backtracking
 
 ```java
-// int[] numbers는 서로 다른 후보, int targetSize는 뽑을 개수.
-// used는 new boolean[numbers.length].
-// List<Integer> path, List<List<Integer>> answer는 각각 빈 ArrayList.
-// 빈 path에서 dfs(0) 호출. 한 가지 탐색이 끝나면 선택 직전 상태로 복구한다.
+static int[] numbers;
+static int targetSize;
+static boolean[] used;
+static List<Integer> path;
+static List<List<Integer>> answer;
+
 static void dfs(int depth) {
-    if (depth == targetSize) { // 완성되면 더 고르지 않고 이 가지를 끝냄
-        // path는 곧 바뀌므로 현재 내용의 복사본 저장
-        answer.add(new ArrayList<>(path));
+    if (depth == targetSize) {
+        answer.add(new ArrayList<>(path)); // path가 곧 바뀌므로 복사본 저장
         return;
     }
     for (int i = 0; i < numbers.length; i++) {
-        if (used[i]) continue; // 같은 인덱스를 한 경로에서 두 번 고르지 않음
+        if (used[i]) continue;
         used[i] = true;
         path.add(numbers[i]);
         dfs(depth + 1);
-        path.remove(path.size() - 1); // 이번에 추가한 마지막 값만 제거
-        used[i] = false; // 다음 형제 가지에서도 이 후보를 고를 수 있게 복구
+        path.remove(path.size() - 1); // 선택 전 상태로 복구해야 다음 가지가 독립
+        used[i] = false;
     }
 }
 ```
 
-**예시**
+서로 다른 `numbers`, 뽑을 개수 `targetSize`; `used=new boolean[n]`, 빈 `path`·`answer`에서 `dfs(0)`. O(n·P(n,r)).
 
-```text
-후보 [1,2,3], r=2
-[] → [1] → [1,2] 저장
-          ← [1] 복구 → [1,3] 저장
-   ← [] 복구 → [2] …
-```
+**분류** [[00 Maps/Exhaustive Search|Exhaustive Search]]
 
-**주의** 같은 값이 여러 인덱스에 있으면 값 기준 중복 결과가 생긴다. O(n·P(n,r)) 시간, O(n+r) 보조 공간.
-
-[[DFS and Graphs]] · [[Brute Force]] · [[Bitmask]]
+**비교** [[30 Search/Brute Force|Brute Force]] · [[80 Math and States/Bitmask|Bitmask]]

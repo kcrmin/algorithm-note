@@ -2,30 +2,28 @@
 type: template
 tags: ["Search"]
 aliases: ["Memoization", "Top-down DP"]
+category: dynamic-programming
+categories: [dynamic-programming]
 ---
 
 # Recursion and Memoization
 
 ```java
-// Fibonacci: n≥0, memo/computed는 길이 n+1로 새로 생성. MOD=1_000_000_007.
+static long[] memo;
+static boolean[] computed;
+static final long MOD = 1_000_000_007;
+
 static long solve(int n) {
-    if (n <= 1) return n; // 상태가 작아져 이 바닥에 닿아야 재귀가 끝남
-    if (computed[n]) return memo[n]; // 같은 상태는 하위 호출을 다시 펼치지 않음
+    if (n <= 1) return n;
+    if (computed[n]) return memo[n]; // 같은 상태의 하위 호출을 다시 펼치지 않음
     memo[n] = (solve(n - 1) + solve(n - 2)) % MOD;
-    computed[n] = true; // 정답 0도 가능하므로 값과 계산 여부를 따로 저장
+    computed[n] = true; // 값 0도 답이므로 계산 여부를 별도로 저장
     return memo[n];
 }
 ```
 
-**예시**
+Fibonacci, n≥0; `memo=new long[n+1]`, `computed=new boolean[n+1]`, `MOD=1_000_000_007`; 큰 n은 반복 DP. O(n).
 
-```text
-f(4) = f(3) + f(2)
-       f(3) = f(2) + f(1)
-처음 f(2)=1 → 저장
-다음 f(2)   → 호출을 펼치지 않고 1 반환 → f(4)=3
-```
+**분류** [[00 Maps/Dynamic Programming|Dynamic Programming]]
 
-**주의** 큰 n은 호출 깊이 때문에 반복 DP가 안전하다. O(n) 시간·공간.
-
-[[DP]] · [[Backtracking]]
+**비교** [[40 Optimization/DP|DP]]

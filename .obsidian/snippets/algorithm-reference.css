@@ -1,0 +1,24 @@
+/* Compact algorithm reference: readable code and causal comments. */
+.markdown-preview-view,
+.markdown-source-view.mod-cm6 {
+    --file-line-width: 960px;
+}
+.theme-dark .markdown-rendered,
+.theme-dark .markdown-source-view {
+    --code-comment: #b8c7b3;
+}
+.theme-light .markdown-rendered,
+.theme-light .markdown-source-view {
+    --code-comment: #47613e;
+}
+.markdown-rendered .token.comment,
+.markdown-rendered .hljs-comment,
+.markdown-source-view .cm-comment {
+    color: var(--code-comment) !important;
+    font-style: normal;
+}
+.markdown-rendered pre code {
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: normal !important;
+}
