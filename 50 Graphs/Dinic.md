@@ -5,17 +5,6 @@ tags: ["Graphs"]
 
 # Dinic
 
-**언제** Max Flow에서 한 BFS 층을 만든 뒤 그 층의 경로를 한꺼번에 소진한다.
-
-```text
-BFS층: s(0) → a,b(1) → t(2)
-DFS는 level+1 간선만 이용 → 층 안 사이클 없음
-현재 층에서 더 못 보냄 → BFS 재실행
-next[v] = 이번 층에서 이미 실패한 간선은 다시 안 봄
-```
-
-**코드** `Max Flow`의 Edge/addEdge/graph 사용. `int[] level,next`는 정점 수 길이. `send`와 BFS 모두 필수다.
-
 ```java
 static boolean buildLevels(int source, int sink) {
     Arrays.fill(level, -1);
@@ -61,6 +50,19 @@ static long maxFlow(int source, int sink) {
 | 다음 층으로만 이동 | 층을 따라가면 사이클 없이 최단 증대 경로만 찾는다. |
 | ① 성공한 간선의 next는 유지 | 같은 간선의 남은 용량을 다음 DFS에서도 사용한다. |
 | ② BFS마다 next 초기화 | 층이 바뀌면 이전에 실패한 간선도 다시 쓸 수 있다. |
+
+**예시**
+
+```text
+BFS층: s(0) → a,b(1) → t(2)
+DFS는 level+1 간선만 이용 → 층 안 사이클 없음
+현재 층에서 더 못 보냄 → BFS 재실행
+next[v] = 이번 층에서 이미 실패한 간선은 다시 안 봄
+```
+
+**적용** Max Flow에서 한 BFS 층을 만든 뒤 그 층의 경로를 한꺼번에 소진한다.
+
+**준비** `Max Flow`의 Edge/addEdge/graph 사용. `int[] level,next`는 정점 수 길이. `send`와 BFS 모두 필수다.
 
 **주의** 일반 O(V²E) 시간, O(V+E) 공간. 긴 경로는 DFS 호출 깊이에 주의. 잔여 용량을 변경한다.
 
