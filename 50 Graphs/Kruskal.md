@@ -10,15 +10,19 @@ categories: [connectivity-ordering, greedy]
 
 ```java
 static long kruskal(int n, int[][] edges) {
-    Arrays.sort(edges, Comparator.comparingInt(edge -> edge[2])); // 서로 다른 집합을 가장 싼 간선부터 연결
+    // sort: 가중치가 작은 간선부터 확인
+    Arrays.sort(edges, Comparator.comparingInt(edge -> edge[2]));
     long total = 0;
     int selected = 0;
     for (int[] edge : edges) {
-        if (!union(edge[0], edge[1])) continue; // 이미 연결된 두 점을 잇면 사이클
+        // skip: 같은 집합을 잇는 간선은 사이클이라 제외
+        if (!union(edge[0], edge[1])) continue;
+        // take: 서로 다른 집합을 잇는 간선 선택
         total += edge[2];
         selected++;
         if (selected == n - 1) break;
     }
+    // check: V-1개를 못 고르면 연결 실패
     if (selected != n - 1) throw new IllegalStateException("disconnected");
     return total;
 }

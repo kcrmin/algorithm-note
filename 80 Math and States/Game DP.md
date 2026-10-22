@@ -9,10 +9,12 @@ categories: [dynamic-programming]
 
 ```java
 boolean[] buildWinningStates(int n, int[] moves) {
-    boolean[] win = new boolean[n + 1]; // win[0]=false: 움직이지 못하면 패배.
+    // seed: 움직일 수 없는 0개 상태는 패배
+    boolean[] win = new boolean[n + 1];
+    // order: 제거 후의 작은 상태부터 계산
     for (int stones = 1; stones <= n; stones++) {
         for (int take : moves) {
-            // 상대를 패배 상태에 보내는 수가 하나라도 있으면 현재는 승리다.
+            // win: 상대를 패배로 보내는 선택 하나면 승리
             if (take <= stones && !win[stones - take]) {
                 win[stones] = true;
                 break;

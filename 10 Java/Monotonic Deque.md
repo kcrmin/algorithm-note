@@ -12,16 +12,16 @@ categories: [two-pointers-windows]
 Deque<Integer> deque = new ArrayDeque<>();
 int[] answer = new int[arr.length - k + 1];
 for (int i = 0; i < arr.length; i++) {
-    // 창 [i-k+1,i] 밖의 인덱스는 만료.
+    // expire: 현재 창 [i-k+1,i] 밖의 인덱스 제거
     while (!deque.isEmpty() && deque.peekFirst() <= i - k) {
         deque.pollFirst();
     }
-    // 작고 먼저 만료될 후보는 앞으로도 최댓값이 못 된다.
+    // prune: 새 값 이하이고 먼저 만료될 옛 후보 제거
     while (!deque.isEmpty() && arr[deque.peekLast()] <= arr[i]) {
         deque.pollLast();
     }
     deque.offerLast(i);
-    // 남은 값이 내림차순이라 맨 앞이 최댓값.
+    // answer: 값이 내림차순으로 남아 맨 앞이 창의 최댓값
     if (i >= k - 1) answer[i - k + 1] = arr[deque.peekFirst()];
 }
 ```

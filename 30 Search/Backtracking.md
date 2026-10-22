@@ -16,15 +16,19 @@ static List<List<Integer>> answer;
 
 static void dfs(int depth) {
     if (depth == targetSize) {
-        answer.add(new ArrayList<>(path)); // path가 곧 바뀌므로 복사본 저장
+        // answer: 완성된 경로는 복사해서 저장
+        answer.add(new ArrayList<>(path));
         return;
     }
     for (int i = 0; i < numbers.length; i++) {
         if (used[i]) continue;
+        // choose: 아직 안 쓴 후보 선택
         used[i] = true;
         path.add(numbers[i]);
+        // explore: 다음 자리 채우기
         dfs(depth + 1);
-        path.remove(path.size() - 1); // 선택 전 상태로 복구해야 다음 가지가 독립
+        // undo: 선택을 복구한 뒤 다음 후보 탐색
+        path.remove(path.size() - 1);
         used[i] = false;
     }
 }

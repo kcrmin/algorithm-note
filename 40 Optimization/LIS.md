@@ -9,16 +9,20 @@ categories: [dynamic-programming, binary-search]
 
 ```java
 int lis(int[] arr) {
-    int[] tails = new int[arr.length]; // tails[i]: 길이 i+1의 최소 끝값.
+    // state: tails[i]=길이 i+1의 최소 끝값
+    int[] tails = new int[arr.length];
     int size = 0;
     for (int value : arr) {
+        // find: value 이상인 첫 자리, 같은 값이면 교체
         int left = 0, right = size;
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (tails[mid] >= value) right = mid; // 같은 값은 길이를 늘리지 않는다.
+            if (tails[mid] >= value) right = mid;
             else left = mid + 1;
         }
-        tails[left] = value; // 끝값이 작을수록 다음 값을 붙이기 쉽다.
+        // replace: 끝값을 낮춰 다음 확장 여지 확보
+        tails[left] = value;
+        // extend: 새 자리에 닿았을 때만 길이 증가
         if (left == size) size++;
     }
     return size;

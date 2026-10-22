@@ -14,25 +14,29 @@ static boolean[] visited;
 static int[] component;
 static List<Integer> finishOrder;
 
+// finish: 원본 DFS의 종료 순서 기록
 static void finish(int cur) {
     visited[cur] = true;
     for (int next : graph[cur]) {
         if (!visited[next]) finish(next);
     }
-    finishOrder.add(cur); // 종료 후 기록: SCC 사이 A→B면 A가 더 늦게 끝남
+    // postorder: 자식을 모두 탐색한 뒤 현재 정점 기록
+    finishOrder.add(cur);
 }
+// assign: 역방향 DFS 한 번으로 SCC 하나 배정
 static void assign(int cur, int id) {
     component[cur] = id;
-    for (int next : reverse[cur]) { // 간선을 뒤집어 아직 안 묶인 다음 SCC로 못 넘어가게 함
+    for (int next : reverse[cur]) {
         if (component[next] == -1) assign(next, id);
     }
 }
+// decompose: 종료 역순으로 미배정 SCC 분리
 static int decompose(int n) {
     for (int v = 0; v < n; v++) {
         if (!visited[v]) finish(v);
     }
     int count = 0;
-    for (int i = finishOrder.size() - 1; i >= 0; i--) { // 가장 늦게 끝난 SCC부터 묶음
+    for (int i = finishOrder.size() - 1; i >= 0; i--) {
         int start = finishOrder.get(i);
         if (component[start] == -1) assign(start, count++);
     }

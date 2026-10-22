@@ -8,17 +8,17 @@ categories: [prefix-sums]
 # 2D Prefix Sum
 
 ```java
-// 0행·0열을 비워 경계도 같은 식으로 처리.
+// pad: 0행·0열을 비워 경계도 같은 식으로 처리
 long[][] prefix = new long[H + 1][W + 1];
 for (int y = 0; y < H; y++) {
     for (int x = 0; x < W; x++) {
-        // 위+왼쪽에서 겹친 모서리를 한 번 뺀다.
+        // build: 위 + 왼쪽 - 겹친 모서리
         prefix[y + 1][x + 1] = matrix[y][x]
                 + prefix[y][x + 1] + prefix[y + 1][x]
                 - prefix[y][x];
     }
 }
-return prefix[y2 + 1][x2 + 1] // 전체-위-왼쪽+겹침. 끝 좌표는 포함하므로 +1.
+return prefix[y2 + 1][x2 + 1] // query: 전체 - 위 - 왼쪽 + 겹침; 끝 좌표 포함
         - prefix[y1][x2 + 1] - prefix[y2 + 1][x1]
         + prefix[y1][x1];
 ```

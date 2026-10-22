@@ -10,11 +10,12 @@ categories: [core-collections]
 ```java
 int[] sort(int[] arr, int maxValue) {
     int[] count = new int[maxValue + 1];
+    // count: 값별 등장 횟수 집계
     for (int value : arr) count[value]++;
     int[] result = new int[arr.length];
     int index = 0;
+    // restore: 작은 값부터 등장 횟수만큼 복원
     for (int value = 0; value <= maxValue; value++) {
-        // 작은 값부터 등장 횟수만큼 복원하면 정렬된다.
         for (int repeat = 0; repeat < count[value]; repeat++) result[index++] = value;
     }
     return result;

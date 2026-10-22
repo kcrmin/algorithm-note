@@ -12,20 +12,23 @@ categories: [string-algorithms]
 List<Integer> findAll(String text, String pattern) {
     int m = pattern.length();
     int[] pi = new int[m];
+    // build: 패턴의 접두사=접미사 최대 길이 전처리
     for (int i = 1, j = 0; i < m; i++) {
-        // 맞았던 접미사를 다음 접두사 후보로 줄인다.
         while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
         if (pattern.charAt(i) == pattern.charAt(j)) j++;
         pi[i] = j;
     }
     List<Integer> matches = new ArrayList<>();
     for (int i = 0, j = 0; i < text.length(); i++) {
-        // 텍스트를 되돌리지 않고 남은 접미사만 재사용한다.
+        // fallback: 텍스트는 고정, 패턴 후보만 이동
         while (j > 0 && text.charAt(i) != pattern.charAt(j)) j = pi[j - 1];
+        // match: 다음 글자 일치 시 길이 확장
         if (text.charAt(i) == pattern.charAt(j)) j++;
         if (j == m) {
+            // answer: m글자 일치의 시작 위치 저장
             matches.add(i - m + 1);
-            j = pi[j - 1]; // 겹친 일치를 남기고 다음 pattern[m] 접근도 막는다.
+            // resume: 겹친 일치를 남겨 검색 계속
+            j = pi[j - 1];
         }
     }
     return matches;

@@ -10,12 +10,14 @@ categories: [number-theory]
 ```java
 boolean[] sieve(int limit) {
     boolean[] prime = new boolean[limit + 1];
+    // seed: 모두 후보로 두고 0·1 제외
     Arrays.fill(prime, true);
     prime[0] = false;
     if (limit >= 1) prime[1] = false;
+    // scan: sqrt(limit) 이하 소수의 배수 제거
     for (int p = 2; (long) p * p <= limit; p++) {
         if (!prime[p]) continue;
-        // p²보다 작은 배수는 더 작은 소인수가 이미 지웠다.
+        // mark: 작은 배수는 이미 지워져 p²부터
         for (long x = (long) p * p; x <= limit; x += p) prime[(int) x] = false;
     }
     return prime;

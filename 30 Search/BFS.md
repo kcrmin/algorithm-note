@@ -18,12 +18,14 @@ static int[][] bfs(int[][] map, Point start) {
     dist[start.y][start.x] = 0;
     queue.offer(new Point(start));
     while (!queue.isEmpty()) {
+        // pop: 가까운 칸부터 꺼내기
         Point cur = queue.poll();
+        // expand: 상하좌우 후보 만들기
         for (int dir = 0; dir < 4; dir++) {
             int nx = cur.x + dx[dir], ny = cur.y + dy[dir];
             if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
             if (map[ny][nx] == 0 || dist[ny][nx] != -1) continue;
-            // 넣을 때 방문 처리: 같은 칸이 중복 삽입되지 않음
+            // visit: 길·미방문 칸의 거리 기록 후 등록
             dist[ny][nx] = dist[cur.y][cur.x] + 1;
             queue.offer(new Point(nx, ny));
         }

@@ -10,30 +10,35 @@ categories: [core-collections]
 ```java
 int[] version;
 boolean[] alive;
+// order: 높은 점수→작은 ID
 PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> {
     int order = Integer.compare(b[0], a[0]);
     return order != 0 ? order : Integer.compare(a[1], b[1]);
 });
+// init: ID 상태·후보 Heap 초기화
 void init(int n) {
     version = new int[n];
     alive = new boolean[n];
     pq.clear();
 }
+// update: 버전을 올려 옛 기록과 구별하고 새 점수 삽입
 void update(int id, int score) {
-    version[id]++; // 점수가 다시 같아져도 옛 기록과 구별한다.
+    version[id]++;
     alive[id] = true;
     pq.offer(new int[]{score, id, version[id]});
 }
+// delete: 버전 무효화·ID 비활성화
 void delete(int id) {
     version[id]++;
     alive[id] = false;
 }
+// topId: 꼭대기의 낡은 기록을 버린 뒤 유효한 ID 조회
 int topId() {
     while (!pq.isEmpty()) {
         int[] entry = pq.peek();
         int id = entry[1];
         if (alive[id] && entry[2] == version[id]) return id;
-        pq.poll(); // 낡은 기록은 꼭대기에 왔을 때 한 번만 지운다.
+        pq.poll();
     }
     return -1;
 }

@@ -8,15 +8,13 @@ categories: [binary-search]
 # Array Binary Search
 
 ```java
-// 못 찾은 답도 n으로 모이도록 끝 다음 칸을 둔다.
-int left = 0, right = arr.length;
+int left = 0, right = arr.length; // range: 없을 때의 답 n도 후보에 포함
 while (left < right) {
     int mid = left + (right - left) / 2;
-    // mid도 답 후보라 포함. >로 바꾸면 upper bound.
-    if (arr[mid] >= target) right = mid;
-    else left = mid + 1; // mid까지는 모두 작으므로 버린다.
+    if (arr[mid] >= target) right = mid; // keep: mid도 첫 위치 후보
+    else left = mid + 1; // drop: mid까지 target보다 작음
 }
-return left;
+return left; // answer: 첫 >= target; >로 바꾸면 upper bound
 ```
 
 **조건** arr 오름차순. target 이상 첫 인덱스, 없으면 n. O(log n).

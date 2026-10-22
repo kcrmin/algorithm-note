@@ -16,16 +16,18 @@ static long[] zeroOneBfs(List<int[]>[] graph, int start) {
     dist[start] = 0;
     deque.addFirst(new long[]{start, 0});
     while (!deque.isEmpty()) {
+        // pop: 누적 거리가 작은 후보부터 꺼내기
         long[] cur = deque.removeFirst();
         int v = (int) cur[0];
-        if (cur[1] != dist[v]) continue; // 더 짧은 거리가 생긴 옛 후보는 버림
+        // skip: 현재 거리와 다른 옛 후보 버리기
+        if (cur[1] != dist[v]) continue;
+        // relax: 더 짧으면 갱신, 비용 0은 앞·1은 뒤에 등록
         for (int[] edge : graph[v]) {
             int to = edge[0];
             long next = cur[1] + edge[1];
-            if (next >= dist[to]) continue; // 같은 거리 재삽입은 0비용 순환을 반복
+            if (next >= dist[to]) continue;
             dist[to] = next;
             long[] state = {to, next};
-            // 비용 0은 앞, 1은 뒤: 작은 거리부터 처리
             if (edge[1] == 0) deque.addFirst(state);
             else deque.addLast(state);
         }

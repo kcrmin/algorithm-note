@@ -8,18 +8,22 @@ categories: [number-theory]
 # Modular Inverse
 
 ```java
+// inversePrime: 페르마 정리로 a^(p-2) 계산
 long inversePrime(long a, long p) {
-    long result = 1, exponent = p - 2; // a^(p-1)≡1에서 역원은 a^(p-2)다.
+    long result = 1, exponent = p - 2;
     a %= p;
     while (exponent > 0) {
+        // take: 켜진 비트의 거듭제곱 곱하기
         if ((exponent & 1) != 0) result = result * a % p;
+        // advance: 밑 제곱·지수 절반으로 다음 비트 준비
         a = a * a % p;
         exponent /= 2;
     }
     return result;
 }
+// dividePrime: 정수 나눗셈 대신 역원 곱하기
 long dividePrime(long numerator, long denominator, long p) {
-    return numerator % p * inversePrime(denominator, p) % p; // 나눗셈 대신 역원을 곱한다.
+    return numerator % p * inversePrime(denominator, p) % p;
 }
 ```
 

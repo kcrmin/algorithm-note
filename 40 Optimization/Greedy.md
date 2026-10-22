@@ -9,14 +9,16 @@ categories: [greedy]
 
 ```java
 int maxMeetings(int[][] meetings) {
-    // 끝이 빠른 회의로 바꿔도 뒤 회의를 방해하지 않는다.
+    // order: 끝이 빠른 순서
     Arrays.sort(meetings, Comparator.comparingInt(a -> a[1]));
     int end = Integer.MIN_VALUE, answer = 0;
     for (int[] meeting : meetings) {
-        if (meeting[0] < end) continue; // 시작=이전 끝이면 이어서 가능하다.
+        // pick: 이전 끝 이상에서 시작하는 회의 선택
+        if (meeting[0] < end) continue;
         answer++;
         end = meeting[1];
     }
+    // answer: 선택한 회의 수
     return answer;
 }
 ```

@@ -12,10 +12,10 @@ categories: [binary-search]
 long left = 0, right = max;
 while (left < right) {
     long mid = left + (right - left) / 2;
-    if (valid(mid)) right = mid; // mid도 첫 T일 수 있어 남긴다.
-    else left = mid + 1; // mid와 그 왼쪽은 전부 F라 버린다.
+    if (valid(mid)) right = mid; // true: mid를 남기고 더 왼쪽 탐색
+    else left = mid + 1; // false: mid까지 F이므로 버림
 }
-return left;
+return left; // answer: 첫 T
 ```
 
 **조건** FFFTTT의 첫 T. valid(max)=true, 0≤max<Long.MAX_VALUE. 검사×O(log 범위).

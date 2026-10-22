@@ -11,10 +11,11 @@ categories: [two-pointers-windows]
 int left = 0;
 long sum = 0;
 for (int right = 0; right < arr.length; right++) {
+    // expand: 오른쪽 한 칸 포함
     sum += arr[right];
-    // 초과할 때만 줄인다. 여러 개를 뺄 수 있어 while.
+    // shrink: 초과하는 동안 왼쪽 제거
     while (left <= right && sum > target) sum -= arr[left++];
-    // 빈 구간(left>right)은 답에서 제외.
+    // answer: 빈 구간을 빼고 목표 합 확인
     if (left <= right && sum == target) return true;
 }
 return false;

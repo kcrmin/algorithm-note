@@ -10,13 +10,14 @@ categories: [prefix-sums]
 
 ```java
 Map<Long, Long> count = new HashMap<>();
-count.put(0L, 1L); // 시작 전 합 0이 한 번 있었다.
+// seed: 시작 전 합 0도 한 번 등장
+count.put(0L, 1L);
 long sum = 0, answer = 0;
 for (int num : arr) {
     sum += num;
-    // sum-이전합=target. 이전 합 횟수만큼 답이 늘어난다.
+    // count: sum-이전합=target인 이전 합의 횟수
     answer += count.getOrDefault(sum - target, 0L);
-    // 현재 합은 나중에 세어 빈 구간을 제외.
+    // save: 현재 합은 나중에 저장, 빈 구간 제외
     count.put(sum, count.getOrDefault(sum, 0L) + 1);
 }
 return answer;

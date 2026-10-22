@@ -18,6 +18,7 @@ static long maxFlow(int source, int sink) {
         Queue<Integer> queue = new ArrayDeque<>();
         parent[source] = source;
         queue.offer(source);
+        // find: 잔여 간선 BFS로 증대 경로 찾기
         while (!queue.isEmpty() && parent[sink] == -1) {
             int cur = queue.poll();
             for (Edge edge : graph[cur]) {
@@ -27,15 +28,19 @@ static long maxFlow(int source, int sink) {
                 queue.offer(edge.to);
             }
         }
-        if (parent[sink] == -1) return total; // 증대 경로가 없으면 최대 유량
+        // stop: 증대 경로가 없으면 최대 유량
+        if (parent[sink] == -1) return total;
         long sent = Long.MAX_VALUE;
+        // path: 도착점에서 부모를 따라 경로 복원
         for (int v = sink; v != source; v = parent[v]) {
-            sent = Math.min(sent, via[v].remaining); // 경로의 가장 좁은 용량이 전송량
+            // bottleneck: 경로의 최소 잔여 용량 찾기
+            sent = Math.min(sent, via[v].remaining);
         }
         for (int v = sink; v != source; v = parent[v]) {
             Edge edge = via[v];
             edge.remaining -= sent;
-            graph[v].get(edge.reverse).remaining += sent; // 나중에 이 전송을 취소할 수 있는 양
+            // augment: 정방향에서 빼고 취소용 역방향에 더하기
+            graph[v].get(edge.reverse).remaining += sent;
         }
         total += sent;
     }

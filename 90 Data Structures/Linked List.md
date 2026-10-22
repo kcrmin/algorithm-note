@@ -14,9 +14,12 @@ class Node {
     Node(int value) { this.value = value; }
 }
 Node head = new Node(0), tail = new Node(0);
+// init: 양끝 더미를 연결해 빈 리스트 준비
 void init() { head.next = tail; tail.prev = head; }
+// insertAfter: 이전 노드와 오른쪽 이웃 사이에 연결
 Node insertAfter(Node previous, int value) {
-    Node following = previous.next; // 연결을 바꾸기 전에 원래 오른쪽 이웃을 보관한다.
+    // save: 연결 변경 전 원래 오른쪽 이웃 보관
+    Node following = previous.next;
     Node node = new Node(value);
     node.prev = previous;
     node.next = following;
@@ -24,8 +27,9 @@ Node insertAfter(Node previous, int value) {
     following.prev = node;
     return node;
 }
+// remove: 양 이웃끼리 연결해 삭제 노드 건너뛰기
 void remove(Node node) {
-    node.prev.next = node.next; // 양 이웃끼리 연결해 삭제 노드를 건너뛴다.
+    node.prev.next = node.next;
     node.next.prev = node.prev;
 }
 ```

@@ -12,11 +12,11 @@ int[] answer = new int[arr.length];
 Arrays.fill(answer, -1);
 Deque<Integer> stack = new ArrayDeque<>();
 for (int i = 0; i < arr.length; i++) {
-    // 여러 답이 한 번에 정해지므로 while. 같은 값은 제외.
+    // resolve: 더 큰 값을 만난 대기 인덱스를 모두 해결
     while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) {
-        answer[stack.pop()] = i; // 기다리던 위치의 첫 큰 값이 지금 i다.
+        answer[stack.pop()] = i;
     }
-    stack.push(i); // 현재 위치도 다음 큰 값을 기다린다.
+    stack.push(i); // wait: 현재 인덱스도 다음 큰 값을 기다림
 }
 ```
 

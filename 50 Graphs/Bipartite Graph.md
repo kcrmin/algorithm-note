@@ -12,6 +12,7 @@ static List<Integer>[] graph;
 static int[] color;
 
 static boolean isBipartite(int n) {
+    // restart: 끊긴 부분마다 새 색칠 시작
     for (int start = 0; start < n; start++) {
         if (color[start] != 0) continue;
         Queue<Integer> queue = new ArrayDeque<>();
@@ -20,9 +21,11 @@ static boolean isBipartite(int n) {
         while (!queue.isEmpty()) {
             int cur = queue.poll();
             for (int next : graph[cur]) {
-                if (color[next] == color[cur]) return false; // 같은 색 간선은 두 그룹 배정 모순
+                // conflict: 간선 양 끝이 같은 색이면 실패
+                if (color[next] == color[cur]) return false;
                 if (color[next] != 0) continue;
-                color[next] = -color[cur]; // 간선 양 끝은 반대 그룹
+                // paint: 반대 색을 정한 뒤 큐에 등록
+                color[next] = -color[cur];
                 queue.offer(next);
             }
         }

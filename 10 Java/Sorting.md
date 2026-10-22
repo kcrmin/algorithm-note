@@ -9,9 +9,9 @@ categories: [java-essentials]
 
 ```java
 Arrays.sort(meetings, (a, b) -> {
-    int order = Integer.compare(a[1], b[1]); // a-b는 넘치면 부호가 뒤집힌다.
-    if (order != 0) return order; // 첫 기준이 다르면 동점 기준을 보지 않는다.
-    return Integer.compare(a[0], b[0]);
+    int order = Integer.compare(a[1], b[1]); // primary: 종료 시각순; 뺄셈 비교는 overflow 위험
+    if (order != 0) return order;
+    return Integer.compare(a[0], b[0]); // tie: 같으면 시작 시각순
 });
 ```
 

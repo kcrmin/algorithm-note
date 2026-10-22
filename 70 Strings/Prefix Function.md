@@ -13,9 +13,12 @@ int[] prefixFunction(String pattern) {
     int[] pi = new int[pattern.length()];
     for (int i = 1, j = 0; i < pattern.length(); i++) {
         while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
-            j = pi[j - 1]; // 맞았던 접미사를 다음 접두사 후보로 줄인다.
+            // fallback: 맞았던 접미사로 후보 길이 축소
+            j = pi[j - 1];
         }
+        // extend: 다음 글자까지 맞으면 한 칸 연장
         if (pattern.charAt(i) == pattern.charAt(j)) j++;
+        // save: 현재 접두사=접미사 최대 길이
         pi[i] = j;
     }
     return pi;

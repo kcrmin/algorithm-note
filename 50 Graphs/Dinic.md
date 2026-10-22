@@ -9,7 +9,7 @@ categories: [flow-matching]
 
 ```java
 static int[] level, next;
-
+// buildLevels: 잔여 간선 BFS로 층 만들기
 static boolean buildLevels(int source, int sink) {
     Arrays.fill(level, -1);
     Queue<Integer> queue = new ArrayDeque<>();
@@ -25,23 +25,25 @@ static boolean buildLevels(int source, int sink) {
     }
     return level[sink] != -1;
 }
+// send: 다음 층으로 따라가 병목만큼 전송
 static long send(int cur, int sink, long limit) {
     if (cur == sink) return limit;
+    // cursor: 실패한 간선은 넘기고, 성공한 간선은 재사용
     for (; next[cur] < graph[cur].size(); next[cur]++) {
         Edge edge = graph[cur].get(next[cur]);
-        if (edge.remaining <= 0 || level[edge.to] != level[cur] + 1) continue; // 다음 층만 따라가 순환 없이 전송
+        if (edge.remaining <= 0 || level[edge.to] != level[cur] + 1) continue;
         long sent = send(edge.to, sink, Math.min(limit, edge.remaining));
         if (sent == 0) continue;
         edge.remaining -= sent;
-        graph[edge.to].get(edge.reverse).remaining += sent; // 나중에 이 전송을 취소할 수 있는 양
+        graph[edge.to].get(edge.reverse).remaining += sent;
         return sent;
     }
     return 0;
 }
-static long maxFlow(int source, int sink) {
+static long maxFlow(int source, int sink) { // maxFlow: 층 만들기 → 막힐 때까지 전송 반복
     long total = 0;
     while (buildLevels(source, sink)) {
-        Arrays.fill(next, 0); // 새 층에서는 실패했던 간선도 다시 검사
+        Arrays.fill(next, 0); // reset: 새 층은 처음부터 탐색
         long sent;
         while ((sent = send(source, sink, Long.MAX_VALUE)) > 0) total += sent;
     }

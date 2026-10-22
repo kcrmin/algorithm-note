@@ -11,10 +11,12 @@ categories: [two-pointers-windows]
 int left = 0, minLength = Integer.MAX_VALUE;
 long sum = 0;
 for (int right = 0; right < arr.length; right++) {
+    // expand: 오른쪽 한 칸 포함
     sum += arr[right];
-    while (sum >= target) { // 여전히 만족하면 더 짧은 창도 확인한다.
-        // 빼면 후보가 사라질 수 있어 먼저 기록.
+    while (sum >= target) {
+        // answer: 줄이기 전 유효 길이 기록
         minLength = Math.min(minLength, right - left + 1);
+        // shrink: 더 짧은 유효 창 탐색
         sum -= arr[left++];
     }
 }

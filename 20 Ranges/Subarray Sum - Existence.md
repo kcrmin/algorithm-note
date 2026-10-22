@@ -10,13 +10,12 @@ categories: [prefix-sums]
 
 ```java
 Set<Long> seen = new HashSet<>();
-seen.add(0L); // 처음부터인 구간도 찾도록 시작 전 합을 넣는다.
+seen.add(0L); // seed: 처음부터인 구간도 찾도록 시작 전 합 저장
 long sum = 0;
 for (int num : arr) {
     sum += num;
-    // 현재 합-이전 합=target인 이전 합을 찾는다.
-    if (seen.contains(sum - target)) return true;
-    seen.add(sum); // 확인 후 저장해야 빈 구간을 잡지 않는다.
+    if (seen.contains(sum - target)) return true; // check: sum-이전합=target
+    seen.add(sum); // save: 확인 후 저장해야 빈 구간을 잡지 않음
 }
 return false;
 ```

@@ -9,11 +9,10 @@ categories: [java-essentials]
 
 ```java
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-// 다음 줄은 Tokenizer도 새로 만든다.
-StringTokenizer st = new StringTokenizer(br.readLine());
-int a = Integer.parseInt(st.nextToken());
+StringTokenizer st = new StringTokenizer(br.readLine()); // read: 한 줄 분리; 줄마다 새 Tokenizer
+int a = Integer.parseInt(st.nextToken()); // parse: 토큰을 숫자로
 int b = Integer.parseInt(st.nextToken());
-StringBuilder out = new StringBuilder(); // 출력을 모아 보내 호출 비용을 줄인다.
+StringBuilder out = new StringBuilder(); // write: 결과를 모아 한 번에 출력
 out.append((long) a + b).append('\n');
 System.out.print(out);
 ```

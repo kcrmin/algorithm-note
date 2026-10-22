@@ -8,11 +8,11 @@ categories: [java-essentials]
 # Java Basics
 
 ```java
-int n = arr.length;
+int n = arr.length; // size: 배열 length / 문자열 length() / 컬렉션 size()
 int m = s.length();
 int size = list.size();
-boolean same = s.equals(t); // ==는 객체, equals는 내용 비교.
-long sum = (long) a + b; // 계산 뒤 변환하면 이미 int에서 넘친다.
+boolean same = s.equals(t); // compare: 내용은 equals, 객체 자체는 ==
+long sum = (long) a + b; // promote: 계산 전에 long; 계산 뒤에는 이미 넘칠 수 있음
 long product = (long) a * b;
 ```
 

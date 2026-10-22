@@ -11,17 +11,21 @@ categories: [range-queries]
 ```java
 int n;
 long[] tree;
+// init: 원소 수 설정·합 초기화
 void init(int length) { n = length; tree = new long[n + 1]; }
+// add: index를 포함하는 상위 구간에 delta 반영
 void add(int index, long delta) {
-    // i의 최하위 1비트만큼 올라가면 이 원소를 포함하는 다음 구간이다.
+    // ascend: 최하위 1비트만큼 다음 부모로
     for (int i = index; i <= n; i += i & -i) tree[i] += delta;
 }
+// prefix: [1,index] 합
 long prefix(int index) {
     long result = 0;
-    // 더한 구간 길이만큼 빼서 겹치지 않는 이전 구간으로 간다.
+    // collect: 더한 구간 길이만큼 빼서 중복 회피
     for (int i = index; i > 0; i -= i & -i) result += tree[i];
     return result;
 }
+// sum: [left,right] 합
 long sum(int left, int right) {
     return prefix(right) - prefix(left - 1);
 }

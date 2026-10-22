@@ -12,8 +12,10 @@ categories: [exhaustive-search]
 static long countPairs(int[] numbers, long target) {
     long count = 0;
     for (int i = 0; i < numbers.length; i++) {
-        for (int j = i + 1; j < numbers.length; j++) { // i<j로 자기 자신·역순 쌍 제외
-            if ((long) numbers[i] + numbers[j] == target) count++; // 더하기 전에 long으로 변환
+        // enumerate: i<j인 모든 인덱스 쌍
+        for (int j = i + 1; j < numbers.length; j++) {
+            // check: long으로 더해 조건을 만족하면 세기
+            if ((long) numbers[i] + numbers[j] == target) count++;
         }
     }
     return count;

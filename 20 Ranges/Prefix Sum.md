@@ -10,11 +10,11 @@ categories: [prefix-sums]
 
 ```java
 int n = arr.length;
-long[] prefix = new long[n + 1]; // prefix[i]=앞 i개 합. 0개 합도 한 칸 둔다.
+long[] prefix = new long[n + 1]; // build: prefix[i]는 앞 i개 합; 0개 합도 저장
 for (int i = 0; i < n; i++) {
     prefix[i + 1] = prefix[i] + arr[i];
 }
-return prefix[right + 1] - prefix[left]; // 끝까지의 합에서 시작 직전까지를 뺀다.
+return prefix[right + 1] - prefix[left]; // query: 끝까지의 합 - 시작 전 합
 ```
 
 **조건** 고정 배열, 양 끝 포함 [left,right] 합. 전처리 O(n), 조회 O(1).

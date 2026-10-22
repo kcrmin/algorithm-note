@@ -11,16 +11,20 @@ categories: [flow-matching]
 ```java
 static List<Edge>[] graph;
 
+// Edge: 잔여 용량과 짝 역간선 위치 저장
 static class Edge {
-    int to, reverse; long remaining; // 짝 역간선과 잔여 용량을 저장해 전송 취소 가능
+    int to, reverse; long remaining;
     Edge(int t, int r, long c) { to = t; reverse = r; remaining = c; }
 }
+// addEdge: 용량 간선과 취소용 역간선을 함께 추가
 static void addEdge(int from, int to, long capacity) {
     int forwardIndex = graph[from].size();
     int reverseIndex = graph[to].size();
-    if (from == to) reverseIndex++; // 자기 루프는 같은 목록에 정방향이 먼저 들어감
+    // pair: 자기 루프면 정방향 뒤의 역간선 가리키기
+    if (from == to) reverseIndex++;
     graph[from].add(new Edge(to, reverseIndex, capacity));
-    graph[to].add(new Edge(from, forwardIndex, 0)); // 아직 보낸 유량이 없어 취소 가능량도 0
+    // reverse: 처음에는 취소할 전송이 없어 용량 0
+    graph[to].add(new Edge(from, forwardIndex, 0));
 }
 ```
 

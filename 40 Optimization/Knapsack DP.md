@@ -9,9 +9,11 @@ categories: [dynamic-programming]
 
 ```java
 long knapsack(int[] weight, int[] value, int capacity) {
-    long[] dp = new long[capacity + 1]; // dp[w]: 용량 w 이하의 최대 가치.
+    // state: dp[w]=용량 w 이하의 최대 가치
+    long[] dp = new long[capacity + 1];
+    // pick: 이번 물건을 용량별로 반영
     for (int i = 0; i < weight.length; i++) {
-        // 역순이어야 이번 물건을 넣기 전 상태를 읽어 중복 선택을 막는다.
+        // update: 역순으로 이전 물건 상태만 읽어 중복 방지
         for (int w = capacity; w >= weight[i]; w--) {
             dp[w] = Math.max(dp[w], dp[w - weight[i]] + value[i]);
         }

@@ -11,13 +11,15 @@ categories: [range-queries]
 ```java
 int[] compress(int[] arr) {
     int[] sorted = arr.clone();
+    // sort: 값의 대소 순서 만들기
     Arrays.sort(sorted);
     Map<Integer, Integer> rank = new HashMap<>();
+    // rank: 중복을 제외하고 0부터 번호 부여
     for (int value : sorted) {
-        // 중복에 새 번호를 주지 않아 같은 값은 같은 순위다.
         if (!rank.containsKey(value)) rank.put(value, rank.size());
     }
     int[] result = new int[arr.length];
+    // restore: 원본 순서로 순위 반환
     for (int i = 0; i < arr.length; i++) result[i] = rank.get(arr[i]);
     return result;
 }

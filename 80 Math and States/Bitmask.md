@@ -11,12 +11,14 @@ categories: [exhaustive-search]
 long countSubsets(int[] arr, long target) {
     int n = arr.length;
     long answer = 0;
-    for (int mask = 0; mask < (1 << n); mask++) { // 0은 빈 집합이다.
+    // enumerate: 빈 집합부터 2^n가지 선택 순회
+    for (int mask = 0; mask < (1 << n); mask++) {
         long sum = 0;
         for (int i = 0; i < n; i++) {
-            // 켜진 비트의 값은 2·4·8일 수도 있어 1이 아닌 0과 비교한다.
+            // select: 켜진 인덱스의 값만 합산
             if ((mask & (1 << i)) != 0) sum += arr[i];
         }
+        // answer: 목표 합인 선택 집계
         if (sum == target) answer++;
     }
     return answer;

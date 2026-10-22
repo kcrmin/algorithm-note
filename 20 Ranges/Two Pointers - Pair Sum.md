@@ -10,11 +10,11 @@ categories: [two-pointers-windows]
 
 ```java
 int left = 0, right = arr.length - 1;
-while (left < right) { // 같은 원소를 두 번 쓰지 않는다.
+while (left < right) {
     long sum = (long) arr[left] + arr[right];
-    if (sum == target) return true;
-    if (sum < target) left++; // 지금 left는 최대 right와도 부족하다.
-    else right--; // 지금 right는 최소 left와도 너무 크다.
+    if (sum == target) return true; // check: 양끝 합이 목표인가
+    if (sum < target) left++; // increase: 가장 큰 right와 더해도 작으니 left 제외
+    else right--; // decrease: 가장 작은 left와 더해도 크니 right 제외
 }
 return false;
 ```

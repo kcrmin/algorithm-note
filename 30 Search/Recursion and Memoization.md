@@ -14,10 +14,13 @@ static boolean[] computed;
 static final long MOD = 1_000_000_007;
 
 static long solve(int n) {
+    // base: 더 쪼갤 수 없는 상태 반환
     if (n <= 1) return n;
-    if (computed[n]) return memo[n]; // 같은 상태의 하위 호출을 다시 펼치지 않음
+    // reuse: 계산한 상태는 저장값 반환
+    if (computed[n]) return memo[n];
+    // compute: 작은 상태의 답을 합쳐 저장
     memo[n] = (solve(n - 1) + solve(n - 2)) % MOD;
-    computed[n] = true; // 값 0도 답이므로 계산 여부를 별도로 저장
+    computed[n] = true;
     return memo[n];
 }
 ```

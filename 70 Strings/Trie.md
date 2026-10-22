@@ -14,6 +14,7 @@ class Node {
     boolean terminal;
 }
 Node root = new Node();
+// insert: 없는 접두사 경로를 만들고 단어 끝 표시
 void insert(String word) {
     Node node = root;
     for (int i = 0; i < word.length(); i++) {
@@ -21,8 +22,9 @@ void insert(String word) {
         if (node.children[index] == null) node.children[index] = new Node();
         node = node.children[index];
     }
-    node.terminal = true; // 경로가 있어도 단어의 끝인지는 별도 표시가 필요하다.
+    node.terminal = true;
 }
+// walk: 글자 경로를 따라가 마지막 노드 찾기
 Node walk(String word) {
     Node node = root;
     for (int i = 0; i < word.length(); i++) {
@@ -31,6 +33,7 @@ Node walk(String word) {
     }
     return node;
 }
+// contains: 경로뿐 아니라 단어 끝인지 확인
 boolean contains(String word) {
     Node node = walk(word);
     return node != null && node.terminal;

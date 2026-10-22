@@ -10,12 +10,13 @@ categories: [two-pointers-windows]
 
 ```java
 int left = 0;
-long sum = 0, max = Long.MIN_VALUE; // 전부 음수여도 0을 답으로 고르지 않는다.
+long sum = 0, max = Long.MIN_VALUE;
 for (int right = 0; right < arr.length; right++) {
+    // expand: 오른쪽 한 칸 포함
     sum += arr[right];
-    // 한 칸씩 넣으므로 초과도 한 칸뿐.
+    // shrink: k개 초과면 왼쪽 한 칸 제거
     if (right - left + 1 > k) sum -= arr[left++];
-    // 덜 찬 창은 후보가 아니다.
+    // answer: k개가 찼을 때만 갱신
     if (right - left + 1 == k) max = Math.max(max, sum);
 }
 return max;

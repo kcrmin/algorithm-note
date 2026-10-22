@@ -14,13 +14,16 @@ static Point simulate(int[][] map, String commands) {
     Point cur = new Point(0, 0);
     int dir = 0;
     for (char command : commands.toCharArray()) {
+        // turn: 오른쪽 +1, 왼쪽 +3으로 회전
         if (command == 'R') dir = (dir + 1) % 4;
-        else if (command == 'L') dir = (dir + 3) % 4; // -1 대신 +3: Java 음수 나머지 방지
+        else if (command == 'L') dir = (dir + 3) % 4;
         else {
+            // tryMove: 다음 위치를 먼저 계산
             int nx = cur.x + dx[dir], ny = cur.y + dy[dir];
             if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
             if (map[ny][nx] == 0) continue;
-            cur.x = nx; // 검증 후 반영해야 실패한 이동을 되돌릴 필요 없음
+            // commit: 벽·범위 검사를 통과했을 때만 반영
+            cur.x = nx;
             cur.y = ny;
         }
     }

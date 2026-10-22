@@ -9,11 +9,14 @@ categories: [number-theory]
 
 ```java
 long modPow(long a, long exponent, long mod) {
+    // seed: 곱셈 항등원에서 시작, 지수 0도 처리
     long result = 1 % mod;
     a %= mod;
     while (exponent > 0) {
-        if ((exponent & 1) != 0) result = result * a % mod; // 홀수의 남는 a 하나를 꺼낸다.
-        a = a * a % mod; // 밑을 제곱하면 남은 지수를 절반으로 줄일 수 있다.
+        // take: 켜진 비트의 거듭제곱을 답에 곱하기
+        if ((exponent & 1) != 0) result = result * a % mod;
+        // advance: 밑 제곱·지수 절반으로 다음 비트 준비
+        a = a * a % mod;
         exponent /= 2;
     }
     return result;

@@ -12,11 +12,14 @@ static long[][] dist;
 static final long INF = Long.MAX_VALUE / 4;
 
 static void floyd(int n) {
-    for (int k = 0; k < n; k++) { // k가 바깥: 허용하는 중간 정점을 하나씩 늘림
+    // allow: 사용할 수 있는 중간 정점 k를 하나씩 늘리기
+    for (int k = 0; k < n; k++) {
         for (int i = 0; i < n; i++) {
-            if (dist[i][k] == INF) continue; // 없는 경로+음수가 가짜 경로가 되지 않게 함
+            // skip: 이어질 수 없는 경로 제외
+            if (dist[i][k] == INF) continue;
             for (int j = 0; j < n; j++) {
                 if (dist[k][j] == INF) continue;
+                // relax: 직행과 k 경유 중 작은 값
                 dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
             }
         }
