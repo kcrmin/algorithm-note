@@ -46,9 +46,50 @@
     line-height: 1.7;
 }
 .algorithm-reference-sample h1 { margin-bottom: 28px; }
-.algorithm-reference-sample h2 { margin-top: 44px; margin-bottom: 20px; }
+.algorithm-reference-sample h2 { margin-top: 24px; margin-bottom: 20px; }
 .algorithm-reference-sample p { margin-block: 18px; }
-.algorithm-reference-sample img[alt="First True와 Last True의 경계"] {
+.algorithm-reference-sample .callout[data-callout="reference"] {
+    background: transparent;
+    border: 0;
+    border-left: 2px solid var(--background-modifier-border);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2px 0 2px 16px;
+    color: var(--text-normal);
+    font-weight: 400;
+}
+.algorithm-reference-sample .callout[data-callout="reference"] .callout-icon {
+    display: none;
+}
+.algorithm-reference-sample .callout[data-callout="reference"] .callout-title {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+.algorithm-reference-sample .callout[data-callout="reference"] .callout-content {
+    color: var(--text-normal);
+    font-weight: 400;
+}
+.algorithm-reference-sample .callout[data-callout="reference"] .callout-content p {
+    margin: 12px 0;
+}
+.algorithm-reference-sample .callout[data-callout="reference"] strong {
+    color: inherit;
+    font-weight: 600;
+}
+.algorithm-reference-sample hr {
+    height: 0;
+    margin: 36px 0 24px;
+    border: 0;
+    border-top: 1px solid var(--background-modifier-border);
+    background: none;
+    box-shadow: none;
+}
+.algorithm-reference-sample hr::before,
+.algorithm-reference-sample hr::after {
+    content: none;
+}
+.algorithm-reference-sample img[alt="First True와 Last True의 경계"],
+.algorithm-reference-sample img[alt="Dijkstra의 Pop Skip Relax 흐름"] {
     display: block;
     width: 100%;
     max-width: 960px;

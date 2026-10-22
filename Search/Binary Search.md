@@ -10,12 +10,16 @@ categories: [binary-search]
 
 ![First True와 Last True의 경계](../attachments/binary-search-boundaries.svg)
 
-단조: 판정이 한 방향으로 최대 한 번만 바뀐다.
-답 후보의 가능 여부로 최솟값·최댓값을 찾는 데 쓰면 **Parametric Search**.
+> [!reference] 개념과 사용 조건
+> **단조** · 판정이 한 방향으로 최대 한 번만 바뀐다.
+>
+> **Parametric Search** · 답 후보의 가능 여부로 최솟값·최댓값을 찾을 때 사용.
+>
+> **`valid(x)`** · 후보 x가 조건을 만족하는지 판정하는 문제별 함수.
+>
+> **탐색 범위** · 정수 후보 `0..max`, `0 ≤ max < Long.MAX_VALUE`.
 
-`valid(x)`는 후보 x가 조건을 만족하는지 판정하는 문제별 함수.
-
-코드의 탐색 범위는 `0..max`. `0 ≤ max < Long.MAX_VALUE`.
+---
 
 ## First True · FFF│TTT
 
@@ -52,6 +56,8 @@ categories: [binary-search]
 
     <span class="algorithm-keyword">return</span> left;
 }</code></pre>
+
+---
 
 ## Last True · TTT│FFF
 
