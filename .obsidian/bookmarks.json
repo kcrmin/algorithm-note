@@ -1,6 +1,12 @@
 {
   "items": [
     {
+      "type": "file",
+      "ctime": 1792686512072,
+      "path": "Search/Binary Search.md",
+      "title": "Binary Search"
+    },
+    {
       "type": "group",
       "ctime": 1792641688205,
       "title": "Algorithm Graph",

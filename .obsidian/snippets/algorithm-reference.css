@@ -22,3 +22,69 @@
     overflow-wrap: anywhere;
     word-break: normal !important;
 }
+
+/* BEGIN algorithm-reference-sample: one-note review */
+.algorithm-reference-sample {
+    --file-line-width: 960px;
+    --ar-code-bg: #f2f4f7;
+    --ar-text: #20252d;
+    --ar-comment: #286245;
+    --ar-keyword: #6a4096;
+    --ar-change-bg: #fff0b3;
+    --ar-change-text: #5f4508;
+}
+.theme-dark .algorithm-reference-sample {
+    --ar-code-bg: #292f39;
+    --ar-text: #e7eaf0;
+    --ar-comment: #a5d7b5;
+    --ar-keyword: #d4b6f4;
+    --ar-change-bg: #493d21;
+    --ar-change-text: #ffe198;
+}
+.algorithm-reference-sample.markdown-preview-view {
+    font-size: 16px;
+    line-height: 1.7;
+}
+.algorithm-reference-sample h1 { margin-bottom: 28px; }
+.algorithm-reference-sample h2 { margin-top: 44px; margin-bottom: 20px; }
+.algorithm-reference-sample p { margin-block: 18px; }
+.algorithm-reference-sample img[alt="First True와 Last True의 경계"] {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 22px auto 30px;
+}
+.algorithm-reference-sample pre.algorithm-code {
+    background: var(--ar-code-bg);
+    color: var(--ar-text);
+    border-radius: 6px;
+    margin: 16px 0 26px;
+    padding: 18px;
+    font-family: var(--font-monospace);
+    font-size: 14px;
+    line-height: 1.65;
+    white-space: pre-wrap !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+.algorithm-reference-sample pre.algorithm-code > code {
+    display: block;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    white-space: inherit !important;
+}
+.algorithm-reference-sample .algorithm-comment {
+    color: var(--ar-comment) !important;
+    font-style: normal;
+}
+.algorithm-reference-sample .algorithm-keyword { color: var(--ar-keyword); }
+.algorithm-reference-sample mark.algorithm-change {
+    background: var(--ar-change-bg);
+    color: var(--ar-change-text);
+    border-radius: 2px;
+    padding: 0;
+    font-weight: 500;
+}
+/* END algorithm-reference-sample */

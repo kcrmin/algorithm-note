@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 250" width="960" height="250" role="img" aria-labelledby="title desc">
+<title id="title">Binary Search: First True와 Last True</title>
+<desc id="desc">First True는 F F F 다음 첫 T를, Last True는 T T T 중 마지막 T를 찾는다. 두 경계의 T에 밑줄을 표시했다.</desc>
+<style>
+.bg{fill:#20242b}.fg{fill:#e7eaf0}.sub{fill:#b5becb}.mark{fill:#a6c9f9}.line{stroke:#687485}.accent{stroke:#a6c9f9}
+@media(prefers-color-scheme:light){.bg{fill:#ffffff}.fg{fill:#20252d}.sub{fill:#526071}.mark{fill:#2c5b9c}.line{stroke:#c4ccd6}.accent{stroke:#2c5b9c}}
+</style>
+<rect class="bg" width="960" height="250" rx="12"/>
+<g font-family="system-ui,-apple-system,Arial,sans-serif">
+<text class="fg" x="44" y="45" font-size="26" font-weight="500">First True</text>
+<text class="fg" x="524" y="45" font-size="26" font-weight="500">Last True</text>
+</g>
+<g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="40" text-anchor="middle">
+<g class="fg"><text x="60" y="125">F</text><text x="112" y="125">F</text><text x="164" y="125">F</text><text x="336" y="125">T</text><text x="388" y="125">T</text></g>
+<text class="mark" x="284" y="125">T</text>
+<g class="fg"><text x="540" y="125">T</text><text x="592" y="125">T</text><text x="764" y="125">F</text><text x="816" y="125">F</text><text x="868" y="125">F</text></g>
+<text class="mark" x="644" y="125">T</text>
+</g>
+<g class="line" stroke-width="1.5"><path d="M224 85V133"/><path d="M704 85V133"/></g>
+<g class="accent" stroke-width="3"><path d="M269 140H299"/><path d="M629 140H659"/></g>
+<g class="mark" font-family="system-ui,-apple-system,Arial,sans-serif" font-size="23" text-anchor="middle"><text x="284" y="179">첫 T</text><text x="644" y="179">마지막 T</text></g>
+<text class="sub" x="480" y="229" text-anchor="middle" font-size="20" font-family="system-ui,-apple-system,Arial,sans-serif">T = 조건 만족　 ·　 F = 불만족</text>
+</svg>
