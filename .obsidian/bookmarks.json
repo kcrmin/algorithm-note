@@ -447,7 +447,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -594,7 +594,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -741,7 +741,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             }
@@ -895,7 +895,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1042,7 +1042,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1189,7 +1189,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1336,7 +1336,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1483,7 +1483,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             }
@@ -1637,7 +1637,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1784,7 +1784,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -1931,7 +1931,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -2078,7 +2078,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             }
@@ -2232,7 +2232,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -2379,7 +2379,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             },
@@ -2526,7 +2526,7 @@
                 "repelStrength": 18,
                 "linkStrength": 0.7,
                 "linkDistance": 115,
-                "scale": 1.0,
+                "scale": 1,
                 "close": true
               }
             }
