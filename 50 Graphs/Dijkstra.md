@@ -16,9 +16,9 @@ categories: [shortest-paths]
 >
 > **조건** · 가중치 ≥ 0. 옛 후보를 제외하고 가장 가까운 정점을 꺼내면, 그 거리가 확정된다.
 >
-> **입력** · `graph[v]`는 `{to, weight}` 목록. 각 리스트는 미리 생성하고, 정점 번호는 배열 인덱스로 사용.
+> **Edge → graph[v]** · `v → to` 간선 하나의 비용 `weight`. 정점 번호로 접근하며 각 리스트는 미리 생성.
 >
-> **자료형** · 간선 가중치는 `int`, 누적 거리는 `long`. 힙에는 `{정점, 누적 거리}`를 저장.
+> **State → pq** · `start → vertex`까지 도착한 후보의 누적 거리 `distance`.
 >
 > **반환** · `dist[v]`는 최단 거리. 도달 불가는 `Long.MAX_VALUE`.
 
@@ -53,36 +53,75 @@ categories: [shortest-paths]
 
 <pre class="algorithm-code"><code><span class="algorithm-keyword">import</span> java.util.*;
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[] dijkstra(List&lt;<span class="algorithm-keyword">int</span>[]&gt;[] graph, <span class="algorithm-keyword">int</span> start) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">class</span> Edge {
+    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span> to, weight;
+
+    Edge(<span class="algorithm-keyword">int</span> to, <span class="algorithm-keyword">int</span> weight) {
+        <span class="algorithm-keyword">this</span>.to = to;
+        <span class="algorithm-keyword">this</span>.weight = weight;
+    }
+}
+
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">class</span> State {
+    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span> vertex;
+    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">long</span> distance;
+
+    State(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">long</span> distance) {
+        <span class="algorithm-keyword">this</span>.vertex = vertex;
+        <span class="algorithm-keyword">this</span>.distance = distance;
+    }
+}
+
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[] dijkstra(List&lt;Edge&gt;[] graph, <span class="algorithm-keyword">int</span> start) {
     <span class="algorithm-keyword">long</span>[] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[graph.length];
     Arrays.fill(dist, Long.MAX_VALUE);
 
-    PriorityQueue&lt;<span class="algorithm-keyword">long</span>[]&gt; pq = <span class="algorithm-keyword">new</span> PriorityQueue&lt;&gt;(
-            Comparator.comparingLong(a -&gt; a[1]));
+    PriorityQueue&lt;State&gt; pq = <span class="algorithm-keyword">new</span> PriorityQueue&lt;&gt;(
+            Comparator.comparingLong(state -&gt; state.distance));
     dist[start] = 0;
-    pq.offer(<span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[]{start, 0});
+    pq.offer(<span class="algorithm-keyword">new</span> State(start, 0));
 
     <span class="algorithm-keyword">while</span> (!pq.isEmpty()) {
-        <span class="algorithm-keyword">long</span>[] cur = pq.poll();
-        <span class="algorithm-keyword">int</span> v = (<span class="algorithm-keyword">int</span>) cur[0];
-        <span class="algorithm-keyword">long</span> cost = cur[1];
+        State cur = pq.poll();
+        <span class="algorithm-keyword">int</span> v = cur.vertex;
 
-        <span class="algorithm-keyword">if</span> (cost != dist[v]) {    <span class="algorithm-comment">// 갱신 전 후보도 힙에 남아 있음</span>
+        <span class="algorithm-keyword">if</span> (cur.distance != dist[v]) {    <span class="algorithm-comment">// 갱신 전 후보도 힙에 남아 있음</span>
             <span class="algorithm-keyword">continue</span>;
         }
 
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] edge : graph[v]) {
-            <span class="algorithm-keyword">int</span> to = edge[0];
-            <span class="algorithm-keyword">long</span> next = cost + edge[1];
+        <span class="algorithm-keyword">for</span> (Edge edge : graph[v]) {
+            <span class="algorithm-keyword">int</span> to = edge.to;
+            <span class="algorithm-keyword">long</span> next = cur.distance + edge.weight;
 
             <span class="algorithm-keyword">if</span> (next &lt; dist[to]) {    <span class="algorithm-comment">// 같은 거리도 넣으면 0 가중치 사이클에서 반복</span>
                 dist[to] = next;
-                pq.offer(<span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[]{to, next});
+                pq.offer(<span class="algorithm-keyword">new</span> State(to, next));
             }
         }
     }
 
     <span class="algorithm-keyword">return</span> dist;
 }</code></pre>
+
+---
+
+## Graph setup
+
+정점은 `0..n-1`, 입력 `edges[i]`는 `{from, to, weight}`, `start`는 시작 정점.
+
+<pre class="algorithm-code"><code>@SuppressWarnings("unchecked")
+List&lt;Edge&gt;[] graph = (List&lt;Edge&gt;[]) <span class="algorithm-keyword">new</span> List&lt;?&gt;[n];
+<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
+    graph[v] = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+}
+
+<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
+    <span class="algorithm-keyword">int</span> from = row[0], to = row[1], weight = row[2];
+
+    graph[from].add(<span class="algorithm-keyword">new</span> Edge(to, weight));
+    <span class="algorithm-comment">// <mark class="algorithm-change">graph[to].add(new Edge(from, weight));</mark>    // 무방향이면 주석 해제</span>
+}
+
+<span class="algorithm-keyword">long</span>[] dist = dijkstra(graph, start);</code></pre>
 
 #Graphs
