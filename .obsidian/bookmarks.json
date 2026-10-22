@@ -2,13 +2,13 @@
   "items": [
     {
       "type": "group",
-      "title": "알고리즘 그래프",
+      "title": "Algorithm Graph",
       "ctime": 1792591200000,
       "items": [
         {
           "type": "graph",
           "ctime": 1792591200000,
-          "title": "전체",
+          "title": "All Algorithms",
           "options": {
             "collapse-filter": false,
             "search": "[type:template]",
@@ -26,56 +26,56 @@
                 }
               },
               {
-                "query": "path:\"20 구간\"",
+                "query": "path:\"20 Ranges\"",
                 "color": {
                   "a": 1,
                   "rgb": 15776074
                 }
               },
               {
-                "query": "path:\"30 탐색\"",
+                "query": "path:\"30 Search\"",
                 "color": {
                   "a": 1,
                   "rgb": 5490572
                 }
               },
               {
-                "query": "path:\"40 최적화\"",
+                "query": "path:\"40 Optimization\"",
                 "color": {
                   "a": 1,
                   "rgb": 11833069
                 }
               },
               {
-                "query": "path:\"50 그래프 심화\"",
+                "query": "path:\"50 Graphs\"",
                 "color": {
                   "a": 1,
                   "rgb": 15237759
                 }
               },
               {
-                "query": "path:\"60 구간 자료구조\"",
+                "query": "path:\"60 Range Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 14394461
                 }
               },
               {
-                "query": "path:\"70 문자열\"",
+                "query": "path:\"70 Strings\"",
                 "color": {
                   "a": 1,
                   "rgb": 5359573
                 }
               },
               {
-                "query": "path:\"80 수학과 상태\"",
+                "query": "path:\"80 Math and States\"",
                 "color": {
                   "a": 1,
                   "rgb": 15062895
                 }
               },
               {
-                "query": "path:\"90 자료구조\"",
+                "query": "path:\"90 Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 10989503
@@ -99,10 +99,10 @@
         {
           "type": "graph",
           "ctime": 1792591200000,
-          "title": "그래프",
+          "title": "Graphs",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] (path:\"50 그래프 심화\" OR file:\"BFS\" OR file:\"DFS와 그래프\")",
+            "search": "[type:template] (path:\"50 Graphs\" OR file:\"BFS\" OR file:\"DFS and Graphs\")",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -117,56 +117,56 @@
                 }
               },
               {
-                "query": "path:\"20 구간\"",
+                "query": "path:\"20 Ranges\"",
                 "color": {
                   "a": 1,
                   "rgb": 15776074
                 }
               },
               {
-                "query": "path:\"30 탐색\"",
+                "query": "path:\"30 Search\"",
                 "color": {
                   "a": 1,
                   "rgb": 5490572
                 }
               },
               {
-                "query": "path:\"40 최적화\"",
+                "query": "path:\"40 Optimization\"",
                 "color": {
                   "a": 1,
                   "rgb": 11833069
                 }
               },
               {
-                "query": "path:\"50 그래프 심화\"",
+                "query": "path:\"50 Graphs\"",
                 "color": {
                   "a": 1,
                   "rgb": 15237759
                 }
               },
               {
-                "query": "path:\"60 구간 자료구조\"",
+                "query": "path:\"60 Range Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 14394461
                 }
               },
               {
-                "query": "path:\"70 문자열\"",
+                "query": "path:\"70 Strings\"",
                 "color": {
                   "a": 1,
                   "rgb": 5359573
                 }
               },
               {
-                "query": "path:\"80 수학과 상태\"",
+                "query": "path:\"80 Math and States\"",
                 "color": {
                   "a": 1,
                   "rgb": 15062895
                 }
               },
               {
-                "query": "path:\"90 자료구조\"",
+                "query": "path:\"90 Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 10989503
@@ -190,10 +190,10 @@
         {
           "type": "graph",
           "ctime": 1792591200000,
-          "title": "구간과 자료구조",
+          "title": "Ranges and Data Structures",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] (path:\"20 구간\" OR path:\"60 구간 자료구조\" OR path:\"90 자료구조\")",
+            "search": "[type:template] (path:\"20 Ranges\" OR path:\"60 Range Data Structures\" OR path:\"90 Data Structures\")",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -208,56 +208,56 @@
                 }
               },
               {
-                "query": "path:\"20 구간\"",
+                "query": "path:\"20 Ranges\"",
                 "color": {
                   "a": 1,
                   "rgb": 15776074
                 }
               },
               {
-                "query": "path:\"30 탐색\"",
+                "query": "path:\"30 Search\"",
                 "color": {
                   "a": 1,
                   "rgb": 5490572
                 }
               },
               {
-                "query": "path:\"40 최적화\"",
+                "query": "path:\"40 Optimization\"",
                 "color": {
                   "a": 1,
                   "rgb": 11833069
                 }
               },
               {
-                "query": "path:\"50 그래프 심화\"",
+                "query": "path:\"50 Graphs\"",
                 "color": {
                   "a": 1,
                   "rgb": 15237759
                 }
               },
               {
-                "query": "path:\"60 구간 자료구조\"",
+                "query": "path:\"60 Range Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 14394461
                 }
               },
               {
-                "query": "path:\"70 문자열\"",
+                "query": "path:\"70 Strings\"",
                 "color": {
                   "a": 1,
                   "rgb": 5359573
                 }
               },
               {
-                "query": "path:\"80 수학과 상태\"",
+                "query": "path:\"80 Math and States\"",
                 "color": {
                   "a": 1,
                   "rgb": 15062895
                 }
               },
               {
-                "query": "path:\"90 자료구조\"",
+                "query": "path:\"90 Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 10989503
@@ -281,10 +281,10 @@
         {
           "type": "graph",
           "ctime": 1792591200000,
-          "title": "문자열",
+          "title": "Strings",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] path:\"70 문자열\"",
+            "search": "[type:template] path:\"70 Strings\"",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -299,56 +299,56 @@
                 }
               },
               {
-                "query": "path:\"20 구간\"",
+                "query": "path:\"20 Ranges\"",
                 "color": {
                   "a": 1,
                   "rgb": 15776074
                 }
               },
               {
-                "query": "path:\"30 탐색\"",
+                "query": "path:\"30 Search\"",
                 "color": {
                   "a": 1,
                   "rgb": 5490572
                 }
               },
               {
-                "query": "path:\"40 최적화\"",
+                "query": "path:\"40 Optimization\"",
                 "color": {
                   "a": 1,
                   "rgb": 11833069
                 }
               },
               {
-                "query": "path:\"50 그래프 심화\"",
+                "query": "path:\"50 Graphs\"",
                 "color": {
                   "a": 1,
                   "rgb": 15237759
                 }
               },
               {
-                "query": "path:\"60 구간 자료구조\"",
+                "query": "path:\"60 Range Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 14394461
                 }
               },
               {
-                "query": "path:\"70 문자열\"",
+                "query": "path:\"70 Strings\"",
                 "color": {
                   "a": 1,
                   "rgb": 5359573
                 }
               },
               {
-                "query": "path:\"80 수학과 상태\"",
+                "query": "path:\"80 Math and States\"",
                 "color": {
                   "a": 1,
                   "rgb": 15062895
                 }
               },
               {
-                "query": "path:\"90 자료구조\"",
+                "query": "path:\"90 Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 10989503
@@ -372,10 +372,10 @@
         {
           "type": "graph",
           "ctime": 1792591200000,
-          "title": "DP와 상태",
+          "title": "DP and States",
           "options": {
             "collapse-filter": false,
-            "search": "[type:template] (path:\"40 최적화\" OR path:\"80 수학과 상태\")",
+            "search": "[type:template] (path:\"40 Optimization\" OR path:\"80 Math and States\")",
             "showTags": false,
             "showAttachments": false,
             "hideUnresolved": true,
@@ -390,56 +390,56 @@
                 }
               },
               {
-                "query": "path:\"20 구간\"",
+                "query": "path:\"20 Ranges\"",
                 "color": {
                   "a": 1,
                   "rgb": 15776074
                 }
               },
               {
-                "query": "path:\"30 탐색\"",
+                "query": "path:\"30 Search\"",
                 "color": {
                   "a": 1,
                   "rgb": 5490572
                 }
               },
               {
-                "query": "path:\"40 최적화\"",
+                "query": "path:\"40 Optimization\"",
                 "color": {
                   "a": 1,
                   "rgb": 11833069
                 }
               },
               {
-                "query": "path:\"50 그래프 심화\"",
+                "query": "path:\"50 Graphs\"",
                 "color": {
                   "a": 1,
                   "rgb": 15237759
                 }
               },
               {
-                "query": "path:\"60 구간 자료구조\"",
+                "query": "path:\"60 Range Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 14394461
                 }
               },
               {
-                "query": "path:\"70 문자열\"",
+                "query": "path:\"70 Strings\"",
                 "color": {
                   "a": 1,
                   "rgb": 5359573
                 }
               },
               {
-                "query": "path:\"80 수학과 상태\"",
+                "query": "path:\"80 Math and States\"",
                 "color": {
                   "a": 1,
                   "rgb": 15062895
                 }
               },
               {
-                "query": "path:\"90 자료구조\"",
+                "query": "path:\"90 Data Structures\"",
                 "color": {
                   "a": 1,
                   "rgb": 10989503

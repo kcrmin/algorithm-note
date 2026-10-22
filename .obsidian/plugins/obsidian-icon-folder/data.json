@@ -33,7 +33,7 @@
   "attachments/pdf": "LiFileText",
   "attachments/files": "LiFiles",
   "10 Java": "LiCode",
-  "20 구간": "LiArrowLeftRight",
-  "30 탐색": "LiNetwork",
-  "40 최적화": "LiChartNoAxesCombined"
+  "20 Ranges": "LiArrowLeftRight",
+  "30 Search": "LiNetwork",
+  "40 Optimization": "LiChartNoAxesCombined"
 }
