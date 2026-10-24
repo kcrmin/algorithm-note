@@ -64,11 +64,11 @@ sum(left, right) {
     }
 
     <span class="algorithm-keyword">long</span> prefix(<span class="algorithm-keyword">int</span> end) {
-        <span class="algorithm-keyword">long</span> result = 0;
+        <span class="algorithm-keyword">long</span> answer = 0;
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = end; i &gt; 0; i -= i &amp; -i) {
-            result += tree[i];
+            answer += tree[i];
         }
-        <span class="algorithm-keyword">return</span> result;
+        <span class="algorithm-keyword">return</span> answer;
     }
 
     <span class="algorithm-keyword">long</span> sum(<span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right) {

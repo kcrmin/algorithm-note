@@ -44,7 +44,7 @@ code-styler-ignore: true
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] directedEulerTrail(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     <span class="algorithm-keyword">if</span> (n == 0) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[0];
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">int</span>[] in = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n], out = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
         graph.get(row[0]).add(row[1]);
@@ -52,17 +52,17 @@ code-styler-ignore: true
         in[row[1]]++;
     }
     <span class="algorithm-keyword">int</span> start = 0, plus = 0, minus = 0;
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (out[v] &gt; 0) start = v;
-        <span class="algorithm-keyword">int</span> delta = out[v] - in[v];
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (out[vertex] &gt; 0) start = vertex;
+        <span class="algorithm-keyword">int</span> delta = out[vertex] - in[vertex];
         <span class="algorithm-keyword">if</span> (delta == 1) plus++;
         <span class="algorithm-keyword">else</span> <span class="algorithm-keyword">if</span> (delta == -1) minus++;
         <span class="algorithm-keyword">else</span> <span class="algorithm-keyword">if</span> (delta != 0) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
     }
     <span class="algorithm-keyword">if</span> (!((plus == 0 &amp;&amp; minus == 0) || (plus == 1 &amp;&amp; minus == 1))) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
     <span class="algorithm-keyword">if</span> (plus == 1) {
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-            <span class="algorithm-keyword">if</span> (out[v] - in[v] == 1) start = v;
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+            <span class="algorithm-keyword">if</span> (out[vertex] - in[vertex] == 1) start = vertex;
         }
     }
 
@@ -71,9 +71,9 @@ code-styler-ignore: true
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
     stack.push(start);
     <span class="algorithm-keyword">while</span> (!stack.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = stack.peek();
-        <span class="algorithm-keyword">if</span> (next[v] &lt; graph.get(v).size()) {
-            stack.push(graph.get(v).get(next[v]++));
+        <span class="algorithm-keyword">int</span> vertex = stack.peek();
+        <span class="algorithm-keyword">if</span> (next[vertex] &lt; graph.get(vertex).size()) {
+            stack.push(graph.get(vertex).get(next[vertex]++));
         } <span class="algorithm-keyword">else</span> {
             path[index--] = stack.pop();    <span class="algorithm-comment">// 막힌 곳부터 기록해야 경로가 이어짐</span>
         }
@@ -115,21 +115,21 @@ code-styler-ignore: true
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] undirectedEulerTrail(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     <span class="algorithm-keyword">if</span> (n == 0) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[0];
     List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> id = 0; id &lt; edges.length; id++) {
         <span class="algorithm-keyword">int</span> a = edges[id][0], b = edges[id][1];
         graph.get(a).add(<span class="algorithm-keyword">new</span> Edge(b, id));
         graph.get(b).add(<span class="algorithm-keyword">new</span> Edge(a, id));
     }
     <span class="algorithm-keyword">int</span> start = 0, odd = 0;
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (!graph.get(v).isEmpty()) start = v;
-        <span class="algorithm-keyword">if</span> (graph.get(v).size() % 2 == 1) odd++;
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (!graph.get(vertex).isEmpty()) start = vertex;
+        <span class="algorithm-keyword">if</span> (graph.get(vertex).size() % 2 == 1) odd++;
     }
     <span class="algorithm-keyword">if</span> (odd != 0 &amp;&amp; odd != 2) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
     <span class="algorithm-keyword">if</span> (odd == 2) {
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-            <span class="algorithm-keyword">if</span> (graph.get(v).size() % 2 == 1) { start = v; <span class="algorithm-keyword">break</span>; }
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+            <span class="algorithm-keyword">if</span> (graph.get(vertex).size() % 2 == 1) { start = vertex; <span class="algorithm-keyword">break</span>; }
         }
     }
 
@@ -139,13 +139,13 @@ code-styler-ignore: true
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
     stack.push(start);
     <span class="algorithm-keyword">while</span> (!stack.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = stack.peek();
-        <span class="algorithm-keyword">while</span> (next[v] &lt; graph.get(v).size()
-                &amp;&amp; used[graph.get(v).get(next[v]).id]) next[v]++;
-        <span class="algorithm-keyword">if</span> (next[v] == graph.get(v).size()) {
+        <span class="algorithm-keyword">int</span> vertex = stack.peek();
+        <span class="algorithm-keyword">while</span> (next[vertex] &lt; graph.get(vertex).size()
+                &amp;&amp; used[graph.get(vertex).get(next[vertex]).id]) next[vertex]++;
+        <span class="algorithm-keyword">if</span> (next[vertex] == graph.get(vertex).size()) {
             path[index--] = stack.pop();
         } <span class="algorithm-keyword">else</span> {
-            Edge edge = graph.get(v).get(next[v]++);
+            Edge edge = graph.get(vertex).get(next[vertex]++);
             used[edge.id] = <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// 양방향 목록이 같은 간선 하나를 공유</span>
             stack.push(edge.to);
         }

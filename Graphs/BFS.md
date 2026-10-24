@@ -31,8 +31,8 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 모든 시작점을 거리 0으로 큐에 삽입</span>
 <span class="algorithm-keyword">while</span> (큐가 비어 있지 않으면) {
-    <span class="algorithm-comment">// 앞에서 정점 꺼내기</span>
-    <span class="algorithm-keyword">for</span> (각 이웃) {
+    <span class="algorithm-comment">// 앞에서 vertex 꺼내기</span>
+    <span class="algorithm-keyword">for</span> (각 이웃 to) {
         <span class="algorithm-keyword">if</span> (아직 방문하지 않았다면) {
             <span class="algorithm-comment">// 거리 기록 → 큐에 삽입</span>
         }
@@ -44,7 +44,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] bfs(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges, <span class="algorithm-keyword">int</span>[] starts, <span class="algorithm-keyword">boolean</span> directed) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
         graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     }
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
@@ -62,10 +62,10 @@ code-styler-ignore: true
     }
 
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = queue.poll();
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+        <span class="algorithm-keyword">int</span> vertex = queue.poll();
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
             <span class="algorithm-keyword">if</span> (dist[to] != -1) <span class="algorithm-keyword">continue</span>;
-            dist[to] = dist[v] + 1;    <span class="algorithm-comment">// 넣을 때 방문 처리해야 중복 삽입을 막음</span>
+            dist[to] = dist[vertex] + 1;    <span class="algorithm-comment">// 넣을 때 방문 처리해야 중복 삽입을 막음</span>
             queue.offer(to);
         }
     }
@@ -86,7 +86,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작 칸의 거리 = 0</span>
 <span class="algorithm-keyword">while</span> (큐에 칸이 남아 있으면) {
-    <span class="algorithm-comment">// 앞의 칸 꺼내기</span>
+    <span class="algorithm-comment">// current = 앞에서 꺼낸 칸</span>
     <span class="algorithm-keyword">for</span> (상하좌우) {
         <span class="algorithm-keyword">if</span> (범위 밖 / 벽 / 방문한 칸이면) <span class="algorithm-keyword">continue</span>;
         <span class="algorithm-comment">// 거리 기록 → 큐에 삽입</span>
@@ -116,12 +116,12 @@ code-styler-ignore: true
     queue.offer(<span class="algorithm-keyword">new</span> Cell(startX, startY));
 
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-        Cell cur = queue.poll();
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> d = 0; d &lt; 4; d++) {
-            <span class="algorithm-keyword">int</span> nx = cur.x + dx[d], ny = cur.y + dy[d];
+        Cell current = queue.poll();
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> direction = 0; direction &lt; 4; direction++) {
+            <span class="algorithm-keyword">int</span> nx = current.x + dx[direction], ny = current.y + dy[direction];
             <span class="algorithm-keyword">if</span> (nx &lt; 0 || nx &gt;= w || ny &lt; 0 || ny &gt;= h) <span class="algorithm-keyword">continue</span>;
             <span class="algorithm-keyword">if</span> (board[ny][nx] == 1 || dist[ny][nx] != -1) <span class="algorithm-keyword">continue</span>;
-            dist[ny][nx] = dist[cur.y][cur.x] + 1;
+            dist[ny][nx] = dist[current.y][current.x] + 1;
             queue.offer(<span class="algorithm-keyword">new</span> Cell(nx, ny));
         }
     }

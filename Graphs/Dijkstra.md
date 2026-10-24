@@ -15,11 +15,11 @@ code-styler-ignore: true
 >
 > **조건** · 가중치 ≥ 0. 옛 후보를 제외하고 가장 가까운 정점을 꺼내면, 그 거리가 확정된다.
 >
-> **Edge → graph.get(v)** · `v → to` 간선 하나의 비용 `weight`. 정점마다 간선 목록 하나를 둔다.
+> **Edge → graph.get(vertex)** · `vertex → to` 간선 하나의 비용 `weight`. 정점마다 간선 목록 하나를 둔다.
 >
 > **State → pq** · `start → vertex`까지 도착한 후보의 누적 거리 `distance`.
 >
-> **반환** · `dist[v]`는 최단 거리. 도달 불가는 `Long.MAX_VALUE`.
+> **반환** · `dist[vertex]`는 최단 거리. 도달 불가는 `Long.MAX_VALUE`.
 
 ---
 
@@ -33,16 +33,16 @@ code-styler-ignore: true
 <span class="algorithm-comment">// 시작 후보를 힙에 삽입</span>
 
 <span class="algorithm-keyword">while</span> (힙에 후보가 있으면) {
-    <span class="algorithm-comment">// pop: 누적 거리가 가장 작은 후보</span>
+    <span class="algorithm-comment">// current = 누적 거리가 가장 작은 후보</span>
 
     <span class="algorithm-keyword">if</span> (현재 기록과 다른 옛 후보면) {
         <span class="algorithm-keyword">continue</span>;
     }
 
     <span class="algorithm-keyword">for</span> (현재 정점에서 나가는 각 간선) {
-        <span class="algorithm-comment">// next = 현재 거리 + 간선 가중치</span>
+        <span class="algorithm-comment">// nextDistance = 현재 거리 + 간선 가중치</span>
 
-        <span class="algorithm-keyword">if</span> (next가 기존 거리보다 짧으면) {
+        <span class="algorithm-keyword">if</span> (nextDistance가 기존 거리보다 짧으면) {
             <span class="algorithm-comment">// 거리 갱신 → 새 후보 삽입</span>
         }
     }
@@ -83,20 +83,20 @@ code-styler-ignore: true
     pq.offer(<span class="algorithm-keyword">new</span> State(start, 0));
 
     <span class="algorithm-keyword">while</span> (!pq.isEmpty()) {
-        State cur = pq.poll();
-        <span class="algorithm-keyword">int</span> v = cur.vertex;
+        State current = pq.poll();
+        <span class="algorithm-keyword">int</span> vertex = current.vertex;
 
-        <span class="algorithm-keyword">if</span> (cur.distance != dist[v]) {    <span class="algorithm-comment">// 갱신 전 후보도 힙에 남아 있음</span>
+        <span class="algorithm-keyword">if</span> (current.distance != dist[vertex]) {    <span class="algorithm-comment">// 갱신 전 후보도 힙에 남아 있음</span>
             <span class="algorithm-keyword">continue</span>;
         }
 
-        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
+        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
             <span class="algorithm-keyword">int</span> to = edge.to;
-            <span class="algorithm-keyword">long</span> next = cur.distance + edge.weight;
+            <span class="algorithm-keyword">long</span> nextDistance = current.distance + edge.weight;
 
-            <span class="algorithm-keyword">if</span> (next &lt; dist[to]) {    <span class="algorithm-comment">// 같은 거리도 넣으면 0 가중치 사이클에서 반복</span>
-                dist[to] = next;
-                pq.offer(<span class="algorithm-keyword">new</span> State(to, next));
+            <span class="algorithm-keyword">if</span> (nextDistance &lt; dist[to]) {    <span class="algorithm-comment">// 같은 거리도 넣으면 0 가중치 사이클에서 반복</span>
+                dist[to] = nextDistance;
+                pq.offer(<span class="algorithm-keyword">new</span> State(to, nextDistance));
             }
         }
     }
@@ -113,7 +113,7 @@ code-styler-ignore: true
 정점은 `0..n-1`, 입력 `edges[i]`는 `{from, to, weight}`, `start`는 시작 정점.
 
 <pre class="algorithm-code" data-language="java"><code>List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);    <span class="algorithm-comment">// 용량만 확보; 원소는 아직 0개</span>
-<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
+<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
     graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
 }
 

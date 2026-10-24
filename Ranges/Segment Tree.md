@@ -39,7 +39,7 @@ query(left, right) {
         <span class="algorithm-comment">// 왼쪽·오른쪽의 단독 블록을 답에 결합</span>
         <span class="algorithm-comment">// 양쪽을 부모 레벨로 이동</span>
     }
-    <span class="algorithm-keyword">return</span> result;
+    <span class="algorithm-keyword">return</span> answer;
 }</code></pre>
 
 **Java**
@@ -73,22 +73,22 @@ query(left, right) {
     }
 
     <span class="algorithm-keyword">long</span> sum(<span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right) {
-        <span class="algorithm-keyword">long</span> result = 0;
+        <span class="algorithm-keyword">long</span> answer = 0;
         left += size;
         right += size;
 
         <span class="algorithm-keyword">while</span> (left &lt; right) {
             <span class="algorithm-keyword">if</span> ((left &amp; 1) == 1) {
-                result += tree[left++];    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
+                answer += tree[left++];    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
             }
             <span class="algorithm-keyword">if</span> ((right &amp; 1) == 1) {
-                result += tree[--right];    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
+                answer += tree[--right];    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
             }
             left /= 2;
             right /= 2;
         }
 
-        <span class="algorithm-keyword">return</span> result;
+        <span class="algorithm-keyword">return</span> answer;
     }
 }</code></pre>
 
@@ -114,7 +114,7 @@ query(left, right) {
         <span class="algorithm-comment">// 왼쪽·오른쪽의 단독 블록을 답에 결합</span>
         <span class="algorithm-comment">// 양쪽을 부모 레벨로 이동</span>
     }
-    <span class="algorithm-keyword">return</span> result;
+    <span class="algorithm-keyword">return</span> answer;
 }</code></pre>
 
 **Java**
@@ -151,22 +151,22 @@ query(left, right) {
     }
 
     <span class="algorithm-keyword">long</span> min(<span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right) {
-        <span class="algorithm-keyword">long</span> result = <mark class="algorithm-change">Long.MAX_VALUE</mark>;
+        <span class="algorithm-keyword">long</span> answer = <mark class="algorithm-change">Long.MAX_VALUE</mark>;
         left += size;
         right += size;
 
         <span class="algorithm-keyword">while</span> (left &lt; right) {
             <span class="algorithm-keyword">if</span> ((left &amp; 1) == 1) {
-                result = <mark class="algorithm-change">Math.min</mark>(result, tree[left++]);    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
+                answer = <mark class="algorithm-change">Math.min</mark>(answer, tree[left++]);    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
             }
             <span class="algorithm-keyword">if</span> ((right &amp; 1) == 1) {
-                result = <mark class="algorithm-change">Math.min</mark>(result, tree[--right]);    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
+                answer = <mark class="algorithm-change">Math.min</mark>(answer, tree[--right]);    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
             }
             left /= 2;
             right /= 2;
         }
 
-        <span class="algorithm-keyword">return</span> result;
+        <span class="algorithm-keyword">return</span> answer;
     }
 }</code></pre>
 
@@ -192,7 +192,7 @@ query(left, right) {
         <span class="algorithm-comment">// 왼쪽·오른쪽의 단독 블록을 답에 결합</span>
         <span class="algorithm-comment">// 양쪽을 부모 레벨로 이동</span>
     }
-    <span class="algorithm-keyword">return</span> result;
+    <span class="algorithm-keyword">return</span> answer;
 }</code></pre>
 
 **Java**
@@ -229,22 +229,22 @@ query(left, right) {
     }
 
     <span class="algorithm-keyword">long</span> max(<span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right) {
-        <span class="algorithm-keyword">long</span> result = <mark class="algorithm-change">Long.MIN_VALUE</mark>;
+        <span class="algorithm-keyword">long</span> answer = <mark class="algorithm-change">Long.MIN_VALUE</mark>;
         left += size;
         right += size;
 
         <span class="algorithm-keyword">while</span> (left &lt; right) {
             <span class="algorithm-keyword">if</span> ((left &amp; 1) == 1) {
-                result = <mark class="algorithm-change">Math.max</mark>(result, tree[left++]);    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
+                answer = <mark class="algorithm-change">Math.max</mark>(answer, tree[left++]);    <span class="algorithm-comment">// 오른쪽 자식이면 왼쪽 형제는 범위 밖</span>
             }
             <span class="algorithm-keyword">if</span> ((right &amp; 1) == 1) {
-                result = <mark class="algorithm-change">Math.max</mark>(result, tree[--right]);    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
+                answer = <mark class="algorithm-change">Math.max</mark>(answer, tree[--right]);    <span class="algorithm-comment">// right는 제외 경계라 먼저 감소</span>
             }
             left /= 2;
             right /= 2;
         }
 
-        <span class="algorithm-keyword">return</span> result;
+        <span class="algorithm-keyword">return</span> answer;
     }
 }</code></pre>
 

@@ -41,10 +41,10 @@ removeOne(count, value) {
 }
 
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> removeOne(Map&lt;Integer, Integer&gt; count, <span class="algorithm-keyword">int</span> value) {
-    <span class="algorithm-keyword">int</span> current = count.getOrDefault(value, 0);
-    <span class="algorithm-keyword">if</span> (current == 0) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
-    <span class="algorithm-keyword">if</span> (current == 1) count.remove(value);    <span class="algorithm-comment">// size()를 실제 종류 수로 유지</span>
-    <span class="algorithm-keyword">else</span> count.put(value, current - 1);
+    <span class="algorithm-keyword">int</span> frequency = count.getOrDefault(value, 0);
+    <span class="algorithm-keyword">if</span> (frequency == 0) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
+    <span class="algorithm-keyword">if</span> (frequency == 1) count.remove(value);    <span class="algorithm-comment">// size()를 실제 종류 수로 유지</span>
+    <span class="algorithm-keyword">else</span> count.put(value, frequency - 1);
     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
 }</code></pre>
 

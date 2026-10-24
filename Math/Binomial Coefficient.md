@@ -102,13 +102,13 @@ new Combinations(limit, prime)으로 만들고 choose(n, k)를 호출한다. 질
     }
 
     <span class="algorithm-keyword">long</span> powMod(<span class="algorithm-keyword">long</span> base, <span class="algorithm-keyword">long</span> exponent) {
-        <span class="algorithm-keyword">long</span> result = 1;
+        <span class="algorithm-keyword">long</span> answer = 1;
         <span class="algorithm-keyword">while</span> (exponent &gt; 0) {
-            <span class="algorithm-keyword">if</span> ((exponent &amp; 1) != 0) result = result * base % prime;
+            <span class="algorithm-keyword">if</span> ((exponent &amp; 1) != 0) answer = answer * base % prime;
             base = base * base % prime;
             exponent &gt;&gt;= 1;
         }
-        <span class="algorithm-keyword">return</span> result;
+        <span class="algorithm-keyword">return</span> answer;
     }
 }</code></pre>
 

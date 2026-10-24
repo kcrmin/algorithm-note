@@ -46,7 +46,7 @@ code-styler-ignore: true
     <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span>[] parent, depth, order, size;
 
     RootedTree(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges, <span class="algorithm-keyword">int</span> root) {
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
             graph.get(row[0]).add(row[1]);
             graph.get(row[1]).add(row[0]);
@@ -62,18 +62,18 @@ code-styler-ignore: true
         queue.offer(root);
         <span class="algorithm-keyword">int</span> count = 0;
         <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = queue.poll();
-            order[count++] = v;
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+            <span class="algorithm-keyword">int</span> vertex = queue.poll();
+            order[count++] = vertex;
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
                 <span class="algorithm-keyword">if</span> (parent[to] != -2) <span class="algorithm-keyword">continue</span>;
-                parent[to] = v;
-                depth[to] = depth[v] + 1;
+                parent[to] = vertex;
+                depth[to] = depth[vertex] + 1;
                 queue.offer(to);
             }
         }
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = n - 1; i &gt; 0; i--) {    <span class="algorithm-comment">// 자식의 결과를 부모보다 먼저 완성</span>
-            <span class="algorithm-keyword">int</span> v = order[i];
-            size[parent[v]] += size[v];
+            <span class="algorithm-keyword">int</span> vertex = order[i];
+            size[parent[vertex]] += size[vertex];
         }
     }
 }</code></pre>

@@ -28,7 +28,7 @@ code-styler-ignore: true
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (right를 처음부터 끝까지) {
     <span class="algorithm-comment">// expand</span>
     <span class="algorithm-keyword">if</span> (길이가 k를 넘으면) {
-        <span class="algorithm-comment">// 가장 왼쪽 원소 제거</span>
+        <span class="algorithm-comment">// shrink: 가장 왼쪽 원소 제거</span>
     }
     <span class="algorithm-keyword">if</span> (길이가 k이면) {
         <span class="algorithm-comment">// answer</span>

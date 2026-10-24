@@ -17,7 +17,7 @@ code-styler-ignore: true
 >
 > **반환** · `maxFlow`가 잔여 용량을 변경한다. 완료 후 `sourceSide(source)`의 true/false 경계가 최소 절단.
 >
-> **비용·조건** · 일반 그래프 `O(V²E)`. 총유량은 `long` 범위. push는 재귀이며, 깊은 레벨 경로에서는 `StackOverflowError` 가능.
+> **비용·조건** · 일반 그래프 `O(V²E)`. 총유량은 `long` 범위. push는 재귀이며, 깊은 BFS 경로에서는 `StackOverflowError` 가능.
 
 ---
 
@@ -29,24 +29,25 @@ source에서 sink까지의 최대 유량과 최소 절단을 구한다.
 
 **Structure**
 
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">boolean</span> buildLevel(source, sink) {
-    <span class="algorithm-comment">// 잔여 용량 &gt; 0인 간선으로 BFS</span>
+<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">boolean</span> buildDepth(source, sink) {
+    <span class="algorithm-comment">// 잔여 용량 &gt; 0인 간선으로 BFS → depth 기록</span>
 }
 
-<span class="algorithm-keyword">long</span> push(v, sink, limit) {
+<span class="algorithm-keyword">long</span> push(vertex, sink, limit) {
     <span class="algorithm-keyword">if</span> (sink에 도착했으면) <span class="algorithm-keyword">return</span> limit;
     <span class="algorithm-keyword">for</span> (아직 확인할 간선) {
-        <span class="algorithm-keyword">if</span> (잔여 용량이 없거나 다음 레벨이 아니면) <span class="algorithm-keyword">continue</span>;
+        <span class="algorithm-keyword">if</span> (잔여 용량이 없거나 다음 깊이가 아니면) <span class="algorithm-keyword">continue</span>;
         <span class="algorithm-comment">// 재귀로 보낼 양 결정</span>
         <span class="algorithm-keyword">if</span> (보냈으면) { <span class="algorithm-comment">/* 정방향 감소, 역방향 증가 */</span> <span class="algorithm-keyword">return</span> 보낸 양; }
     }
     <span class="algorithm-keyword">return</span> 0;
 }
 
-<span class="algorithm-keyword">while</span> (sink까지 레벨이 만들어지면) {
+<span class="algorithm-keyword">while</span> (sink까지 depth가 정해지면) {
     <span class="algorithm-comment">// 간선 탐색 위치 초기화</span>
-    <span class="algorithm-keyword">while</span> (더 보낼 수 있으면) { <span class="algorithm-comment">/* 총유량에 추가 */</span> }
-}</code></pre>
+    <span class="algorithm-keyword">while</span> (더 보낼 수 있으면) { <span class="algorithm-comment">/* answer에 유량 추가 */</span> }
+}
+<span class="algorithm-keyword">return</span> answer;</code></pre>
 
 **Java**
 
@@ -63,12 +64,12 @@ source에서 sink까지의 최대 유량과 최소 절단을 구한다.
 
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">class</span> Dinic {
     <span class="algorithm-keyword">final</span> List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
-    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span>[] level, next;
+    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span>[] depth, next;
 
     Dinic(<span class="algorithm-keyword">int</span> n) {
-        level = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
+        depth = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
         next = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     }
 
     <span class="algorithm-keyword">void</span> addEdge(<span class="algorithm-keyword">int</span> from, <span class="algorithm-keyword">int</span> to, <span class="algorithm-keyword">long</span> capacity) {
@@ -79,27 +80,27 @@ source에서 sink까지의 최대 유량과 최소 절단을 구한다.
         graph.get(to).add(backward);
     }
 
-    <span class="algorithm-keyword">boolean</span> buildLevel(<span class="algorithm-keyword">int</span> source, <span class="algorithm-keyword">int</span> sink) {
-        Arrays.fill(level, -1);
+    <span class="algorithm-keyword">boolean</span> buildDepth(<span class="algorithm-keyword">int</span> source, <span class="algorithm-keyword">int</span> sink) {
+        Arrays.fill(depth, -1);
         Queue&lt;Integer&gt; queue = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-        level[source] = 0;
+        depth[source] = 0;
         queue.offer(source);
         <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = queue.poll();
-            <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
-                <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || level[edge.to] != -1) <span class="algorithm-keyword">continue</span>;
-                level[edge.to] = level[v] + 1;
+            <span class="algorithm-keyword">int</span> vertex = queue.poll();
+            <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
+                <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || depth[edge.to] != -1) <span class="algorithm-keyword">continue</span>;
+                depth[edge.to] = depth[vertex] + 1;
                 queue.offer(edge.to);
             }
         }
-        <span class="algorithm-keyword">return</span> level[sink] != -1;
+        <span class="algorithm-keyword">return</span> depth[sink] != -1;
     }
 
-    <span class="algorithm-keyword">long</span> push(<span class="algorithm-keyword">int</span> v, <span class="algorithm-keyword">int</span> sink, <span class="algorithm-keyword">long</span> limit) {
-        <span class="algorithm-keyword">if</span> (v == sink) <span class="algorithm-keyword">return</span> limit;
-        <span class="algorithm-keyword">for</span> (; next[v] &lt; graph.get(v).size(); next[v]++) {
-            Edge edge = graph.get(v).get(next[v]);
-            <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || level[edge.to] != level[v] + 1) <span class="algorithm-keyword">continue</span>;
+    <span class="algorithm-keyword">long</span> push(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">int</span> sink, <span class="algorithm-keyword">long</span> limit) {
+        <span class="algorithm-keyword">if</span> (vertex == sink) <span class="algorithm-keyword">return</span> limit;
+        <span class="algorithm-keyword">for</span> (; next[vertex] &lt; graph.get(vertex).size(); next[vertex]++) {
+            Edge edge = graph.get(vertex).get(next[vertex]);
+            <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || depth[edge.to] != depth[vertex] + 1) <span class="algorithm-keyword">continue</span>;
             <span class="algorithm-keyword">long</span> sent = push(edge.to, sink, Math.min(limit, edge.capacity));
             <span class="algorithm-keyword">if</span> (sent == 0) <span class="algorithm-keyword">continue</span>;
             edge.capacity -= sent;
@@ -111,31 +112,31 @@ source에서 sink까지의 최대 유량과 최소 절단을 구한다.
 
     <span class="algorithm-keyword">long</span> maxFlow(<span class="algorithm-keyword">int</span> source, <span class="algorithm-keyword">int</span> sink) {
         <span class="algorithm-keyword">if</span> (source == sink) <span class="algorithm-keyword">throw</span> <span class="algorithm-keyword">new</span> IllegalArgumentException("source == sink");
-        <span class="algorithm-keyword">long</span> total = 0;
-        <span class="algorithm-keyword">while</span> (buildLevel(source, sink)) {
-            Arrays.fill(next, 0);    <span class="algorithm-comment">// 새 레벨 그래프에서는 간선을 다시 확인</span>
+        <span class="algorithm-keyword">long</span> answer = 0;
+        <span class="algorithm-keyword">while</span> (buildDepth(source, sink)) {
+            Arrays.fill(next, 0);    <span class="algorithm-comment">// 새 깊이가 정해지면 간선을 다시 확인</span>
             <span class="algorithm-keyword">long</span> sent;
             <span class="algorithm-keyword">while</span> ((sent = push(source, sink, Long.MAX_VALUE)) &gt; 0) {
-                total += sent;
+                answer += sent;
             }
         }
-        <span class="algorithm-keyword">return</span> total;
+        <span class="algorithm-keyword">return</span> answer;
     }
 
     <span class="algorithm-keyword">boolean</span>[] sourceSide(<span class="algorithm-keyword">int</span> source) {
-        <span class="algorithm-keyword">boolean</span>[] reached = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[graph.size()];
+        <span class="algorithm-keyword">boolean</span>[] visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[graph.size()];
         Queue&lt;Integer&gt; queue = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-        reached[source] = <span class="algorithm-keyword">true</span>;
+        visited[source] = <span class="algorithm-keyword">true</span>;
         queue.offer(source);
         <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = queue.poll();
-            <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
-                <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || reached[edge.to]) <span class="algorithm-keyword">continue</span>;
-                reached[edge.to] = <span class="algorithm-keyword">true</span>;
+            <span class="algorithm-keyword">int</span> vertex = queue.poll();
+            <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
+                <span class="algorithm-keyword">if</span> (edge.capacity &lt;= 0 || visited[edge.to]) <span class="algorithm-keyword">continue</span>;
+                visited[edge.to] = <span class="algorithm-keyword">true</span>;
                 queue.offer(edge.to);
             }
         }
-        <span class="algorithm-keyword">return</span> reached;
+        <span class="algorithm-keyword">return</span> visited;
     }
 }</code></pre>
 

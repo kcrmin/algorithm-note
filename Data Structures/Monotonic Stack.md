@@ -29,24 +29,24 @@ code-styler-ignore: true
     <span class="algorithm-keyword">while</span> (top이 현재 원소의 답이 될 수 없으면) {
         <span class="algorithm-comment">// pop</span>
     }
-    <span class="algorithm-comment">// answer: 남은 top, 없으면 -1</span>
+    <span class="algorithm-comment">// result[i]: 남은 top, 없으면 -1</span>
     <span class="algorithm-comment">// 현재 인덱스 push</span>
 }</code></pre>
 
 **Java**
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] nextGreater(<span class="algorithm-keyword">int</span>[] a) {
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = a.length - 1; i &gt;= 0; i--) {
         <span class="algorithm-keyword">while</span> (!stack.isEmpty() &amp;&amp; <mark class="algorithm-change">a[stack.peek()] &lt;= a[i]</mark>) {
             stack.pop();    <span class="algorithm-comment">// 같은 값도 제거해야 엄격한 대소 비교가 됨</span>
         }
-        answer[i] = stack.isEmpty() ? -1 : stack.peek();
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
         stack.push(i);
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 ---
@@ -61,24 +61,24 @@ code-styler-ignore: true
     <span class="algorithm-keyword">while</span> (top이 현재 원소의 답이 될 수 없으면) {
         <span class="algorithm-comment">// pop</span>
     }
-    <span class="algorithm-comment">// answer: 남은 top, 없으면 -1</span>
+    <span class="algorithm-comment">// result[i]: 남은 top, 없으면 -1</span>
     <span class="algorithm-comment">// 현재 인덱스 push</span>
 }</code></pre>
 
 **Java**
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] nextSmaller(<span class="algorithm-keyword">int</span>[] a) {
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = a.length - 1; i &gt;= 0; i--) {
         <span class="algorithm-keyword">while</span> (!stack.isEmpty() &amp;&amp; <mark class="algorithm-change">a[stack.peek()] &gt;= a[i]</mark>) {
             stack.pop();    <span class="algorithm-comment">// 같은 값도 제거해야 엄격한 대소 비교가 됨</span>
         }
-        answer[i] = stack.isEmpty() ? -1 : stack.peek();
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
         stack.push(i);
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 ---
@@ -93,24 +93,24 @@ code-styler-ignore: true
     <span class="algorithm-keyword">while</span> (top이 현재 원소의 답이 될 수 없으면) {
         <span class="algorithm-comment">// pop</span>
     }
-    <span class="algorithm-comment">// answer: 남은 top, 없으면 -1</span>
+    <span class="algorithm-comment">// result[i]: 남은 top, 없으면 -1</span>
     <span class="algorithm-comment">// 현재 인덱스 push</span>
 }</code></pre>
 
 **Java**
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] previousGreater(<span class="algorithm-keyword">int</span>[] a) {
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = 0; i &lt; a.length; i++) {
         <span class="algorithm-keyword">while</span> (!stack.isEmpty() &amp;&amp; <mark class="algorithm-change">a[stack.peek()] &lt;= a[i]</mark>) {
             stack.pop();    <span class="algorithm-comment">// 같은 값도 제거해야 엄격한 대소 비교가 됨</span>
         }
-        answer[i] = stack.isEmpty() ? -1 : stack.peek();
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
         stack.push(i);
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 ---
@@ -125,24 +125,24 @@ code-styler-ignore: true
     <span class="algorithm-keyword">while</span> (top이 현재 원소의 답이 될 수 없으면) {
         <span class="algorithm-comment">// pop</span>
     }
-    <span class="algorithm-comment">// answer: 남은 top, 없으면 -1</span>
+    <span class="algorithm-comment">// result[i]: 남은 top, 없으면 -1</span>
     <span class="algorithm-comment">// 현재 인덱스 push</span>
 }</code></pre>
 
 **Java**
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] previousSmaller(<span class="algorithm-keyword">int</span>[] a) {
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length];
     Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = 0; i &lt; a.length; i++) {
         <span class="algorithm-keyword">while</span> (!stack.isEmpty() &amp;&amp; <mark class="algorithm-change">a[stack.peek()] &gt;= a[i]</mark>) {
             stack.pop();    <span class="algorithm-comment">// 같은 값도 제거해야 엄격한 대소 비교가 됨</span>
         }
-        answer[i] = stack.isEmpty() ? -1 : stack.peek();
+        result[i] = stack.isEmpty() ? -1 : stack.peek();
         stack.push(i);
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 [[Monotonic Deque]] · [[ArrayDeque]]

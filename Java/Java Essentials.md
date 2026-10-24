@@ -38,8 +38,8 @@ code-styler-ignore: true
 <span class="algorithm-keyword">int</span> normalized = Math.floorMod(-3, mod);
 <span class="algorithm-keyword">int</span> order = Integer.compare(a, b);    <span class="algorithm-comment">// a - b는 비교 도중 넘칠 수 있음</span>
 
-<span class="algorithm-keyword">int</span> low = 0, high = 100;
-<span class="algorithm-keyword">int</span> mid = low + (high - low) / 2;</code></pre>
+<span class="algorithm-keyword">int</span> left = 0, right = 100;
+<span class="algorithm-keyword">int</span> mid = left + (right - left) / 2;</code></pre>
 
 ---
 
@@ -56,8 +56,8 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">int</span>[] values = {3, 1, 4};
 <span class="algorithm-keyword">int</span>[] copy = values.clone();
-<span class="algorithm-keyword">int</span>[] distance = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[values.length];
-Arrays.fill(distance, -1);
+<span class="algorithm-keyword">int</span>[] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[values.length];
+Arrays.fill(dist, -1);
 
 <span class="algorithm-keyword">int</span>[][] grid = {{1, 2}, {3, 4}};
 <span class="algorithm-keyword">int</span>[][] copiedGrid = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[grid.length][];

@@ -30,10 +30,10 @@ code-styler-ignore: true
 <pre class="algorithm-code" data-language="text"><code>powMod(base, exponent, mod) {
     <span class="algorithm-comment">// base를 0..mod−1로 정규화</span>
     <span class="algorithm-keyword">while</span> (exponent &gt; 0) {
-        <span class="algorithm-keyword">if</span> (현재 비트가 1이면) { <span class="algorithm-comment">/* 결과에 base 곱하기 */</span> }
+        <span class="algorithm-keyword">if</span> (현재 비트가 1이면) { <span class="algorithm-comment">/* answer에 base 곱하기 */</span> }
         <span class="algorithm-comment">// base 제곱 → 다음 비트로 이동</span>
     }
-    <span class="algorithm-keyword">return</span> result;
+    <span class="algorithm-keyword">return</span> answer;
 }
 
 inversePrime(a, prime) {
@@ -45,16 +45,16 @@ inversePrime(a, prime) {
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> powMod(<span class="algorithm-keyword">long</span> base, <span class="algorithm-keyword">long</span> exponent, <span class="algorithm-keyword">int</span> mod) {
     base %= mod;
     <span class="algorithm-keyword">if</span> (base &lt; 0) base += mod;    <span class="algorithm-comment">// Java의 음수 나머지를 양수 범위로 복원</span>
-    <span class="algorithm-keyword">long</span> result = 1;
+    <span class="algorithm-keyword">long</span> answer = 1;
 
     <span class="algorithm-keyword">while</span> (exponent &gt; 0) {
         <span class="algorithm-keyword">if</span> ((exponent &amp; 1) != 0) {
-            result = result * base % mod;
+            answer = answer * base % mod;
         }
         base = base * base % mod;
         exponent &gt;&gt;= 1;
     }
-    <span class="algorithm-keyword">return</span> result;
+    <span class="algorithm-keyword">return</span> answer;
 }
 
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> inversePrime(<span class="algorithm-keyword">long</span> a, <span class="algorithm-keyword">int</span> prime) {

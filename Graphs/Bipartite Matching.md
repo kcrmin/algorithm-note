@@ -15,7 +15,7 @@ code-styler-ignore: true
 >
 > **입력** · `edges[i]={left,right}`. 양쪽 번호는 각자 `0..size-1`.
 >
-> **반환** · `matchRight[r]`는 매칭된 왼쪽 정점, 없으면 `-1`. `-1` 아닌 개수가 매칭 크기.
+> **반환** · `matchRight[right]`는 매칭된 왼쪽 정점, 없으면 `-1`. `-1` 아닌 개수가 매칭 크기.
 >
 > **비용·조건** · Kuhn: `O(L×E)`. 증강 DFS는 재귀이며, 긴 증강 경로에서는 `StackOverflowError` 가능.
 
@@ -48,7 +48,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] maximumMatching(<span class="algorithm-keyword">int</span> leftSize, <span class="algorithm-keyword">int</span> rightSize, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(leftSize);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; leftSize; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; leftSize; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) graph.get(row[0]).add(row[1]);
     <span class="algorithm-keyword">int</span>[] matchRight = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[rightSize];
     Arrays.fill(matchRight, -1);

@@ -59,9 +59,9 @@ code-styler-ignore: true
         <span class="algorithm-keyword">boolean</span> changed = <span class="algorithm-keyword">false</span>;
         <span class="algorithm-keyword">for</span> (Edge edge : edges) {
             <span class="algorithm-keyword">if</span> (dist[edge.from] == inf) <span class="algorithm-keyword">continue</span>;    <span class="algorithm-comment">// 시작점에서 닿는 간선만 완화</span>
-            <span class="algorithm-keyword">long</span> next = dist[edge.from] + edge.weight;
-            <span class="algorithm-keyword">if</span> (next &gt;= dist[edge.to]) <span class="algorithm-keyword">continue</span>;
-            dist[edge.to] = next;
+            <span class="algorithm-keyword">long</span> nextDistance = dist[edge.from] + edge.weight;
+            <span class="algorithm-keyword">if</span> (nextDistance &gt;= dist[edge.to]) <span class="algorithm-keyword">continue</span>;
+            dist[edge.to] = nextDistance;
             changed = <span class="algorithm-keyword">true</span>;
         }
         <span class="algorithm-keyword">if</span> (!changed) <span class="algorithm-keyword">return</span> dist;
@@ -102,9 +102,9 @@ code-styler-ignore: true
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> round = 0; round &lt; n; round++) {
         <span class="algorithm-keyword">boolean</span> changed = <span class="algorithm-keyword">false</span>;
         <span class="algorithm-keyword">for</span> (Edge edge : edges) {
-            <span class="algorithm-keyword">long</span> next = dist[edge.from] + edge.weight;
-            <span class="algorithm-keyword">if</span> (next &gt;= dist[edge.to]) <span class="algorithm-keyword">continue</span>;
-            dist[edge.to] = next;
+            <span class="algorithm-keyword">long</span> nextDistance = dist[edge.from] + edge.weight;
+            <span class="algorithm-keyword">if</span> (nextDistance &gt;= dist[edge.to]) <span class="algorithm-keyword">continue</span>;
+            dist[edge.to] = nextDistance;
             changed = <span class="algorithm-keyword">true</span>;
         }
         <span class="algorithm-keyword">if</span> (!changed) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;

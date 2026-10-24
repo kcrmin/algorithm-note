@@ -15,7 +15,7 @@ code-styler-ignore: true
 >
 > **조건** · n ≥ 1인 연결된 무방향 트리. `edges[i]={a,b}`.
 >
-> **사용** · `LCA t = new LCA(n, edges, root);` → `query(a,b)`, `ancestor(v,k)`, `distance(a,b)`.
+> **사용** · `LCA t = new LCA(n, edges, root);` → `query(a,b)`, `ancestor(vertex,k)`, `distance(a,b)`.
 >
 > **비용·반환** · 전처리 `O(V log V)`, 질의 `O(log V)`. 존재하지 않는 k번째 조상은 `-1`.
 
@@ -56,7 +56,7 @@ code-styler-ignore: true
         depth = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
         Arrays.fill(depth, -1);
         List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
             graph.get(row[0]).add(row[1]);
             graph.get(row[1]).add(row[0]);
@@ -66,27 +66,27 @@ code-styler-ignore: true
         depth[root] = 0;
         queue.offer(root);
         <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = queue.poll();
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+            <span class="algorithm-keyword">int</span> vertex = queue.poll();
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
                 <span class="algorithm-keyword">if</span> (depth[to] != -1) <span class="algorithm-keyword">continue</span>;
-                depth[to] = depth[v] + 1;
-                up[0][to] = v;
+                depth[to] = depth[vertex] + 1;
+                up[0][to] = vertex;
                 queue.offer(to);
             }
         }
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> k = 1; k &lt; log; k++) {
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-                up[k][v] = up[k - 1][up[k - 1][v]];
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+                up[k][vertex] = up[k - 1][up[k - 1][vertex]];
             }
         }
     }
 
-    <span class="algorithm-keyword">int</span> ancestor(<span class="algorithm-keyword">int</span> v, <span class="algorithm-keyword">int</span> distance) {
-        <span class="algorithm-keyword">if</span> (distance &lt; 0 || distance &gt; depth[v]) <span class="algorithm-keyword">return</span> -1;
+    <span class="algorithm-keyword">int</span> ancestor(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">int</span> distance) {
+        <span class="algorithm-keyword">if</span> (distance &lt; 0 || distance &gt; depth[vertex]) <span class="algorithm-keyword">return</span> -1;
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> k = 0; k &lt; log; k++) {
-            <span class="algorithm-keyword">if</span> ((distance &amp; (1 &lt;&lt; k)) != 0) v = up[k][v];
+            <span class="algorithm-keyword">if</span> ((distance &amp; (1 &lt;&lt; k)) != 0) vertex = up[k][vertex];
         }
-        <span class="algorithm-keyword">return</span> v;
+        <span class="algorithm-keyword">return</span> vertex;
     }
 
     <span class="algorithm-keyword">int</span> query(<span class="algorithm-keyword">int</span> a, <span class="algorithm-keyword">int</span> b) {

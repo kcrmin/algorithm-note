@@ -63,7 +63,7 @@ code-styler-ignore: true
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> treeDiameter(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     <span class="algorithm-keyword">if</span> (n == 0) <span class="algorithm-keyword">return</span> 0;
     List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
         graph.get(row[0]).add(<span class="algorithm-keyword">new</span> Edge(row[1], row[2]));
         graph.get(row[1]).add(<span class="algorithm-keyword">new</span> Edge(row[0], row[2]));
@@ -80,10 +80,10 @@ code-styler-ignore: true
     queue.offer(start);
     <span class="algorithm-keyword">int</span> best = start;
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = queue.poll();
-        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
+        <span class="algorithm-keyword">int</span> vertex = queue.poll();
+        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
             <span class="algorithm-keyword">if</span> (dist[edge.to] != -1) <span class="algorithm-keyword">continue</span>;
-            dist[edge.to] = dist[v] + edge.weight;    <span class="algorithm-comment">// 트리는 경로가 유일하므로 힙 불필요</span>
+            dist[edge.to] = dist[vertex] + edge.weight;    <span class="algorithm-comment">// 트리는 경로가 유일하므로 힙 불필요</span>
             <span class="algorithm-keyword">if</span> (dist[edge.to] &gt; dist[best]) best = edge.to;
             queue.offer(edge.to);
         }

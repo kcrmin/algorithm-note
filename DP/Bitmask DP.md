@@ -15,7 +15,7 @@ code-styler-ignore: true
 >
 > **상태** · `dp[mask][last]` = mask의 정점을 방문하고 last에서 끝나는 최소 비용.
 >
-> **조건** · `cost[u][v]`는 0 이상, 간선 없음은 -1. n ≤ 20이며 메모리 제한에 맞춰 사용.
+> **조건** · `cost[from][to]`는 0 이상, 간선 없음은 -1. n ≤ 20이며 메모리 제한에 맞춰 사용.
 >
 > **비용** · O(n²·2ⁿ) 시간, O(n·2ⁿ) 공간. 경로 없음은 `Long.MAX_VALUE`.
 
@@ -59,13 +59,13 @@ code-styler-ignore: true
             <span class="algorithm-keyword">if</span> (dp[mask][last] == Long.MAX_VALUE) {
                 <span class="algorithm-keyword">continue</span>;    <span class="algorithm-comment">// 무한대에 간선 비용을 더하지 않음</span>
             }
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> next = 0; next &lt; n; next++) {
-                <span class="algorithm-keyword">if</span> ((mask &amp; (1 &lt;&lt; next)) != 0 || cost[last][next] &lt; 0) {
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to = 0; to &lt; n; to++) {
+                <span class="algorithm-keyword">if</span> ((mask &amp; (1 &lt;&lt; to)) != 0 || cost[last][to] &lt; 0) {
                     <span class="algorithm-keyword">continue</span>;
                 }
-                <span class="algorithm-keyword">int</span> nextMask = mask | (1 &lt;&lt; next);
-                <span class="algorithm-keyword">long</span> candidate = dp[mask][last] + cost[last][next];
-                dp[nextMask][next] = Math.min(dp[nextMask][next], candidate);
+                <span class="algorithm-keyword">int</span> nextMask = mask | (1 &lt;&lt; to);
+                <span class="algorithm-keyword">long</span> nextCost = dp[mask][last] + cost[last][to];
+                dp[nextMask][to] = Math.min(dp[nextMask][to], nextCost);
             }
         }
     }

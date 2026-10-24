@@ -11,5 +11,5 @@
 
 <rect x="653.3333333333334" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
 <text x="796.6666666666667" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">RANGE</text>
-<text x="796.6666666666667" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">prefix(r) − prefix(l)</text>
+<text x="796.6666666666667" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">prefix(right) − prefix(left)</text>
 </svg>

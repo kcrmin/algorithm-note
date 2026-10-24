@@ -40,7 +40,7 @@ code-styler-ignore: true
         <span class="algorithm-keyword">return</span> 음수가 되지 않게 보정한 나머지;
     }
 
-    same(a, b) { <span class="algorithm-comment">/* 길이와 해시 모두 비교 */</span> }
+    same(left1, right1, left2, right2) { <span class="algorithm-comment">/* 길이와 해시 모두 비교 */</span> }
 }</code></pre>
 
 **Java**

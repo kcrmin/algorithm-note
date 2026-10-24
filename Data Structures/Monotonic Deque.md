@@ -30,7 +30,7 @@ code-styler-ignore: true
     <span class="algorithm-comment">// 뒤에서 현재 값보다 불리한 후보 제거</span>
     <span class="algorithm-comment">// 현재 인덱스 추가</span>
     <span class="algorithm-keyword">if</span> (구간 길이가 k이면) {
-        <span class="algorithm-comment">// 맨 앞의 값 기록</span>
+        <span class="algorithm-comment">// result에 맨 앞의 값 기록</span>
     }
 }</code></pre>
 
@@ -38,7 +38,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] windowMax(<span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">int</span> k) {
     <span class="algorithm-keyword">if</span> (k &lt; 1 || k &gt; a.length) <span class="algorithm-keyword">throw</span> <span class="algorithm-keyword">new</span> IllegalArgumentException();
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length - k + 1];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length - k + 1];
     Deque&lt;Integer&gt; deque = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> right = 0; right &lt; a.length; right++) {
@@ -49,9 +49,9 @@ code-styler-ignore: true
             deque.pollLast();    <span class="algorithm-comment">// 같은 값이면 더 늦게 만료되는 현재 인덱스를 남김</span>
         }
         deque.offerLast(right);
-        <span class="algorithm-keyword">if</span> (right &gt;= k - 1) answer[right - k + 1] = a[deque.peekFirst()];
+        <span class="algorithm-keyword">if</span> (right &gt;= k - 1) result[right - k + 1] = a[deque.peekFirst()];
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 ---
@@ -67,7 +67,7 @@ code-styler-ignore: true
     <span class="algorithm-comment">// 뒤에서 현재 값보다 불리한 후보 제거</span>
     <span class="algorithm-comment">// 현재 인덱스 추가</span>
     <span class="algorithm-keyword">if</span> (구간 길이가 k이면) {
-        <span class="algorithm-comment">// 맨 앞의 값 기록</span>
+        <span class="algorithm-comment">// result에 맨 앞의 값 기록</span>
     }
 }</code></pre>
 
@@ -75,7 +75,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] windowMin(<span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">int</span> k) {
     <span class="algorithm-keyword">if</span> (k &lt; 1 || k &gt; a.length) <span class="algorithm-keyword">throw</span> <span class="algorithm-keyword">new</span> IllegalArgumentException();
-    <span class="algorithm-keyword">int</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length - k + 1];
+    <span class="algorithm-keyword">int</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[a.length - k + 1];
     Deque&lt;Integer&gt; deque = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> right = 0; right &lt; a.length; right++) {
@@ -86,9 +86,9 @@ code-styler-ignore: true
             deque.pollLast();    <span class="algorithm-comment">// 같은 값이면 더 늦게 만료되는 현재 인덱스를 남김</span>
         }
         deque.offerLast(right);
-        <span class="algorithm-keyword">if</span> (right &gt;= k - 1) answer[right - k + 1] = a[deque.peekFirst()];
+        <span class="algorithm-keyword">if</span> (right &gt;= k - 1) result[right - k + 1] = a[deque.peekFirst()];
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 [[Sliding Window]] · [[Monotonic Stack]]

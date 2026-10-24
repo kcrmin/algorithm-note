@@ -6,8 +6,8 @@
 <text x="163.33333333333334" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">이번 선택 적용</text>
 <text x="321.6666666666667" y="90" text-anchor="middle" font-family="Arial" font-size="22" fill="#aeb6c0">→</text>
 <rect x="336.6666666666667" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
-<text x="480.0" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">SEARCH</text>
-<text x="480.0" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">다음 자리 탐색</text>
+<text x="480.0" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">DFS</text>
+<text x="480.0" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c5cbd3">dfs(depth + 1)</text>
 <text x="638.3333333333334" y="90" text-anchor="middle" font-family="Arial" font-size="22" fill="#aeb6c0">→</text>
 <rect x="653.3333333333334" y="26" width="286.6666666666667" height="112" rx="6" fill="#30363e" stroke="#626974"/>
 <text x="796.6666666666667" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="600" fill="#f1f2f4">UNDO</text>

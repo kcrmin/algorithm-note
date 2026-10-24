@@ -90,18 +90,18 @@ sum(node, segment, query) {
         }
     }
 
-    <span class="algorithm-keyword">void</span> add(<span class="algorithm-keyword">int</span> node, <span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right, <span class="algorithm-keyword">int</span> from, <span class="algorithm-keyword">int</span> to, <span class="algorithm-keyword">long</span> delta) {
-        <span class="algorithm-keyword">if</span> (to &lt;= left || right &lt;= from) {
+    <span class="algorithm-keyword">void</span> add(<span class="algorithm-keyword">int</span> node, <span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right, <span class="algorithm-keyword">int</span> queryLeft, <span class="algorithm-keyword">int</span> queryRight, <span class="algorithm-keyword">long</span> delta) {
+        <span class="algorithm-keyword">if</span> (queryRight &lt;= left || right &lt;= queryLeft) {
             <span class="algorithm-keyword">return</span>;
         }
-        <span class="algorithm-keyword">if</span> (from &lt;= left &amp;&amp; right &lt;= to) {
+        <span class="algorithm-keyword">if</span> (queryLeft &lt;= left &amp;&amp; right &lt;= queryRight) {
             apply(node, right - left, delta);
             <span class="algorithm-keyword">return</span>;
         }
         push(node, left, right);
         <span class="algorithm-keyword">int</span> mid = left + (right - left) / 2;
-        add(node * 2, left, mid, from, to, delta);
-        add(node * 2 + 1, mid, right, from, to, delta);
+        add(node * 2, left, mid, queryLeft, queryRight, delta);
+        add(node * 2 + 1, mid, right, queryLeft, queryRight, delta);
         tree[node] = tree[node * 2] + tree[node * 2 + 1];
     }
 
@@ -109,17 +109,17 @@ sum(node, segment, query) {
         <span class="algorithm-keyword">return</span> left == right ? 0 : sum(1, 0, n, left, right);
     }
 
-    <span class="algorithm-keyword">long</span> sum(<span class="algorithm-keyword">int</span> node, <span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right, <span class="algorithm-keyword">int</span> from, <span class="algorithm-keyword">int</span> to) {
-        <span class="algorithm-keyword">if</span> (to &lt;= left || right &lt;= from) {
+    <span class="algorithm-keyword">long</span> sum(<span class="algorithm-keyword">int</span> node, <span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> right, <span class="algorithm-keyword">int</span> queryLeft, <span class="algorithm-keyword">int</span> queryRight) {
+        <span class="algorithm-keyword">if</span> (queryRight &lt;= left || right &lt;= queryLeft) {
             <span class="algorithm-keyword">return</span> 0;
         }
-        <span class="algorithm-keyword">if</span> (from &lt;= left &amp;&amp; right &lt;= to) {
+        <span class="algorithm-keyword">if</span> (queryLeft &lt;= left &amp;&amp; right &lt;= queryRight) {
             <span class="algorithm-keyword">return</span> tree[node];
         }
         push(node, left, right);
         <span class="algorithm-keyword">int</span> mid = left + (right - left) / 2;
-        <span class="algorithm-keyword">return</span> sum(node * 2, left, mid, from, to)
-                + sum(node * 2 + 1, mid, right, from, to);
+        <span class="algorithm-keyword">return</span> sum(node * 2, left, mid, queryLeft, queryRight)
+                + sum(node * 2 + 1, mid, right, queryLeft, queryRight);
     }
 }</code></pre>
 

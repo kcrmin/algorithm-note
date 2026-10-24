@@ -41,7 +41,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] topologicalSort(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">int</span>[] indegree = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
         graph.get(row[0]).add(row[1]);
@@ -49,15 +49,15 @@ code-styler-ignore: true
     }
 
     Queue&lt;Integer&gt; ready = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (indegree[v] == 0) ready.offer(v);
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (indegree[vertex] == 0) ready.offer(vertex);
     }
     <span class="algorithm-keyword">int</span>[] order = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">int</span> count = 0;
     <span class="algorithm-keyword">while</span> (!ready.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = ready.poll();
-        order[count++] = v;
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+        <span class="algorithm-keyword">int</span> vertex = ready.poll();
+        order[count++] = vertex;
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
             <span class="algorithm-keyword">if</span> (--indegree[to] == 0) ready.offer(to);    <span class="algorithm-comment">// 모든 선행 정점이 끝난 순간에만 삽입</span>
         }
     }
@@ -85,7 +85,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] lexicographicTopologicalSort(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">int</span>[] indegree = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
         graph.get(row[0]).add(row[1]);
@@ -93,15 +93,15 @@ code-styler-ignore: true
     }
 
     Queue&lt;Integer&gt; ready = <span class="algorithm-keyword">new</span> PriorityQueue&lt;&gt;();
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (indegree[v] == 0) ready.offer(v);
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (indegree[vertex] == 0) ready.offer(vertex);
     }
     <span class="algorithm-keyword">int</span>[] order = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">int</span> count = 0;
     <span class="algorithm-keyword">while</span> (!ready.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = ready.poll();
-        order[count++] = v;
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+        <span class="algorithm-keyword">int</span> vertex = ready.poll();
+        order[count++] = vertex;
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
             <span class="algorithm-keyword">if</span> (--indegree[to] == 0) ready.offer(to);    <span class="algorithm-comment">// 모든 선행 정점이 끝난 순간에만 삽입</span>
         }
     }

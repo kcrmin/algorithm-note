@@ -58,7 +58,7 @@ code-styler-ignore: true
 
 <span class="algorithm-keyword">static</span> List&lt;List&lt;Edge&gt;&gt; buildGraph(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
         graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     }
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] edge : edges) {
@@ -76,9 +76,9 @@ code-styler-ignore: true
         }
     }
     ArrayDeque&lt;Integer&gt; queue = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (indegree[v] == 0) {
-            queue.offer(v);
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (indegree[vertex] == 0) {
+            queue.offer(vertex);
         }
     }
     <span class="algorithm-keyword">long</span>[] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[n];
@@ -87,11 +87,11 @@ code-styler-ignore: true
     <span class="algorithm-keyword">int</span> processed = 0;
 
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = queue.poll();
+        <span class="algorithm-keyword">int</span> vertex = queue.poll();
         processed++;
-        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
-            <span class="algorithm-keyword">if</span> (dist[v] != Long.MIN_VALUE) {    <span class="algorithm-comment">// 시작점에서 닿지 않는 정점은 비용을 전달하지 않음</span>
-                dist[edge.to] = Math.max(dist[edge.to], dist[v] + edge.weight);
+        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
+            <span class="algorithm-keyword">if</span> (dist[vertex] != Long.MIN_VALUE) {    <span class="algorithm-comment">// 시작점에서 닿지 않는 정점은 비용을 전달하지 않음</span>
+                dist[edge.to] = Math.max(dist[edge.to], dist[vertex] + edge.weight);
             }
             <span class="algorithm-keyword">if</span> (--indegree[edge.to] == 0) {
                 queue.offer(edge.to);
@@ -133,7 +133,7 @@ code-styler-ignore: true
 
 <span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; buildDirectedGraph(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
         graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     }
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] edge : edges) {
@@ -151,9 +151,9 @@ code-styler-ignore: true
         }
     }
     ArrayDeque&lt;Integer&gt; queue = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        <span class="algorithm-keyword">if</span> (indegree[v] == 0) {
-            queue.offer(v);
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        <span class="algorithm-keyword">if</span> (indegree[vertex] == 0) {
+            queue.offer(vertex);
         }
     }
     <span class="algorithm-keyword">long</span>[] count = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[n];
@@ -161,10 +161,10 @@ code-styler-ignore: true
     <span class="algorithm-keyword">int</span> processed = 0;
 
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-        <span class="algorithm-keyword">int</span> v = queue.poll();
+        <span class="algorithm-keyword">int</span> vertex = queue.poll();
         processed++;
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
-            count[to] = (count[to] + count[v]) % mod;
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
+            count[to] = (count[to] + count[vertex]) % mod;
             <span class="algorithm-keyword">if</span> (--indegree[to] == 0) {
                 queue.offer(to);
             }

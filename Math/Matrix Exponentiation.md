@@ -33,16 +33,16 @@ code-styler-ignore: true
             <span class="algorithm-keyword">for</span> (도착 열 j) { <span class="algorithm-comment">/* a[i][k] × b[k][j] 누적 */</span> }
         }
     }
-    <span class="algorithm-keyword">return</span> 결과 행렬;
+    <span class="algorithm-keyword">return</span> result;
 }
 
-matrixPower(a, exponent) {
-    <span class="algorithm-comment">// 결과 = 단위행렬</span>
+matrixPower(matrix, exponent) {
+    <span class="algorithm-comment">// result = 단위행렬, base = 정규화한 matrix 복사</span>
     <span class="algorithm-keyword">while</span> (exponent &gt; 0) {
-        <span class="algorithm-keyword">if</span> (현재 비트가 1이면) { <span class="algorithm-comment">/* 결과 × a */</span> }
-        <span class="algorithm-comment">// a 제곱 → 다음 비트</span>
+        <span class="algorithm-keyword">if</span> (현재 비트가 1이면) { <span class="algorithm-comment">/* result에 base 곱하기 */</span> }
+        <span class="algorithm-comment">// base 제곱 → 다음 비트</span>
     }
-    <span class="algorithm-keyword">return</span> 결과;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 **Java**

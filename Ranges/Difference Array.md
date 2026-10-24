@@ -32,7 +32,7 @@ code-styler-ignore: true
 }
 
 <span class="algorithm-keyword">for</span> (왼쪽부터 각 위치) {
-    <span class="algorithm-comment">// 차이를 누적해 원래 값 복원</span>
+    <span class="algorithm-comment">// 차이를 sum에 누적해 원래 값 복원</span>
 }
 <span class="algorithm-keyword">return</span> result;</code></pre>
 
@@ -60,10 +60,10 @@ code-styler-ignore: true
     }
 
     <span class="algorithm-keyword">long</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[n];
-    <span class="algorithm-keyword">long</span> current = 0;
+    <span class="algorithm-keyword">long</span> sum = 0;
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = 0; i &lt; n; i++) {
-        current += diff[i];
-        result[i] = current;
+        sum += diff[i];
+        result[i] = sum;
     }
 
     <span class="algorithm-keyword">return</span> result;

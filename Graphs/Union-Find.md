@@ -15,7 +15,7 @@ code-styler-ignore: true
 >
 > **판정** · `find(a) == find(b)`. `union`은 실제로 합쳤을 때만 `true`.
 >
-> **크기** · 집합 크기는 `size[find(v)]`.
+> **크기** · 집합 크기는 `size[find(vertex)]`.
 >
 > **비용** · 경로 압축 + 크기 기준 합치기: 연산당 상각 `O(α(n))`.
 
@@ -29,11 +29,11 @@ code-styler-ignore: true
 
 **Structure**
 
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">int</span> find(v) {
+<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">int</span> find(vertex) {
     <span class="algorithm-keyword">while</span> (자기 자신이 대표가 아니면) {
         <span class="algorithm-comment">// 부모 경로 압축 → 위로 이동</span>
     }
-    <span class="algorithm-keyword">return</span> v;
+    <span class="algorithm-keyword">return</span> vertex;
 }
 
 <span class="algorithm-keyword">boolean</span> union(a, b) {
@@ -51,18 +51,18 @@ code-styler-ignore: true
     UnionFind(<span class="algorithm-keyword">int</span> n) {
         parent = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
         size = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-            parent[v] = v;
-            size[v] = 1;
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+            parent[vertex] = vertex;
+            size[vertex] = 1;
         }
     }
 
-    <span class="algorithm-keyword">int</span> find(<span class="algorithm-keyword">int</span> v) {
-        <span class="algorithm-keyword">while</span> (v != parent[v]) {
-            parent[v] = parent[parent[v]];    <span class="algorithm-comment">// 지나가는 경로를 짧게 만들어 다음 조회를 줄임</span>
-            v = parent[v];
+    <span class="algorithm-keyword">int</span> find(<span class="algorithm-keyword">int</span> vertex) {
+        <span class="algorithm-keyword">while</span> (vertex != parent[vertex]) {
+            parent[vertex] = parent[parent[vertex]];    <span class="algorithm-comment">// 지나가는 경로를 짧게 만들어 다음 조회를 줄임</span>
+            vertex = parent[vertex];
         }
-        <span class="algorithm-keyword">return</span> v;
+        <span class="algorithm-keyword">return</span> vertex;
     }
 
     <span class="algorithm-keyword">boolean</span> union(<span class="algorithm-keyword">int</span> a, <span class="algorithm-keyword">int</span> b) {

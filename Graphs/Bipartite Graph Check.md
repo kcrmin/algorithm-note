@@ -43,7 +43,7 @@ code-styler-ignore: true
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] bipartiteColor(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
     List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) {
         graph.get(row[0]).add(row[1]);
         graph.get(row[1]).add(row[0]);
@@ -56,12 +56,12 @@ code-styler-ignore: true
         color[start] = 0;
         queue.offer(start);
         <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = queue.poll();
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(v)) {
+            <span class="algorithm-keyword">int</span> vertex = queue.poll();
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
                 <span class="algorithm-keyword">if</span> (color[to] == -1) {
-                    color[to] = color[v] ^ 1;
+                    color[to] = color[vertex] ^ 1;
                     queue.offer(to);
-                } <span class="algorithm-keyword">else</span> <span class="algorithm-keyword">if</span> (color[to] == color[v]) {
+                } <span class="algorithm-keyword">else</span> <span class="algorithm-keyword">if</span> (color[to] == color[vertex]) {
                     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
                 }
             }

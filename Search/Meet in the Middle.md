@@ -42,25 +42,31 @@ code-styler-ignore: true
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> countSubsets(<span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">long</span> target) {
     <span class="algorithm-keyword">if</span> (a.length &gt; 40) <span class="algorithm-keyword">throw</span> <span class="algorithm-keyword">new</span> IllegalArgumentException();
     <span class="algorithm-keyword">int</span> mid = a.length / 2;
-    <span class="algorithm-keyword">long</span>[] left = halfSums(a, 0, mid);
-    <span class="algorithm-keyword">long</span>[] right = halfSums(a, mid, a.length);
-    Arrays.sort(left);
-    Arrays.sort(right);
-    <span class="algorithm-keyword">int</span> i = 0, j = right.length - 1;
+    <span class="algorithm-keyword">long</span>[] leftSums = halfSums(a, 0, mid);
+    <span class="algorithm-keyword">long</span>[] rightSums = halfSums(a, mid, a.length);
+    Arrays.sort(leftSums);
+    Arrays.sort(rightSums);
+    <span class="algorithm-keyword">int</span> left = 0, right = rightSums.length - 1;
     <span class="algorithm-keyword">long</span> answer = 0;
 
-    <span class="algorithm-keyword">while</span> (i &lt; left.length &amp;&amp; j &gt;= 0) {
-        <span class="algorithm-keyword">long</span> sum = left[i] + right[j];
+    <span class="algorithm-keyword">while</span> (left &lt; leftSums.length &amp;&amp; right &gt;= 0) {
+        <span class="algorithm-keyword">long</span> sum = leftSums[left] + rightSums[right];
         <span class="algorithm-keyword">if</span> (sum &lt; target) {
-            i++;
+            left++;
         } <span class="algorithm-keyword">else</span> <span class="algorithm-keyword">if</span> (sum &gt; target) {
-            j--;
+            right--;
         } <span class="algorithm-keyword">else</span> {
-            <span class="algorithm-keyword">long</span> lv = left[i], rv = right[j];
-            <span class="algorithm-keyword">long</span> lc = 0, rc = 0;
-            <span class="algorithm-keyword">while</span> (i &lt; left.length &amp;&amp; left[i] == lv) { i++; lc++; }
-            <span class="algorithm-keyword">while</span> (j &gt;= 0 &amp;&amp; right[j] == rv) { j--; rc++; }
-            answer += lc * rc;    <span class="algorithm-comment">// 같은 합을 만드는 서로 다른 선택을 모두 셈</span>
+            <span class="algorithm-keyword">long</span> leftSum = leftSums[left], rightSum = rightSums[right];
+            <span class="algorithm-keyword">long</span> leftCount = 0, rightCount = 0;
+            <span class="algorithm-keyword">while</span> (left &lt; leftSums.length &amp;&amp; leftSums[left] == leftSum) {
+                left++;
+                leftCount++;
+            }
+            <span class="algorithm-keyword">while</span> (right &gt;= 0 &amp;&amp; rightSums[right] == rightSum) {
+                right--;
+                rightCount++;
+            }
+            answer += leftCount * rightCount;    <span class="algorithm-comment">// 같은 합을 만드는 서로 다른 선택을 모두 셈</span>
         }
     }
     <span class="algorithm-keyword">return</span> answer;

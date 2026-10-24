@@ -55,9 +55,9 @@ code-styler-ignore: true
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[][] floydWarshall(<span class="algorithm-keyword">int</span> n, List&lt;Edge&gt; edges) {
     <span class="algorithm-keyword">long</span> inf = Long.MAX_VALUE / 4;
     <span class="algorithm-keyword">long</span>[][] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[n][n];
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-        Arrays.fill(dist[v], inf);
-        dist[v][v] = 0;
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+        Arrays.fill(dist[vertex], inf);
+        dist[vertex][vertex] = 0;
     }
     <span class="algorithm-keyword">for</span> (Edge edge : edges) {
         dist[edge.from][edge.to] = Math.min(dist[edge.from][edge.to], edge.weight);

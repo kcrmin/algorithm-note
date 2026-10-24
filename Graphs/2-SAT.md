@@ -40,7 +40,7 @@ code-styler-ignore: true
         <span class="algorithm-keyword">if</span> (참과 거짓이 같은 SCC면) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
         <span class="algorithm-comment">// SCC의 위상 순서로 참/거짓 선택</span>
     }
-    <span class="algorithm-keyword">return</span> answer;
+    <span class="algorithm-keyword">return</span> result;
 }</code></pre>
 
 **Java**
@@ -74,22 +74,22 @@ code-styler-ignore: true
         <span class="algorithm-keyword">boolean</span>[] visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[2 * n];
         List&lt;Integer&gt; order = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
         <span class="algorithm-keyword">int</span>[] next = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[2 * n];
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; 2 * n; v++) {
-            <span class="algorithm-keyword">if</span> (!visited[v]) finishDfs(v, visited, order, next);
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; 2 * n; vertex++) {
+            <span class="algorithm-keyword">if</span> (!visited[vertex]) finishDfs(vertex, visited, order, next);
         }
         <span class="algorithm-keyword">int</span>[] component = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[2 * n];
         Arrays.fill(component, -1);
-        <span class="algorithm-keyword">int</span> id = 0;
+        <span class="algorithm-keyword">int</span> componentId = 0;
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = order.size() - 1; i &gt;= 0; i--) {
-            <span class="algorithm-keyword">int</span> v = order.get(i);
-            <span class="algorithm-keyword">if</span> (component[v] == -1) assignDfs(v, id++, component);
+            <span class="algorithm-keyword">int</span> vertex = order.get(i);
+            <span class="algorithm-keyword">if</span> (component[vertex] == -1) assignDfs(vertex, componentId++, component);
         }
-        <span class="algorithm-keyword">boolean</span>[] answer = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[n];
+        <span class="algorithm-keyword">boolean</span>[] result = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[n];
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
             <span class="algorithm-keyword">if</span> (component[2 * v] == component[2 * v + 1]) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">null</span>;
-            answer[v] = component[2 * v] &gt; component[2 * v + 1];    <span class="algorithm-comment">// 이 Kosaraju 번호는 source → sink</span>
+            result[v] = component[2 * v] &gt; component[2 * v + 1];    <span class="algorithm-comment">// 이 Kosaraju 번호는 source → sink</span>
         }
-        <span class="algorithm-keyword">return</span> answer;
+        <span class="algorithm-keyword">return</span> result;
     }
 
     <span class="algorithm-keyword">void</span> finishDfs(<span class="algorithm-keyword">int</span> start, <span class="algorithm-keyword">boolean</span>[] visited, List&lt;Integer&gt; order, <span class="algorithm-keyword">int</span>[] next) {
@@ -97,9 +97,9 @@ code-styler-ignore: true
         visited[start] = <span class="algorithm-keyword">true</span>;
         stack.push(start);
         <span class="algorithm-keyword">while</span> (!stack.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = stack.peek();
-            <span class="algorithm-keyword">if</span> (next[v] &lt; graph.get(v).size()) {
-                <span class="algorithm-keyword">int</span> to = graph.get(v).get(next[v]++);    <span class="algorithm-comment">// 자식 탐색 뒤에도 간선 커서를 보존</span>
+            <span class="algorithm-keyword">int</span> vertex = stack.peek();
+            <span class="algorithm-keyword">if</span> (next[vertex] &lt; graph.get(vertex).size()) {
+                <span class="algorithm-keyword">int</span> to = graph.get(vertex).get(next[vertex]++);    <span class="algorithm-comment">// 자식 탐색 뒤에도 간선 커서를 보존</span>
                 <span class="algorithm-keyword">if</span> (!visited[to]) {
                     visited[to] = <span class="algorithm-keyword">true</span>;
                     stack.push(to);
@@ -110,15 +110,15 @@ code-styler-ignore: true
         }
     }
 
-    <span class="algorithm-keyword">void</span> assignDfs(<span class="algorithm-keyword">int</span> start, <span class="algorithm-keyword">int</span> id, <span class="algorithm-keyword">int</span>[] component) {
+    <span class="algorithm-keyword">void</span> assignDfs(<span class="algorithm-keyword">int</span> start, <span class="algorithm-keyword">int</span> componentId, <span class="algorithm-keyword">int</span>[] component) {
         Deque&lt;Integer&gt; stack = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-        component[start] = id;
+        component[start] = componentId;
         stack.push(start);
         <span class="algorithm-keyword">while</span> (!stack.isEmpty()) {
-            <span class="algorithm-keyword">int</span> v = stack.pop();
-            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : reverse.get(v)) {
+            <span class="algorithm-keyword">int</span> vertex = stack.pop();
+            <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : reverse.get(vertex)) {
                 <span class="algorithm-keyword">if</span> (component[to] != -1) <span class="algorithm-keyword">continue</span>;
-                component[to] = id;
+                component[to] = componentId;
                 stack.push(to);
             }
         }

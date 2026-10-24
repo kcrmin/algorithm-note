@@ -29,8 +29,8 @@ code-styler-ignore: true
 
 **Structure**
 
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">void</span> dfs(v, parentEdge) {
-    <span class="algorithm-comment">// entered[v] = low[v] = 새 방문 번호</span>
+<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">void</span> dfs(vertex, parentEdge) {
+    <span class="algorithm-comment">// entered[vertex] = low[vertex] = 새 방문 번호</span>
     <span class="algorithm-keyword">for</span> (각 간선) {
         <span class="algorithm-keyword">if</span> (들어왔던 간선이면) <span class="algorithm-keyword">continue</span>;
         <span class="algorithm-keyword">if</span> (미방문 이웃이면) {
@@ -65,36 +65,36 @@ code-styler-ignore: true
         low = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
         bridge = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[edges.length];
         articulation = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[n];
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> id = 0; id &lt; edges.length; id++) {
             <span class="algorithm-keyword">int</span> a = edges[id][0], b = edges[id][1];
             graph.get(a).add(<span class="algorithm-keyword">new</span> Edge(b, id));
             graph.get(b).add(<span class="algorithm-keyword">new</span> Edge(a, id));
         }
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> v = 0; v &lt; n; v++) {
-            <span class="algorithm-keyword">if</span> (entered[v] == 0) dfs(v, -1);
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
+            <span class="algorithm-keyword">if</span> (entered[vertex] == 0) dfs(vertex, -1);
         }
     }
 
-    <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> v, <span class="algorithm-keyword">int</span> parentEdge) {
-        entered[v] = low[v] = ++timer;
+    <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">int</span> parentEdge) {
+        entered[vertex] = low[vertex] = ++timer;
         <span class="algorithm-keyword">int</span> children = 0;
-        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(v)) {
+        <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
             <span class="algorithm-keyword">if</span> (edge.id == parentEdge) <span class="algorithm-keyword">continue</span>;    <span class="algorithm-comment">// 평행 간선을 부모 간선과 구별</span>
             <span class="algorithm-keyword">int</span> to = edge.to;
             <span class="algorithm-keyword">if</span> (entered[to] == 0) {
                 children++;
                 dfs(to, edge.id);
-                low[v] = Math.min(low[v], low[to]);
-                <span class="algorithm-keyword">if</span> (<mark class="algorithm-change">low[to] &gt; entered[v]</mark>) bridge[edge.id] = <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// v로도 돌아올 수 없음</span>
-                <span class="algorithm-keyword">if</span> (parentEdge != -1 &amp;&amp; <mark class="algorithm-change">low[to] &gt;= entered[v]</mark>) {
-                    articulation[v] = <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// v 위쪽으로 우회할 수 없음</span>
+                low[vertex] = Math.min(low[vertex], low[to]);
+                <span class="algorithm-keyword">if</span> (<mark class="algorithm-change">low[to] &gt; entered[vertex]</mark>) bridge[edge.id] = <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// 현재 정점으로도 못 돌아옴</span>
+                <span class="algorithm-keyword">if</span> (parentEdge != -1 &amp;&amp; <mark class="algorithm-change">low[to] &gt;= entered[vertex]</mark>) {
+                    articulation[vertex] = <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// vertex 위쪽으로 우회할 수 없음</span>
                 }
             } <span class="algorithm-keyword">else</span> {
-                low[v] = Math.min(low[v], entered[to]);
+                low[vertex] = Math.min(low[vertex], entered[to]);
             }
         }
-        <span class="algorithm-keyword">if</span> (parentEdge == -1 &amp;&amp; <mark class="algorithm-change">children &gt;= 2</mark>) articulation[v] = <span class="algorithm-keyword">true</span>;
+        <span class="algorithm-keyword">if</span> (parentEdge == -1 &amp;&amp; <mark class="algorithm-change">children &gt;= 2</mark>) articulation[vertex] = <span class="algorithm-keyword">true</span>;
     }
 }</code></pre>
 
