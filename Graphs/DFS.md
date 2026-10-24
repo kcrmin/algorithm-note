@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Connected Components
 
+무방향 그래프의 각 정점이 속한 연결 성분 번호를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 정점) {
@@ -69,6 +71,8 @@ code-styler-ignore: true
 
 ## Directed Cycle
 
+방향 그래프에 사이클이 있는지 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">boolean</span> cycleDfs(v) {
@@ -108,6 +112,8 @@ code-styler-ignore: true
 ---
 
 ## Undirected Cycle
+
+무방향 그래프에 사이클이 있는지 판정한다.
 
 **Structure**
 

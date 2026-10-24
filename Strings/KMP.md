@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Pattern Search
 
+본문에서 패턴이 나타나는 모든 시작 인덱스를 겹치는 일치까지 찾아 반환한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>prefixFunction(pattern) {
@@ -86,7 +88,7 @@ findAll(text, pattern) {
 
 ## Borders and Repetition
 
-Border는 문자열 전체를 제외한 접두사·접미사. repetitionLength는 문자열을 정확히 반복해서 만드는 최소 단위 길이.
+문자열 전체를 제외한 접두사·접미사(Border)의 모든 길이와, 문자열을 정확히 반복해서 만드는 최소 단위 길이를 구한다.
 
 **Structure**
 

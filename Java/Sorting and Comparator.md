@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Primitive Array
 
+정수 배열을 오름차순으로 정렬한 뒤 뒤집어 내림차순으로 만든다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 오름차순 정렬</span>
@@ -39,6 +41,8 @@ Arrays.sort(values);
 ---
 
 ## Objects
+
+점수는 내림차순, 동점이면 id는 오름차순으로 정렬한다.
 
 **Structure**
 

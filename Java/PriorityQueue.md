@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Numbers
 
+최소 힙에서 최솟값을 꺼내고, 최대 힙에서 최댓값을 확인한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 최소 힙 또는 최대 힙 선택</span>
@@ -40,6 +42,8 @@ Integer largest = maxHeap.peek();</code></pre>
 ---
 
 ## Objects
+
+priority가 작은 작업부터, 같으면 id가 작은 작업부터 꺼내는 큐를 만든다.
 
 **Structure**
 

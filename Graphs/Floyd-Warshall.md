@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+모든 정점 쌍 사이의 최단 거리를 구한다.
+
 `List<Edge> edges = new ArrayList<>();` 후 `edges.add(new Edge(from, to, weight));`.
 
 **Structure**

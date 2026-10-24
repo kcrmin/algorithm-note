@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+세 점이 어느 방향으로 꺾이는지와 두 선분이 만나는지를 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>ccw(a, b, c) {

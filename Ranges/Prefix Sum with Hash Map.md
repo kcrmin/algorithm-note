@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Count
 
+합이 target인 비어 있지 않은 연속 부분 배열의 개수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 빈 prefix의 빈도 = 1</span>
@@ -54,6 +56,8 @@ code-styler-ignore: true
 ---
 
 ## Existence
+
+합이 target인 비어 있지 않은 연속 부분 배열이 존재하는지 확인한다.
 
 **Structure**
 

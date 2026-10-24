@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Directed
 
+방향 그래프의 모든 간선을 정확히 한 번 사용하는 경로를 구한다.
+
 `edges[i]={from,to}`. 각 인접 목록의 커서가 이미 사용한 간선을 건너뛴다.
 
 **Structure**
@@ -82,6 +84,8 @@ code-styler-ignore: true
 ---
 
 ## Undirected
+
+무방향 그래프의 모든 간선을 정확히 한 번 사용하는 경로를 구한다.
 
 `edges[i]={a,b}`. 같은 ID를 양쪽 인접 목록에 넣는다.
 

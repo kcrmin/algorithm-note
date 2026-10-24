@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+ID별 항목을 추가·갱신·삭제하고, 현재 우선순위가 가장 작은 항목을 조회하거나 꺼낸다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>put(id, priority) {

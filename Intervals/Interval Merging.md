@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+겹치거나 끝점이 맞닿는 구간들을 합쳐, 시작점 순서의 구간 목록을 만든다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작점 오름차순 정렬</span>

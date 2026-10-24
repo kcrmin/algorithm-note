@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Stack · LIFO
 
+마지막에 넣은 값을 먼저 꺼낸다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// push → 마지막에 넣은 것을 pop</span></code></pre>
@@ -38,6 +40,8 @@ stack.push(20);
 
 ## Queue · FIFO
 
+먼저 넣은 값을 먼저 꺼낸다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// offerLast → 먼저 넣은 것을 pollFirst</span></code></pre>
@@ -53,6 +57,8 @@ Integer removed = queue.pollFirst();    <span class="algorithm-comment">// 빈 �
 ---
 
 ## Deque
+
+앞뒤 양쪽에서 값을 넣고 꺼낸다.
 
 **Structure**
 

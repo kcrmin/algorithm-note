@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Count Subset Sums
 
+배열에서 합이 `target`인 부분집합의 개수를 센다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 양쪽 부분집합 합 생성 → 각각 정렬</span>

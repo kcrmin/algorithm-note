@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+루트를 기준으로 각 정점의 부모·깊이·처리 순서·서브트리 크기를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// root의 부모 = -1, 깊이 = 0</span>

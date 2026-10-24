@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Range Add / Range Sum
 
+구간 전체에 값을 더하는 갱신과 구간 합 질의를 처리한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>apply(node, length, delta) {

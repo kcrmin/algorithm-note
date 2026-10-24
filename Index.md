@@ -33,7 +33,7 @@ cssclasses:
 
 | Note | 찾는 내용 |
 | --- | --- |
-| [[Binary Search]] | First / Last True · Lower / Upper Bound |
+| [[Binary Search]] | First True / Last True 경계 탐색 |
 | [[Two Pointers]] | 서로 다른 두 원소의 합이 `target`인지 검사 |
 | [[Sliding Window]] | 연속 구간의 상태를 유지하며 양쪽 경계를 한 방향으로 이동 |
 | [[Backtracking]] | 조건에 맞는 선택을 모두 생성 |

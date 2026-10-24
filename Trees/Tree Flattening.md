@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Entry / Exit
 
+각 서브트리를 배열의 연속 구간으로 바꾸고 조상 관계를 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">while</span> (스택에 frame이 있으면) {

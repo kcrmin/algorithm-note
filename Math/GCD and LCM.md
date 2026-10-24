@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+두 수 a, b의 최대공약수와 최소공배수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>gcd(a, b) {

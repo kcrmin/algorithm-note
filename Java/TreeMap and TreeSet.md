@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Ordered Set
 
+값을 정렬된 상태로 보관하고, 기준값의 바로 아래·위 이웃을 찾는다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 값 삽입</span>
@@ -39,6 +41,8 @@ set.remove(10);</code></pre>
 ---
 
 ## Multiset
+
+중복 개수를 유지하며 값을 추가·제거하고 최솟값·최댓값·이웃 값을 찾는다.
 
 **Structure**
 

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Odd
 
+각 문자를 중심으로 하는 가장 긴 홀수 길이 팰린드롬의 반지름을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 중심 i) {
@@ -56,6 +58,8 @@ code-styler-ignore: true
 ---
 
 ## Even
+
+각 문자 i 앞의 틈을 중심으로 하는 가장 긴 짝수 길이 팰린드롬의 한쪽 길이를 구한다.
 
 **Structure**
 

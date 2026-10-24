@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Power and Prime Inverse
 
+거듭제곱의 나머지와 소수 모듈러에서 나눗셈에 쓸 역원을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>powMod(base, exponent, mod) {

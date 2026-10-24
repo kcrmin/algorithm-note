@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+가중치가 0 또는 1인 그래프에서 시작점부터 각 정점까지의 최단 거리를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작 거리 = 0 → deque 앞에 삽입</span>

@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Graph · Single / Multi-source
 
+각 정점까지 가장 가까운 시작점에서의 최소 간선 수를 구한다.
+
 단일 시작점은 `new int[]{start}`. **방향 그래프는 `directed = true`**, 무방향은 `false`.
 
 **Structure**
@@ -74,7 +76,11 @@ code-styler-ignore: true
 
 ## Grid
 
+시작 칸에서 각 칸까지의 최소 이동 횟수를 구한다.
+
 비어 있지 않은 직사각형 격자. 시작 좌표는 범위 안.
+
+`x`는 열(오른쪽), `y`는 행(아래쪽), 배열 접근은 `board[y][x]`.
 
 **Structure**
 
@@ -91,32 +97,32 @@ code-styler-ignore: true
 **Java**
 
 <pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">class</span> Cell {
-    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span> row, col;
-    Cell(<span class="algorithm-keyword">int</span> row, <span class="algorithm-keyword">int</span> col) {
-        <span class="algorithm-keyword">this</span>.row = row;
-        <span class="algorithm-keyword">this</span>.col = col;
+    <span class="algorithm-keyword">final</span> <span class="algorithm-keyword">int</span> x, y;
+    Cell(<span class="algorithm-keyword">int</span> x, <span class="algorithm-keyword">int</span> y) {
+        <span class="algorithm-keyword">this</span>.x = x;
+        <span class="algorithm-keyword">this</span>.y = y;
     }
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[][] gridBfs(<span class="algorithm-keyword">int</span>[][] board, <span class="algorithm-keyword">int</span> startRow, <span class="algorithm-keyword">int</span> startCol) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[][] gridBfs(<span class="algorithm-keyword">int</span>[][] board, <span class="algorithm-keyword">int</span> startX, <span class="algorithm-keyword">int</span> startY) {
     <span class="algorithm-keyword">int</span> h = board.length, w = board[0].length;
     <span class="algorithm-keyword">int</span>[][] dist = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[h][w];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : dist) Arrays.fill(row, -1);
-    <span class="algorithm-keyword">if</span> (board[startRow][startCol] == 1) <span class="algorithm-keyword">return</span> dist;
+    <span class="algorithm-keyword">if</span> (board[startY][startX] == 1) <span class="algorithm-keyword">return</span> dist;
 
-    <span class="algorithm-keyword">int</span>[] dr = {-1, 1, 0, 0}, dc = {0, 0, -1, 1};
+    <span class="algorithm-keyword">int</span>[] dx = {0, 1, 0, -1}, dy = {-1, 0, 1, 0};
     Queue&lt;Cell&gt; queue = <span class="algorithm-keyword">new</span> ArrayDeque&lt;&gt;();
-    dist[startRow][startCol] = 0;
-    queue.offer(<span class="algorithm-keyword">new</span> Cell(startRow, startCol));
+    dist[startY][startX] = 0;
+    queue.offer(<span class="algorithm-keyword">new</span> Cell(startX, startY));
 
     <span class="algorithm-keyword">while</span> (!queue.isEmpty()) {
         Cell cur = queue.poll();
         <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> d = 0; d &lt; 4; d++) {
-            <span class="algorithm-keyword">int</span> nr = cur.row + dr[d], nc = cur.col + dc[d];
-            <span class="algorithm-keyword">if</span> (nr &lt; 0 || nr &gt;= h || nc &lt; 0 || nc &gt;= w) <span class="algorithm-keyword">continue</span>;
-            <span class="algorithm-keyword">if</span> (board[nr][nc] == 1 || dist[nr][nc] != -1) <span class="algorithm-keyword">continue</span>;
-            dist[nr][nc] = dist[cur.row][cur.col] + 1;
-            queue.offer(<span class="algorithm-keyword">new</span> Cell(nr, nc));
+            <span class="algorithm-keyword">int</span> nx = cur.x + dx[d], ny = cur.y + dy[d];
+            <span class="algorithm-keyword">if</span> (nx &lt; 0 || nx &gt;= w || ny &lt; 0 || ny &gt;= h) <span class="algorithm-keyword">continue</span>;
+            <span class="algorithm-keyword">if</span> (board[ny][nx] == 1 || dist[ny][nx] != -1) <span class="algorithm-keyword">continue</span>;
+            dist[ny][nx] = dist[cur.y][cur.x] + 1;
+            queue.offer(<span class="algorithm-keyword">new</span> Cell(nx, ny));
         }
     }
     <span class="algorithm-keyword">return</span> dist;

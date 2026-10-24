@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+적어도 한 원소를 고르는 연속 부분 배열의 최대 합을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 첫 원소로 ending과 best 초기화</span>

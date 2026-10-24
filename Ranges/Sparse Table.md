@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Range Minimum
 
+값이 바뀌지 않는 배열의 비어 있지 않은 `[left, right)` 구간에서 최솟값을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (블록 길이를 2배씩 늘리며) {

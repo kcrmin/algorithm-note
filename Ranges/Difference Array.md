@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+0으로 시작한 배열에 모든 구간 덧셈을 반영한 최종 배열을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 구간 갱신) {

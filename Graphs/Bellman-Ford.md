@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## From One Start
 
+시작점에서 각 정점까지의 최단 거리를 구하고 도달 가능한 음수 사이클을 검사한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// start = 0, 나머지 = ∞</span>

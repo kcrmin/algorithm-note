@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+모든 간선의 양끝 정점이 서로 다른 색이 되도록 두 색으로 칠할 수 있는지 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 미방문 시작점) {

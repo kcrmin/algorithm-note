@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Maximum Weight Independent Set
 
+서로 인접한 정점을 함께 고르지 않으면서 얻을 수 있는 최대 가중치 합을 구한다.
+
 `buildTree(n, edges)`의 각 행은 `{u, v}`. weight 길이는 정점 수와 같다.
 
 **Structure**

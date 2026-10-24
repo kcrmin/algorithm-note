@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## 0/1 · Each Item Once
 
+각 물건을 최대 한 번 골라 용량 이하에서 얻을 수 있는 최대 가치를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 물건) {
@@ -49,6 +51,8 @@ code-styler-ignore: true
 ---
 
 ## Unbounded · Reuse Allowed
+
+같은 물건을 여러 번 골라도 될 때 용량 이하에서 얻을 수 있는 최대 가치를 구한다.
 
 **Structure**
 

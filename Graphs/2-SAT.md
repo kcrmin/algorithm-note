@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+두 literal의 OR로 된 조건들을 모두 만족하는 참·거짓 배정을 구한다.
+
 `(x0 OR NOT x1)`은 `addClause(0, true, 1, false)`. `x0`을 참으로 고정하려면 같은 literal을 두 번 넣는다.
 
 **Structure**

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Pair Sum
 
+서로 다른 두 위치의 값으로 합이 `target`인 쌍을 만들 수 있는지 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">while</span> (left &lt; right) {

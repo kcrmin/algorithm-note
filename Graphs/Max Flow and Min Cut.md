@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Dinic
 
+source에서 sink까지의 최대 유량과 최소 절단을 구한다.
+
 `long answer = flow.maxFlow(source, sink);` 후 `boolean[] side = flow.sourceSide(source);`. 원본 간선 중 `side[from] && !side[to]`인 간선이 절단을 이룬다.
 
 **Structure**

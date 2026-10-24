@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+최소 공통 조상, k번째 조상, 두 정점 사이의 간선 수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// BFS로 깊이와 바로 위 부모 만들기</span>

@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+문자열 a를 b로 바꾸는 데 필요한 삽입·삭제·교체의 최소 횟수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 빈 문자열로 바꾸는 비용 = 삭제 횟수</span>

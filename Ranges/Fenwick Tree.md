@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+원소의 값을 더하거나 바꾸면서 누적합과 구간 합을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>add(index, delta) {

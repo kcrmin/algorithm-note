@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+겹치지 않는 구간을 가능한 한 많이 골라 선택한 구간 목록을 반환한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 종료 시각 오름차순 정렬</span>

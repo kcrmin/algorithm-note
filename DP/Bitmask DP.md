@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Traveling Salesman
 
+0번 정점에서 출발해 모든 정점을 한 번씩 방문하고 돌아오는 최소 비용을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작 정점만 방문한 비용 = 0</span>

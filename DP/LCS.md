@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Length and Restore
 
+두 문자열의 최장 공통 부분 수열 길이를 계산하고, 해당 수열 하나를 문자열로 복원한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (첫 문자열의 각 prefix) {

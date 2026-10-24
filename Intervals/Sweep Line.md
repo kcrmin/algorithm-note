@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Maximum Overlap
 
+반열린 구간 [start, end)가 동시에 가장 많이 겹치는 순간의 구간 개수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작·종료 이벤트 생성 → 시각순 정렬</span>

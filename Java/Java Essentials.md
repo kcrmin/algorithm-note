@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Numbers
 
+큰 수 계산·나머지·비교에서 오버플로와 음수 나머지를 피한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 연산 전에 필요한 타입으로 승격</span>
@@ -43,6 +45,8 @@ code-styler-ignore: true
 
 ## Arrays
 
+배열을 초기화하고, 원본과 독립된 1D·2D 복사본을 만든다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 초기값 채우기</span>
@@ -57,13 +61,15 @@ Arrays.fill(distance, -1);
 
 <span class="algorithm-keyword">int</span>[][] grid = {{1, 2}, {3, 4}};
 <span class="algorithm-keyword">int</span>[][] copiedGrid = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[grid.length][];
-<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> row = 0; row &lt; grid.length; row++) {
-    copiedGrid[row] = grid[row].clone();    <span class="algorithm-comment">// grid.clone()만 하면 각 행을 공유함</span>
+<span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> y = 0; y &lt; grid.length; y++) {
+    copiedGrid[y] = grid[y].clone();    <span class="algorithm-comment">// grid.clone()만 하면 각 행을 공유함</span>
 }</code></pre>
 
 ---
 
 ## Strings
+
+문자열 비교·부분 추출·결과 문자열 조립에 쓰는 기본 표현.
 
 **Structure**
 

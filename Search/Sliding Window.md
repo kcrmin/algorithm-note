@@ -21,7 +21,7 @@ code-styler-ignore: true
 
 ## Fixed Size
 
-음수가 있어도 사용 가능. 길이가 정확히 `k`인 구간만 비교한다.
+길이가 정확히 `k`인 연속 구간의 **최대 합**을 구한다. 음수가 있어도 사용 가능.
 
 **Structure**
 
@@ -54,7 +54,7 @@ code-styler-ignore: true
 
 ## Longest Valid Window
 
-서로 다른 값이 최대 `k`종류인 최장 구간. `k = 0`이면 0.
+서로 다른 값이 최대 `k`종류인 연속 구간의 **최대 길이**를 구한다. `k = 0`이면 0.
 
 **Structure**
 
@@ -91,6 +91,8 @@ code-styler-ignore: true
 ---
 
 ## Shortest Satisfying Window
+
+합이 `target` 이상인 연속 구간의 **최소 길이**를 구한다.
 
 **모든 원소 ≥ 0, target > 0.** 답이 없으면 0. 음수가 있으면 이 축소 규칙은 성립하지 않는다.
 

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+단어를 저장하고, 단어 전체가 있는지와 주어진 접두사가 일치하는지를 각각 확인한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">class</span> Trie {

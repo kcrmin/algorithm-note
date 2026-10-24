@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Kuhn
 
+각 정점을 한 번만 사용하는 왼쪽·오른쪽 정점 쌍을 최대한 많이 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 왼쪽 정점) {

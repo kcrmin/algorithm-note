@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Permutation
 
+모든 원소를 배치해 만들 수 있는 서로 다른 순열을 생성한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>search(현재 선택) {
@@ -68,6 +70,8 @@ code-styler-ignore: true
 ---
 
 ## Combination
+
+원소 k개를 골라 만들 수 있는 서로 다른 조합을 생성한다.
 
 **Structure**
 

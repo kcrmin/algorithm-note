@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Low-link DFS
 
+무방향 그래프에서 제거하면 연결 성분 수가 늘어나는 간선과 정점을 찾는다.
+
 `edges[i]={a,b}`. 자기 루프·평행 간선·분리된 성분을 허용한다.
 
 **Structure**

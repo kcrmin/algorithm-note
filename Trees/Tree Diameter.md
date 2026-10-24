@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Two Traversals
 
+트리에서 가장 긴 단순 경로의 길이를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>Farthest farthest(start) {

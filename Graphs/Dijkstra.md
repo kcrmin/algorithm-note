@@ -25,6 +25,8 @@ code-styler-ignore: true
 
 ## Template
 
+음수 가중치가 없는 그래프에서 시작점부터 각 정점까지의 최단 거리를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 시작 거리 = 0, 나머지 = ∞</span>
@@ -105,6 +107,8 @@ code-styler-ignore: true
 ---
 
 ## Graph setup
+
+입력 간선을 인접 리스트로 구성하고 Dijkstra를 실행한다.
 
 정점은 `0..n-1`, 입력 `edges[i]`는 `{from, to, weight}`, `start`는 시작 정점.
 

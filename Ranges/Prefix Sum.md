@@ -15,11 +15,13 @@ code-styler-ignore: true
 >
 > **범위** · 모든 구간은 `[left, right)` — 왼쪽 포함, 오른쪽 제외.
 >
-> **비용** · 1D 전처리 O(n), 2D 전처리 O(rows × cols). 질의 O(1).
+> **비용** · 1D 전처리 O(n), 2D 전처리 O(height × width). 질의 O(1).
 
 ---
 
 ## 1D
+
+누적합을 미리 만들어 배열의 `[left, right)` 구간 합을 구한다.
 
 **Structure**
 
@@ -51,39 +53,41 @@ sum(left, right) {
 
 ## 2D
 
-`[top, bottom) × [left, right)` 직사각형. 입력은 각 행의 길이가 같은 배열.
+직사각형 `[x1, x2) × [y1, y2)` 안의 합을 구한다.
+
+x는 오른쪽으로 증가하는 열, y는 아래로 증가하는 행이며 `grid[y][x]`로 접근한다. 입력은 각 행의 길이가 같은 배열이다.
 
 **Structure**
 
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 행) {
-    <span class="algorithm-keyword">for</span> (각 열) {
+<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 행 y) {
+    <span class="algorithm-keyword">for</span> (각 열 x) {
         <span class="algorithm-comment">// 위 + 왼쪽 − 겹친 부분 + 현재 값</span>
     }
 }
 
-sum(top, left, bottom, right) {
+sum(x1, y1, x2, y2) {
     <span class="algorithm-comment">// 전체 − 위 − 왼쪽 + 두 번 뺀 부분</span>
 }</code></pre>
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[][] prefixSum2D(<span class="algorithm-keyword">int</span>[][] a) {
-    <span class="algorithm-keyword">int</span> rows = a.length, cols = rows == 0 ? 0 : a[0].length;
-    <span class="algorithm-keyword">long</span>[][] prefix = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[rows + 1][cols + 1];
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span>[][] prefixSum2D(<span class="algorithm-keyword">int</span>[][] grid) {
+    <span class="algorithm-keyword">int</span> height = grid.length, width = height == 0 ? 0 : grid[0].length;
+    <span class="algorithm-keyword">long</span>[][] prefix = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">long</span>[height + 1][width + 1];
 
-    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> r = 0; r &lt; rows; r++) {
-        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> c = 0; c &lt; cols; c++) {
-            prefix[r + 1][c + 1] = prefix[r][c + 1] + prefix[r + 1][c]
-                    - prefix[r][c] + a[r][c];    <span class="algorithm-comment">// 위·왼쪽에 중복된 영역 제거</span>
+    <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> y = 0; y &lt; height; y++) {
+        <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> x = 0; x &lt; width; x++) {
+            prefix[y + 1][x + 1] = prefix[y][x + 1] + prefix[y + 1][x]
+                    - prefix[y][x] + grid[y][x];    <span class="algorithm-comment">// 위·왼쪽에 중복된 영역 제거</span>
         }
     }
 
     <span class="algorithm-keyword">return</span> prefix;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> rectangleSum(<span class="algorithm-keyword">long</span>[][] prefix, <span class="algorithm-keyword">int</span> top, <span class="algorithm-keyword">int</span> left, <span class="algorithm-keyword">int</span> bottom, <span class="algorithm-keyword">int</span> right) {
-    <span class="algorithm-keyword">return</span> prefix[bottom][right] - prefix[top][right]
-            - prefix[bottom][left] + prefix[top][left];
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">long</span> rectangleSum(<span class="algorithm-keyword">long</span>[][] prefix, <span class="algorithm-keyword">int</span> x1, <span class="algorithm-keyword">int</span> y1, <span class="algorithm-keyword">int</span> x2, <span class="algorithm-keyword">int</span> y2) {
+    <span class="algorithm-keyword">return</span> prefix[y2][x2] - prefix[y1][x2]
+            - prefix[y2][x1] + prefix[y1][x1];
 }</code></pre>
 
 [[Difference Array]] · [[Fenwick Tree]]

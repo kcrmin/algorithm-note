@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Strictly Increasing
 
+같은 값을 이어 붙이지 않는 최장 증가 부분 수열의 길이를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 값 x) {
@@ -63,6 +65,8 @@ code-styler-ignore: true
 
 ## Non-decreasing
 
+같은 값도 이어 붙일 수 있는 최장 비감소 부분 수열의 길이를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (각 값 x) {
@@ -102,6 +106,8 @@ code-styler-ignore: true
 ---
 
 ## Restore · Strictly Increasing
+
+최장 증가 부분 수열 하나를 골라 실제 원소 배열로 복원한다.
 
 **Structure**
 

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Set Operations
 
+집합에 원소를 추가·제거하고, 포함 여부와 원소 수를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>add(mask, i)      <span class="algorithm-comment">// i번 비트를 1로</span>
@@ -50,7 +52,7 @@ count(mask)      <span class="algorithm-comment">// 포함된 원소 수</span><
 
 ## All Subsets
 
-`sums[mask]`는 그 집합의 합. 빈 집합 `sums[0] = 0`. 시간·공간 O(2ⁿ).
+모든 부분집합의 합을 구해 `sums[mask]`에 저장한다. 빈 집합 `sums[0] = 0`. 시간·공간 O(2ⁿ).
 
 **Structure**
 
@@ -77,7 +79,7 @@ count(mask)      <span class="algorithm-comment">// 포함된 원소 수</span><
 
 ## Submasks
 
-0과 mask 자신을 포함. 시간·출력 공간 O(2ᵏ), k는 mask의 1비트 수.
+주어진 `mask`에 포함되는 모든 부분집합을 열거한다. 0과 mask 자신을 포함. 시간·출력 공간 O(2ᵏ), k는 mask의 1비트 수.
 
 **Structure**
 

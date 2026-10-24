@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Queue
 
+모든 선행 조건을 지키는 정점 순서를 하나 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 진입 차수 0인 정점 삽입</span>
@@ -65,6 +67,8 @@ code-styler-ignore: true
 ---
 
 ## Lexicographically Smallest
+
+모든 선행 조건을 지키는 정점 순서 중 사전순으로 가장 작은 순서를 구한다.
 
 **Structure**
 

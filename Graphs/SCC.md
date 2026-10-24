@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Kosaraju
 
+서로 왕복 가능한 정점들을 같은 SCC로 묶고 SCC 사이의 DAG를 만든다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">void</span> finishDfs(start) {

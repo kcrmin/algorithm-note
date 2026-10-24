@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+두 집합을 합치고 각 정점의 대표와 집합 크기를 구한다.
+
 `UnionFind uf = new UnionFind(n);`으로 생성.
 
 **Structure**

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Pascal
 
+Pascal 점화식으로 n개 중 k개를 고르는 경우의 수를 mod로 나눈 나머지를 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// C(0, 0) = 1</span>
@@ -50,6 +52,8 @@ code-styler-ignore: true
 ---
 
 ## Factorial and Inverse Factorial
+
+팩토리얼과 그 역원을 전처리해, 여러 C(n, k)를 소수 prime으로 나눈 나머지를 구한다.
 
 new Combinations(limit, prime)으로 만들고 choose(n, k)를 호출한다. 질의는 0 ≤ n ≤ limit.
 

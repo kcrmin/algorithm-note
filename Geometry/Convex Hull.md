@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Monotone Chain
 
+모든 점을 둘러싸는 가장 작은 볼록 다각형의 꼭짓점을 반시계 순서로 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// x, y 순서 정렬 → 중복 제거</span>

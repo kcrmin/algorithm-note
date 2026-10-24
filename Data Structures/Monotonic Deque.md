@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Maximum
 
+길이 k인 모든 연속 구간의 최댓값을 구간 시작 순서대로 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">for</span> (right를 처음부터 끝까지) {
@@ -55,6 +57,8 @@ code-styler-ignore: true
 ---
 
 ## Minimum
+
+길이 k인 모든 연속 구간의 최솟값을 구간 시작 순서대로 구한다.
 
 **Structure**
 

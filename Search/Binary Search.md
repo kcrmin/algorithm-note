@@ -19,11 +19,13 @@ code-styler-ignore: true
 >
 > **탐색 범위** · First/Last True는 정수 후보 `0..max`, `0 ≤ max < Long.MAX_VALUE`.
 >
-> **비용** · First/Last True는 O(log(max + 1))번 판정. 배열 경계는 O(log n).
+> **비용** · O(log(max + 1))번 판정.
 
 ---
 
 ## First True · FFF│TTT
+
+`valid(x)`가 true인 **가장 작은 x**를 찾는다.
 
 시작 조건: **`valid(max) == true`**. F라면 이 범위에 답이 없다.
 
@@ -63,6 +65,8 @@ code-styler-ignore: true
 
 ## Last True · TTT│FFF
 
+`valid(x)`가 true인 **가장 큰 x**를 찾는다.
+
 시작 조건: **`valid(0) == true`**. F라면 이 범위에 답이 없다.
 
 **Structure**
@@ -96,76 +100,5 @@ code-styler-ignore: true
 
     <span class="algorithm-keyword">return</span> left;
 }</code></pre>
-
-
----
-
-## Lower Bound · First ≥ target
-
-**오름차순 배열**에서 `target` 이상인 첫 인덱스. 없으면 **n**. 탐색 구간은 `[left, right)`.
-
-**Structure**
-
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">while</span> (left &lt; right) {
-    <span class="algorithm-comment">// mid 계산</span>
-    <span class="algorithm-keyword">if</span> (a[mid]가 target 이상이면) {
-        <span class="algorithm-comment">// </span><mark class="algorithm-change"><span class="algorithm-comment">right를 mid로</span></mark>
-    } <span class="algorithm-keyword">else</span> {
-        <span class="algorithm-comment">// </span><mark class="algorithm-change"><span class="algorithm-comment">left를 mid 다음으로</span></mark>
-    }
-}
-<span class="algorithm-keyword">return</span> left;</code></pre>
-
-**Java**
-
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span> lowerBound(<span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">int</span> target) {
-    <span class="algorithm-keyword">int</span> left = 0, right = a.length;    <span class="algorithm-comment">// n은 답이 없는 경우의 반환 위치</span>
-
-    <span class="algorithm-keyword">while</span> (left &lt; right) {
-        <span class="algorithm-keyword">int</span> mid = left + (right - left) / 2;
-        <span class="algorithm-keyword">if</span> (<mark class="algorithm-change">a[mid] &gt;= target</mark>) {
-            right = mid;
-        } <span class="algorithm-keyword">else</span> {
-            left = mid + 1;
-        }
-    }
-    <span class="algorithm-keyword">return</span> left;
-}</code></pre>
-
----
-
-## Upper Bound · First > target
-
-**오름차순 배열**에서 `target`보다 큰 첫 인덱스. 없으면 **n**. 탐색 구간은 `[left, right)`.
-
-**Structure**
-
-<pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">while</span> (left &lt; right) {
-    <span class="algorithm-comment">// mid 계산</span>
-    <span class="algorithm-keyword">if</span> (a[mid]가 target보다 크면) {
-        <span class="algorithm-comment">// </span><mark class="algorithm-change"><span class="algorithm-comment">right를 mid로</span></mark>
-    } <span class="algorithm-keyword">else</span> {
-        <span class="algorithm-comment">// </span><mark class="algorithm-change"><span class="algorithm-comment">left를 mid 다음으로</span></mark>
-    }
-}
-<span class="algorithm-keyword">return</span> left;</code></pre>
-
-**Java**
-
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span> upperBound(<span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">int</span> target) {
-    <span class="algorithm-keyword">int</span> left = 0, right = a.length;
-
-    <span class="algorithm-keyword">while</span> (left &lt; right) {
-        <span class="algorithm-keyword">int</span> mid = left + (right - left) / 2;
-        <span class="algorithm-keyword">if</span> (<mark class="algorithm-change">a[mid] &gt; target</mark>) {
-            right = mid;
-        } <span class="algorithm-keyword">else</span> {
-            left = mid + 1;
-        }
-    }
-    <span class="algorithm-keyword">return</span> left;
-}</code></pre>
-
-`target`의 개수 = `upperBound(a, target) - lowerBound(a, target)`.
 
 [[Sorting and Comparator]]

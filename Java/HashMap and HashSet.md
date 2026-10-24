@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Frequency Map
 
+값별 개수를 세고, 특정 값 하나를 제거한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>count(values) {
@@ -50,6 +52,8 @@ removeOne(count, value) {
 
 ## Set
 
+값의 첫 등장·중복·존재 여부를 판정한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// add의 반환값으로 처음 등장했는지 판정</span>
@@ -66,6 +70,8 @@ seen.remove(7);</code></pre>
 ---
 
 ## Frequency Array
+
+값을 인덱스로 삼아 각 값의 등장 횟수를 센다.
 
 모든 값은 `0..maxValue`. 시간 O(n + maxValue), 공간 O(maxValue).
 

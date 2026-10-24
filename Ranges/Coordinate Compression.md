@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+원래 값의 대소관계를 유지하면서 각 원소를 0부터 시작하는 압축 인덱스로 바꾼다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 복사 → 정렬</span>

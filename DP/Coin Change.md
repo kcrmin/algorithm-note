@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Minimum Count
 
+정확히 amount를 만드는 최소 동전 개수를 구하고, 만들 수 없으면 -1을 반환한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// dp[0] = 0, 나머지는 불가능</span>
@@ -58,6 +60,8 @@ code-styler-ignore: true
 
 ## Ordered Count · 1+2 ≠ 2+1
 
+동전을 사용하는 순서가 다르면 구분하여 amount를 만드는 경우의 수를 mod로 나눈 값을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// dp[0] = 1</span>
@@ -88,6 +92,8 @@ code-styler-ignore: true
 ---
 
 ## Unordered Count · 1+2 = 2+1
+
+동전을 사용하는 순서를 구분하지 않고 amount를 만드는 조합 수를 mod로 나눈 값을 구한다.
 
 **Structure**
 

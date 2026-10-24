@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+정사각 행렬의 exponent제곱을 구해 각 원소를 mod로 나눈 나머지로 반환한다.
+
 행렬 곱의 입력은 0..mod−1로 정규화된 값. matrixPower는 입력을 복사하면서 정규화한다.
 
 **Structure**

@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Longest Path
 
+시작점에서 각 정점까지 갈 수 있는 경로 중 가중치 합의 최댓값을 구한다.
+
 `buildGraph(n, edges)`의 각 행은 `{from, to, weight}`. 음수 가중치 허용, 누적 비용은 long 범위. 도달 불가는 `Long.MIN_VALUE`.
 
 **Structure**
@@ -106,6 +108,8 @@ code-styler-ignore: true
 ---
 
 ## Path Count
+
+시작점에서 각 정점까지 가는 경로 수를 mod로 나눈 값을 구한다.
 
 `buildDirectedGraph(n, edges)`의 각 행은 `{from, to}`. `mod ≥ 2`. 평행 간선은 서로 다른 경로로 센다.
 

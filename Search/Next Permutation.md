@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Template
 
+배열을 바로 다음 사전순 순열로 바꾸고, 다음 순열이 있는지 반환한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 뒤에서부터 pivot 찾기</span>

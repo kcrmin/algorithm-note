@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+문자열을 전처리해 부분 문자열의 해시를 구하고, 두 구간의 길이와 해시가 같은지 확인한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-keyword">class</span> RollingHash {

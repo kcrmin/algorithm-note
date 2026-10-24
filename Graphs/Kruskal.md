@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Template
 
+무방향 그래프에서 모든 정점을 연결하는 최소 신장 트리의 비용을 구한다.
+
 `List<Edge> edges = new ArrayList<>();`에 무방향 간선을 한 번씩 넣는다.
 
 **Structure**

@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## FastScanner
 
+공백으로 구분된 정수와 문자열을 버퍼로 빠르게 읽는다.
+
 필요한 import: `java.io.*`. 입력은 유효한 정수 토큰이라고 가정한다.
 
 **Structure**
@@ -87,6 +89,8 @@ code-styler-ignore: true
 
 ## Use
 
+정수 n개를 읽어 한 줄에 하나씩 모아서 출력한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// scanner 생성 → 필요한 값 읽기</span>
@@ -106,6 +110,8 @@ System.out.print(output);</code></pre>
 ---
 
 ## Read a Whole Line
+
+공백이 포함된 한 줄을 읽고, 필요하면 토큰으로 나눈다.
 
 한 실행에서는 필요한 입력 방식 하나를 선택한다. 같은 System.in을 여러 버퍼로 동시에 읽지 않는다.
 

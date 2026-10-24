@@ -23,6 +23,8 @@ code-styler-ignore: true
 
 ## Range Sum
 
+원소의 값을 바꾸면서 `[left, right)` 구간의 합을 구한다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code>set(index, value) {
@@ -93,6 +95,8 @@ query(left, right) {
 ---
 
 ## Range Minimum
+
+원소의 값을 바꾸면서 `[left, right)` 구간의 최솟값을 구한다.
 
 빈 구간의 반환값은 `Long.MAX_VALUE`.
 
@@ -169,6 +173,8 @@ query(left, right) {
 ---
 
 ## Range Maximum
+
+원소의 값을 바꾸면서 `[left, right)` 구간의 최댓값을 구한다.
 
 빈 구간의 반환값은 `Long.MIN_VALUE`.
 

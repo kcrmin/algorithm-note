@@ -21,6 +21,8 @@ code-styler-ignore: true
 
 ## Prime Sieve
 
+0부터 n까지 각 수가 소수인지 표시한 배열을 만든다.
+
 **Structure**
 
 <pre class="algorithm-code" data-language="text"><code><span class="algorithm-comment">// 처음에는 모두 소수 후보, 0과 1 제외</span>
@@ -51,6 +53,8 @@ code-styler-ignore: true
 ---
 
 ## SPF and Factorization
+
+각 수의 최소 소인수를 전처리하고, x를 소인수와 지수의 목록으로 분해한다.
 
 smallestPrimeFactors(n)으로 한 번 만든 배열을 factorize(x, spf)에 재사용한다.
 
