@@ -87,23 +87,26 @@ code-styler-ignore: true
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> hasDirectedCycle(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
-    List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; graph;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] color;
+
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> hasDirectedCycle(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
+    graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) graph.get(row[0]).add(row[1]);
 
-    <span class="algorithm-keyword">int</span>[] color = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
+    color = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[n];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
-        <span class="algorithm-keyword">if</span> (color[vertex] == 0 &amp;&amp; cycleDfs(vertex, graph, color)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
+        <span class="algorithm-keyword">if</span> (color[vertex] == 0 &amp;&amp; cycleDfs(vertex)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
     }
     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> cycleDfs(<span class="algorithm-keyword">int</span> vertex, List&lt;List&lt;Integer&gt;&gt; graph, <span class="algorithm-keyword">int</span>[] color) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> cycleDfs(<span class="algorithm-keyword">int</span> vertex) {
     color[vertex] = 1;
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> to : graph.get(vertex)) {
         <span class="algorithm-keyword">if</span> (color[to] == 1) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;    <span class="algorithm-comment">// 현재 탐색 경로로 돌아가는 간선</span>
-        <span class="algorithm-keyword">if</span> (color[to] == 0 &amp;&amp; cycleDfs(to, graph, color)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
+        <span class="algorithm-keyword">if</span> (color[to] == 0 &amp;&amp; cycleDfs(to)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
     }
     color[vertex] = 2;    <span class="algorithm-comment">// 완료된 다른 경로로 가는 간선은 사이클이 아님</span>
     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
@@ -136,28 +139,30 @@ code-styler-ignore: true
     }
 }
 
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Edge&gt;&gt; graph;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span>[] visited;
+
 <span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> hasUndirectedCycle(<span class="algorithm-keyword">int</span> n, <span class="algorithm-keyword">int</span>[][] edges) {
-    List&lt;List&lt;Edge&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
+    graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(n);
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> id = 0; id &lt; edges.length; id++) {
         <span class="algorithm-keyword">int</span> a = edges[id][0], b = edges[id][1];
         graph.get(a).add(<span class="algorithm-keyword">new</span> Edge(b, id));
         graph.get(b).add(<span class="algorithm-keyword">new</span> Edge(a, id));
     }
-    <span class="algorithm-keyword">boolean</span>[] visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[n];
+    visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[n];
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; n; vertex++) {
-        <span class="algorithm-keyword">if</span> (!visited[vertex] &amp;&amp; cycleDfs(vertex, -1, graph, visited)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
+        <span class="algorithm-keyword">if</span> (!visited[vertex] &amp;&amp; cycleDfs(vertex, -1)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
     }
     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> cycleDfs(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">int</span> parentEdge, List&lt;List&lt;Edge&gt;&gt; graph,
-                        <span class="algorithm-keyword">boolean</span>[] visited) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> cycleDfs(<span class="algorithm-keyword">int</span> vertex, <span class="algorithm-keyword">int</span> parentEdge) {
     visited[vertex] = <span class="algorithm-keyword">true</span>;
     <span class="algorithm-keyword">for</span> (Edge edge : graph.get(vertex)) {
         <span class="algorithm-keyword">if</span> (edge.id == parentEdge) <span class="algorithm-keyword">continue</span>;    <span class="algorithm-comment">// 정점이 아닌 간선을 제외해야 평행 간선을 감지</span>
         <span class="algorithm-keyword">if</span> (visited[edge.to]) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
-        <span class="algorithm-keyword">if</span> (cycleDfs(edge.to, edge.id, graph, visited)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
+        <span class="algorithm-keyword">if</span> (cycleDfs(edge.to, edge.id)) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
     }
     <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
 }</code></pre>

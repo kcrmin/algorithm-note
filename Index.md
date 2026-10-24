@@ -8,7 +8,7 @@ cssclasses:
 기억 단서 → 개념·조건 → Structure → Java 순서로 읽는다. 변형은 해당 노트의 섹션에서 고른다.
 
 > [!reference] Java 사용
-> 클래스·메서드 템플릿은 `Solution` 같은 바깥 클래스 안에 넣는다.
+> 클래스·필드·메서드 템플릿은 `Solution` 같은 바깥 클래스 안에 넣는다. 각 변형의 Java 블록은 독립적으로 사용한다.
 >
 > 컬렉션은 `import java.util.*;`, 입출력은 `import java.io.*;`. Graph setup과 API 사용 예시는 메서드 안에서 실행한다.
 

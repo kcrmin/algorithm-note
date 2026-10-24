@@ -44,14 +44,21 @@ code-styler-ignore: true
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; permutations(<span class="algorithm-keyword">int</span>[] values) {
-    List&lt;List&lt;Integer&gt;&gt; result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
-    dfs(0, values, <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[values.length], <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(), result);
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] a;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span>[] used;
+<span class="algorithm-keyword">static</span> List&lt;Integer&gt; path;
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; result;
+
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; permutations(<span class="algorithm-keyword">int</span>[] values) {
+    a = values;
+    used = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[a.length];
+    path = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    dfs(0);
     <span class="algorithm-keyword">return</span> result;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth, <span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">boolean</span>[] used, List&lt;Integer&gt; path,
-                List&lt;List&lt;Integer&gt;&gt; result) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth) {
     <span class="algorithm-keyword">if</span> (depth == a.length) {
         result.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(path));    <span class="algorithm-comment">// 이후 path가 바뀌므로 복사해서 저장</span>
         <span class="algorithm-keyword">return</span>;
@@ -64,7 +71,7 @@ code-styler-ignore: true
 
         used[i] = <span class="algorithm-keyword">true</span>;
         path.add(a[i]);
-        dfs(depth + 1, a, used, path, result);
+        dfs(depth + 1);
         path.remove(path.size() - 1);
         used[i] = <span class="algorithm-keyword">false</span>;
     }
@@ -97,19 +104,25 @@ code-styler-ignore: true
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; uniquePermutations(<span class="algorithm-keyword">int</span>[] values) {
-    Map&lt;Integer, Integer&gt; count = <span class="algorithm-keyword">new</span> HashMap&lt;&gt;();
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span> n;
+<span class="algorithm-keyword">static</span> Map&lt;Integer, Integer&gt; count;
+<span class="algorithm-keyword">static</span> List&lt;Integer&gt; path;
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; result;
+
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; uniquePermutations(<span class="algorithm-keyword">int</span>[] values) {
+    n = values.length;
+    count = <span class="algorithm-keyword">new</span> HashMap&lt;&gt;();
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> value : values) {
         count.put(value, count.getOrDefault(value, 0) + 1);
     }
 
-    List&lt;List&lt;Integer&gt;&gt; result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
-    dfs(0, values.length, count, <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(), result);
+    path = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    dfs(0);
     <span class="algorithm-keyword">return</span> result;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth, <span class="algorithm-keyword">int</span> n, Map&lt;Integer, Integer&gt; count,
-                List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; result) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth) {
     <span class="algorithm-keyword">if</span> (depth == n) {
         result.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(path));    <span class="algorithm-comment">// 이후 path가 바뀌므로 복사해서 저장</span>
         <span class="algorithm-keyword">return</span>;
@@ -123,7 +136,7 @@ code-styler-ignore: true
 
         count.put(value, remaining - 1);
         path.add(value);
-        dfs(depth + 1, n, count, path, result);
+        dfs(depth + 1);
         path.remove(path.size() - 1);
         count.put(value, remaining);
     }
@@ -152,18 +165,25 @@ code-styler-ignore: true
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; combinations(<span class="algorithm-keyword">int</span>[] values, <span class="algorithm-keyword">int</span> k) {
-    <span class="algorithm-keyword">if</span> (k &lt; 0 || k &gt; values.length) {
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] a;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span> k;
+<span class="algorithm-keyword">static</span> List&lt;Integer&gt; path;
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; result;
+
+<span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; combinations(<span class="algorithm-keyword">int</span>[] values, <span class="algorithm-keyword">int</span> target) {
+    <span class="algorithm-keyword">if</span> (target &lt; 0 || target &gt; values.length) {
         <span class="algorithm-keyword">throw</span> <span class="algorithm-keyword">new</span> IllegalArgumentException();
     }
 
-    List&lt;List&lt;Integer&gt;&gt; result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
-    dfs(0, 0, values, k, <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(), result);
+    a = values;
+    k = target;
+    path = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    result = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;();
+    dfs(0, 0);
     <span class="algorithm-keyword">return</span> result;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth, <span class="algorithm-keyword">int</span> start, <span class="algorithm-keyword">int</span>[] a, <span class="algorithm-keyword">int</span> k, List&lt;Integer&gt; path,
-                List&lt;List&lt;Integer&gt;&gt; result) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">void</span> dfs(<span class="algorithm-keyword">int</span> depth, <span class="algorithm-keyword">int</span> start) {
     <span class="algorithm-keyword">if</span> (depth == k) {
         result.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(path));    <span class="algorithm-comment">// 이후 path가 바뀌므로 복사해서 저장</span>
         <span class="algorithm-keyword">return</span>;
@@ -171,7 +191,7 @@ code-styler-ignore: true
 
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> i = start; i &lt; a.length; i++) {
         path.add(a[i]);
-        dfs(depth + 1, i + 1, a, k, path, result);    <span class="algorithm-comment">// 뒤쪽 인덱스만 골라 순서만 다른 중복을 막음</span>
+        dfs(depth + 1, i + 1);    <span class="algorithm-comment">// 뒤쪽 인덱스만 골라 순서만 다른 중복을 막음</span>
         path.remove(path.size() - 1);
     }
 }</code></pre>

@@ -46,26 +46,29 @@ code-styler-ignore: true
 
 **Java**
 
-<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] maximumMatching(<span class="algorithm-keyword">int</span> leftSize, <span class="algorithm-keyword">int</span> rightSize, <span class="algorithm-keyword">int</span>[][] edges) {
-    List&lt;List&lt;Integer&gt;&gt; graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(leftSize);
+<pre class="algorithm-code" data-language="java"><code><span class="algorithm-keyword">static</span> List&lt;List&lt;Integer&gt;&gt; graph;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] matchRight;
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span>[] visited;
+
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">int</span>[] maximumMatching(<span class="algorithm-keyword">int</span> leftSize, <span class="algorithm-keyword">int</span> rightSize, <span class="algorithm-keyword">int</span>[][] edges) {
+    graph = <span class="algorithm-keyword">new</span> ArrayList&lt;&gt;(leftSize);
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> vertex = 0; vertex &lt; leftSize; vertex++) graph.add(<span class="algorithm-keyword">new</span> ArrayList&lt;&gt;());
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span>[] row : edges) graph.get(row[0]).add(row[1]);
-    <span class="algorithm-keyword">int</span>[] matchRight = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[rightSize];
+    matchRight = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">int</span>[rightSize];
     Arrays.fill(matchRight, -1);
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> left = 0; left &lt; leftSize; left++) {
-        <span class="algorithm-keyword">boolean</span>[] visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[leftSize];    <span class="algorithm-comment">// 매 증강 시도마다 새 경로를 허용</span>
-        augment(left, graph, matchRight, visited);
+        visited = <span class="algorithm-keyword">new</span> <span class="algorithm-keyword">boolean</span>[leftSize];    <span class="algorithm-comment">// 매 증강 시도마다 새 경로를 허용</span>
+        augment(left);
     }
     <span class="algorithm-keyword">return</span> matchRight;
 }
 
-<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> augment(<span class="algorithm-keyword">int</span> left, List&lt;List&lt;Integer&gt;&gt; graph,
-                       <span class="algorithm-keyword">int</span>[] matchRight, <span class="algorithm-keyword">boolean</span>[] visited) {
+<span class="algorithm-keyword">static</span> <span class="algorithm-keyword">boolean</span> augment(<span class="algorithm-keyword">int</span> left) {
     <span class="algorithm-keyword">if</span> (visited[left]) <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">false</span>;
     visited[left] = <span class="algorithm-keyword">true</span>;
     <span class="algorithm-keyword">for</span> (<span class="algorithm-keyword">int</span> right : graph.get(left)) {
         <span class="algorithm-keyword">if</span> (matchRight[right] == -1
-                || augment(matchRight[right], graph, matchRight, visited)) {
+                || augment(matchRight[right])) {
             matchRight[right] = left;    <span class="algorithm-comment">// 기존 상대를 옮길 수 있을 때만 자리 교체</span>
             <span class="algorithm-keyword">return</span> <span class="algorithm-keyword">true</span>;
         }
